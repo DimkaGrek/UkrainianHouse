@@ -41,4 +41,4 @@ pnpm-debug.log*
 lerna-debug.log*
 
 #backend
-backend/ukrainianhouse/src/main/resources/*.properties
+*.properties
