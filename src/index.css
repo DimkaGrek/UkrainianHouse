@@ -1,53 +1,83 @@
-@import-normalize;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*,
-::after,
-::before {
-    box-sizing: border-box;
-}
-
-body,
-html {
-    margin: 0;
-    box-sizing: border-box;
-    background-color: var(--background-color); /* #0c0d0d */
-    font-family: 'SuisseIntl-Regular', sans-serif;
+/* Istok Web font 
+Приклад використання:
+<div className="font-istok">
+  Цей текст буде відображатись шрифтом 'IstokWeb-Regular' або наступний доступним sans-serif шрифтом в списку.
+</div>
+*/
+@font-face {
+    font-family: 'IstokWeb-Regular';
+    src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2')
+            format('woff2'),
+        url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff')
+            format('woff');
     font-weight: 400;
+    font-stretch: normal;
+    font-display: swap;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin: 0;
+/* Proza Libre Regular font 
+Приклад використання:
+<div className="font-proza">
+  Цей текст буде відображатись шрифтом 'ProzaLibre-Regular' або наступний доступним sans-serif шрифтом в списку.
+</div>
+*/
+@font-face {
+    font-family: 'ProzaLibre-Regular';
+    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2')
+            format('woff2'),
+        url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff')
+            format('woff');
+    font-weight: 400;
+    font-stretch: normal;
+    font-display: swap;
 }
-
-ul,
-ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+/* Proza Libre Medium font 
+Приклад використання:
+<div className="font-proza-medium">
+  Цей текст буде відображатись шрифтом 'ProzaLibre-Medium' або наступний доступним sans-serif шрифтом в списку.
+</div>
+*/
+@font-face {
+    font-family: 'ProzaLibre-Medium';
+    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2')
+            format('woff2'),
+        url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff')
+            format('woff');
+    font-weight: 500;
+    font-stretch: normal;
+    font-display: swap;
 }
-
-img {
-    display: block;
-    max-width: 100%;
-    /* height: auto; */
+/* Proza Libre SemiBold font 
+Приклад використання:
+<div className="font-proza-semibold">
+  Цей текст буде відображатись шрифтом 'ProzaLibre-SemiBold' або наступний доступним sans-serif шрифтом в списку.
+</div>
+*/
+@font-face {
+    font-family: 'ProzaLibre-SemiBold';
+    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2')
+            format('woff2'),
+        url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff')
+            format('woff');
+    font-weight: 600;
+    font-stretch: normal;
+    font-display: swap;
 }
-
-button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: var(--button-color); /* #0ef387 */
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
+/* Proza Libre Bold font 
+Приклад використання:
+<div className="font-proza-bold">
+  Цей текст буде відображатись шрифтом 'ProzaLibre-Bold' або наступний доступним sans-serif шрифтом в списку.
+</div>
+*/
+@font-face {
+    font-family: 'ProzaLibre-Bold';
+    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2')
+        format('woff2');
+    font-weight: 700;
+    font-stretch: normal;
+    font-display: swap;
 }
