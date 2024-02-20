@@ -4,14 +4,20 @@
         <meta charset="utf-8" />
         <title>Перенаправление...</title>
         <script>
-            // Проверяем, не является ли это запросом к корню
-            if (location.pathname !== '/') {
-                // Сохраняем путь в sessionStorage
-                sessionStorage.redirect = location.pathname + location.search;
-            }
+            (function () {
+                // Базовый путь к вашему приложению на GitHub Pages
+                var basePath = '/UkrainianHouse/';
 
-            // Перенаправляем на главную страницу (index.html)
-            location.replace('/');
+                // Полный путь для перенаправления
+                var fullPath =
+                    basePath +
+                    '#' +
+                    location.pathname.slice(basePath.length) +
+                    location.search;
+
+                // Перенаправляем на index.html с сохранением исходного пути
+                location.replace(fullPath);
+            })();
         </script>
     </head>
     <body></body>
