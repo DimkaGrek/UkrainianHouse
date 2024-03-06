@@ -4,7 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import NewsDigest from "../../components/NewsDigest/NewsDigest";
 
 const Home = () => {
-  return (
+  return ( 
     <main>
       <Hero />
       <NewsDigest />
