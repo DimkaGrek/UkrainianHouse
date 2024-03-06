@@ -1,15 +1,17 @@
+import AboutUs from "../../components/AboutUs/AboutUs";
+import Activities from "../../components/Activities/Activities";
+import Hero from "../../components/Hero/Hero";
+import NewsDigest from "../../components/NewsDigest/NewsDigest";
+
 const Home = () => {
-    return (
-        <div>
-            Home
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Laboriosam labore inventore earum, expedita excepturi nam
-                perferendis temporibus alias modi consequatur optio reiciendis
-                saepe a nemo exercitationem error, soluta quibusdam assumenda?
-            </p>
-        </div>
-    );
+  return (
+    <main>
+      <Hero />
+      <NewsDigest />
+      <AboutUs />
+      <Activities />
+    </main>
+  );
 };
 
 export default Home;
