@@ -1,3 +1,5 @@
+import { Button } from '../Button/Button';
+
 export const NewsForm = () => {
   return (
     <form>
@@ -23,7 +25,7 @@ export const NewsForm = () => {
           <input type="file" name="photos" multiple />
         </label>
       </div>
-      <button type="submit">Add news</button>
+      <Button type="submit">Add News</Button>
     </form>
   );
 };
