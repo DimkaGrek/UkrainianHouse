@@ -3,15 +3,16 @@ import { Suspense } from 'react';
 
 import Footer from '../Footer/Footer';
 import { Header } from '../Header/Header';
+import { Loader } from '../Loader/Loader';
 
 export const Layout = () => {
-    return (
-        <div>
-            <Header />
-            <Suspense fallback={<div>Loading...</div>}>
-                <Outlet />
-            </Suspense>
-            <Footer />
-        </div>
-    );
+  return (
+    <div>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+      <Footer />
+    </div>
+  );
 };
