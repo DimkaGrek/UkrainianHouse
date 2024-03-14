@@ -77,7 +77,7 @@ export const NewsForm = ({ news }) => {
         <button
           type="button"
           onClick={handlePick}
-          className="font-istok font-normal text-[20px] leading-[32px] flex content-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#c0c0c0]"
+          className="font-istok font-normal text-[20px] leading-[32px] flex content-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb]"
         >
           <MdOutlineDriveFolderUpload className="h-[24px] w-[24px]" /> Choose
           images
