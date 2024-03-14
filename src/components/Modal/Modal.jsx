@@ -25,7 +25,7 @@ export const Modal = ({ children, toggleModal }) => {
 
   return (
     <div
-      className="flex items-center justify-center fixed bg-yellow-400 bg-opacity-40 w-screen h-screen left-0 top-0 z-100"
+      className="flex items-center justify-center fixed bg-[#FFD437] bg-opacity-40 w-screen h-screen left-0 top-0 z-100"
       onClick={handleClickOnBackdrop}
     >
       <div className="relative bg-white rounded-[30px] py-[35px] px-[80px] h-auto">
