@@ -1,4 +1,4 @@
-import{j as e,L as r}from"./vendor-8B-Zb1Ix.js";const n="/UkrainianHouse/assets/Flag@1x-C8gvwiyP.png",t="/UkrainianHouse/assets/Flag@2x-DsM29jpd.png",a=()=>e.jsxs("section",{children:[e.jsx("h2",{className:`font-proza-medium
+import{j as e,L as r}from"./vendor-9Gu6q-Zv.js";const n="/UkrainianHouse/assets/Flag@1x-C8gvwiyP.png",t="/UkrainianHouse/assets/Flag@2x-DsM29jpd.png",a=()=>e.jsxs("section",{children:[e.jsx("h2",{className:`font-proza-medium
 text-[60px]
 leading-[1.3]
 text-[#222] mb-[86px]`,children:"About Us"}),e.jsxs("ul",{children:[e.jsxs("li",{children:[e.jsx("h3",{className:`font-proza-semibold
