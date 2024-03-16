@@ -1,5 +1,24 @@
 import { Svg } from './Svg';
 
+/* list of icons
+default - yellow hurt
+1 - 'arrow-left'
+2 - 'arrow-right'
+3 - 'arrow-up'
+4 - 'adress'
+5 - 'mail'
+6 - 'search'
+7 - 'close'
+8 - 'edit'
+9 - 'delete'
+10 - 'fb'
+11 - 'github'
+12 - 'insta'
+13 - 'linkedin'
+14 - 'light-theme'
+15 - 'dark-theme'
+*/
+
 export const Icon = ({ name, className, size }) => {
   switch (name) {
     case 'arrow-left':
@@ -14,7 +33,7 @@ export const Icon = ({ name, className, size }) => {
           <path d="M12.267 16l-12.267-12.267 3.733-3.733 16 16-16 16-3.733-3.733 12.267-12.267z"></path>
         </Svg>
       );
-    case 'arrow_up':
+    case 'arrow-up':
       return (
         <Svg className={className} size={size}>
           <path d="M14.111 31.11v-22.997l-10.578 10.578-2.644-2.692 15.111-15.111 15.111 15.111-2.644 2.692-10.578-10.578v22.997h-3.778z"></path>
