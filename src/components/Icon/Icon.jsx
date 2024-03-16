@@ -1,6 +1,8 @@
 import { Svg } from './Svg';
 
-/* list of icons
+/* 
+list of icons:
+
 default - yellow hurt
 1 - 'arrow-left'
 2 - 'arrow-right'
