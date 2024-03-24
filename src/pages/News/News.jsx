@@ -1,8 +1,12 @@
-import { Modal } from "../../components/Modal/Modal";
-import { useModal } from "../../hooks/useModal";
+import { useSelector } from 'react-redux';
+import { Modal } from '../../components/Modal/Modal';
+import { useModal } from '../../hooks/useModal';
+import { selectorsNews } from '../../my-redux/News/newsSlice';
 
 const News = () => {
   const [isModal, toggleIsModal] = useModal();
+
+  const news = useSelector(selectorsNews);
 
   const handleOpenModal = () => {
     toggleIsModal();
@@ -17,27 +21,23 @@ const News = () => {
       >
         Open modal
       </button>
+
+      <ul>
+        {news.length > 0 &&
+          news.map(item => {
+            <li key={item.id}>
+              <h2>{item.title}</h2>
+              <p>{item.publishDate}</p>
+            </li>;
+          })}
+      </ul>
+
       {isModal && (
         <Modal toggleModal={toggleIsModal}>
           <h2>New modal</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
             labore inventore earum, expedita excepturi nam perferendis
-            temporibus alias modi consequatur optio reiciendis saepe a nemo
-            exercitationem error, soluta quibusdam assumenda?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
-            labore inventore earum, expedita excepturi nam perferendis
-            temporibus alias modi consequatur optio reiciendis saepe a nemo
-            exercitationem error, soluta quibusdam assumenda?
-          </p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
-            labore inventore earum, expedita excepturi nam perferendis
-            temporibus alias modi consequatur optio reiciendis saepe a nemo
-            exercitationem error, soluta quibusdam assumenda?
           </p>
         </Modal>
       )}
@@ -46,3 +46,8 @@ const News = () => {
 };
 
 export default News;
+// const dispatch = useDispatch();
+
+// useEffect(() => {
+//   dispatch(fetchAllNews({ status: 'published', page: 1, limit: 3 }));
+// }, [dispatch]);

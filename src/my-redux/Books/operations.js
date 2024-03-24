@@ -2,10 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../services/api';
 
 export const fetchAllBooks = createAsyncThunk(
-  'books/All',
-  async (_, thunkAPI) => {
+  'books/getAll',
+  async (params, thunkAPI) => {
     try {
-      const { data } = await api.get('/books');
+      const { data } = await api.get('/books', { params });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -14,7 +14,7 @@ export const fetchAllBooks = createAsyncThunk(
 );
 
 export const createBook = createAsyncThunk(
-  'book/One',
+  'book/addItem',
   async (book, thunkAPI) => {
     try {
       const { data } = await api.post('/books', book);
@@ -26,10 +26,36 @@ export const createBook = createAsyncThunk(
 );
 
 export const getOneBook = createAsyncThunk(
-  'books/One',
+  'book/getOneItem',
   async (id, thunkAPI) => {
     try {
       const { data } = await api.get(`books/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteOneBook = createAsyncThunk(
+  'book/deleteItem',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await api.delete(`books/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateBook = createAsyncThunk(
+  'book/updateBook',
+  async (book, thunkAPI) => {
+    try {
+      const { id } = book;
+      delete book.id;
+      const { data } = await api.put(`books/${id}`, book);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
