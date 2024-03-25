@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
-import { MdOutlineDriveFolderUpload } from 'react-icons/md';
 import { useForm } from 'react-hook-form';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { storage } from '../../services/firebase';
+import { FaPlus } from 'react-icons/fa6';
 
 export const NewsForm = ({ news }) => {
   const filePicker = useRef(null);
-  const [selectedImages, setSelectedImages] = useState([]);
+  const [loadingImages, setLoadingImages] = useState(false);
+  const [imagesURLs, setImagesURLs] = useState([]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
 
@@ -15,19 +18,45 @@ export const NewsForm = ({ news }) => {
       setValue('title', title);
       setValue('content', content);
       setValue('images', images);
-      setSelectedImages(images);
+      // setImages(images);
     }
   }, [news, setValue]);
 
-  const handleImagesChange = e => {
+  const uploadImages = async e => {
     const images = Array.from(e.target.files);
-    setSelectedImages(images);
-    setValue('images', images);
+
+    const uploadedImages = []; // Создаем массив для хранения URL загруженных изображений
+
+    for (let i = 0; i < images.length; i++) {
+      setLoadingImages(true);
+      const image = images[i];
+      const imageRef = ref(storage, `/news/${image.name}`);
+
+      try {
+        // Загружаем изображение на сервер
+        await uploadBytes(imageRef, image);
+
+        // Получаем URL загруженного изображения
+        const downloadURL = await getDownloadURL(imageRef);
+
+        // Добавляем URL в массив
+        uploadedImages.push(downloadURL);
+        setLoadingImages(false);
+      } catch (error) {
+        console.log('Ошибка при загрузке изображения:', error);
+        setLoadingImages(false);
+      }
+    }
+
+    // После загрузки всех изображений сохраняем URL в состоянии
+    setImagesURLs(uploadedImages);
   };
 
   const onSubmit = data => {
+    console.log(imagesURLs);
+    data.images = imagesURLs;
     console.log(data);
-    console.log(selectedImages);
+
     reset();
   };
 
@@ -72,23 +101,15 @@ export const NewsForm = ({ news }) => {
           ref={filePicker}
           multiple
           accept="image/*,.png,.jpg,.gif,.web"
-          onChange={handleImagesChange}
+          onChange={uploadImages}
         />
         <button
           type="button"
           onClick={handlePick}
-          className="font-istok font-normal text-[20px] leading-[32px] flex content-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb]"
+          className="w-[160px] font-istok font-normal text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb]"
         >
-          <MdOutlineDriveFolderUpload className="h-[24px] w-[24px]" /> Choose
-          images
+          {!loadingImages ? <>&#43; Add images</> : 'Loading...'}
         </button>
-        {selectedImages && (
-          <ul className="mt-[15px]">
-            {selectedImages.map((item, index) => (
-              <li key={index}>{item?.name}</li>
-            ))}
-          </ul>
-        )}
       </div>
       <Button type="submit">Add News</Button>
     </form>
