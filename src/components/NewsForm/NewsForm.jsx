@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { storage } from '../../services/firebase';
+import { storage } from '../../firebase/firebase';
 import { TiDelete } from 'react-icons/ti';
 
 export const NewsForm = ({ news }) => {
