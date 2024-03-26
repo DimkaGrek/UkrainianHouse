@@ -3,11 +3,11 @@ import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../services/firebase';
-import { FaPlus } from 'react-icons/fa6';
+import { TiDelete } from 'react-icons/ti';
 
 export const NewsForm = ({ news }) => {
   const filePicker = useRef(null);
-  const [loadingImages, setLoadingImages] = useState(false);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
   const [imagesURLs, setImagesURLs] = useState([]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -17,44 +17,49 @@ export const NewsForm = ({ news }) => {
       const { title, content, images } = news;
       setValue('title', title);
       setValue('content', content);
-      setValue('images', images);
-      // setImages(images);
+      setImagesURLs(images);
     }
   }, [news, setValue]);
 
   const uploadImages = async e => {
     const images = Array.from(e.target.files);
 
-    const uploadedImages = []; // Создаем массив для хранения URL загруженных изображений
+    const uploadedImages = []; // Create an array to store the URL of uploaded images
 
     for (let i = 0; i < images.length; i++) {
-      setLoadingImages(true);
+      setIsLoadingImages(true);
       const image = images[i];
       const imageRef = ref(storage, `/news/${image.name}`);
 
       try {
-        // Загружаем изображение на сервер
+        // Uploading the image to the server
         await uploadBytes(imageRef, image);
 
-        // Получаем URL загруженного изображения
+        // Get uploaded image URL
         const downloadURL = await getDownloadURL(imageRef);
 
-        // Добавляем URL в массив
+        // Adding the URL to the array
         uploadedImages.push(downloadURL);
-        setLoadingImages(false);
+        setIsLoadingImages(false);
       } catch (error) {
         console.log('Ошибка при загрузке изображения:', error);
-        setLoadingImages(false);
+        setIsLoadingImages(false);
       }
     }
 
-    // После загрузки всех изображений сохраняем URL в состоянии
-    setImagesURLs(uploadedImages);
+    // After loading all the images, we save the URL in the state
+    setImagesURLs(prevImages => [...prevImages, ...uploadedImages]);
+  };
+
+  const handleDeleteImage = image => {
+    setImagesURLs(imagesURLs.filter(item => item !== image));
   };
 
   const onSubmit = data => {
-    console.log(imagesURLs);
+    if (isLoadingImages) return;
+
     data.images = imagesURLs;
+    setImagesURLs([]);
     console.log(data);
 
     reset();
@@ -66,7 +71,7 @@ export const NewsForm = ({ news }) => {
 
   return (
     <form
-      className="flex flex-col content-center items-center gap-[20px] w-[500px]"
+      className="flex flex-col content-center items-center gap-[20px] w-[600px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="w-full">
@@ -93,7 +98,7 @@ export const NewsForm = ({ news }) => {
           />
         </label>
       </div>
-      <div className="w-full">
+      <div className="w-full flex items-center gap-[20px]">
         <input
           className="hidden"
           type="file"
@@ -108,8 +113,25 @@ export const NewsForm = ({ news }) => {
           onClick={handlePick}
           className="w-[160px] font-istok font-normal text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb]"
         >
-          {!loadingImages ? <>&#43; Add images</> : 'Loading...'}
+          {!isLoadingImages ? <>&#43; Add images</> : 'Loading...'}
         </button>
+        {imagesURLs.length !== 0 && (
+          <h2>Total uploading images: {imagesURLs.length}</h2>
+        )}
+      </div>
+      <div className="flex flex-nowrap gap-[20px] w-full overflow-x-auto">
+        {imagesURLs.length !== 0 &&
+          imagesURLs.map((image, index) => (
+            <div key={index} className="flex flex-col flex-shrink-0 mb-[10px]">
+              <img src={image} alt="upload" className="h-[200px]" />
+              <div className="flex flex-row justify-between px-[5px] bg-[#e4e7eb]">
+                <p>{index + 1}</p>
+                <button type="button" onClick={() => handleDeleteImage(image)}>
+                  <TiDelete className=" w-[25px] h-[25px] fill-red-500 hover:fill-red-700" />
+                </button>
+              </div>
+            </div>
+          ))}
       </div>
       <Button type="submit">Add News</Button>
     </form>
