@@ -3,7 +3,7 @@ import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../firebase/firebase';
-import { TiDelete } from 'react-icons/ti';
+import { Icon } from '../Icon/Icon';
 
 export const NewsForm = ({ news }) => {
   const filePicker = useRef(null);
@@ -119,17 +119,25 @@ export const NewsForm = ({ news }) => {
           <h2>Total uploading images: {imagesURLs.length}</h2>
         )}
       </div>
-      <div className="flex flex-nowrap gap-[20px] w-full overflow-x-auto">
+      <div className="flex flex-nowrap gap-[20px] w-full overflow-x-auto pt-[10px]">
         {imagesURLs.length !== 0 &&
           imagesURLs.map((image, index) => (
-            <div key={index} className="flex flex-col flex-shrink-0 mb-[10px]">
-              <img src={image} alt="upload" className="h-[200px]" />
-              <div className="flex flex-row justify-between px-[5px] bg-[#e4e7eb]">
-                <p>{index + 1}</p>
-                <button type="button" onClick={() => handleDeleteImage(image)}>
-                  <TiDelete className=" w-[25px] h-[25px] fill-red-500 hover:fill-red-700" />
-                </button>
-              </div>
+            <div
+              key={index}
+              className="flex flex-col flex-shrink-0 mb-[10px] relative rounded-[10px] h-[200px]"
+            >
+              <img
+                src={image}
+                alt="upload"
+                className="h-[200px] rounded-[10px]"
+              />
+              <button
+                type="button"
+                className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
+                onClick={() => handleDeleteImage(image)}
+              >
+                <Icon name="close" className="h-[12px] w-[12px]" />
+              </button>
             </div>
           ))}
       </div>
