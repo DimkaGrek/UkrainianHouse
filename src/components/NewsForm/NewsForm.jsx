@@ -22,7 +22,7 @@ export const NewsForm = ({ news }) => {
   }, [news, setValue]);
 
   const uploadImages = async e => {
-    const images = Array.from(e.target.files);
+    const images = Array.from(e.target.files).slice(0, 3);
 
     const uploadedImages = []; // Create an array to store the URL of uploaded images
 
@@ -109,9 +109,12 @@ export const NewsForm = ({ news }) => {
           onChange={uploadImages}
         />
         <button
+          disabled={imagesURLs.length >= 3}
           type="button"
           onClick={handlePick}
-          className="w-[160px] font-istok font-normal text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb]"
+          className={`w-[160px] font-istok font-normal text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb] ${
+            imagesURLs.length >= 3 ? 'cursor-not-allowed' : ''
+          }`}
         >
           {!isLoadingImages ? <>&#43; Add images</> : 'Loading...'}
         </button>
