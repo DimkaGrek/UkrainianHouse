@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 import { storage } from '../../firebase/firebase';
 import { Icon } from '../Icon/Icon';
 
@@ -51,7 +56,20 @@ export const NewsForm = ({ news }) => {
     setImagesURLs(prevImages => [...prevImages, ...uploadedImages]);
   };
 
-  const handleDeleteImage = image => {
+  const handleDeleteImage = async image => {
+    // Removing an image from Firebase Storage
+    const imageRef = ref(storage, image);
+    try {
+      await deleteObject(imageRef);
+      console.log('Изображение успешно удалено из Firebase Storage.');
+    } catch (error) {
+      console.log(
+        'Ошибка при удалении изображения из Firebase Storage:',
+        error
+      );
+    }
+
+    // Removing an image from the list
     setImagesURLs(imagesURLs.filter(item => item !== image));
   };
 
