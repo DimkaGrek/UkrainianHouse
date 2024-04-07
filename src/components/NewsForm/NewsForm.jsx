@@ -1,89 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  deleteObject,
-  getDownloadURL,
-  ref,
-  uploadBytes,
-} from 'firebase/storage';
-import { storage } from '../../firebase/firebase';
 import { Icon } from '../Icon/Icon';
 
 export const NewsForm = ({ news }) => {
   const filePicker = useRef(null);
-  const [isLoadingImages, setIsLoadingImages] = useState(false);
-  const [imagesURLs, setImagesURLs] = useState([]);
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
 
   useEffect(() => {
     if (news) {
-      const { title, content, images } = news;
+      const { title, content } = news;
       setValue('title', title);
       setValue('content', content);
-      setImagesURLs(images);
     }
   }, [news, setValue]);
 
-  const uploadImages = async e => {
-    const images = Array.from(e.target.files).slice(0, 3);
+  const selectFiles = e => {
+    const selectedFiles = Array.from(e.target.files);
 
-    const uploadedImages = []; // Create an array to store the URL of uploaded images
+    let imagesArray = selectedFiles.map(image => URL.createObjectURL(image));
 
-    for (let i = 0; i < images.length; i++) {
-      setIsLoadingImages(true);
-      const image = images[i];
-      const imageRef = ref(storage, `/news/${image.name}`);
-
-      try {
-        // Uploading the image to the server
-        await uploadBytes(imageRef, image);
-
-        // Get uploaded image URL
-        const downloadURL = await getDownloadURL(imageRef);
-
-        // Adding the URL to the array
-        uploadedImages.push(downloadURL);
-        setIsLoadingImages(false);
-      } catch (error) {
-        console.log('Ошибка при загрузке изображения:', error);
-        setIsLoadingImages(false);
-      }
+    if (selectedImages.length + imagesArray.length > 3) {
+      alert(`You can't upload more than 3 images!`);
+      const maxAllowed = 3 - selectedImages.length;
+      imagesArray = imagesArray.slice(0, maxAllowed);
     }
 
-    // After loading all the images, we save the URL in the state
-    setImagesURLs(prevImages => [...prevImages, ...uploadedImages]);
+    setSelectedImages(prevImages => [...prevImages, ...imagesArray]);
   };
 
-  const handleDeleteImage = async image => {
-    // Removing an image from Firebase Storage
-    const imageRef = ref(storage, image);
-    try {
-      await deleteObject(imageRef);
-      console.log('Изображение успешно удалено из Firebase Storage.');
-    } catch (error) {
-      console.log(
-        'Ошибка при удалении изображения из Firebase Storage:',
-        error
-      );
-    }
-
-    // Removing an image from the list
-    setImagesURLs(imagesURLs.filter(item => item !== image));
-  };
-
-  const onSubmit = data => {
-    if (isLoadingImages) return;
-
-    data.images = imagesURLs;
-    setImagesURLs([]);
-    console.log(data);
-
-    reset();
+  const handleDeleteImage = image => {
+    setSelectedImages(selectedImages.filter(item => item !== image));
   };
 
   const handlePick = () => {
     filePicker.current.click();
+  };
+
+  const onSubmit = data => {
+    data.photoUrls = selectedImages;
+    console.log(data);
+
+    reset();
   };
 
   return (
@@ -115,6 +74,45 @@ export const NewsForm = ({ news }) => {
           />
         </label>
       </div>
+      <div className="w-full">
+        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+          News status:
+          <select
+            name="status"
+            {...register('status')}
+            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
+          >
+            <option value="DRAFT">Draft</option>
+            <option value="PUBLISHED">Published</option>
+            <option value="ARCHIVED">Archived</option>
+            <option value="ANNOUNCE">Announce</option>
+          </select>
+        </label>
+      </div>
+      <div className="w-full">
+        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+          Button text:
+          <input
+            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
+            type="text"
+            name="btnText"
+            placeholder="Enter text for button"
+            {...register('btnText')}
+          />
+        </label>
+      </div>
+      <div className="w-full">
+        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+          Button link:
+          <input
+            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
+            type="text"
+            name="btnLink"
+            placeholder="Enter link for button"
+            {...register('btnLink')}
+          />
+        </label>
+      </div>
       <div className="w-full flex items-center gap-[20px]">
         <input
           className="hidden"
@@ -123,25 +121,24 @@ export const NewsForm = ({ news }) => {
           ref={filePicker}
           multiple
           accept="image/*,.png,.jpg,.gif,.web"
-          onChange={uploadImages}
+          onChange={selectFiles}
         />
         <button
-          disabled={imagesURLs.length >= 3}
           type="button"
-          onClick={handlePick}
           className={`w-[160px] font-istok font-normal text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[5px] px-[10px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#e4e7eb] ${
-            imagesURLs.length >= 3 ? 'cursor-not-allowed' : ''
+            selectedImages.length === 3
+              ? 'cursor-not-allowed'
+              : 'cursor-pointer'
           }`}
+          onClick={handlePick}
+          disabled={selectedImages.length >= 3}
         >
-          {!isLoadingImages ? <>&#43; Add images</> : 'Loading...'}
+          &#43; Add images
         </button>
-        {imagesURLs.length !== 0 && (
-          <h2>Total uploading images: {imagesURLs.length}</h2>
-        )}
       </div>
       <div className="flex flex-nowrap gap-[20px] w-full overflow-x-auto pt-[10px]">
-        {imagesURLs.length !== 0 &&
-          imagesURLs.map((image, index) => (
+        {selectedImages &&
+          selectedImages.map((image, index) => (
             <div
               key={index}
               className="flex flex-col flex-shrink-0 mb-[10px] relative rounded-[10px] h-[200px]"
