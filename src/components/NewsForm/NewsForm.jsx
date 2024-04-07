@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button } from '../Button/Button';
 import { useForm } from 'react-hook-form';
 import {
   deleteObject,
@@ -162,7 +161,9 @@ export const NewsForm = ({ news }) => {
             </div>
           ))}
       </div>
-      <Button type="submit">Add News</Button>
+      <button className="primaryBtn" type="submit">
+        Add News
+      </button>
     </form>
   );
 };

@@ -1,4 +1,3 @@
-import { Button } from '../../components/Button/Button';
 import { Modal } from '../../components/Modal/Modal';
 import { NewsForm } from '../../components/NewsForm/NewsForm';
 import { useModal } from '../../hooks/useModal';
@@ -8,9 +7,13 @@ const Admin = () => {
 
   return (
     <div>
-      <Button type="button" onClick={() => toggleIsModal()}>
+      <button
+        className="primaryBtn"
+        type="button"
+        onClick={() => toggleIsModal()}
+      >
         Add News
-      </Button>
+      </button>
       {isModal && (
         <Modal toggleModal={toggleIsModal}>
           <NewsForm />
