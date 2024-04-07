@@ -17,17 +17,15 @@ export const NewsForm = ({ news }) => {
   }, [news, setValue]);
 
   const selectFiles = e => {
-    const selectedFiles = Array.from(e.target.files);
+    let selectedFiles = Array.from(e.target.files);
 
-    let imagesArray = selectedFiles.map(image => URL.createObjectURL(image));
-
-    if (selectedImages.length + imagesArray.length > 3) {
+    if (selectedImages.length + selectedFiles.length > 3) {
       alert(`You can't upload more than 3 images!`);
       const maxAllowed = 3 - selectedImages.length;
-      imagesArray = imagesArray.slice(0, maxAllowed);
+      selectedFiles = selectedFiles.slice(0, maxAllowed);
     }
 
-    setSelectedImages(prevImages => [...prevImages, ...imagesArray]);
+    setSelectedImages(prevImages => [...prevImages, ...selectedFiles]);
   };
 
   const handleDeleteImage = image => {
@@ -144,7 +142,7 @@ export const NewsForm = ({ news }) => {
               className="flex flex-col flex-shrink-0 mb-[10px] relative rounded-[10px] h-[200px]"
             >
               <img
-                src={image}
+                src={URL.createObjectURL(image)}
                 alt="upload"
                 className="h-[200px] rounded-[10px]"
               />
