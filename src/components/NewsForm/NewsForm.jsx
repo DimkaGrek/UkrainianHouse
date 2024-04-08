@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
+import { StatusField } from '../StatusField/StatusField';
 
 export const NewsForm = ({ news }) => {
   const filePicker = useRef(null);
   const [selectedImages, setSelectedImages] = useState([]);
+  const statuses = ['Draft', 'Published', 'Archived', 'Announce'];
 
   const { register, handleSubmit, reset, setValue } = useForm();
 
@@ -36,6 +38,10 @@ export const NewsForm = ({ news }) => {
     filePicker.current.click();
   };
 
+  const handleSetStatus = status => {
+    setValue('status', status);
+  };
+
   const onSubmit = data => {
     data.photoUrls = selectedImages;
     console.log(data);
@@ -49,10 +55,10 @@ export const NewsForm = ({ news }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="w-full">
-        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+        <label className="labelStyles">
           Title:
           <input
-            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
+            className="fieldStyles"
             type="text"
             name="title"
             placeholder="Enter the title"
@@ -61,10 +67,10 @@ export const NewsForm = ({ news }) => {
         </label>
       </div>
       <div className="w-full">
-        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+        <label className="labelStyles">
           Content:
           <textarea
-            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437] resize-none overflow-auto h-[200px]"
+            className="fieldStyles resize-none overflow-auto h-[200px]"
             type="text"
             name="content"
             placeholder="Enter the content"
@@ -72,26 +78,16 @@ export const NewsForm = ({ news }) => {
           />
         </label>
       </div>
+      <StatusField
+        statuses={statuses}
+        setStatus={handleSetStatus}
+        status={news ? news.status : statuses[0]}
+      />
       <div className="w-full">
-        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
-          News status:
-          <select
-            name="status"
-            {...register('status')}
-            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
-          >
-            <option value="DRAFT">Draft</option>
-            <option value="PUBLISHED">Published</option>
-            <option value="ARCHIVED">Archived</option>
-            <option value="ANNOUNCE">Announce</option>
-          </select>
-        </label>
-      </div>
-      <div className="w-full">
-        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+        <label className="labelStyles">
           Button text:
           <input
-            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
+            className="fieldStyles"
             type="text"
             name="btnText"
             placeholder="Enter text for button"
@@ -100,10 +96,10 @@ export const NewsForm = ({ news }) => {
         </label>
       </div>
       <div className="w-full">
-        <label className="font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px]">
+        <label className="labelStyles">
           Button link:
           <input
-            className="font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437]"
+            className="fieldStyles"
             type="text"
             name="btnLink"
             placeholder="Enter link for button"
