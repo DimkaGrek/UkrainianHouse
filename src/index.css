@@ -83,11 +83,11 @@
 }
 
 .primaryBtn {
-  @apply font-istok font-bold text-[20px] leading-[32px] flex content-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-[#1C1C1C] rounded-[10px] hover:bg-[#FFD437];
+  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-[#1C1C1C] rounded-[10px] hover:bg-[#FFD437];
 }
 
 .labelStyles {
-  @apply font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[4px];
+  @apply font-istok font-normal text-[16px] leading-[22px] w-[400px] flex flex-col items-start gap-[4px];
 }
 
 .fieldStyles {
