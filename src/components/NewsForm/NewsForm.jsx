@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
 import { StatusField } from '../StatusField/StatusField';
+import { getFromattedData } from '../../helpers/getFromattedData';
 
 export const NewsForm = ({ news }) => {
   const filePicker = useRef(null);
@@ -43,22 +44,13 @@ export const NewsForm = ({ news }) => {
   };
 
   const onSubmit = data => {
-    // data.photoUrls = selectedImages;
-    // console.log(data);
-
-    // console.log(new Date());
-
     data.publishDate = new Date();
 
-    const formData = new FormData();
-    // formData.append('title', data.title);
-    // formData.append('content', data.content);
-    // formData.append('publishDate', new Date());
-    // formData.append('status', data.status);
-    // formData.append('btnText', data.btnText);
-    // formData.append('btnLink', data.btnLink);
-    formData.append('news', data);
-    formData.append('photos', selectedImages);
+    const fd = getFromattedData(selectedImages, 'photos', data, 'news');
+
+    for (const pair of fd.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
 
     reset();
   };
