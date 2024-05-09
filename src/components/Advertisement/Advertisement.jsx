@@ -1,4 +1,9 @@
-import peopleImg from '../../assets/images/people.jpg';
+import people_mob1x from '../../assets/images/news/people_mob_@1x.jpg';
+import people_mob2x from '../../assets/images/news/people_mob_@2x.jpg';
+import people_tab1x from '../../assets/images/news/people_tab_@1x.jpg';
+import people_tab2x from '../../assets/images/news/people_tab_@2x.jpg';
+import people_desk1x from '../../assets/images/news/people_desk_@1x.jpg';
+import people_desk2x from '../../assets/images/news/people_desk_@2x.jpg';
 
 export const Advertisement = () => {
   return (
@@ -19,11 +24,30 @@ export const Advertisement = () => {
           Read More
         </button>
       </div>
-      <img
-        className="rounded-[10px] w-[308px] h-[250px] md:w-[263px] md:h-[214px] lg:w-[681px] lg:h-[306px] "
-        src={peopleImg}
-        alt="People"
-      />
+
+      <picture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet={`${people_desk1x} 1x, ${people_desk2x} 2x`}
+          width="681"
+          height="306"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={`${people_tab1x} 1x, ${people_tab2x} 2x`}
+          width="263"
+          height="214"
+        />
+
+        <img
+          className="md:max-w-none rounded-[10px] md:rounded-[18px]"
+          srcSet={`${people_mob1x} 1x, ${people_mob2x} 2x`}
+          src={people_desk1x}
+          alt="People"
+          width="308"
+          height="250"
+        />
+      </picture>
     </div>
   );
 };
