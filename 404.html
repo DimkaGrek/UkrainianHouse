@@ -10,7 +10,10 @@
 
         // Полный путь для перенаправления
         var fullPath =
-          basePath + location.pathname.slice(basePath.length) + location.search;
+          basePath +
+          '#/' +
+          location.pathname.slice(basePath.length) +
+          location.search;
 
         // Перенаправляем на index.html с сохранением исходного пути
         location.replace(fullPath);
