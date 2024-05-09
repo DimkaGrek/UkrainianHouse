@@ -5,13 +5,13 @@ import Footer from '../Footer/Footer';
 import { Header } from '../Header/Header';
 
 export const Layout = () => {
-    return (
-        <div>
-            <Header />
-            <Suspense fallback={<div>Loading...</div>}>
-                <Outlet />
-            </Suspense>
-            <Footer />
-        </div>
-    );
+  return (
+    <div>
+      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
+      <Footer />
+    </div>
+  );
 };

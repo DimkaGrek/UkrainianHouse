@@ -1,5 +1,8 @@
-import { Modal } from "../../components/Modal/Modal";
-import { useModal } from "../../hooks/useModal";
+import { Advertisement } from '../../components/Advertisement/Advertisement';
+import { Modal } from '../../components/Modal/Modal';
+import { NewsList } from '../../components/NewsList/NewsList';
+import { SearchBar } from '../../components/SearchBar/SearchBar';
+import { useModal } from '../../hooks/useModal';
 
 const News = () => {
   const [isModal, toggleIsModal] = useModal();
@@ -9,7 +12,15 @@ const News = () => {
   };
 
   return (
-    <div>
+    <div className="container">
+      <div className="hidden  md:flex justify-between items-center mb-[40px] lg:mb:[44px]">
+        <h3 className="font-proza-semibold font-semibold text-[20px] text-[#222] leading-[160%] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]">
+          News
+        </h3>
+        <SearchBar />
+      </div>
+      <Advertisement />
+      <NewsList />
       <button
         type="button"
         onClick={handleOpenModal}
