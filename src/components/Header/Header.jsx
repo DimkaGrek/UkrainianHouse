@@ -8,6 +8,7 @@ import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
 import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
 
 export const Header = () => {
+
   return (
     <header className="py-[24px] pb-[14px] pl-[160px] pr-[160px]">
       <nav className="flex items-center justify-between text-center">
