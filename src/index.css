@@ -9,14 +9,14 @@
 </div>
 */
 @font-face {
-    font-family: 'IstokWeb-Regular';
-    src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2')
-            format('woff2'),
-        url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff')
-            format('woff');
-    font-weight: 400;
-    font-stretch: normal;
-    font-display: swap;
+  font-family: 'IstokWeb-Regular';
+  src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff')
+      format('woff');
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
 }
 
 /* Proza Libre Regular font 
@@ -26,14 +26,14 @@
 </div>
 */
 @font-face {
-    font-family: 'ProzaLibre-Regular';
-    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2')
-            format('woff2'),
-        url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff')
-            format('woff');
-    font-weight: 400;
-    font-stretch: normal;
-    font-display: swap;
+  font-family: 'ProzaLibre-Regular';
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff')
+      format('woff');
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
 }
 /* Proza Libre Medium font 
 Приклад використання:
@@ -42,14 +42,14 @@
 </div>
 */
 @font-face {
-    font-family: 'ProzaLibre-Medium';
-    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2')
-            format('woff2'),
-        url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff')
-            format('woff');
-    font-weight: 500;
-    font-stretch: normal;
-    font-display: swap;
+  font-family: 'ProzaLibre-Medium';
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff')
+      format('woff');
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
 }
 /* Proza Libre SemiBold font 
 Приклад використання:
@@ -58,14 +58,14 @@
 </div>
 */
 @font-face {
-    font-family: 'ProzaLibre-SemiBold';
-    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2')
-            format('woff2'),
-        url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff')
-            format('woff');
-    font-weight: 600;
-    font-stretch: normal;
-    font-display: swap;
+  font-family: 'ProzaLibre-SemiBold';
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff')
+      format('woff');
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
 }
 /* Proza Libre Bold font 
 Приклад використання:
@@ -74,10 +74,42 @@
 </div>
 */
 @font-face {
-    font-family: 'ProzaLibre-Bold';
-    src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2')
-        format('woff2');
-    font-weight: 700;
-    font-stretch: normal;
-    font-display: swap;
+  font-family: 'ProzaLibre-Bold';
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+.primaryBtn {
+  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-[#1C1C1C] rounded-[10px] hover:bg-[#FFD437];
+}
+
+.labelStyles {
+  @apply font-istok font-normal text-[16px] leading-[22px] w-[400px] flex flex-col items-start gap-[4px];
+}
+
+.fieldStyles {
+  @apply font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437];
+}
+.container {
+  padding: 0 24px;
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 390px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 744px;
+    padding: 0 20px;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  .container {
+    max-width: 1920px;
+    padding: 0 162px;
+  }
 }
