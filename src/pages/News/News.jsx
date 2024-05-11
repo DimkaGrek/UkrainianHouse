@@ -1,4 +1,5 @@
 import { Advertisement } from '../../components/Advertisement/Advertisement';
+import { LoadMoreButton } from '../../components/LoadMoreButton/LoadMoreButton';
 import { Modal } from '../../components/Modal/Modal';
 import { NewsList } from '../../components/NewsList/NewsList';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
@@ -21,6 +22,7 @@ const News = () => {
       </div>
       <Advertisement />
       <NewsList />
+      <LoadMoreButton />
       <button
         type="button"
         onClick={handleOpenModal}
