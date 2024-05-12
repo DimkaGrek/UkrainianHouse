@@ -27,7 +27,7 @@ export const Advertisement = () => {
 
       <picture>
         <source
-          media="(min-width: 1024px)"
+          media="(min-width: 1920px)"
           srcSet={`${people_desk1x} 1x, ${people_desk2x} 2x`}
           width="681"
           height="306"

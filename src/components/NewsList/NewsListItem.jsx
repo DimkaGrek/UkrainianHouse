@@ -21,7 +21,7 @@ export const NewsListItem = item => {
           <h3 className="font-proza-medium font-medium text-[20px] text-[#1a1a1a] leading-[120%] mb-[8px] lg:text-[26px] lg:leading-[131%] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus:text-[#fbfbfb] transition-colors">
             {item.title}
           </h3>
-          <p className="font-istok text-[14px] text-[#393939] leading-[129%] lg:text-[16px] lg:leading-[137%] group-active:text-[#e4e4e4] group-hover:text-[#e4e4e4] group-focus:text-[#e4e4e4] transition-colors">
+          <p className="font-istok text-[14px] text-[#393939] leading-[129%] lg:text-[16px] lg:leading-[137%] line-clamp-5 lg:line-clamp-3 group-active:text-[#e4e4e4] group-hover:text-[#e4e4e4] group-focus:text-[#e4e4e4] transition-colors">
             {item.description}
           </p>
         </div>
