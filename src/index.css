@@ -93,23 +93,3 @@
 .fieldStyles {
   @apply font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437];
 }
-.container {
-  padding: 0 24px;
-  margin: 0 auto;
-  min-width: 320px;
-  max-width: 390px;
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 744px;
-    padding: 0 20px;
-  }
-}
-
-@media only screen and (min-width: 1158px) {
-  .container {
-    max-width: 1920px;
-    padding: 0 162px;
-  }
-}
