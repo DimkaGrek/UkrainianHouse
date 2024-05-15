@@ -15,13 +15,6 @@ export const Header = () => {
         <NavLink to="/">
           <picture>
             <source
-              media="(max-width: 1919.99px)"
-              srcSet={`${logo_mob_1x} 1x, ${logo_mob_2x} 2x`}
-              width="22"
-              height="33"
-              loading="lazy"
-            />
-            <source
               media="(min-width: 1920px)"
               srcSet={`${logo_1x} 1x, ${logo_2x} 2x`}
               width="47"
@@ -29,7 +22,7 @@ export const Header = () => {
               loading="lazy"
             />
             <img
-              srcSet={`${logo_1x} 1x, ${logo_mob_2x} 2x`}
+              srcSet={`${logo_mob_1x} 1x, ${logo_mob_2x} 2x`}
               src={logo_mob_1x}
               alt="logotype"
               width="22"
@@ -41,30 +34,22 @@ export const Header = () => {
         </NavLink>
         <Icon
           name="burger-menu"
-          className="hidden md:flex justify-between fill-[#1e1e1e] lg:w-[46px] lg:h-[46px]"
+          className="flex justify-between fill-[#1e1e1e] md:w-[46px] md:h-[46px] lg:hidden"
           size="34"
         />
         <div className="hidden lg:flex items-center justify-center text-center">
           <ul className="flex gap-16 font-normal text-[24px] leading-relaxed text-center text-gray-700 mr-[74px]">
             <li className="">
-              <NavLink to="/" className="">
-                Home
-              </NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li className="">
-              <NavLink to="/news" className="">
-                News
-              </NavLink>
+              <NavLink to="/news">News</NavLink>
             </li>
             <li className="">
-              <NavLink to="/library" className="">
-                Library
-              </NavLink>
+              <NavLink to="/library">Library</NavLink>
             </li>
             <li>
-              <NavLink to="/contacts" className="">
-                Contacts
-              </NavLink>
+              <NavLink to="/contacts">Contacts</NavLink>
             </li>
           </ul>
           <button
