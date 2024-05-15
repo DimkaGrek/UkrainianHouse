@@ -1,41 +1,50 @@
 import { NavLink } from 'react-router-dom';
 
-import logo_desktop1x from '../../assets/images/header/logo_desktop1x.png';
-import logo_desktop2x from '../../assets/images/header/logo_desktop2x.png';
-import logo_mobile1x from '../../assets/images/header/logo_mobile1x.png';
-import logo_mobile2x from '../../assets/images/header/logo_mobile2x.png';
+import logo_1x from '../../assets/images/header/logo_1x.png';
+import logo_2x from '../../assets/images/header/logo_2x.png';
+import logo_mob_1x from '../../assets/images/header/logo_mob_1x.png';
+import logo_mob_2x from '../../assets/images/header/logo_mob_2x.png';
 import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
 import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
+import { Icon } from '../Icon/Icon';
 
 export const Header = () => {
-
   return (
-    <header className="py-[24px] pb-[14px] pl-[160px] pr-[160px]">
+    <header className="container py-[24px] pb-[14px]">
       <nav className="flex items-center justify-between text-center">
         <NavLink to="/">
           <picture>
             <source
-              media="(max-width: 1023.99px)"
-              srcSet={`${logo_mobile1x} 1x, ${logo_mobile2x} 2x`}
-              width="54"
+              media="(max-width: 1919.99px)"
+              srcSet={`${logo_mob_1x} 1x, ${logo_mob_2x} 2x`}
+              width="22"
               height="33"
+              loading="lazy"
             />
             <source
-              media="(min-width: 1024px)"
-              srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
-              width="101"
-              height="62"
+              media="(min-width: 1920px)"
+              srcSet={`${logo_1x} 1x, ${logo_2x} 2x`}
+              width="47"
+              height="69"
+              loading="lazy"
             />
             <img
-              srcSet={`${logo_mobile1x} 1x, ${logo_mobile2x} 2x`}
-              src={logo_mobile1x}
+              srcSet={`${logo_1x} 1x, ${logo_mob_2x} 2x`}
+              src={logo_mob_1x}
               alt="logotype"
-              width="54"
+              width="22"
               height="33"
+              className="max-w-none"
+              loading="lazy"
             />
           </picture>
         </NavLink>
-        <div className="hidden md:flex items-center justify-center text-center ">
+        <Icon
+          name="burger-menu"
+          className="hidden md:flex justify-between fill-[#1e1e1e] lg:w-[46px] lg:h-[46px]"
+          size="34"
+        />
+        <div className="hidden lg:flex items-center justify-center text-center">
           <ul className="flex gap-16 font-normal text-[24px] leading-relaxed text-center text-gray-700 mr-[74px]">
             <li className="">
               <NavLink to="/" className="">
