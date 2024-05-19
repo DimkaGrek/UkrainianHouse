@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import tape_1x_mob from '../../assets/images/footer/tape_1x_mob.jpg';
 import tape_2x_mob from '../../assets/images/footer/tape_2x_mob.jpg';
@@ -16,14 +16,18 @@ import flag_ua1x from '../../assets/images/header/flag_ua1x.png';
 import flag_ua2x from '../../assets/images/header/flag_ua2x.png';
 import flag_nl1x from '../../assets/images/header/flag_nl1x.png';
 import flag_nl2x from '../../assets/images/header/flag_nl2x.png';
-import iPhone1x_desktop from '../../assets/images/header/iPhone1x_desktop.png';
-import iPhone2x_desktop from '../../assets/images/header/iPhone2x_desktop.png';
+import iPhone1x_desktop from '../../assets/images/footer/iPhone1x_desktop.png';
+import iPhone2x_desktop from '../../assets/images/footer/iPhone2x_desktop.png';
+import iPhone1x_tablet from '../../assets/images/footer/iPhone1x_tablet.png';
+import iPhone2x_tablet from '../../assets/images/footer/iPhone2x_tablet.png';
+import iPhone1x_mob from '../../assets/images/footer/iPhone1x_mob.png';
+import iPhone2x_mob from '../../assets/images/footer/iPhone2x_mob.png';
 import { Icon } from '../Icon/Icon';
 
 const Footer = () => {
   return (
     <footer className="container pt-[24px] pb-[84px]">
-      <div className="pb-[132.16px]">
+      <div className="mb-[58px] mb:mb-[33px] lg:mb-[132.16px]">
         <picture>
           <source
             media="(min-width: 1920px)"
@@ -47,10 +51,10 @@ const Footer = () => {
           />
         </picture>
       </div>
-      <div className="flex flex-col relative">
+      <div className="flex flex-col items-center relative">
         <div className="flex mb-[76px]">
-          <div className="flex items-center justify-between text-center">
-            <NavLink to="/" className="mr-[147px]">
+          <div className="flex flex-col items-center text-center lg:justify-between">
+            <Link to="/" className="mr-[147px]">
               <picture>
                 <source
                   media="(min-width: 1920px)"
@@ -69,79 +73,99 @@ const Footer = () => {
                   loading="lazy"
                 />
               </picture>
-            </NavLink>
-            <div className="hidden md:flex items-center text-center mr-[93.5px]">
-              <ul className="flex flex-wrap gap-x-[126px] gap-y-[32px] w-[577px] font-normal text-[24px] leading-relaxed text-left text-[#1e1e1e]">
-                <li>
+            </Link>
+            <div className="hidden md:flex items-center text-center mb-[50px] lg:mr-[92px]">
+              <ul className="flex flex-col gap-[20px] justify-center font-normal text-[24px] leading-relaxed text-center text-[#1e1e1e] lg:flex-wrap lg:gap-x-[126px] lg:gap-y-[32px] lg:w-[577px] lg:text-left">
+                <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                   <NavLink to="/">Home</NavLink>
                 </li>
-                <li>
+                <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                   <NavLink to="/library">Library</NavLink>
                 </li>
-                <li>Site developers</li>
-                <li>
+                <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                  Site developers
+                </li>
+                <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                   <NavLink to="/news">News</NavLink>
                 </li>
-                <li>
+                <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                   <NavLink to="/contacts">Contacts</NavLink>
                 </li>
-                <li>Activities</li>
+                <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                  Activities
+                </li>
               </ul>
             </div>
-            <ul className="flex flex-wrap gap-[20px] items-center w-[664px]">
-              <li className="font-bold text-[20px] leading-7 text-center text-gray-900 ">
+            <ul className="flex flex-col items-center lg:flex-wrap gap-[16px] lg:gap-[20px] w-[664px]">
+              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
                 <a
-                  className="flex gap-[6px] border border-[#1e1e1e] rounded-[10px] px-[18px] py-[10px] w-[347px] h-[54px]"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                   href="https://www.facebook.com/ua.maastricht"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
                 >
-                  <Icon name="fb" className="fill-[#1e1e1e]" size="28" />
+                  <Icon
+                    name="fb"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    size="24"
+                  />
                   Let&#39;s be friends on facebook
                 </a>
               </li>
-              <li className="font-bold text-[20px] leading-7 text-center text-gray-900">
+              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
                 <a
-                  className="flex gap-[6px] border border-[#1e1e1e] rounded-[10px] px-[18px] py-[10px] w-[297px] h-[54px]"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                   href="https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
                 >
-                  <Icon name="insta" className="fill-[#1e1e1e]" size="28" />
+                  <Icon
+                    name="insta"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    size="24"
+                  />
                   Follow us on instagram
                 </a>
               </li>
-              <li className="font-bold text-[20px] leading-7 text-center text-gray-900">
+              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
                 <a
-                  className="flex gap-[6px] border border-[#1e1e1e] rounded-[10px] px-[18px] py-[10px] w-[347px] h-[54px]"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                   href="https://t.me/+cGjweuHlhU00N2E8"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Telegram"
                 >
-                  <Icon name="telegram" className="fill-[#1e1e1e]" size="28" />
+                  <Icon
+                    name="telegram"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    size="24"
+                  />
                   Connect us on telegram
                 </a>
               </li>
-              <li className="font-bold text-[20px] leading-7 text-center text-gray-900">
+              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
                 <a
-                  className="flex gap-[6px] border border-[#1e1e1e] rounded-[10px] px-[18px] py-[10px] w-[297px] h-[54px]"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                   href="https://www.linkedin.com/company/ukrainian-house-in-maastricht/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Linkedin"
                 >
-                  <Icon name="linkedin" className="fill-[#1e1e1e]" size="28" />
+                  <Icon
+                    name="linkedin"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    size="24"
+                  />
                   Find us in LinkedIn
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div className="flex mb-[65px]">
-          <address className="mr-[472.5px]">
+        <div className="flex flex-col mb-[65px]">
+          <address className="hidden lg:mr-[472.5px]">
             <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[20px] leading-5 not-italic">
               <li className="flex gap-[6px]">
                 <Icon
@@ -158,13 +182,13 @@ const Footer = () => {
               </li>
             </ul>
           </address>
-          <div className=" flex flex-col w-[474px]">
-            <p className="text-start font-normal text-[20px] leading-[1.4] text-[#1e1e1e] mb-3">
+          <div className=" flex flex-col w-[342px] lg:w-[474px]">
+            <p className="text-start font-normal text-[14px] leading-[1.3] lg:text-[20px] lg:leading-[1.4] text-[#1e1e1e] mb-3">
               &quot; In unity, our strength; in community, our essence. United
               by Ukrainian culture, we create a world where everyone finds their
               place and feels at home. &quot;
             </p>
-            <p className="text-end italic leading-6 text-[#1e1e1e]">
+            <p className="text-end lg:italic leading-6 text-[#1e1e1e]">
               Lesya Ukrainka
             </p>
           </div>
@@ -193,15 +217,34 @@ const Footer = () => {
             loading="lazy"
           />
         </div>
-        <p className="flex justify-center text-[#1e1e1e] italic text-[16px] font-normal leading-5">
+        <p className="flex justify-center text-center text-[#1e1e1e] lg:italic text-[12px] lg:text-[16px] font-normal leading-[1.5] lg:leading-[1.25] w-[220px] md-[100%]">
           &copy; 2024 Ukrainian House in Maastricht. All rights reserved.
         </p>
-        <img
-          className="absolute bottom-[50px] right-[20px] w-[125px] h-[249px]"
-          srcSet={`${iPhone1x_desktop} 1x, ${iPhone2x_desktop} 2x`}
-          src={iPhone1x_desktop}
-          alt="Phone in hand"
-        />
+        <picture>
+          <source
+            media="(min-width: 1920px)"
+            srcSet={`${iPhone1x_desktop} 1x, ${iPhone2x_desktop} 2x`}
+            width="125"
+            height="76"
+            loading="lazy"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet={`${iPhone1x_tablet} 1x, ${iPhone2x_tablet} 2x`}
+            width="160"
+            height="80"
+            loading="lazy"
+          />
+          <img
+            className="absolute top-[50px] right-[20px] lg:bottom-[50px] max-w-none"
+            srcSet={`${iPhone1x_mob} 1x, ${iPhone2x_mob} 2x`}
+            src={iPhone1x_mob}
+            alt="Phone in hand"
+            loading="lazy"
+            height="192"
+            width="96"
+          />
+        </picture>
       </div>
     </footer>
   );

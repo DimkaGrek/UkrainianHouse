@@ -93,3 +93,6 @@
 .fieldStyles {
   @apply font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437];
 }
+.active {
+  @apply border-b-2 border-[#2355cc] text-[#2355cc];
+}
