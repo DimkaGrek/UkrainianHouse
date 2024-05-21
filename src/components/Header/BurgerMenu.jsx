@@ -51,7 +51,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
           />
         </button>
 
-        <Link to="/">
+        <Link to="/" onClick={toggleMenu}>
           <img
             srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
             src={logo_desktop1x}
@@ -140,7 +140,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
         </address>
         <button
           type="button"
-          className="inline-block font-bold text-[20px] leading-[1.7] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[342px] h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
+          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[342px] h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
         >
           Get in touch
         </button>
