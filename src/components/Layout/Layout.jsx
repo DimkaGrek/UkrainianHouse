@@ -7,12 +7,12 @@ import { Loader } from '../Loader/Loader';
 
 export const Layout = () => {
   return (
-    <div>
+    <>
       <Header />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
       <Footer />
-    </div>
+    </>
   );
 };

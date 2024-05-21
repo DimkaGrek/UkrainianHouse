@@ -36,7 +36,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50"
+      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50 lg:hidden"
     >
       <div className="relative flex flex-col justify-start items-center gap-[44px] bg-[#fff] px-[24px] py-[44px] w-[390px] md:w-[653px] ml-auto h-[100%]">
         <button
@@ -51,7 +51,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
           />
         </button>
 
-        <Link to="/">
+        <Link to="/" onClick={toggleMenu}>
           <img
             srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
             src={logo_desktop1x}
@@ -140,7 +140,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
         </address>
         <button
           type="button"
-          className="inline-block font-bold text-[20px] leading-[1.7] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[342px] h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
+          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[342px] h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
         >
           Get in touch
         </button>
