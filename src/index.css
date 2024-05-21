@@ -114,3 +114,7 @@
     padding: 0 162px;
   }
 }
+
+.active {
+  @apply border-b-2 border-[#2355cc] text-[#2355cc];
+}

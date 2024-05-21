@@ -1,0 +1,150 @@
+import { useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+
+import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
+import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
+import flag_ua1x from '../../assets/images/header/flag_ua1x.png';
+import flag_ua2x from '../../assets/images/header/flag_ua2x.png';
+import flag_nl1x from '../../assets/images/header/flag_nl1x.png';
+import flag_nl2x from '../../assets/images/header/flag_nl2x.png';
+import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
+import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
+import { Icon } from '../Icon/Icon';
+
+export const BurgerMenu = ({ toggleMenu }) => {
+  const handleBackdropClick = event => {
+    if (event.currentTarget === event.target) {
+      toggleMenu();
+    }
+  };
+
+  useEffect(() => {
+    const handleEscape = event => {
+      if (event.code === 'Escape') {
+        toggleMenu();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'auto';
+    };
+  }, [toggleMenu]);
+
+  return (
+    <div
+      onClick={handleBackdropClick}
+      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50"
+    >
+      <div className="relative flex flex-col justify-start items-center gap-[44px] bg-[#fff] px-[24px] py-[44px] w-[390px] md:w-[653px] ml-auto h-[100%]">
+        <button
+          type="button"
+          className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
+          onClick={toggleMenu}
+        >
+          <Icon
+            name="close"
+            size="38"
+            className="fill-[#1e1e1e] group-focus:fill-[#2355cc] transition duration-300"
+          />
+        </button>
+
+        <Link to="/">
+          <img
+            srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
+            src={logo_desktop1x}
+            alt="logotype"
+            width="116"
+            height="78"
+            loading="lazy"
+            className="max-w-none outline-none"
+          />
+        </Link>
+
+        <ul className="flex flex-col gap-[34px] font-normal text-center text-[24px] leading-[1.5] text-[#222]">
+          <li onClick={toggleMenu}>
+            <NavLink
+              to="/"
+              className="focus:text-[#3e38c8] transition duration-300"
+            >
+              Home
+            </NavLink>
+          </li>
+          <li onClick={toggleMenu}>
+            <NavLink
+              to="/news"
+              className="focus:text-[#3e38c8] transition duration-300"
+            >
+              News
+            </NavLink>
+          </li>
+          <li onClick={toggleMenu}>
+            <NavLink
+              to="/library"
+              className="focus:text-[#3e38c8] transition duration-300"
+            >
+              Library
+            </NavLink>
+          </li>
+          <li onClick={toggleMenu}>
+            <NavLink
+              to="/contacts"
+              className="focus:text-[#3e38c8] transition duration-300"
+            >
+              Contacts
+            </NavLink>
+          </li>
+        </ul>
+
+        <div className="flex justify-center items-center gap-4">
+          <img
+            srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
+            src={flag_eng1x}
+            alt="Flag of England"
+            className="w-[40px] h-[40px]"
+            loading="lazy"
+          />
+          <img
+            srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
+            src={flag_nl1x}
+            alt="Flag of Netherland"
+            className="w-[40px] h-[40px]"
+            loading="lazy"
+          />
+          <img
+            srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
+            src={flag_ua1x}
+            alt="Flag of Ukraine"
+            className="w-[40px] h-[40px]"
+            loading="lazy"
+          />
+        </div>
+        <address className="w-[313px]">
+          <ul className="flex items-start justify-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic">
+            <li className="flex gap-[6px]">
+              <Icon
+                name="mail"
+                className="fill-[#1e1e1e]"
+                size="24"
+                viewbox="24"
+              />
+              ukrainianhouse.maastricht@gmail.com
+            </li>
+            <li className="flex gap-[6px]">
+              <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
+              Oranjeplein 96, 6224 KV, Maastricht, Netherlands
+            </li>
+          </ul>
+        </address>
+        <button
+          type="button"
+          className="inline-block font-bold text-[20px] leading-[1.7] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[342px] h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
+        >
+          Get in touch
+        </button>
+      </div>
+    </div>
+  );
+};
