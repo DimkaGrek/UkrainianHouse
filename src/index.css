@@ -94,27 +94,6 @@
   @apply text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
 }
 
-.container {
-  padding: 0 24px;
-  margin: 0 auto;
-  min-width: 320px;
-  max-width: 390px;
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 744px;
-    padding: 0 20px;
-  }
-}
-
-@media only screen and (min-width: 1158px) {
-  .container {
-    max-width: 1920px;
-    padding: 0 162px;
-  }
-}
-
 .active {
   @apply border-b-2 border-[#2355cc] text-[#2355cc];
 }

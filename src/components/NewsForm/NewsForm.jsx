@@ -67,7 +67,7 @@ export const NewsForm = () => {
         <label className="label">
           Content:
           <textarea
-            className="field resize-none overflow-auto h-[408px]"
+            className="field resize-none overflow-auto h-[446px]"
             type="text"
             placeholder="Enter the content"
             {...register('content')}
@@ -111,7 +111,7 @@ export const NewsForm = () => {
           accept="image/*,.png,.jpg,.gif,.web"
           onChange={selectFiles}
         />
-        <div className="flex flex-col flex-1 justify-between">
+        <div className="flex flex-col flex-1 justify-between gap-6">
           {selectedImages &&
             selectedImages.map((image, index) => (
               <div
