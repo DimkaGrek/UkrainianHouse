@@ -1,22 +1,36 @@
+import { BookForm } from '../../components/BookForm/BookForm';
 import { Modal } from '../../components/Modal/Modal';
 import { NewsForm } from '../../components/NewsForm/NewsForm';
 import { useModal } from '../../hooks/useModal';
 
 const Admin = () => {
-  const [isModal, toggleIsModal] = useModal();
+  const [addNewsModal, toggleAddNewsModal] = useModal();
+  const [addBookModal, toggleAddBookModal] = useModal();
 
   return (
-    <div>
+    <div className="space-y-4">
       <button
         className="primaryBtn"
         type="button"
-        onClick={() => toggleIsModal()}
+        onClick={() => toggleAddNewsModal()}
       >
         Add News
       </button>
-      {isModal && (
-        <Modal toggleModal={toggleIsModal}>
+      <button
+        className="primaryBtn"
+        type="button"
+        onClick={() => toggleAddBookModal()}
+      >
+        Add Book
+      </button>
+      {addNewsModal && (
+        <Modal toggleModal={toggleAddNewsModal}>
           <NewsForm />
+        </Modal>
+      )}
+      {addBookModal && (
+        <Modal toggleModal={toggleAddBookModal}>
+          <BookForm />
         </Modal>
       )}
     </div>

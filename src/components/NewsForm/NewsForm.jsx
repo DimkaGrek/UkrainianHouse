@@ -65,7 +65,7 @@ export const NewsForm = () => {
           register={register}
         />
         <label className="label">
-          Content:
+          Article Text:
           <textarea
             className="field resize-none overflow-auto h-[446px]"
             type="text"
@@ -154,7 +154,7 @@ export const NewsForm = () => {
               </div>
             ))}
         </div>
-        <button className="primaryBtn w-full h-[54px]" type="submit">
+        <button className="primaryBtn w-full h-[56px]" type="submit">
           Publish
         </button>
       </div>
