@@ -23,6 +23,13 @@ default - yellow hurt
 
 export const Icon = ({ name, className, size, viewbox }) => {
   switch (name) {
+    case 'heart':
+      return (
+        <Svg className={className} size={size} viewbox={viewbox}>
+          <path d="M34.559 10.078c-5.945-6.192-16.063-2.321-18.388 0.781-8.227-21.659-15.765-4.387-16.142 0.657s10.748 20.33 10.748 20.33c10.703-4.883 29.727-15.575 23.782-21.767z"></path>
+          ;
+        </Svg>
+      );
     case 'arrow-left':
       return (
         <Svg className={className} size={size}>

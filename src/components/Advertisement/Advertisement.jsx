@@ -1,11 +1,14 @@
-import people_mob1x from '../../assets/images/news/people_mob_@1x.jpg';
-import people_mob2x from '../../assets/images/news/people_mob_@2x.jpg';
-import people_tab1x from '../../assets/images/news/people_tab_@1x.jpg';
-import people_tab2x from '../../assets/images/news/people_tab_@2x.jpg';
-import people_desk1x from '../../assets/images/news/people_desk_@1x.jpg';
-import people_desk2x from '../../assets/images/news/people_desk_@2x.jpg';
+import { getImages } from '../../helpers';
 
 export const Advertisement = () => {
+  const {
+    people_mob1x,
+    people_mob2x,
+    people_tab1x,
+    people_tab2x,
+    people_desk1x,
+    people_desk2x,
+  } = getImages();
   return (
     <div className="flex flex-col-reverse gap-[16px]  bg-[#fff5c6] p-[18px] rounded-[18px] mb-[34px] md:flex-row md:gap-[12px] md:p-[24px] md:bg-[#ffd437] md:bg-opacity-40 lg:gap-[87px] lg:bg-[#fff6d5]  lg:bg-opacity-50 lg:py-[57px] lg:px-[40px] lg:mb-[44px] ">
       <div className="lg:w-[748px]">
@@ -19,7 +22,7 @@ export const Advertisement = () => {
         </p>
         <button
           type="button"
-          className="mx-auto w-[100%] h-[44px] py-[10px] px-[18px] bg-transparent border border-[#1e1e1e] rounded-[10px] font-istok  font-bold text-[16px] text-[#1e1e1e] leading-[150%] text-center lg:h-[52px] lg:py-[9px] lg:leading-[170%]"
+          className="mx-auto w-[100%] h-[44px] py-[10px] px-[18px] bg-transparent border border-[#1e1e1e] rounded-[10px] font-istok  font-bold text-[16px] text-[#1e1e1e] leading-[150%] text-center lg:h-[52px] lg:py-[9px] lg:leading-[170%] hover:bg-[#ffd437] focus:bg-[#ffd437] transition duration-300"
         >
           Read More
         </button>

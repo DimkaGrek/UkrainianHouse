@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { Icon } from '../Icon/Icon';
 
 export const Modal = ({ children, toggleModal }) => {
@@ -29,7 +30,7 @@ export const Modal = ({ children, toggleModal }) => {
       className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50"
       onClick={handleClickOnBackdrop}
     >
-      <div className="relative rounded-[24px] p-[44px] bg-[#DAEFFF]">
+      <div className="container relative rounded-[24px] p-[44px] bg-[#DAEFFF]">
         <button
           type="button"
           onClick={toggleModal}

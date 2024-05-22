@@ -24,7 +24,7 @@ import iPhone1x_mob from '../../assets/images/footer/iPhone1x_mob.png';
 import iPhone2x_mob from '../../assets/images/footer/iPhone2x_mob.png';
 import { Icon } from '../Icon/Icon';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="container pt-[24px] pb-[84px]">
       <div className="mb-[58px] mb:mb-[34px] lg:mb-[132px]">
@@ -352,4 +352,3 @@ const Footer = () => {
     </footer>
   );
 };
-export default Footer;

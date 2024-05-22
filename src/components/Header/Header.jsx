@@ -18,7 +18,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="container py-[24px] pb-[14px]">
+    <header className="container py-[34px] pb-[29px] md:pb-[48px] ">
       {isMenuOpen && <BurgerMenu toggleMenu={toggleMenu} />}
       <nav className="flex items-center justify-between text-center">
         <Link to="/">
