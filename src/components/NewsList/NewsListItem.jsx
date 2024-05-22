@@ -1,13 +1,16 @@
-import img from '../../assets/images/news_img.jpg';
+import { Modal } from '../../components';
+
 import { useModal } from '../../hooks/useModal';
-import { Modal } from '../Modal/Modal';
+
+import img from '../../assets/images/news_img.jpg';
 
 export const NewsListItem = item => {
   const [isOpenModal, toggleModal] = useModal();
+
   return (
     <>
       <li
-        className="group p-[18px] bg-blue-100 border border-[#666] rounded-[18px] w-[100%] md:w-[342px] lg:w-[516px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] active:border-[#fff] hover:border-[#fff] focus:border-[#fff] transition-colors"
+        className="group p-[18px] bg-blue-100 border border-[#666] rounded-[18px] w-[100%] md:w-[342px] lg:w-[522px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] active:border-[#fff] hover:border-[#fff] focus:border-[#fff] transition-colors"
         onClick={toggleModal}
       >
         <img
@@ -18,18 +21,18 @@ export const NewsListItem = item => {
           height={209}
         />
         <div className="mb-[16px]">
-          <h3 className="font-proza-medium font-medium text-[20px] text-[#1a1a1a] leading-[120%] mb-[8px] lg:text-[26px] lg:leading-[131%] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus:text-[#fbfbfb] transition-colors">
+          <h3 className="font-proza-medium font-medium text-[20px] text-[#1a1a1a] leading-[120%] mb-[8px] lg:text-[26px] lg:leading-[131%] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus:text-[#fbfbfb] transition duration-300">
             {item.title}
           </h3>
-          <p className="font-istok text-[14px] text-[#393939] leading-[129%] lg:text-[16px] lg:leading-[137%] line-clamp-5 lg:line-clamp-3 group-active:text-[#e4e4e4] group-hover:text-[#e4e4e4] group-focus:text-[#e4e4e4] transition-colors">
+          <p className="font-istok text-[14px] text-[#393939] leading-[129%] lg:text-[16px] lg:leading-[137%] line-clamp-5 lg:line-clamp-3 group-active:text-[#e4e4e4] group-hover:text-[#e4e4e4] group-focus:text-[#e4e4e4] transition duration-300">
             {item.description}
           </p>
         </div>
         <div className="flex justify-between">
-          <p className=" font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition-colors">
+          <p className=" font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300">
             {item.date}
           </p>
-          <p className="font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition-colors">
+          <p className="font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300">
             {item.author}
           </p>
         </div>

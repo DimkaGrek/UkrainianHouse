@@ -1,17 +1,20 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 
-import Footer from '../Footer/Footer';
-import { Header } from '../Header/Header';
-import { Loader } from '../Loader/Loader';
+import { Header, Footer, Loader, Navbar, ScrollUpBtn } from '../../components';
 
 export const Layout = () => {
   return (
     <>
       <Header />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+
+      <main className="container">
+        <Navbar />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+        <ScrollUpBtn />
+      </main>
       <Footer />
     </>
   );
