@@ -1,46 +1,43 @@
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
-import { StatusField } from '../StatusField/StatusField';
 import { getFromattedData } from '../../helpers/getFromattedData';
+import { InputField } from '../InputField/InputField';
+import newsImg1 from '../../assets/images/news-img@1x.jpg';
+import newsImg2 from '../../assets/images/news-img@2x.jpg';
 
-export const NewsForm = ({ news }) => {
+export const NewsForm = () => {
   const filePicker = useRef(null);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const statuses = ['Draft', 'Published', 'Archived', 'Announce'];
+  const initialImages = [0, 0, 0, 0, 0];
+  const [selectedImages, setSelectedImages] = useState(initialImages);
 
-  const { register, handleSubmit, reset, setValue } = useForm();
-
-  useEffect(() => {
-    if (news) {
-      const { title, content } = news;
-      setValue('title', title);
-      setValue('content', content);
-    }
-  }, [news, setValue]);
+  const { register, handleSubmit, reset } = useForm();
 
   const selectFiles = e => {
     let selectedFiles = Array.from(e.target.files);
 
-    if (selectedImages.length + selectedFiles.length > 3) {
-      alert(`You can't upload more than 3 images!`);
-      const maxAllowed = 3 - selectedImages.length;
-      selectedFiles = selectedFiles.slice(0, maxAllowed);
-    }
-
-    setSelectedImages(prevImages => [...prevImages, ...selectedFiles]);
+    setSelectedImages(prevImages => {
+      const newImages = [...prevImages];
+      selectedFiles.forEach(file => {
+        const index = newImages.indexOf(0);
+        if (index !== -1) {
+          newImages[index] = file;
+        }
+      });
+      return newImages;
+    });
   };
 
   const handleDeleteImage = image => {
-    setSelectedImages(selectedImages.filter(item => item !== image));
+    setSelectedImages(prevImages => {
+      const newImages = prevImages.filter(item => item !== image);
+      newImages.push(0);
+      return newImages;
+    });
   };
 
   const handlePick = () => {
     filePicker.current.click();
-  };
-
-  const handleSetStatus = status => {
-    setValue('status', status);
   };
 
   const onSubmit = data => {
@@ -57,68 +54,54 @@ export const NewsForm = ({ news }) => {
 
   return (
     <form
-      className="flex flex-row gap-[16px] h-auto"
+      className="flex flex-row gap-[16px] h-auto w-[1000px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col gap-[16px]">
-        <div>
-          <label className="labelStyles">
-            Title:
-            <input
-              className="fieldStyles"
-              type="text"
-              name="title"
-              placeholder="Enter the title"
-              {...register('title')}
-            />
-          </label>
-        </div>
-        <div>
-          <label className="labelStyles">
-            Content:
-            <textarea
-              className="fieldStyles resize-none overflow-auto h-[254px]"
-              type="text"
-              name="content"
-              placeholder="Enter the content"
-              {...register('content')}
-            />
-          </label>
-        </div>
-        <StatusField
-          statuses={statuses}
-          setStatus={handleSetStatus}
-          status={news ? news.status : statuses[0]}
+      <div className="flex flex-col gap-[16px] grow">
+        <InputField
+          label="Article Title"
+          name="title"
+          placeholder="Enter the title"
+          register={register}
         />
-        <div>
-          <label className="labelStyles">
-            Button text:
-            <input
-              className="fieldStyles"
-              type="text"
-              name="btnText"
-              placeholder="Enter text for button"
-              {...register('btnText')}
-            />
-          </label>
-        </div>
-        <div>
-          <label className="labelStyles">
-            Button link:
-            <input
-              className="fieldStyles"
-              type="text"
-              name="btnLink"
-              placeholder="Enter link for button"
-              {...register('btnLink')}
-            />
-          </label>
+        <label className="label">
+          Content:
+          <textarea
+            className="field resize-none overflow-auto h-[446px]"
+            type="text"
+            placeholder="Enter the content"
+            {...register('content')}
+          />
+        </label>
+        <div className="grid grid-cols-2 gap-4">
+          <InputField
+            label={`Link (button "read more")`}
+            name="btnLink"
+            placeholder="https //www..."
+            register={register}
+          />
+          <InputField
+            label="Author"
+            name="author"
+            placeholder="Ольга Українська"
+            register={register}
+          />
+          <InputField
+            label="City"
+            name="city"
+            placeholder="Maastricht"
+            register={register}
+          />
+          <InputField
+            label="Date"
+            name="date"
+            type="date"
+            placeholder="02/05/2024"
+            register={register}
+          />
         </div>
       </div>
-      <div className="flex flex-col items-start w-fit">
-        <p className="font-istok font-normal text-[16px] leading-[22px] mb-[4px]">
-          Images
-        </p>
+      <div className="flex flex-col gap-4 items-start w-[185px]">
         <input
           className="hidden"
           type="file"
@@ -128,41 +111,50 @@ export const NewsForm = ({ news }) => {
           accept="image/*,.png,.jpg,.gif,.web"
           onChange={selectFiles}
         />
-        <button
-          type="button"
-          className={`w-full mb-[16px] font-istok font-normal text-[20px] leading-[32px] flex justify-center items-center gap-[6px] px-[10px] h-[54px] border border-solid border-[#1C1C1C] rounded-[10px] hover:bg-[#FFD437] ${
-            selectedImages.length === 3
-              ? 'cursor-not-allowed'
-              : 'cursor-pointer'
-          }`}
-          onClick={handlePick}
-          disabled={selectedImages.length >= 3}
-        >
-          &#43; Add images
-        </button>
-        <div className="flex flex-col gap-[10px] p-[15px] h-[500px] w-[250px] overflow-auto bg-white mb-[16px] border border-solid border-[#1C1C1C] rounded-[10px]">
+        <div className="flex flex-col flex-1 justify-between gap-6">
           {selectedImages &&
             selectedImages.map((image, index) => (
               <div
                 key={index}
-                className="flex flex-col flex-shrink-0 mb-[10px] relative rounded-[10px]"
+                className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-sm"
               >
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt="upload"
-                  className="h-auto w-fit rounded-[10px] shadow-xl"
-                />
-                <button
-                  type="button"
-                  className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
-                  onClick={() => handleDeleteImage(image)}
-                >
-                  <Icon name="close" className="h-[12px] w-[12px]" />
-                </button>
+                {image === 0 ? (
+                  <picture className="h-auto w-fit rounded-[10px]">
+                    <source
+                      srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
+                      type="image/png"
+                    />
+                    <img
+                      width={185}
+                      height={119}
+                      src={newsImg1}
+                      alt="upload img"
+                      className="rounded-[10px] cursor-pointer"
+                      onClick={handlePick}
+                    />
+                  </picture>
+                ) : (
+                  <>
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt="upload"
+                      className="rounded-[10px] shadow-sm"
+                      width={185}
+                      height={119}
+                    />
+                    <button
+                      type="button"
+                      className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
+                      onClick={() => handleDeleteImage(image)}
+                    >
+                      <Icon name="close" className="h-[12px] w-[12px]" />
+                    </button>
+                  </>
+                )}
               </div>
             ))}
         </div>
-        <button className="primaryBtn w-full" type="submit">
+        <button className="primaryBtn w-full h-[54px]" type="submit">
           Publish
         </button>
       </div>

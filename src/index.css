@@ -83,16 +83,17 @@
 }
 
 .primaryBtn {
-  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-[#1C1C1C] rounded-[10px] hover:bg-[#FFD437];
+  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-my-black5 rounded-[10px] hover:bg-my-yellow;
 }
 
-.labelStyles {
-  @apply font-istok font-normal text-[16px] leading-[22px] w-[400px] flex flex-col items-start gap-[4px];
+.label {
+  @apply font-istok font-normal text-[16px] leading-[22px]  flex flex-col items-start gap-[6px];
 }
 
-.fieldStyles {
-  @apply font-istok font-normal text-[20px] leading-[24px] w-full p-[14px] placeholder:text-[#7C7C7C] border border-solid border-[#1C1C1C] rounded-[10px] focus:outline-none focus:border-[#FFD437];
+.field {
+  @apply text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
 }
+
 .active {
   @apply border-b-2 border-[#2355cc] text-[#2355cc];
 }
