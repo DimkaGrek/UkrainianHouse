@@ -142,8 +142,8 @@ export const Footer = () => {
           </div>
 
           <div className="hidden md:flex justify-between items-center md:mb-[44px] md:w-full lg:hidden">
-            <address className="flex-col md:gap-4">
-              <ul className="text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic">
+            <address>
+              <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic">
                 <li className="flex gap-[6px]">
                   <Icon
                     name="mail"
@@ -260,8 +260,8 @@ export const Footer = () => {
         </div>
 
         <div className="w-full mb-[50px] md:flex md:justify-end md:mb-[36px] lg:justify-between lg:items-center lg:mb-[38px]">
-          <address className="hidden lg:flex flex-col gap-4">
-            <ul className="text-[#1e1e1e] font-normal text-[20px] leading-[1.4]">
+          <address className="hidden lg:block">
+            <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[20px] leading-[1.4] not-italic">
               <li className="flex gap-[6px]">
                 <Icon
                   name="mail"
