@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
 import { getFromattedData } from '../../helpers/getFromattedData';
@@ -54,10 +54,10 @@ export const NewsForm = () => {
 
   return (
     <form
-      className="flex flex-row gap-[16px] h-auto w-[1000px]"
+      className="flex flex-row gap-[16px] h-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col gap-[16px] grow">
+      <div className="flex flex-col gap-[16px] grow w-[899px]">
         <InputField
           label="Article Title"
           name="title"
@@ -65,7 +65,7 @@ export const NewsForm = () => {
           register={register}
         />
         <label className="label">
-          Content:
+          Article Text:
           <textarea
             className="field resize-none overflow-auto h-[446px]"
             type="text"
@@ -154,7 +154,7 @@ export const NewsForm = () => {
               </div>
             ))}
         </div>
-        <button className="primaryBtn w-full h-[54px]" type="submit">
+        <button className="primaryBtn w-full h-[56px]" type="submit">
           Publish
         </button>
       </div>
