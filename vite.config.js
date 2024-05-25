@@ -12,5 +12,5 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/NodeAvengers',
+  base: '/UkrainianHouse',
 });
