@@ -52,7 +52,7 @@ export const Footer = () => {
         </picture>
       </div>
       <div className="flex flex-col items-center relative">
-        <div className="flex flex-col items-center text-center mb-[154px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:flex-wrap lg:justify-between">
+        <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:flex-wrap lg:justify-between">
           <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:gap-[157px] lg:mb-0">
             <Link to="/" className="hidden md:inline-block">
               <picture>
