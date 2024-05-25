@@ -1,15 +1,17 @@
-import { resolve } from 'node:path';
-// import copy from './node_modules/vite-plugin-copy/dist/vite-plugin-copy.js';
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
-  base: '/UkrainianHouse',
-  plugins: [react(), splitVendorChunkPlugin()],
+export default defineConfig({
+  plugins: [react(), svgr()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src/'),
+      src: '/src',
+      components: '/src/components',
+      pages: '/src/pages',
+      assets: '/src/assets',
     },
   },
-}));
+  base: '/NodeAvengers',
+});
