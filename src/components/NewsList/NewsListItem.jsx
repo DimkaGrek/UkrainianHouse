@@ -10,7 +10,7 @@ export const NewsListItem = item => {
   return (
     <>
       <li
-        className="group p-[18px] bg-blue-100 border border-[#666] rounded-[18px] w-[100%] md:w-[342px] lg:w-[522px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] active:border-[#fff] hover:border-[#fff] focus:border-[#fff] transition-colors"
+        className="group p-[18px] bg-blue-100 border border-[#666] rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] active:border-[#fff] hover:border-[#fff] focus:border-[#fff] transition-colors"
         onClick={toggleModal}
       >
         <img

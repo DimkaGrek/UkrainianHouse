@@ -30,7 +30,7 @@ export const Modal = ({ children, toggleModal }) => {
       className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50"
       onClick={handleClickOnBackdrop}
     >
-      <div className="relative rounded-[24px] p-[44px] bg-[#DAEFFF] max-w-[375px] md:max-w-[768px] lg:max-w-[1240px]">
+      <div className="relative rounded-[24px] p-[44px] bg-[#DAEFFF] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px]">
         <button
           type="button"
           onClick={toggleModal}
