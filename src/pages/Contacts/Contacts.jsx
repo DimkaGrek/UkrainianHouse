@@ -33,7 +33,7 @@ const Contacts = () => {
         srcSet={`${contacts_mobile1x} 1x, ${contacts_mobile2x} 2x`}
         src={contacts_mobile1x}
         alt="Images of portraits of young people"
-        className="w-[342px] h-[80px] mb-[30px] md:hidden"
+        className="w-[342px] max-h-[80px] mb-[30px] md:hidden"
         loading="lazy"
       />
       <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[1.6] mb-[50px] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[1.3] lg:text-[#1e1e1e] lg:mb-[44px]">
@@ -48,11 +48,11 @@ const Contacts = () => {
         srcSet={`${contacts_2_mobile1x} 1x, ${contacts_2_mobile2x} 2x`}
         src={contacts_2_mobile1x}
         alt="Images of portraits of young people"
-        className="w-[342px] h-[80px] mb-[30px]"
+        className="w-[342px] max-h-[80px] mb-[30px]"
         loading="lazy"
       />
 
-      <address className="rounded-[18px] py-[34px] px-[24px] bg-[#daefff] w-[342px] h-[156px] mb-[34px]">
+      <address className="rounded-[18px] py-[34px] px-[24px] bg-[#daefff] max-w-[342px] h-[156px] mb-[34px]">
         <ul className="flex flex-col gap-[16px] text-[#1e1e1e] font-normal text-[16px] leading-[1.3] not-italic">
           <li className="flex gap-[6px]">
             <Icon

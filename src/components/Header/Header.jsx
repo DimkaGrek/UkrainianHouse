@@ -24,7 +24,7 @@ export const Header = () => {
         <Link to="/">
           <picture>
             <source
-              media="(min-width: 1920px)"
+              media="(min-width: 1440px)"
               srcSet={`${logo_1x} 1x, ${logo_2x} 2x`}
               width="47"
               height="69"

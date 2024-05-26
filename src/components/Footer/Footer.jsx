@@ -30,7 +30,7 @@ export const Footer = () => {
       <div className="mb-[58px] mb:mb-[34px] lg:mb-[132px]">
         <picture>
           <source
-            media="(min-width: 1920px)"
+            media="(min-width: 1440px)"
             srcSet={`${tape_1x_desktop} 1x, ${tape_2x_desktop} 2x`}
             height="76"
             loading="lazy"
@@ -57,7 +57,7 @@ export const Footer = () => {
             <Link to="/" className="hidden md:inline-block">
               <picture>
                 <source
-                  media="(min-width: 1920px)"
+                  media="(min-width: 1440px)"
                   srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
                   width="116"
                   height="78"
@@ -75,7 +75,7 @@ export const Footer = () => {
               </picture>
             </Link>
 
-            <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[14px] lg:gap-x-[41px] lg:gap-y-[32px] lg:w-[577px] lg:mr-[32px]">
+            <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[14px] lg:gap-x-[60px] lg:gap-y-[32px] lg:w-[620px]">
               <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                 <NavLink to="/">Home</NavLink>
               </li>
@@ -191,10 +191,10 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:w-[714px]">
-            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
+          <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:flex-col">
+            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
               <a
-                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                 href="https://www.facebook.com/ua.maastricht"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -208,9 +208,9 @@ export const Footer = () => {
                 Let&#39;s be friends on facebook
               </a>
             </li>
-            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
+            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
               <a
-                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                 href="https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -224,9 +224,9 @@ export const Footer = () => {
                 Follow us on instagram
               </a>
             </li>
-            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
+            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
               <a
-                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                 href="https://t.me/+cGjweuHlhU00N2E8"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -240,9 +240,9 @@ export const Footer = () => {
                 Connect us on telegram
               </a>
             </li>
-            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 ">
+            <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
               <a
-                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-[342px] h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                 href="https://www.linkedin.com/company/ukrainian-house-in-maastricht/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -278,8 +278,8 @@ export const Footer = () => {
             </ul>
           </address>
 
-          <div className="flex flex-col md:items-end lg:mr-[165px]">
-            <p className="text-[14px] leading-[1.3] lg:text-[20px] lg:leading-[1.4] text-[#1e1e1e] mb-3 w-[325px] lg:w-[465px]">
+          <div className="flex flex-col md:items-end lg:mr-[145px]">
+            <p className="text-[14px] leading-[1.3] lg:text-[20px] lg:leading-[1.4] text-[#1e1e1e] mb-3 w-[325px] sm-max:w-full lg:w-[465px]">
               &quot;In unity, our strength; in community, our essence. United by
               Ukrainian culture, we create a world where everyone finds their
               place and feels at home.&quot;
@@ -325,7 +325,7 @@ export const Footer = () => {
         </p>
         <picture>
           <source
-            media="(min-width: 1920px)"
+            media="(min-width: 1440px)"
             srcSet={`${iPhone1x_desktop} 1x, ${iPhone2x_desktop} 2x`}
             width="125"
             height="249"

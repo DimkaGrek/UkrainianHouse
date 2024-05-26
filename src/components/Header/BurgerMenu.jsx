@@ -38,7 +38,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
       onClick={handleBackdropClick}
       className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50 lg:hidden"
     >
-      <div className="relative flex flex-col justify-start items-center gap-[44px] bg-[#fff] px-[24px] py-[44px] w-[390px] md:w-[653px] ml-auto h-[100%]">
+      <div className="relative flex flex-col justify-start items-center gap-[44px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-[100%]">
         <button
           type="button"
           className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
@@ -121,8 +121,8 @@ export const BurgerMenu = ({ toggleMenu }) => {
             loading="lazy"
           />
         </div>
-        <address className="w-[313px]">
-          <ul className="flex items-start justify-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic">
+        <address className="w-full">
+          <ul className="flex items-start justify-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px]">
             <li className="flex gap-[6px]">
               <Icon
                 name="mail"
@@ -140,7 +140,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
         </address>
         <button
           type="button"
-          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[342px] h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
+          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-full h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
         >
           Get in touch
         </button>
