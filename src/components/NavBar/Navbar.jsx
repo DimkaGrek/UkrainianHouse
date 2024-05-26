@@ -13,11 +13,15 @@ export const Navbar = () => {
     lastSegment[0].toUpperCase() + lastSegment.slice(1);
 
   return (
-    <div className="relative flex gap-[9px] items-center mb-[34px] md:mb-[44px] lg:mb-[24px]">
+    <div className="relative flex gap-[32px] items-center mb-[34px] md:mb-[44px] lg:mb-[24px]">
       <Link className="font-proza text-[18px]" to="/">
         Homepage
       </Link>
-      <Icon className="fill-[black]" name="arrow-right" size={12} />
+      <Icon
+        className="absolute top-[10px] left-[100px] fill-[black]"
+        name="arrow-right"
+        size={12}
+      />
       <NavLink className="font-proza text-[18px]" to={lastSegment}>
         {capitalizedSegment}
       </NavLink>
