@@ -5,7 +5,7 @@ export default {
   theme: {
     screens: {
       md: '768px',
-      lg: '1920px',
+      lg: '1440px',
     },
     fontFamily: {
       istok: [
@@ -68,20 +68,20 @@ export default {
       addComponents({
         '.container': {
           minWidth: '320px',
-          maxWidth: '390px',
+          maxWidth: '375px',
           marginLeft: 'auto',
           marginRight: 'auto',
-          paddingLeft: '24px',
-          paddingRight: '24px',
+          paddingLeft: '18px',
+          paddingRight: '18px',
           '@screen md': {
-            paddingLeft: '20px',
-            paddingRight: '20px',
-            maxWidth: '744px',
+            paddingLeft: '32px',
+            paddingRight: '32px',
+            maxWidth: '768px',
           },
           '@screen lg': {
-            paddingLeft: '153px',
-            paddingRight: '153px',
-            maxWidth: '1920px',
+            paddingLeft: '100px',
+            paddingRight: '100px',
+            maxWidth: '1440px',
           },
         },
         '.scroll-up-btn': {
