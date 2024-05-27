@@ -1,6 +1,6 @@
 export const GoogleMap = () => {
   return (
-    <div className="map-section w-[294px] h-[368px] mx-auto">
+    <div className="map-section w-full mx-auto">
       <div className="gmap-frame">
         <div className="w-full mb-[24px]">
           <iframe
