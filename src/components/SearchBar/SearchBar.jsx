@@ -1,9 +1,19 @@
+import { useForm } from 'react-hook-form';
+
 export const SearchBar = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
         placeholder="Search..."
+        name="query"
+        {...register('query')}
         className="font-normal text-[20px] leading-6 text-[#1E1E1E] placeholder:text-[#666] w-[388px] h-[52px] py-[14px] px-[18px] border border-[#b3b3b3] rounded-[10px] bg-white focus:outline-none mr-[8px] lg:w-[542px] hover:border-[#ffd437] focus:border-[#ffd437] transition duration-300"
       />
       <button
