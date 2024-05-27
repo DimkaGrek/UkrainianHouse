@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
-export const Modal = ({ children, toggleModal }) => {
+export const Modal = ({ children, toggleModal, className }) => {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === 'Escape') {
@@ -24,13 +24,19 @@ export const Modal = ({ children, toggleModal }) => {
       toggleModal();
     }
   };
+  const newsModal =
+    className === 'news-modal'
+      ? 'py-[58px] pl-[20px] pr-[10px] bg-[#FFFFFF] md:py-[58px] md:pl-[40px] md:pr-[25px]'
+      : 'p-[44px] bg-[#DAEFFF]';
 
   return (
     <div
-      className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50"
+      className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50 "
       onClick={handleClickOnBackdrop}
     >
-      <div className="relative rounded-[24px] p-[44px] bg-[#DAEFFF] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px]">
+      <div
+        className={`${newsModal} relative rounded-[24px] sm-max:max-w-[300px] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px] max-h-[95vh] overflow-hidden`}
+      >
         <button
           type="button"
           onClick={toggleModal}

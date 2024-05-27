@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import {
   Advertisement,
   LoadMoreButton,
@@ -5,7 +8,26 @@ import {
   SearchBar,
 } from '../../components';
 
+import { fetchAllNews } from '../../my-redux';
+
 const News = () => {
+  const [page, setPage] = useState(1);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const params = { status: 'PUBLISHED', page, limit: 6 };
+
+    dispatch(fetchAllNews(params))
+      .unwrap()
+      .then(() => {})
+      .catch(e => console.log(e));
+  }, [dispatch, page]);
+
+  const handleLoadMoreClick = () => {
+    setPage(prev => prev + 1);
+  };
+
   return (
     <>
       <div className="hidden  md:flex justify-between items-center mb-[40px] lg:mb:[44px]">
@@ -16,7 +38,7 @@ const News = () => {
       </div>
       <Advertisement />
       <NewsList />
-      <LoadMoreButton />
+      <LoadMoreButton onClick={handleLoadMoreClick} />
     </>
   );
 };

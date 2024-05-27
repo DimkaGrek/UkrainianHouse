@@ -4,7 +4,7 @@ import Activities from '../../components/Activities/Activities';
 import Hero from '../../components/Hero/Hero';
 import NewsDigest from '../../components/NewsDigest/NewsDigest';
 import { useDispatch } from 'react-redux';
-import { fetchAllNews } from '../../my-redux/News/operations';
+import { fetchAllNews } from '../../my-redux/News/newsOperations';
 
 const Home = () => {
   const dispatch = useDispatch();

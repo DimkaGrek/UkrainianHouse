@@ -1,11 +1,12 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+
 import {
   createNews,
   deleteOneNews,
   fetchAllNews,
   getOneNews,
   updateNews,
-} from './operations';
+} from './newsOperations';
 
 const initialState = {
   news: [],
@@ -19,7 +20,10 @@ const newsSlice = createSlice({
   name: 'news',
   initialState,
   selectors: {
-    selectorsNews: state => state.news,
+    selectNews: state => state.news,
+    selectIsLoading: state => state.isLoading,
+    selectTotalNews: state => state.totalNews,
+    selectError: state => state.error,
   },
   extraReducers: builder =>
     builder
@@ -82,4 +86,5 @@ const newsSlice = createSlice({
 });
 
 export const newsReducer = newsSlice.reducer;
-export const { selectorsNews } = newsSlice.selectors;
+export const { selectNews, selectTotalNews, selectIsLoading, selectError } =
+  newsSlice.selectors;
