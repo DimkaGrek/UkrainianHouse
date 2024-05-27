@@ -27,7 +27,7 @@ import { Icon } from '../Icon/Icon';
 export const Footer = () => {
   return (
     <footer className="container pt-[24px] pb-[84px]">
-      <div className="mb-[58px] mb:mb-[34px] lg:mb-[132px]">
+      <div className="mb-[58px] mb:mb-[34px] lg:mb-[76px]">
         <picture>
           <source
             media="(min-width: 1440px)"
@@ -52,8 +52,8 @@ export const Footer = () => {
         </picture>
       </div>
       <div className="flex flex-col items-center relative">
-        <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:flex-wrap lg:justify-between">
-          <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:gap-[157px] lg:mb-0">
+        <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:flex-wrap lg:gap-[163px]">
+          <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:gap-[184px] lg:mb-0">
             <Link to="/" className="hidden md:inline-block">
               <picture>
                 <source
@@ -75,7 +75,7 @@ export const Footer = () => {
               </picture>
             </Link>
 
-            <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[14px] lg:gap-x-[60px] lg:gap-y-[32px] lg:w-[620px]">
+            <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[14px] lg:gap-x-[100px] lg:gap-y-[32px] lg:w-[430px]">
               <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                 <NavLink to="/">Home</NavLink>
               </li>
