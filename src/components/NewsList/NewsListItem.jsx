@@ -15,16 +15,18 @@ export const NewsListItem = ({
   return (
     <>
       <li
-        className="group p-[18px] bg-blue-100 border border-[#666] rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] active:border-[#fff] hover:border-[#fff] focus:border-[#fff] transition-colors"
+        className="group p-[18px] bg-blue-100 shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] transition duration-300"
         onClick={toggleModal}
       >
-        <img
-          className="w-[306px] h-[209px] border border-[#666] rounded-[18px] mb-[14px] lg:w-[469px] lg:h-[249px] lg:mb-[18px] group-active:border-[#fff] group-hover:border-[#fff] group-focus:border-[#fff] transition-colors"
-          src={photoUrls[0].photoUrls}
-          alt="News"
-          width={306}
-          height={209}
-        />
+        <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px]">
+          <img
+            className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] transition duration-300"
+            src={photoUrls[0].photoUrls}
+            alt="News"
+            width={306}
+            height={209}
+          />
+        </div>
         <div className="mb-[16px]">
           <h3 className="font-proza-medium font-medium text-[20px] text-[#1a1a1a] leading-[120%] mb-[8px] lg:text-[26px] lg:leading-[131%] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus:text-[#fbfbfb] transition duration-300">
             {title}
@@ -70,7 +72,7 @@ export const NewsListItem = ({
                       src={`${item.photoUrls}`}
                       width={316}
                       height={108}
-                      className="w-auto max-w-full md:max-w-[189px] lg:max-w-[400px] h-auto"
+                      className="w-auto max-w-full md:max-w-[189px] lg:max-w-[400px] h-auto rounded-[10px]"
                       alt={item.caption}
                     />
                   </li>
