@@ -97,6 +97,10 @@
 .active {
   @apply border-b-2 border-[#2355cc] text-[#2355cc];
 }
+.scrollbar {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .scrollbar::-webkit-scrollbar {
   width: 8px;
 }

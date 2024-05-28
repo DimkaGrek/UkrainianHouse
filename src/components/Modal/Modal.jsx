@@ -31,11 +31,11 @@ export const Modal = ({ children, toggleModal, className }) => {
 
   return (
     <div
-      className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50 "
+      className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 "
       onClick={handleClickOnBackdrop}
     >
       <div
-        className={`${newsModal} relative rounded-[24px] sm-max:max-w-[300px] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px] max-h-[95vh] overflow-hidden`}
+        className={`${newsModal} relative rounded-[24px] sm-max:max-w-[300px] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px] max-h-[95%] overflow-hidden`}
       >
         <button
           type="button"
