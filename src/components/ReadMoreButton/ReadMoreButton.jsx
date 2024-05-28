@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 export const ReadMoreButton = ({
   className = '',
   caption = 'Read more',
-  btnLink = '/',
+  btnLink = '/news',
 }) => {
   const navigate = useNavigate();
 
