@@ -36,7 +36,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-screen h-screen left-0 top-0 z-50 lg:hidden"
+      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-w-full left-0 top-0 z-50 lg:hidden"
     >
       <div className="relative flex flex-col justify-start items-center gap-[44px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-[100%]">
         <button
