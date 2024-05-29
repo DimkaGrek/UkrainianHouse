@@ -16,3 +16,6 @@ export * from './ReadMoreButton/ReadMoreButton.jsx';
 export * from './ScrollUpButton/ScrollUpButton.jsx';
 export * from './SearchBar/SearchBar.jsx';
 export * from './StatusField/StatusField.jsx';
+export * from './CarouselTeam/CarouselTeam.jsx';
+export * from './NeedHelpForm/NeedHelpForm.jsx';
+export * from './GoogleMap/GoogleMap.jsx';
