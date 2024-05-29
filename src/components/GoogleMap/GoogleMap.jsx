@@ -2,7 +2,7 @@ export const GoogleMap = () => {
   return (
     <div className="map-section w-full mx-auto">
       <div className="gmap-frame">
-        <div className="w-full mb-[24px]">
+        <div className="w-full mb-[24px] md:mb-[30px]">
           <iframe
             className="rounded-[18px]"
             width="100%"
@@ -16,10 +16,10 @@ export const GoogleMap = () => {
             <a href="https://www.gps.ie/">gps vehicle tracker</a>
           </iframe>
         </div>
-        <p className="font-semibold text-[20px] leading-[1.2] text-[#1e1e1e] mb-[8px]">
+        <p className="font-semibold text-[20px] leading-[1.2] text-[#1e1e1e] mb-[8px] md:font-bold md:text-[24px] md:leading-[1.4]">
           Service area:
         </p>
-        <p className="font-normal text-[16px] leading-[1.4] text-[#1e1e1e]">
+        <p className="font-normal text-[16px] leading-[1.4] text-[#1e1e1e] md:text-[20px] md:w-[550px]">
           Heerlen, Netherlands · Limburg, Netherlands · Liège, Belgium · Aachen,
           Germany · Maastricht, Netherlands · Genk, Belgium · Luxembourg,
           Luxembourg · Hasselt, Belgium

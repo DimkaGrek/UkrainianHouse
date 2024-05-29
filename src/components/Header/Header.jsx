@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
+import { Icon } from '../../components';
+import { BurgerMenu } from './BurgerMenu';
+
 import logo_1x from '../../assets/images/header/logo_1x.png';
 import logo_2x from '../../assets/images/header/logo_2x.png';
 import logo_mob_1x from '../../assets/images/header/logo_mob_1x.png';
 import logo_mob_2x from '../../assets/images/header/logo_mob_2x.png';
 import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
 import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
-import { Icon } from '../Icon/Icon';
-import { BurgerMenu } from './BurgerMenu';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

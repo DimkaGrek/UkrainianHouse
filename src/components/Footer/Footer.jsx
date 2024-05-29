@@ -1,4 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
+import { Icon } from '../../components';
 
 import tape_1x_mob from '../../assets/images/footer/tape_1x_mob.jpg';
 import tape_2x_mob from '../../assets/images/footer/tape_2x_mob.jpg';
@@ -22,11 +23,10 @@ import iPhone1x_tablet from '../../assets/images/footer/iPhone1x_tablet.png';
 import iPhone2x_tablet from '../../assets/images/footer/iPhone2x_tablet.png';
 import iPhone1x_mob from '../../assets/images/footer/iPhone1x_mob.png';
 import iPhone2x_mob from '../../assets/images/footer/iPhone2x_mob.png';
-import { Icon } from '../Icon/Icon';
 
 export const Footer = () => {
   return (
-    <footer className="container pt-[24px] pb-[84px]">
+    <footer className="container pb-[32px] lg:pb-[84px]">
       <div className="mb-[58px] mb:mb-[34px] lg:mb-[76px]">
         <picture>
           <source
