@@ -38,7 +38,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
       onClick={handleBackdropClick}
       className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden"
     >
-      <div className="relative flex flex-col justify-start items-center gap-[44px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-[100%]">
+      <div className="relative flex flex-col justify-start items-center gap-[35px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full">
         <button
           type="button"
           className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
@@ -63,7 +63,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
           />
         </Link>
 
-        <ul className="flex flex-col gap-[34px] font-normal text-center text-[24px] leading-[1.5] text-[#222]">
+        <ul className="flex flex-col gap-[30px] font-normal text-center text-[24px] leading-[1.5] text-[#222]">
           <li onClick={toggleMenu}>
             <NavLink
               to="/"
@@ -121,8 +121,8 @@ export const BurgerMenu = ({ toggleMenu }) => {
             loading="lazy"
           />
         </div>
-        <address className="w-full">
-          <ul className="flex items-start justify-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px]">
+        <address className="w-[270px]">
+          <ul className="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px]">
             <li className="flex gap-[6px]">
               <Icon
                 name="mail"
