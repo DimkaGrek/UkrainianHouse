@@ -1,15 +1,20 @@
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
 import { Icon } from '../Icon/Icon';
-import { getFromattedData } from '../../helpers/getFromattedData';
 import { InputField } from '../InputField/InputField';
+
+import { getFromattedData } from '../../helpers/getFromattedData';
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
+import { StatusField } from '../StatusField/StatusField';
 
 export const NewsForm = () => {
   const filePicker = useRef(null);
-  const initialImages = [0, 0, 0, 0, 0];
+  const initialImages = [0, 0, 0];
   const [selectedImages, setSelectedImages] = useState(initialImages);
+  const statuses = ['DRAFT', 'PUBLISHED', 'ARCHIVED', 'ANNOUNCE'];
+  const [status, setStatus] = useState('DRAFT');
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -40,6 +45,10 @@ export const NewsForm = () => {
     filePicker.current.click();
   };
 
+  const handleChangeStatus = status => {
+    setStatus(status);
+  };
+
   const onSubmit = data => {
     data.publishDate = new Date();
 
@@ -54,54 +63,56 @@ export const NewsForm = () => {
 
   return (
     <form
-      className="flex flex-row gap-[16px] h-auto"
+      className="flex flex-col gap-4 h-auto w-[1100px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col gap-[16px] grow w-[899px]">
-        <InputField
-          label="Article Title"
-          name="title"
-          placeholder="Enter the title"
-          register={register}
-        />
-        <label className="label">
-          Article Text:
-          <textarea
-            className="field resize-none overflow-auto h-[446px]"
-            type="text"
-            placeholder="Enter the content"
-            {...register('content')}
-          />
-        </label>
-        <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
+        <div>
           <InputField
-            label={`Link (button "read more")`}
-            name="btnLink"
-            placeholder="https //www..."
-            register={register}
-          />
-          <InputField
-            label="Author"
-            name="author"
-            placeholder="Ольга Українська"
-            register={register}
-          />
-          <InputField
-            label="City"
-            name="city"
-            placeholder="Maastricht"
-            register={register}
-          />
-          <InputField
-            label="Date"
-            name="date"
-            type="date"
-            placeholder="02/05/2024"
+            label="Article Title"
+            name="title"
+            placeholder="Enter the article title"
             register={register}
           />
         </div>
+        <div className="grid grid-cols-2 gap-4 items-center">
+          <InputField
+            label="Date"
+            name="publishDate"
+            type="date"
+            register={register}
+          />
+          <StatusField
+            statuses={statuses}
+            status={status}
+            setStatus={handleChangeStatus}
+          />
+        </div>
       </div>
-      <div className="flex flex-col gap-4 items-start w-[185px]">
+      <label className="label">
+        Article Text:
+        <textarea
+          className="field resize-none overflow-auto h-[265px]"
+          type="text"
+          placeholder="Enter the article text"
+          {...register('content')}
+        />
+      </label>
+      <div className="grid grid-cols-2 gap-4">
+        <InputField
+          label="Button Text"
+          name="btnText"
+          placeholder="Enter the button text"
+          register={register}
+        />
+        <InputField
+          label="Button Link "
+          name="btnLink"
+          placeholder="https//www..."
+          register={register}
+        />
+      </div>
+      <div className="flex flex-col gap-6 items-start">
         <input
           className="hidden"
           type="file"
@@ -111,7 +122,7 @@ export const NewsForm = () => {
           accept="image/*,.png,.jpg,.gif,.web"
           onChange={selectFiles}
         />
-        <div className="flex flex-col flex-1 justify-between gap-6">
+        <div className="flex flex-1 justify-between gap-6">
           {selectedImages &&
             selectedImages.map((image, index) => (
               <div
@@ -138,9 +149,8 @@ export const NewsForm = () => {
                     <img
                       src={URL.createObjectURL(image)}
                       alt="upload"
-                      className="rounded-[10px] shadow-sm"
+                      className="rounded-[10px] shadow-sm max-h-[119px]"
                       width={185}
-                      height={119}
                     />
                     <button
                       type="button"
@@ -154,9 +164,14 @@ export const NewsForm = () => {
               </div>
             ))}
         </div>
-        <button className="primaryBtn w-full h-[56px]" type="submit">
-          Publish
-        </button>
+        <div className="flex gap-6 mx-auto">
+          <button className="primaryBtn w-[185px] h-[56px]" type="button">
+            Cancel
+          </button>
+          <button className="primaryBtn w-[185px] h-[56px]" type="submit">
+            Add
+          </button>
+        </div>
       </div>
     </form>
   );
