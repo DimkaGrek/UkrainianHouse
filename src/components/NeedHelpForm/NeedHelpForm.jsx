@@ -47,7 +47,7 @@ export const NeedHelpForm = () => {
             Your message
           </label>
           <textarea
-            className="overflow-hidden resize-none w-full h-[130px] py-[14px] px-[18px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] placeholder-[#666] md:placeholder:w-[550px] lg:placeholder:w-[450px] outline-none hover:border-[#ffd437] focus:border-[#ffd437] transition duration-300 sm-max:h-[155px] md:h-[110px] md:text-[20px] md:leading-[1.2]"
+            className="overflow-hidden resize-none w-full h-[130px] py-[14px] px-[18px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] placeholder-[#666] md:placeholder:w-[550px] lg:placeholder:w-[390px] outline-none hover:border-[#ffd437] focus:border-[#ffd437] transition duration-300 sm-max:h-[155px] md:h-[110px] md:text-[20px] md:leading-[1.2] lg:h-[129px]"
             name="user-comment"
             id="user-comment"
             rows="5"
