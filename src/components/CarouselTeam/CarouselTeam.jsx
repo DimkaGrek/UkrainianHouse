@@ -1,5 +1,8 @@
 import { getTeamMembers } from '../../helpers';
 
+import franko_desktop1x from '../../assets/images/contacts/franko_desktop1x.png';
+import franko_desktop2x from '../../assets/images/contacts/franko_desktop2x.png';
+
 export const CarouselTeam = () => {
   const teamMembers = getTeamMembers();
   return (
@@ -35,6 +38,17 @@ export const CarouselTeam = () => {
           </p>
         </div>
       ))}
+      <div className="pl-[29px]">
+        <img
+          srcSet={`${franko_desktop1x} 1x, ${franko_desktop2x} 2x`}
+          src={franko_desktop1x}
+          alt="Image of the writer Ivan Franko"
+          height="440"
+          width="369"
+          className="hidden lg:block"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };
