@@ -1,1 +1,0 @@
-import{j as e}from"./index-Pc88k3F1.js";const o=()=>e.jsxs("div",{children:["NotFound",e.jsx("p",{children:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam labore inventore earum, expedita excepturi nam perferendis temporibus alias modi consequatur optio reiciendis saepe a nemo exercitationem error, soluta quibusdam assumenda?"})]});export{o as default};
