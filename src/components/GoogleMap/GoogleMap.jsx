@@ -4,7 +4,7 @@ export const GoogleMap = () => {
       <div className="gmap-frame">
         <div className="w-full mb-[24px] md:mb-[30px] lg:mb-[68px]">
           <iframe
-            className="rounded-[18px] md:w-full lg:w-[600px] lg:h-[416px]"
+            className="rounded-[18px] md:w-full lg:w-[600px] lg:h-[430px]"
             width="291"
             height="368"
             src="https://maps.google.com/maps?width=100%25&amp;height=416&amp;hl=en&amp;q=Oranjeplein%2096,%20Maastricht,%20%20Netherlands,%206224%20KV+()&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
