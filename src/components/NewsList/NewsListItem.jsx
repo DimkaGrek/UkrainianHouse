@@ -46,7 +46,7 @@ export const NewsListItem = ({
       </li>
       {isOpenModal && (
         <Modal toggleModal={toggleModal} className="news-modal">
-          <div className=" h-[75vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
+          <div className=" h-[70vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
             <div className="md:order-1 lg:order-1">
               <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%]">
                 {title}
