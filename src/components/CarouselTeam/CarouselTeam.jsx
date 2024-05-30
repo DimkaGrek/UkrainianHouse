@@ -7,7 +7,7 @@ export const CarouselTeam = () => {
       {teamMembers.map(({ name, position, photos }, index) => (
         <div
           key={index}
-          className="carousel-item flex flex-col w-[294px] h-[413px] rounded-[18px] sm-max:w-[239px] sm-max:h-[368px] lg:w-[398px] lg:h-[517px] pb-[18px] lg:pb-[24px]"
+          className="carousel-item flex flex-col w-[294px] rounded-[18px] sm-max:w-[239px] lg:w-[398px] pb-[18px] lg:pb-[24px]"
         >
           <picture>
             <source
