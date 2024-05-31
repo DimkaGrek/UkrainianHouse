@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+
 export const StatusField = ({ statuses, setStatus, status }) => {
   const [inputValue, setInputValue] = useState(status);
   const [isOpenStatusList, setIsOpenStatusList] = useState(false);
   const dropdown = useRef(null);
+  const arrow = useRef(null);
 
   useEffect(() => {
     const handleCloseList = e => {
-      if (e.target !== dropdown.current) {
+      if (e.target !== dropdown.current && e.target !== arrow.current) {
         setIsOpenStatusList(false);
       }
     };
@@ -21,26 +24,38 @@ export const StatusField = ({ statuses, setStatus, status }) => {
   const handleChangeStatus = status => {
     setInputValue(status);
     setStatus(status.toUpperCase());
+    setIsOpenStatusList(false);
   };
 
-  const handleInputChange = event => {
-    setInputValue(event.target.value);
+  const handleInputChange = e => {
+    setInputValue(e.target.value);
   };
 
   return (
     <div className="relative">
-      <p className="font-istok font-normal text-[16px] leading-[22px] mb-[6px]">
+      <label className="label">
         Status:
-      </p>
-      <input
-        type="text"
-        className="field cursor-pointer"
-        readOnly
-        value={inputValue}
-        ref={dropdown}
-        onChange={handleInputChange}
-        onClick={() => setIsOpenStatusList(!isOpenStatusList)}
-      />
+        <input
+          type="text"
+          className="field cursor-pointer"
+          readOnly
+          value={inputValue}
+          ref={dropdown}
+          onChange={handleInputChange}
+          onClick={() => setIsOpenStatusList(!isOpenStatusList)}
+        />
+        <span
+          className="absolute top-[46px] right-5 cursor-pointer"
+          onClick={() => setIsOpenStatusList(!isOpenStatusList)}
+          ref={arrow}
+        >
+          {isOpenStatusList ? (
+            <IoIosArrowUp className="size-5" />
+          ) : (
+            <IoIosArrowDown className="size-5" />
+          )}
+        </span>
+      </label>
       {isOpenStatusList && (
         <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-white">
           <ul className="font-istok font-normal text-[20px] leading-[24px] w-full">
@@ -50,7 +65,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
                   key={index}
                   onClick={() => handleChangeStatus(option)}
                   className={`w-full p-[10px] cursor-pointer hover:bg-[#FFD437] rounded-[10px] ${
-                    option === inputValue ? 'bg-slate-200' : ''
+                    option === inputValue ? 'bg-yellow-200' : ''
                   }`}
                 >
                   {option}

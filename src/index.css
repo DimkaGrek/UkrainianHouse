@@ -87,7 +87,7 @@
 }
 
 .label {
-  @apply font-istok font-normal text-[16px] leading-[22px]  flex flex-col items-start gap-[6px];
+  @apply font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[6px] p-0;
 }
 
 .field {

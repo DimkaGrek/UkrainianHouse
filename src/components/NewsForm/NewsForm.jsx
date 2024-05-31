@@ -75,7 +75,7 @@ export const NewsForm = () => {
             register={register}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 items-center">
+        <div className="grid grid-cols-2 gap-4">
           <InputField
             label="Date"
             name="publishDate"
@@ -127,7 +127,7 @@ export const NewsForm = () => {
             selectedImages.map((image, index) => (
               <div
                 key={index}
-                className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-sm"
+                className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-md"
               >
                 {image === 0 ? (
                   <picture className="h-auto w-fit rounded-[10px]">
@@ -149,7 +149,7 @@ export const NewsForm = () => {
                     <img
                       src={URL.createObjectURL(image)}
                       alt="upload"
-                      className="rounded-[10px] shadow-sm max-h-[119px]"
+                      className="rounded-[10px] shadow-md max-h-[119px]"
                       width={185}
                     />
                     <button
