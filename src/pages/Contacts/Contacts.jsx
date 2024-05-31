@@ -56,8 +56,8 @@ const Contacts = () => {
       </picture>
 
       <address>
-        <ul className="flex flex-col gap-[16px] rounded-[18px] py-[34px] px-[20px] bg-[#daefff] w-full h-full mb-[34px] md:mb-[50px] md:flex-row md:items-center md:justify-between md:py-[20px] text-[#1e1e1e] font-normal text-[16px] leading-[1.3] not-italic sm-max:text-[12px] md:text-[14px] lg:text-[24px] lg:py-[24px]">
-          <li className="flex gap-[6px]">
+        <ul className="flex flex-col items-center sm-max:items-start gap-[16px] rounded-[18px] p-[20px] bg-[#daefff] w-full h-full mb-[34px] md:mb-[50px] md:flex-row md:items-center md:justify-between md:py-[20px] text-[#1e1e1e] font-normal text-[16px] leading-[1.3] not-italic sm-max:text-[12px] md:text-[14px] lg:text-[24px] lg:py-[24px]">
+          <li className="flex gap-[6px] items-center">
             <Icon
               name="mail"
               className="fill-[#1e1e1e] sm-max:size-[18px] lg:size-[28px]"
@@ -66,7 +66,7 @@ const Contacts = () => {
             />
             ukrainianhouse.maastricht@gmail.com
           </li>
-          <li className="flex gap-[6px] sm-max:w-[220px]">
+          <li className="flex gap-[6px] items-center sm-max:w-[232px]">
             <Icon
               name="adress"
               className="fill-[#1e1e1e] sm-max:size-[18px] lg:size-[28px]"
