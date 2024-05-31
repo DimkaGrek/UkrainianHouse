@@ -123,7 +123,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
         </div>
         <address className="w-[270px]">
           <ul className="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px]">
-            <li className="flex gap-[6px]">
+            <li className="flex gap-[6px] items-center">
               <Icon
                 name="mail"
                 className="fill-[#1e1e1e]"
@@ -132,7 +132,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
               />
               ukrainianhouse.maastricht@gmail.com
             </li>
-            <li className="flex gap-[6px]">
+            <li className="flex gap-[6px] items-center">
               <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
               Oranjeplein 96, 6224 KV, Maastricht, Netherlands
             </li>

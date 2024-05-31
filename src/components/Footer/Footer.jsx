@@ -144,7 +144,7 @@ export const Footer = () => {
           <div className="hidden md:flex justify-between items-center md:mb-[44px] md:w-full lg:hidden">
             <address>
               <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic">
-                <li className="flex gap-[6px]">
+                <li className="flex items-center gap-[6px]">
                   <Icon
                     name="mail"
                     className="fill-[#1e1e1e]"
@@ -153,7 +153,7 @@ export const Footer = () => {
                   />
                   ukrainianhouse.maastricht@gmail.com
                 </li>
-                <li className="flex gap-[6px]">
+                <li className="flex items-center gap-[6px]">
                   <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
                   Oranjeplein 96, Maastricht, Netherlands, 6224 KV
                 </li>
@@ -262,7 +262,7 @@ export const Footer = () => {
         <div className="w-full mb-[50px] md:flex md:justify-end md:mb-[36px] lg:justify-between lg:items-center lg:mb-[38px]">
           <address className="hidden lg:block">
             <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[20px] leading-[1.4] not-italic">
-              <li className="flex gap-[6px]">
+              <li className="flex items-center gap-[6px]">
                 <Icon
                   name="mail"
                   className="fill-[#1e1e1e]"
@@ -271,7 +271,7 @@ export const Footer = () => {
                 />
                 ukrainianhouse.maastricht@gmail.com
               </li>
-              <li className="flex gap-[6px]">
+              <li className="flex items-center gap-[6px]">
                 <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
                 Oranjeplein 96, Maastricht, Netherlands, 6224 KV
               </li>
