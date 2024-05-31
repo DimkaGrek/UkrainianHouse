@@ -1,22 +1,28 @@
-import { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import DatePicker from 'react-datepicker';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
+import { StatusField } from '../StatusField/StatusField';
 
 import { getFromattedData } from '../../helpers/getFromattedData';
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
-import { StatusField } from '../StatusField/StatusField';
+import 'react-datepicker/dist/react-datepicker.css';
 
-export const NewsForm = () => {
+export const NewsForm = ({ toggle }) => {
   const filePicker = useRef(null);
   const initialImages = [0, 0, 0];
   const [selectedImages, setSelectedImages] = useState(initialImages);
   const statuses = ['DRAFT', 'PUBLISHED', 'ARCHIVED', 'ANNOUNCE'];
   const [status, setStatus] = useState('DRAFT');
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue, control } = useForm();
+
+  useEffect(() => {
+    setValue('publishDate', new Date());
+  }, [setValue]);
 
   const selectFiles = e => {
     let selectedFiles = Array.from(e.target.files);
@@ -47,10 +53,15 @@ export const NewsForm = () => {
 
   const handleChangeStatus = status => {
     setStatus(status);
+    setValue('status', status);
+  };
+
+  const handleChangeDate = date => {
+    setValue('publishDate', date, { shouldValidate: true });
   };
 
   const onSubmit = data => {
-    data.publishDate = new Date();
+    console.log(data);
 
     const fd = getFromattedData(selectedImages, 'photos', data, 'news');
 
@@ -58,6 +69,7 @@ export const NewsForm = () => {
       console.log(pair[0] + ': ' + pair[1]);
     }
 
+    setSelectedImages(initialImages);
     reset();
   };
 
@@ -75,18 +87,37 @@ export const NewsForm = () => {
             register={register}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <InputField
-            label="Date"
-            name="publishDate"
-            type="date"
-            register={register}
-          />
-          <StatusField
-            statuses={statuses}
-            status={status}
-            setStatus={handleChangeStatus}
-          />
+        <div className="flex gap-4">
+          <div className="flex-1">
+            <StatusField
+              statuses={statuses}
+              status={status}
+              setStatus={handleChangeStatus}
+            />
+          </div>
+          <label className="label">
+            Date
+            <Controller
+              control={control}
+              name="publishDate"
+              defaultValue={new Date()}
+              render={({ field }) => (
+                <div className="datepickerContainer">
+                  <DatePicker
+                    className="field cursor-pointer w-[263px]"
+                    showPopperArrow={false}
+                    selected={field.value}
+                    placeholderText="mm/dd/yyyy"
+                    onChange={date => {
+                      field.onChange(date);
+                      handleChangeDate(date);
+                    }}
+                    calendarClassName="fixed-height-calendar"
+                  />
+                </div>
+              )}
+            />
+          </label>
         </div>
       </div>
       <label className="label">
@@ -104,6 +135,7 @@ export const NewsForm = () => {
           name="btnText"
           placeholder="Enter the button text"
           register={register}
+          defaultValue="Read more"
         />
         <InputField
           label="Button Link "
@@ -165,7 +197,11 @@ export const NewsForm = () => {
             ))}
         </div>
         <div className="flex gap-6 mx-auto">
-          <button className="primaryBtn w-[185px] h-[56px]" type="button">
+          <button
+            className="primaryBtn w-[185px] h-[56px]"
+            type="button"
+            onClick={toggle}
+          >
             Cancel
           </button>
           <button className="primaryBtn w-[185px] h-[56px]" type="submit">

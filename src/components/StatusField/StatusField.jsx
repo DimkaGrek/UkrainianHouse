@@ -57,14 +57,14 @@ export const StatusField = ({ statuses, setStatus, status }) => {
         </span>
       </label>
       {isOpenStatusList && (
-        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-white">
-          <ul className="font-istok font-normal text-[20px] leading-[24px] w-full">
+        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#f0f0f0] p-[2px]">
+          <ul className="font-istok font-normal text-[20px] leading-[24px] w-full flex flex-col gap-[2px]">
             {statuses &&
               statuses.map((option, index) => (
                 <li
                   key={index}
                   onClick={() => handleChangeStatus(option)}
-                  className={`w-full p-[10px] cursor-pointer hover:bg-[#FFD437] rounded-[10px] ${
+                  className={`w-full p-[10px] cursor-pointer hover:bg-my-yellow rounded-[10px] ${
                     option === inputValue ? 'bg-yellow-200' : ''
                   }`}
                 >

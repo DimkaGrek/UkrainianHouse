@@ -25,7 +25,7 @@ const Admin = () => {
       </button>
       {addNewsModal && (
         <Modal toggleModal={toggleAddNewsModal}>
-          <NewsForm />
+          <NewsForm toggle={toggleAddNewsModal} />
         </Modal>
       )}
       {addBookModal && (
