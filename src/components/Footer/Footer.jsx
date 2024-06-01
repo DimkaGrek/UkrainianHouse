@@ -116,7 +116,8 @@ export const Footer = () => {
                   srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
                   src={flag_eng1x}
                   alt="Flag of England"
-                  className="w-[40px] h-[40px]"
+                  width="40"
+                  height="40"
                   loading="lazy"
                 />
               </li>
@@ -125,7 +126,8 @@ export const Footer = () => {
                   srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
                   src={flag_nl1x}
                   alt="Flag of Netherland"
-                  className="w-[40px] h-[40px]"
+                  width="40"
+                  height="40"
                   loading="lazy"
                 />
               </li>
@@ -134,7 +136,8 @@ export const Footer = () => {
                   srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
                   src={flag_ua1x}
                   alt="Flag of Ukraine"
-                  className="w-[40px] h-[40px]"
+                  width="40"
+                  height="40"
                   loading="lazy"
                 />
               </li>
@@ -166,7 +169,8 @@ export const Footer = () => {
                   srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
                   src={flag_eng1x}
                   alt="Flag of England"
-                  className="w-[40px] h-[40px]"
+                  width="40"
+                  height="40"
                   loading="lazy"
                 />
               </li>
@@ -175,7 +179,8 @@ export const Footer = () => {
                   srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
                   src={flag_nl1x}
                   alt="Flag of Netherland"
-                  className="w-[40px] h-[40px]"
+                  width="40"
+                  height="40"
                   loading="lazy"
                 />
               </li>
@@ -184,7 +189,8 @@ export const Footer = () => {
                   srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
                   src={flag_ua1x}
                   alt="Flag of Ukraine"
-                  className="w-[40px] h-[40px]"
+                  width="40"
+                  height="40"
                   loading="lazy"
                 />
               </li>
@@ -296,7 +302,8 @@ export const Footer = () => {
               srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
               src={flag_eng1x}
               alt="Flag of England"
-              className="w-[40px] h-[40px]"
+              width="40"
+              height="40"
               loading="lazy"
             />
           </li>
@@ -305,7 +312,8 @@ export const Footer = () => {
               srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
               src={flag_nl1x}
               alt="Flag of Netherland"
-              className="w-[40px] h-[40px]"
+              width="40"
+              height="40"
               loading="lazy"
             />
           </li>
@@ -314,7 +322,8 @@ export const Footer = () => {
               srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
               src={flag_ua1x}
               alt="Flag of Ukraine"
-              className="w-[40px] h-[40px]"
+              width="40"
+              height="40"
               loading="lazy"
             />
           </li>

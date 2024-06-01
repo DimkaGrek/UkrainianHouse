@@ -81,7 +81,8 @@ export const Header = () => {
             srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
             src={flag_eng1x}
             alt="Flag of England"
-            className="w-[40px] h-[40px]"
+            width="40"
+            height="40"
           />
         </div>
       </nav>
