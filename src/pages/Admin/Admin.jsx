@@ -1,6 +1,4 @@
-import { BookForm } from '../../components/BookForm/BookForm';
-import { Modal } from '../../components/Modal/Modal';
-import { NewsForm } from '../../components/NewsForm/NewsForm';
+import { BookForm, Modal, NewsForm } from '../../components';
 import { useModal } from '../../hooks/useModal';
 
 const Admin = () => {

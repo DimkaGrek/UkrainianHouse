@@ -11,13 +11,12 @@ import { getFromattedData } from '../../helpers/getFromattedData';
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import 'react-datepicker/dist/react-datepicker.css';
+import { newsStatuses } from '../../constants';
 
 export const NewsForm = ({ toggle }) => {
   const filePicker = useRef(null);
-  const initialImages = [0, 0, 0];
-  const [selectedImages, setSelectedImages] = useState(initialImages);
-  const statuses = ['DRAFT', 'PUBLISHED', 'ARCHIVED', 'ANNOUNCE'];
-  const [status, setStatus] = useState('DRAFT');
+  const [selectedImages, setSelectedImages] = useState(new Array(3).fill(0));
+  const [status, setStatus] = useState(newsStatuses[0]);
 
   const { register, handleSubmit, reset, setValue, control } = useForm();
 
@@ -91,7 +90,7 @@ export const NewsForm = ({ toggle }) => {
         <div className="flex gap-4">
           <div className="flex-1">
             <StatusField
-              statuses={statuses}
+              statuses={newsStatuses}
               status={status}
               setStatus={handleChangeStatus}
             />

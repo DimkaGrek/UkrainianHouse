@@ -1,0 +1,12 @@
+export const bookStatuses = [
+  'AVAILABLE',
+  'CHECKEDOUT',
+  'RESERVED',
+  'INPROCESSING',
+  'UNDERRAPAIR',
+  'OVERDUE',
+  'LOST',
+  'WITHDRAWN',
+  'REFERENCEONLY',
+  'ELECTRONICCOPY',
+];
