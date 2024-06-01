@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
 import { BookForm, Modal, NewsForm } from '../../components';
 import { useModal } from '../../hooks/useModal';
+import { useDispatch } from 'react-redux';
+import { fetchAllNews } from '../../my-redux';
 
 const Admin = () => {
   const [addNewsModal, toggleAddNewsModal] = useModal();
   const [addBookModal, toggleAddBookModal] = useModal();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllNews());
+  }, [dispatch]);
 
   return (
     <div className="flex gap-4">

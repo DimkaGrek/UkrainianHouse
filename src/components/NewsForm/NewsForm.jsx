@@ -14,12 +14,15 @@ import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import 'react-datepicker/dist/react-datepicker.css';
 import { newsStatuses } from '../../constants';
 import { newsFormSchema } from '../../schemas/newsFormSchema';
+import { useDispatch } from 'react-redux';
+import { createNews } from '../../my-redux';
 
 export const NewsForm = ({ toggle }) => {
   const filePicker = useRef(null);
   const [selectedImages, setSelectedImages] = useState(new Array(3).fill(0));
   const [status, setStatus] = useState(newsStatuses[0]);
   const [imageError, setImageError] = useState(false);
+  const dispatch = useDispatch();
 
   const hasNonZeroElement = selectedImages.some(element => element !== 0);
 
@@ -81,8 +84,6 @@ export const NewsForm = ({ toggle }) => {
     setValue('publishDate', date, { shouldValidate: true });
   };
 
-  console.log(imageError);
-
   const onSubmit = data => {
     if (!hasNonZeroElement) {
       setImageError(true);
@@ -90,10 +91,7 @@ export const NewsForm = ({ toggle }) => {
     }
 
     const fd = getFromattedData(selectedImages, 'photos', data, 'news');
-
-    for (const pair of fd.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
+    dispatch(createNews(fd));
 
     setSelectedImages(new Array(3).fill(0));
     reset();
