@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
+import { LuCalendar } from 'react-icons/lu';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
@@ -102,7 +103,7 @@ export const NewsForm = ({ toggle }) => {
               name="publishDate"
               defaultValue={new Date()}
               render={({ field }) => (
-                <div className="datepickerContainer">
+                <div className="relative">
                   <DatePicker
                     className="field cursor-pointer w-[263px]"
                     showPopperArrow={false}
@@ -114,6 +115,7 @@ export const NewsForm = ({ toggle }) => {
                     }}
                     calendarClassName="fixed-height-calendar"
                   />
+                  <LuCalendar className="size-5 absolute top-[18px] right-[18px] cursor-pointer" />
                 </div>
               )}
             />
@@ -181,8 +183,7 @@ export const NewsForm = ({ toggle }) => {
                     <img
                       src={URL.createObjectURL(image)}
                       alt="upload"
-                      className="rounded-[10px] shadow-md max-h-[119px]"
-                      width={185}
+                      className="rounded-[10px] shadow-md max-h-[119px] max-w-[185px]"
                     />
                     <button
                       type="button"

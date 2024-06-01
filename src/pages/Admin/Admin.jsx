@@ -8,7 +8,7 @@ const Admin = () => {
   const [addBookModal, toggleAddBookModal] = useModal();
 
   return (
-    <div className="space-y-4">
+    <div className="flex gap-4">
       <button
         className="primaryBtn"
         type="button"
