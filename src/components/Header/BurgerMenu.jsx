@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import { Icon } from '../Icon/Icon';
+
 import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
 import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
 import flag_ua1x from '../../assets/images/header/flag_ua1x.png';
@@ -9,7 +11,6 @@ import flag_nl1x from '../../assets/images/header/flag_nl1x.png';
 import flag_nl2x from '../../assets/images/header/flag_nl2x.png';
 import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
 import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
-import { Icon } from '../Icon/Icon';
 
 export const BurgerMenu = ({ toggleMenu }) => {
   const handleBackdropClick = event => {
@@ -103,37 +104,44 @@ export const BurgerMenu = ({ toggleMenu }) => {
             srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
             src={flag_eng1x}
             alt="Flag of England"
-            className="w-[40px] h-[40px]"
+            width="40"
+            height="40"
             loading="lazy"
           />
           <img
             srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
             src={flag_nl1x}
             alt="Flag of Netherland"
-            className="w-[40px] h-[40px]"
+            width="40"
+            height="40"
             loading="lazy"
           />
           <img
             srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
             src={flag_ua1x}
             alt="Flag of Ukraine"
-            className="w-[40px] h-[40px]"
+            width="40"
+            height="40"
             loading="lazy"
           />
         </div>
-        <address className="w-[270px]">
-          <ul className="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px]">
+        <address className="w-[270px] sm-max:w-[240px]">
+          <ul className="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px] sm-max:items-start">
             <li className="flex gap-[6px] items-center">
               <Icon
                 name="mail"
-                className="fill-[#1e1e1e]"
+                className="fill-[#1e1e1e]  sm-max:size-[20px]"
                 size="24"
                 viewbox="24"
               />
               ukrainianhouse.maastricht@gmail.com
             </li>
             <li className="flex gap-[6px] items-center">
-              <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
+              <Icon
+                name="adress"
+                className="fill-[#1e1e1e] sm-max:size-[20px]"
+                size="24"
+              />
               Oranjeplein 96, 6224 KV, Maastricht, Netherlands
             </li>
           </ul>
