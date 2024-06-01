@@ -33,10 +33,10 @@ export const StatusField = ({ statuses, setStatus, status }) => {
 
   return (
     <div className="relative">
-      <p className="label mb-[6px]"> Status:</p>
+      <p className="label mb-[6px]">Status</p>
       <div
         className={`text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] border border-solid border-my-black5 rounded-[10px] cursor-pointer bg-white ${
-          isOpen ? 'border-[#FFD437]' : ''
+          isOpen ? 'border-my-yellow' : ''
         }`}
         ref={dropdownRef}
         onClick={() => setIsOpen(!isOpen)}

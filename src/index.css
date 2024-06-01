@@ -94,6 +94,10 @@
   @apply text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
 }
 
+.field-error {
+  @apply absolute text-[13px] text-red-600 px-[18px] mt-[2px];
+}
+
 .active {
   @apply border-b-2 border-[#2355cc] text-[#2355cc];
 }

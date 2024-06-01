@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import { LuCalendar } from 'react-icons/lu';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
@@ -12,17 +13,37 @@ import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import 'react-datepicker/dist/react-datepicker.css';
 import { newsStatuses } from '../../constants';
+import { newsFormSchema } from '../../schemas/newsFormSchema';
 
 export const NewsForm = ({ toggle }) => {
   const filePicker = useRef(null);
   const [selectedImages, setSelectedImages] = useState(new Array(3).fill(0));
   const [status, setStatus] = useState(newsStatuses[0]);
+  const [imageError, setImageError] = useState(false);
 
-  const { register, handleSubmit, reset, setValue, control } = useForm();
+  const hasNonZeroElement = selectedImages.some(element => element !== 0);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    control,
+    formState: { errors },
+  } = useForm({
+    mode: 'onSubmit',
+    resolver: yupResolver(newsFormSchema),
+  });
 
   useEffect(() => {
     setValue('publishDate', new Date());
   }, [setValue]);
+
+  useEffect(() => {
+    if (imageError && hasNonZeroElement) {
+      setImageError(false);
+    }
+  }, [imageError, hasNonZeroElement]);
 
   const selectFiles = e => {
     let selectedFiles = Array.from(e.target.files);
@@ -60,8 +81,13 @@ export const NewsForm = ({ toggle }) => {
     setValue('publishDate', date, { shouldValidate: true });
   };
 
+  console.log(imageError);
+
   const onSubmit = data => {
-    console.log(data);
+    if (!hasNonZeroElement) {
+      setImageError(true);
+      return;
+    }
 
     const fd = getFromattedData(selectedImages, 'photos', data, 'news');
 
@@ -69,13 +95,13 @@ export const NewsForm = ({ toggle }) => {
       console.log(pair[0] + ': ' + pair[1]);
     }
 
-    setSelectedImages(initialImages);
+    setSelectedImages(new Array(3).fill(0));
     reset();
   };
 
   return (
     <form
-      className="flex flex-col gap-4 h-auto w-[1100px]"
+      className="flex flex-col gap-6 h-auto w-[1100px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">
@@ -86,6 +112,7 @@ export const NewsForm = ({ toggle }) => {
             placeholder="Enter the article title"
             register={register}
           />
+          <p className="field-error">{errors['title']?.message}</p>
         </div>
         <div className="flex gap-4">
           <div className="flex-1">
@@ -95,8 +122,8 @@ export const NewsForm = ({ toggle }) => {
               setStatus={handleChangeStatus}
             />
           </div>
-          <label className="label">
-            Date
+          <div>
+            <p className="label mb-[6px]">Date</p>
             <Controller
               control={control}
               name="publishDate"
@@ -115,37 +142,49 @@ export const NewsForm = ({ toggle }) => {
                     calendarClassName="fixed-height-calendar"
                   />
                   <LuCalendar className="size-5 absolute top-[18px] right-[18px] cursor-pointer" />
+                  <p className="field-error">
+                    {errors['publishDate']?.message}
+                  </p>
                 </div>
               )}
             />
-          </label>
+          </div>
         </div>
       </div>
-      <label className="label">
-        Article Text:
-        <textarea
-          className="field resize-none overflow-auto h-[265px]"
-          type="text"
-          placeholder="Enter the article text"
-          {...register('content')}
-        />
-      </label>
-      <div className="grid grid-cols-2 gap-4">
-        <InputField
-          label="Button Text"
-          name="btnText"
-          placeholder="Enter the button text"
-          register={register}
-          defaultValue="Read more"
-        />
-        <InputField
-          label="Button Link "
-          name="btnLink"
-          placeholder="https//www..."
-          register={register}
-        />
+      <div>
+        <label className="label">
+          Article Text:
+          <textarea
+            className="field resize-none overflow-auto h-[265px]"
+            type="text"
+            placeholder="Enter the article text"
+            {...register('content')}
+          />
+        </label>
+        <p className="field-error">{errors['content']?.message}</p>
       </div>
-      <div className="flex flex-col gap-6 items-start">
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <InputField
+            label="Button Text"
+            name="btnText"
+            placeholder="Enter the button text"
+            register={register}
+            defaultValue="Read more"
+          />
+          <p className="field-error">{errors['btnText']?.message}</p>
+        </div>
+        <div>
+          <InputField
+            label="Button Link "
+            name="btnLink"
+            placeholder="https//www..."
+            register={register}
+          />
+          <p className="field-error">{errors['btnLink']?.message}</p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-6 items-start relative">
         <input
           className="hidden"
           type="file"
@@ -156,46 +195,50 @@ export const NewsForm = ({ toggle }) => {
           onChange={selectFiles}
         />
         <div className="flex flex-1 justify-between gap-6">
-          {selectedImages &&
-            selectedImages.map((image, index) => (
-              <div
-                key={index}
-                className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-md"
-              >
-                {image === 0 ? (
-                  <picture className="h-auto w-fit rounded-[10px]">
-                    <source
-                      srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
-                      type="image/png"
-                    />
-                    <img
-                      width={185}
-                      height={119}
-                      src={newsImg1}
-                      alt="upload img"
-                      className="rounded-[10px] cursor-pointer"
-                      onClick={handlePick}
-                    />
-                  </picture>
-                ) : (
-                  <>
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt="upload"
-                      className="rounded-[10px] shadow-md max-h-[119px] max-w-[185px]"
-                    />
-                    <button
-                      type="button"
-                      className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
-                      onClick={() => handleDeleteImage(image)}
-                    >
-                      <Icon name="close" className="h-[12px] w-[12px]" />
-                    </button>
-                  </>
-                )}
-              </div>
-            ))}
+          {selectedImages.map((image, index) => (
+            <div
+              key={index}
+              className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-md"
+            >
+              {image === 0 ? (
+                <picture className="h-auto w-fit rounded-[10px]">
+                  <source
+                    srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
+                    type="image/png"
+                  />
+                  <img
+                    width={185}
+                    height={119}
+                    src={newsImg1}
+                    alt="upload img"
+                    className="rounded-[10px] cursor-pointer"
+                    onClick={handlePick}
+                  />
+                </picture>
+              ) : (
+                <>
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="upload"
+                    className="rounded-[10px] shadow-md max-h-[119px] max-w-[185px]"
+                  />
+                  <button
+                    type="button"
+                    className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
+                    onClick={() => handleDeleteImage(image)}
+                  >
+                    <Icon name="close" className="h-[12px] w-[12px]" />
+                  </button>
+                </>
+              )}
+            </div>
+          ))}
         </div>
+        {imageError && (
+          <p className="field-error mt-[120px] top-[120px]">
+            Add at least one image
+          </p>
+        )}
         <div className="flex gap-6 mx-auto">
           <button
             className="primaryBtn w-[185px] h-[56px]"
