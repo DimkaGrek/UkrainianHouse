@@ -3,15 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export const StatusField = ({ statuses, setStatus, status }) => {
-  const [inputValue, setInputValue] = useState(status);
-  const [isOpenStatusList, setIsOpenStatusList] = useState(false);
-  const dropdown = useRef(null);
-  const arrow = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState(status);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleCloseList = e => {
-      if (e.target !== dropdown.current && e.target !== arrow.current) {
-        setIsOpenStatusList(false);
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
       }
     };
 
@@ -22,41 +21,42 @@ export const StatusField = ({ statuses, setStatus, status }) => {
   }, []);
 
   const handleChangeStatus = status => {
-    setInputValue(status);
-    setStatus(status.toUpperCase());
-    setIsOpenStatusList(false);
+    setValue(status);
+    setStatus(status);
+    setIsOpen(false);
   };
 
-  const handleInputChange = e => {
-    setInputValue(e.target.value);
+  const handleIconClick = e => {
+    e.stopPropagation();
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className="relative">
-      <label className="label">
-        Status:
-        <input
-          type="text"
-          className="field cursor-pointer"
-          readOnly
-          value={inputValue}
-          ref={dropdown}
-          onChange={handleInputChange}
-          onClick={() => setIsOpenStatusList(!isOpenStatusList)}
-        />
-        <span
-          className="absolute top-[46px] right-5 cursor-pointer"
-          onClick={() => setIsOpenStatusList(!isOpenStatusList)}
-          ref={arrow}
-        >
-          {isOpenStatusList ? (
-            <IoIosArrowUp className="size-5" />
+      <p className="label mb-[6px]"> Status:</p>
+      <div
+        className={`text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] border border-solid border-my-black5 rounded-[10px] cursor-pointer bg-white ${
+          isOpen ? 'border-[#FFD437]' : ''
+        }`}
+        ref={dropdownRef}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {value}
+        <span className="absolute top-[46px] right-5 cursor-pointer">
+          {isOpen ? (
+            <IoIosArrowUp
+              className="size-5"
+              onClick={e => handleIconClick(e)}
+            />
           ) : (
-            <IoIosArrowDown className="size-5" />
+            <IoIosArrowDown
+              className="size-5"
+              onClick={e => handleIconClick(e)}
+            />
           )}
         </span>
-      </label>
-      {isOpenStatusList && (
+      </div>
+      {isOpen && (
         <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#f0f0f0] p-[2px]">
           <ul className="font-istok font-normal text-[20px] leading-[24px] w-full flex flex-col gap-[2px]">
             {statuses &&
@@ -65,7 +65,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
                   key={index}
                   onClick={() => handleChangeStatus(option)}
                   className={`w-full p-[10px] cursor-pointer hover:bg-my-yellow rounded-[10px] ${
-                    option === inputValue ? 'bg-yellow-200' : ''
+                    option === value ? 'bg-yellow-200' : ''
                   }`}
                 >
                   {option}
