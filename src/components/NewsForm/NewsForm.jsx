@@ -3,6 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import { LuCalendar } from 'react-icons/lu';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch } from 'react-redux';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
@@ -13,8 +14,7 @@ import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import 'react-datepicker/dist/react-datepicker.css';
 import { newsStatuses } from '../../constants';
-import { newsFormSchema } from '../../schemas/newsFormSchema';
-import { useDispatch } from 'react-redux';
+import { newsFormSchema } from '../../schemas';
 import { createNews } from '../../my-redux';
 
 export const NewsForm = ({ toggle }) => {

@@ -15,6 +15,7 @@ export const InputField = ({
         placeholder={placeholder}
         {...register(name)}
         defaultValue={defaultValue}
+        {...(type === 'number' ? { min: '0', defaultValue: '0' } : {})}
       />
     </label>
   );
