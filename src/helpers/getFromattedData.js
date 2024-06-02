@@ -6,7 +6,7 @@ export const getFromattedData = (files, filesKey, jsonData, jsonDateKey) => {
   }
 
   const jsonBlob = new Blob([JSON.stringify(jsonData)], {
-    type: 'applecation/json',
+    type: 'application/json',
   });
 
   formData.append(jsonDateKey, jsonBlob);
