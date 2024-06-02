@@ -14,6 +14,20 @@ export const fetchAllNews = createAsyncThunk(
   }
 );
 
+export const fetchAnnounceNews = createAsyncThunk(
+  'news/getAnnounceNews',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await api.get('/news', {
+        params: { status: 'ANNOUNCE' },
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const createNews = createAsyncThunk(
   'news/addItem',
   async (news, thunkAPI) => {

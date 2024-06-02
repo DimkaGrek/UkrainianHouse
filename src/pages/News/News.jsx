@@ -1,32 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-  Advertisement,
-  LoadMoreButton,
-  NewsList,
-  SearchBar,
-} from '../../components';
+import { Advertisement, NewsList, SearchBar } from '../../components';
+import { changeFilter } from '../../my-redux';
 
-import { fetchAllNews } from '../../my-redux';
+// import { fetchAllNews, fetchAnnounceNews } from '../../my-redux';
 
 const News = () => {
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const params = { status: 'PUBLISHED', page, limit: 6 };
+    dispatch(changeFilter(''));
+  }, [dispatch]);
 
-    dispatch(fetchAllNews(params))
-      .unwrap()
-      .then(() => {})
-      .catch(e => console.log(e));
-  }, [dispatch, page]);
+  useEffect(() => {
+    // const params = { status: 'PUBLISHED', page, limit: 6 };
+    // dispatch(fetchAnnounceNews())
+    //   .unwrap()
+    //   .then()
+    //   .catch(e => console.log(e));
+    // dispatch(fetchAllNews(params))
+    //   .unwrap()
+    //   .then(() => {})
+    //   .catch(e => console.log(e));
+  }, [dispatch]);
 
-  const handleLoadMoreClick = () => {
-    setPage(prev => prev + 1);
-  };
+  // const handleLoadMoreClick = () => {
+  //   setPage(prev => prev + 1);
+  // };
 
   return (
     <section className="pb-[74px] md:pb-[50px] lg:pb-[110px]">
@@ -38,7 +41,7 @@ const News = () => {
       </div>
       <Advertisement />
       <NewsList />
-      <LoadMoreButton onClick={handleLoadMoreClick} />
+      {/* <LoadMoreButton onClick={handleLoadMoreClick} /> */}
     </section>
   );
 };
