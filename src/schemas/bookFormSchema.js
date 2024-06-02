@@ -26,8 +26,13 @@ export const bookFormSchema = yup.object().shape({
   publicationYear: yup
     .number()
     .required('Year of publishing is required')
-    .test('is-valid-year', 'Year of publishing must be correct', value =>
-      /^\d{4}$/.test(value)
+    .test(
+      'is-valid-year',
+      'Year of publishing must be correct',
+      value =>
+        /^\d{4}$/.test(value) &&
+        parseInt(value, 10) !== 0 &&
+        parseInt(value, 10) <= new Date().getFullYear()
     ),
   genre: yup
     .string()
