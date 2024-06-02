@@ -12,6 +12,7 @@ export * from './Modal/Modal.jsx';
 export * from './NavBar/Navbar.jsx';
 export * from './NewsForm/NewsForm.jsx';
 export * from './NewsList/NewsList.jsx';
+export * from './NewsList/NewsDetails.jsx';
 export * from './ReadMoreButton/ReadMoreButton.jsx';
 export * from './ScrollUpButton/ScrollUpButton.jsx';
 export * from './SearchBar/SearchBar.jsx';

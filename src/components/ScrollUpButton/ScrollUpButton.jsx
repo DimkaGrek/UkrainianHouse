@@ -30,7 +30,7 @@ export const ScrollUpBtn = () => {
   return (
     <button
       className={`${
-        isVisible ? 'scroll-up-btn opacity-[1] visible' : ' scroll-up-btn'
+        isVisible ? 'scroll-up-btn bottom-[54px]' : ' scroll-up-btn'
       }`}
       type="button"
       onClick={handleClickBtn}

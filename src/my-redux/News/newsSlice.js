@@ -1,71 +1,103 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSelector, createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
   createNews,
   deleteOneNews,
   fetchAllNews,
+  fetchAnnounceNews,
   getOneNews,
   updateNews,
 } from './newsOperations';
 
+import newsData from '../../assets/news.json';
+import announceNewsData from '../../assets/announceNews.json';
+
 const initialState = {
-  news: [],
+  news: newsData,
+  announceNews: announceNewsData,
   oneNews: {},
   totalNews: 0,
+  filter: '',
   isLoading: false,
   error: null,
 };
-
+const selectNews = ({ news: { news } }) => news;
+const selectAnnounceNews = ({ news: { announceNews } }) => announceNews;
+const selectFilter = ({ news: { filter } }) => filter;
+const selectIsLoading = ({ news: { isLoading } }) => isLoading;
+const selectTotalNews = ({ news: { totalNews } }) => totalNews;
+const selectError = ({ news: { error } }) => error;
+const selectFilteredNews = createSelector(
+  [selectNews, selectFilter],
+  (news, filter) => {
+    const normalizedFilter = filter?.toLowerCase().trim();
+    return news.filter(
+      item =>
+        item.title.toLowerCase().includes(normalizedFilter) ||
+        item.content.toLowerCase().includes(normalizedFilter)
+    );
+  }
+);
 const newsSlice = createSlice({
   name: 'news',
   initialState,
-  selectors: {
-    selectNews: state => state.news,
-    selectIsLoading: state => state.isLoading,
-    selectTotalNews: state => state.totalNews,
-    selectError: state => state.error,
+  reducers: {
+    changeFilter: (state, { payload }) => {
+      state.filter = payload;
+    },
   },
   extraReducers: builder =>
     builder
-
-      .addCase(createNews.fulfilled, (state, action) => {
-        state.news = [...state.news, action.payload];
+      .addCase(createNews.fulfilled, (state, { payload }) => {
+        state.news = [...state.news, payload];
         state.isLoading = false;
       })
 
-      .addCase(fetchAllNews.fulfilled, (state, action) => {
-        state.totalNews = action.payload.totalNews;
-        state.news = action.payload.news;
+      .addCase(
+        fetchAnnounceNews.fulfilled,
+        (state, { payload: { totalNews, news } }) => {
+          state.totalNews = totalNews;
+          state.announceNews = news;
+          state.isLoading = false;
+        }
+      )
+      .addCase(
+        fetchAllNews.fulfilled,
+        (state, { payload: { totalNews, news } }) => {
+          state.totalNews = totalNews;
+          state.news = news;
+          state.isLoading = false;
+        }
+      )
+      .addCase(getOneNews.fulfilled, (state, { payload }) => {
+        state.oneNews = payload;
         state.isLoading = false;
       })
-      .addCase(getOneNews.fulfilled, (state, action) => {
-        state.oneNews = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(updateNews.fulfilled, (state, action) => {
+      .addCase(updateNews.fulfilled, (state, { payload }) => {
         state.news = state.news.map(item => {
-          if (item.id === action.payload.id) {
-            return action.payload;
+          if (item.id === payload.id) {
+            return payload;
           }
           return item;
         });
         state.isLoading = false;
       })
-      .addCase(deleteOneNews.fulfilled, (state, action) => {
-        state.news = state.news.filter(item => item.id !== action.payload.id);
+      .addCase(deleteOneNews.fulfilled, (state, { payload }) => {
+        state.news = state.news.filter(item => item.id !== payload.id);
         state.isLoading = false;
       })
 
       .addMatcher(
         isAnyOf(
           fetchAllNews.rejected,
+          fetchAnnounceNews.rejected,
           createNews.rejected,
           getOneNews.rejected,
           updateNews.rejected,
           deleteOneNews.rejected
         ),
-        (state, action) => {
-          state.error = action.payload;
+        (state, { payload }) => {
+          state.error = payload;
           state.isLoading = false;
         }
       )
@@ -73,6 +105,7 @@ const newsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAllNews.pending,
+          fetchAnnounceNews.pending,
           createNews.pending,
           getOneNews.pending,
           updateNews.pending,
@@ -84,7 +117,14 @@ const newsSlice = createSlice({
         }
       ),
 });
-
+export const { changeFilter } = newsSlice.actions;
 export const newsReducer = newsSlice.reducer;
-export const { selectNews, selectTotalNews, selectIsLoading, selectError } =
-  newsSlice.selectors;
+export {
+  selectNews,
+  selectFilteredNews,
+  selectAnnounceNews,
+  selectTotalNews,
+  selectFilter,
+  selectIsLoading,
+  selectError,
+};

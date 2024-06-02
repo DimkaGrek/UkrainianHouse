@@ -1,10 +1,15 @@
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { changeFilter } from '../../my-redux';
 
 export const SearchBar = () => {
+  const dispatch = useDispatch();
+
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = ({ query }) => {
+    dispatch(changeFilter(query));
   };
 
   return (
