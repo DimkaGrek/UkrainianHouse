@@ -1,14 +1,20 @@
-import { BookForm } from '../../components/BookForm/BookForm';
-import { Modal } from '../../components/Modal/Modal';
-import { NewsForm } from '../../components/NewsForm/NewsForm';
+import { useEffect } from 'react';
+import { BookForm, Modal, NewsForm } from '../../components';
 import { useModal } from '../../hooks/useModal';
+import { useDispatch } from 'react-redux';
+import { fetchAllNews } from '../../my-redux';
 
 const Admin = () => {
   const [addNewsModal, toggleAddNewsModal] = useModal();
   const [addBookModal, toggleAddBookModal] = useModal();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllNews());
+  }, [dispatch]);
 
   return (
-    <div className="space-y-4">
+    <div className="flex gap-4">
       <button
         className="primaryBtn"
         type="button"
@@ -25,12 +31,12 @@ const Admin = () => {
       </button>
       {addNewsModal && (
         <Modal toggleModal={toggleAddNewsModal}>
-          <NewsForm />
+          <NewsForm toggle={toggleAddNewsModal} />
         </Modal>
       )}
       {addBookModal && (
         <Modal toggleModal={toggleAddBookModal}>
-          <BookForm />
+          <BookForm toggle={toggleAddBookModal} />
         </Modal>
       )}
     </div>

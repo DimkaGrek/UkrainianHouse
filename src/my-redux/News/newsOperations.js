@@ -18,7 +18,11 @@ export const createNews = createAsyncThunk(
   'news/addItem',
   async (news, thunkAPI) => {
     try {
-      const { data } = await api.post('/news', news);
+      const { data } = await api.post('/news', news, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

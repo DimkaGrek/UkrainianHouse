@@ -87,11 +87,15 @@
 }
 
 .label {
-  @apply font-istok font-normal text-[16px] leading-[22px]  flex flex-col items-start gap-[6px];
+  @apply font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[6px] p-0;
 }
 
 .field {
   @apply text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
+}
+
+.field-error {
+  @apply absolute text-[13px] text-red-600 mt-[2px];
 }
 
 .active {

@@ -4,9 +4,8 @@ export const InputField = ({
   type = 'text',
   placeholder,
   register,
+  defaultValue,
 }) => {
-  const currentDate = new Date().toISOString().split('T')[0];
-
   return (
     <label className="label">
       {label}
@@ -15,9 +14,8 @@ export const InputField = ({
         type={type}
         placeholder={placeholder}
         {...register(name)}
-        defaultValue={type === 'date' ? currentDate : undefined}
-        max={type === 'date' ? currentDate : undefined}
-        required
+        defaultValue={defaultValue}
+        {...(type === 'number' ? { min: '0', defaultValue: '0' } : {})}
       />
     </label>
   );

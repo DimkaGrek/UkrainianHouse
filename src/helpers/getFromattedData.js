@@ -1,12 +1,16 @@
 export const getFromattedData = (files, filesKey, jsonData, jsonDateKey) => {
   const formData = new FormData();
 
-  for (const file of files) {
-    formData.append(filesKey, file);
+  if (Array.isArray(files)) {
+    for (const file of files) {
+      formData.append(filesKey, file);
+    }
+  } else {
+    formData.append(filesKey, files);
   }
 
   const jsonBlob = new Blob([JSON.stringify(jsonData)], {
-    type: 'applecation/json',
+    type: 'application/json',
   });
 
   formData.append(jsonDateKey, jsonBlob);
