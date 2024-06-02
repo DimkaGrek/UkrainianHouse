@@ -36,7 +36,7 @@ const Admin = () => {
       )}
       {addBookModal && (
         <Modal toggleModal={toggleAddBookModal}>
-          <BookForm />
+          <BookForm toggle={toggleAddBookModal} />
         </Modal>
       )}
     </div>

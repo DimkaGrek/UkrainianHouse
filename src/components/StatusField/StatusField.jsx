@@ -57,7 +57,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
         </span>
       </div>
       {isOpen && (
-        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#f0f0f0] p-[2px]">
+        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#f0f0f0] p-[2px] max-h-[220px] overflow-scroll">
           <ul className="font-istok font-normal text-[20px] leading-[24px] w-full flex flex-col gap-[2px]">
             {statuses &&
               statuses.map((option, index) => (
