@@ -25,7 +25,7 @@ export const CarouselTeam = () => {
               src={photos[0]}
               height="299"
               width="294"
-              alt="Photo of Yevheniia Shevtsova"
+              alt={`Photo of ${name}`}
               className="rounded-[18px] mb-[12px] sm-max:h-[244px] sm-max:w-full lg:mb-[16px]"
               loading="lazy"
             />

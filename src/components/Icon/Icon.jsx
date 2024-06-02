@@ -195,6 +195,12 @@ export const Icon = ({ name, className, size, viewbox }) => {
           <path d="M4 24v-2.667h24v2.667h-24zM4 17.333v-2.667h24v2.667h-24zM4 10.667v-2.667h24v2.667h-24z"></path>
         </Svg>
       );
+    case 'down':
+      return (
+        <Svg className={className} size={size}>
+          <path d="M16 20.499l-8-8 1.867-1.867 6.133 6.133 6.133-6.133 1.867 1.867-8 8z"></path>
+        </Svg>
+      );
     default:
       return (
         <svg
