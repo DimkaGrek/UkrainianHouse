@@ -5,55 +5,59 @@ export const Developers = () => {
 
   return (
     <>
-      <h4 className="font-proza font-medium text-[20px] text-[#1e1e1e] leading-[1.2] w-[320px] mb-[16px] sm-max:w-[212px]">
+      <h4 className="font-proza font-medium text-[20px] text-[#1e1e1e] leading-[1.2] w-[280px] mb-[16px] sm-max:w-[212px] md:w-[450px] md:mb-[21px] md:text-[24px] md:font-semibold md:leading-[1.6]">
         Web-developers “Ukrainian House” in Maastricht”
       </h4>
-      <div className="carousel carousel-vertical h-[380px] md:carousel-center">
+      <div className="carousel carousel-vertical h-[315px] md:flex-row md:carousel-center md:h-[380px] md:space-x-[44px] sm-max:h-[290px] md:w-full">
         {developers.map(({ name, url, position, photos }, index) => (
           <div
             key={index}
-            className="carousel-item w-full flex flex-col pb-[15px]"
+            className="carousel-item w-full flex flex-col pb-[25px] md:pb-[24px] md:w-[304px]"
           >
-            <div className="flex justify-between mb-[4px] w-full">
-              <p className="font-proza font-medium text-[20px] text-[#1e1e1e] leading-[1.2]">
-                {name}
+            <div className="md:order-2">
+              <div className="flex justify-between mb-[4px] w-full md:mb-[5px]">
+                <p className="font-proza font-medium text-[20px] text-[#1e1e1e] leading-[1.2] md:text-[26px] md:leading-[1.3]">
+                  {name}
+                </p>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Linkedin"
+                >
+                  <Icon
+                    name="linkedin"
+                    className="fill-[#1e1e1e] md:size-[44px] hover:fill-[#2355cc] focus:fill-[#2355cc transition duration-300"
+                    size="28"
+                  />
+                </a>
+              </div>
+              <p className="font-normal text-[12px] text-[#666] leading-[1.5] mb-[8px] md:text-[20px] md:italic md:leading-[1.5] md:mb-0">
+                {position}
               </p>
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Linkedin"
-              >
-                <Icon
-                  name="linkedin"
-                  className="fill-[#1e1e1e] lg:size-[44px] hover:fill-[#2355cc] focus:fill-[#2355cc transition duration-300"
-                  size="28"
-                />
-              </a>
             </div>
-            <p className="font-normal text-[12px] text-[#666] leading-[1.5] mb-[8px]">
-              {position}
-            </p>
-            <picture>
-              {/* <source
-              media="(min-width: 1440px)"
-              srcSet={`${photos[2]} 1x, ${photos[3]} 2x`}
-              height="304"
-              width="367"
-              loading="lazy"
-            /> */}
+
+            <picture className="md:order-1">
+              <source
+                media="(min-width: 768px)"
+                srcSet={`${photos[0]} 1x, ${photos[1]} 2x`}
+                height="304"
+                width="367"
+                loading="lazy"
+              />
               <img
                 srcSet={`${photos[0]} 1x, ${photos[1]} 2x`}
                 src={photos[0]}
                 height="277"
                 width="342"
                 alt={`Photo of ${name}`}
-                className="rounded-[18px] mb-[20px]"
+                className="rounded-[18px] mb-[20px] md:mb-[21px]"
                 loading="lazy"
               />
             </picture>
+
             {developers.length - 1 > index && (
-              <div className="flex justify-center w-full">
+              <div className="flex justify-center w-full md:hidden">
                 <Icon name="down" className="fill-[#1e1e1e]" size="24" />
               </div>
             )}
