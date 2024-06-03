@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import { Icon } from '../../components';
 import { BurgerMenu } from './BurgerMenu';
@@ -13,6 +13,7 @@ import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -73,6 +74,9 @@ export const Header = () => {
           </ul>
           <button
             type="button"
+            onClick={() => {
+              navigate('/contacts/#contacts-form');
+            }}
             className=" font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[159px] h-[54px] mr-[24px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300"
           >
             Get in touch

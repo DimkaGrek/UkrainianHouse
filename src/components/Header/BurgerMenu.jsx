@@ -1,18 +1,13 @@
 import { useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-import { Icon } from '../Icon/Icon';
+import { Icon, Address, FlagsList } from '../../components';
 
-import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
-import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
-import flag_ua1x from '../../assets/images/header/flag_ua1x.png';
-import flag_ua2x from '../../assets/images/header/flag_ua2x.png';
-import flag_nl1x from '../../assets/images/header/flag_nl1x.png';
-import flag_nl2x from '../../assets/images/header/flag_nl2x.png';
 import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
 import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
 
 export const BurgerMenu = ({ toggleMenu }) => {
+  const navigate = useNavigate();
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
       toggleMenu();
@@ -99,55 +94,19 @@ export const BurgerMenu = ({ toggleMenu }) => {
           </li>
         </ul>
 
-        <div className="flex justify-center items-center gap-4">
-          <img
-            srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
-            src={flag_eng1x}
-            alt="Flag of England"
-            width="40"
-            height="40"
-            loading="lazy"
-          />
-          <img
-            srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
-            src={flag_nl1x}
-            alt="Flag of Netherland"
-            width="40"
-            height="40"
-            loading="lazy"
-          />
-          <img
-            srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
-            src={flag_ua1x}
-            alt="Flag of Ukraine"
-            width="40"
-            height="40"
-            loading="lazy"
-          />
-        </div>
-        <address className="w-[270px] sm-max:w-[240px]">
-          <ul className="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px] sm-max:items-start">
-            <li className="flex gap-[6px] items-center">
-              <Icon
-                name="mail"
-                className="fill-[#1e1e1e]  sm-max:size-[20px]"
-                size="24"
-                viewbox="24"
-              />
-              ukrainianhouse.maastricht@gmail.com
-            </li>
-            <li className="flex gap-[6px] items-center">
-              <Icon
-                name="adress"
-                className="fill-[#1e1e1e] sm-max:size-[20px]"
-                size="24"
-              />
-              Oranjeplein 96, 6224 KV, Maastricht, Netherlands
-            </li>
-          </ul>
-        </address>
+        <FlagsList className="flex justify-center items-center gap-4" />
+
+        <Address
+          className="w-[270px] sm-max:w-[240px]"
+          listClass="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px] sm-max:items-start"
+          iconClass="fill-[#1e1e1e]  sm-max:size-[20px]"
+        />
         <button
           type="button"
+          onClick={() => {
+            toggleMenu();
+            navigate('/contacts/#contacts-form');
+          }}
           className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-full h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
         >
           Get in touch
