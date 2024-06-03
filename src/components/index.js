@@ -23,3 +23,5 @@ export * from './GoogleMap/GoogleMap.jsx';
 export * from './BookForm/BookForm.jsx';
 export * from './StatusField/StatusField.jsx';
 export * from './Developers/Developers.jsx';
+export * from './Address/Address.jsx';
+export * from './FlagsList/FlagsList.jsx';

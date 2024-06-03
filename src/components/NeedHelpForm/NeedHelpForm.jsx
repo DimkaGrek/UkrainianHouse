@@ -1,7 +1,11 @@
 export const NeedHelpForm = () => {
   return (
     <>
-      <form name="contacts-form" className="mb-[34px] md:mb-[30px] lg:mb-0">
+      <form
+        id="contacts-form"
+        name="contacts-form"
+        className="mb-[34px] md:mb-[30px] lg:mb-0"
+      >
         <p className="font-semibold text-[20px] leading-[1.2] text-[#1e1e1e] mb-[16px] md:font-normal md:leading-[1.4] md:w-[500px] md:mb-[26px] lg:font-bold lg:text-[26px] lg:leading-[1.4]">
           Need help, have feedback, or want to collaborate? Contact us!
         </p>

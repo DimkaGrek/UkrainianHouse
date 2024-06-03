@@ -1,4 +1,9 @@
-import { NeedHelpForm, GoogleMap, CarouselTeam, Icon } from '../../components';
+import {
+  NeedHelpForm,
+  GoogleMap,
+  CarouselTeam,
+  Address,
+} from '../../components';
 
 import contacts_mobile1x from '../../assets/images/contacts/contacts_mobile1x.png';
 import contacts_mobile2x from '../../assets/images/contacts/contacts_mobile2x.png';
@@ -28,7 +33,6 @@ const Contacts = () => {
         <NeedHelpForm />
         <GoogleMap />
       </div>
-
       <picture>
         <source
           media="(min-width: 1440px)"
@@ -55,27 +59,11 @@ const Contacts = () => {
         />
       </picture>
 
-      <address>
-        <ul className="flex flex-col items-center sm-max:items-start gap-[16px] rounded-[18px] p-[20px] bg-[#daefff] w-full h-full mb-[34px] md:mb-[50px] md:flex-row md:items-center md:justify-between md:py-[20px] text-[#1e1e1e] font-normal text-[16px] leading-[1.3] not-italic sm-max:text-[12px] md:text-[14px] lg:text-[24px] lg:py-[24px]">
-          <li className="flex gap-[6px] items-center">
-            <Icon
-              name="mail"
-              className="fill-[#1e1e1e] sm-max:size-[18px] lg:size-[28px]"
-              size="24"
-              viewbox="24"
-            />
-            ukrainianhouse.maastricht@gmail.com
-          </li>
-          <li className="flex gap-[6px] items-center sm-max:w-[232px]">
-            <Icon
-              name="adress"
-              className="fill-[#1e1e1e] sm-max:size-[18px] lg:size-[28px]"
-              size="24"
-            />
-            Oranjeplein 96, Maastricht, Netherlands, 6224 KV
-          </li>
-        </ul>
-      </address>
+      <Address
+        listClass="flex flex-col items-center sm-max:items-start gap-[16px] rounded-[18px] p-[20px] bg-[#daefff] w-full h-full mb-[34px] md:mb-[50px] md:flex-row md:items-center md:justify-between md:py-[20px] text-[#1e1e1e] font-normal text-[16px] leading-[1.3] not-italic sm-max:text-[12px] md:text-[14px] lg:text-[24px] lg:py-[24px]"
+        itemClass="flex gap-[6px] items-center sm-max:w-[232px]"
+        iconClass="fill-[#1e1e1e] sm-max:size-[18px] lg:size-[28px]"
+      />
 
       <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[1.6] mb-[16px] lg:hidden">
         Our team

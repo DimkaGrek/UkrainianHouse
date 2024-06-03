@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useModal } from '../../hooks';
-import { Icon, Modal, Developers } from '../../components';
+import { Icon, Modal, Developers, Address, FlagsList } from '../../components';
 
 import tape_1x_mob from '../../assets/images/footer/tape_1x_mob.jpg';
 import tape_2x_mob from '../../assets/images/footer/tape_2x_mob.jpg';
@@ -12,12 +12,6 @@ import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
 import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
 import logo_mobile1x from '../../assets/images/footer/logo_mobile1x.png';
 import logo_mobile2x from '../../assets/images/footer/logo_mobile2x.png';
-import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
-import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
-import flag_ua1x from '../../assets/images/header/flag_ua1x.png';
-import flag_ua2x from '../../assets/images/header/flag_ua2x.png';
-import flag_nl1x from '../../assets/images/header/flag_nl1x.png';
-import flag_nl2x from '../../assets/images/header/flag_nl2x.png';
 import iPhone1x_desktop from '../../assets/images/footer/iPhone1x_desktop.png';
 import iPhone2x_desktop from '../../assets/images/footer/iPhone2x_desktop.png';
 import iPhone1x_tablet from '../../assets/images/footer/iPhone1x_tablet.png';
@@ -55,30 +49,21 @@ export const Footer = () => {
           </picture>
         </div>
         <div className="flex flex-col items-center relative">
-          <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:flex-wrap lg:gap-[163px]">
-            <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:gap-[184px] lg:mb-0">
-              <Link to="/" className="hidden md:inline-block">
-                <picture>
-                  <source
-                    media="(min-width: 1440px)"
-                    srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
-                    width="116"
-                    height="78"
-                    loading="lazy"
-                  />
-                  <img
-                    srcSet={`${logo_mobile1x} 1x, ${logo_mobile2x} 2x`}
-                    src={logo_mobile1x}
-                    alt="logotype"
-                    width="66"
-                    height="44"
-                    className="max-w-none"
-                    loading="lazy"
-                  />
-                </picture>
+          <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:gap-0">
+            <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:mb-0">
+              <Link to="/" className="hidden md:inline-block lg:hidden">
+                <img
+                  srcSet={`${logo_mobile1x} 1x, ${logo_mobile2x} 2x`}
+                  src={logo_mobile1x}
+                  alt="logotype"
+                  width="66"
+                  height="44"
+                  className="max-w-none"
+                  loading="lazy"
+                />
               </Link>
 
-              <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[14px] lg:gap-x-[100px] lg:gap-y-[32px] lg:w-[430px]">
+              <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] lg:gap-y-[40px] lg:w-[543px] lg:gap-x-[24px]">
                 <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
                   <NavLink to="/">Home</NavLink>
                 </li>
@@ -116,94 +101,19 @@ export const Footer = () => {
                 />
               </Link>
 
-              <ul className="flex gap-4">
-                <li>
-                  <img
-                    srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
-                    src={flag_eng1x}
-                    alt="Flag of England"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </li>
-                <li>
-                  <img
-                    srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
-                    src={flag_nl1x}
-                    alt="Flag of Netherland"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </li>
-                <li>
-                  <img
-                    srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
-                    src={flag_ua1x}
-                    alt="Flag of Ukraine"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </li>
-              </ul>
+              <FlagsList className="flex gap-4" />
             </div>
 
             <div className="hidden md:flex justify-between items-center md:mb-[44px] md:w-full lg:hidden">
-              <address>
-                <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic">
-                  <li className="flex items-center gap-[6px]">
-                    <Icon
-                      name="mail"
-                      className="fill-[#1e1e1e]"
-                      size="24"
-                      viewbox="24"
-                    />
-                    ukrainianhouse.maastricht@gmail.com
-                  </li>
-                  <li className="flex items-center gap-[6px]">
-                    <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
-                    Oranjeplein 96, Maastricht, Netherlands, 6224 KV
-                  </li>
-                </ul>
-              </address>
+              <Address
+                listClass="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic"
+                iconClass="fill-[#1e1e1e]"
+              />
 
-              <ul className="flex gap-4">
-                <li>
-                  <img
-                    srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
-                    src={flag_eng1x}
-                    alt="Flag of England"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </li>
-                <li>
-                  <img
-                    srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
-                    src={flag_nl1x}
-                    alt="Flag of Netherland"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </li>
-                <li>
-                  <img
-                    srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
-                    src={flag_ua1x}
-                    alt="Flag of Ukraine"
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                  />
-                </li>
-              </ul>
+              <FlagsList className="flex gap-4" />
             </div>
 
-            <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:flex-col">
+            <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:w-[697px]">
               <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
                 <a
                   className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
@@ -220,7 +130,7 @@ export const Footer = () => {
                   Let&#39;s be friends on facebook
                 </a>
               </li>
-              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
+              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[330px] lg:h-[54px]">
                 <a
                   className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                   href="https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk"
@@ -252,7 +162,7 @@ export const Footer = () => {
                   Connect us on telegram
                 </a>
               </li>
-              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
+              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[330px] lg:h-[54px]">
                 <a
                   className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
                   href="https://www.linkedin.com/company/ukrainian-house-in-maastricht/"
@@ -271,24 +181,18 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="w-full mb-[50px] md:flex md:justify-end md:mb-[36px] lg:justify-between lg:items-center lg:mb-[38px]">
-            <address className="hidden lg:block">
-              <ul className="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[20px] leading-[1.4] not-italic">
-                <li className="flex items-center gap-[6px]">
-                  <Icon
-                    name="mail"
-                    className="fill-[#1e1e1e]"
-                    size="24"
-                    viewbox="24"
-                  />
-                  ukrainianhouse.maastricht@gmail.com
-                </li>
-                <li className="flex items-center gap-[6px]">
-                  <Icon name="adress" className="fill-[#1e1e1e]" size="24" />
-                  Oranjeplein 96, Maastricht, Netherlands, 6224 KV
-                </li>
-              </ul>
-            </address>
+          <div className="w-full mb-[50px] md:flex md:justify-end md:mb-[36px] lg:justify-between lg:mb-0">
+            <Link to="/" className="hidden lg:inline-block">
+              <img
+                srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
+                src={logo_mobile1x}
+                alt="logotype"
+                width="116"
+                height="78"
+                loading="lazy"
+                className="max-w-none"
+              />
+            </Link>
 
             <div className="flex flex-col md:items-end lg:mr-[145px]">
               <p className="text-[14px] leading-[1.3] lg:text-[20px] lg:leading-[1.4] text-[#1e1e1e] mb-3 w-[325px] sm-max:w-full lg:w-[465px]">
@@ -301,39 +205,13 @@ export const Footer = () => {
               </p>
             </div>
           </div>
+          <Address
+            className="hidden lg:flex lg:w-full lg:mb-[50px]"
+            listClass="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[20px] leading-[1.4] not-italic"
+            iconClass="fill-[#1e1e1e]"
+          />
 
-          <ul className="hidden lg:flex w-full gap-4">
-            <li>
-              <img
-                srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
-                src={flag_eng1x}
-                alt="Flag of England"
-                width="40"
-                height="40"
-                loading="lazy"
-              />
-            </li>
-            <li>
-              <img
-                srcSet={`${flag_nl1x} 1x, ${flag_nl2x} 2x`}
-                src={flag_nl1x}
-                alt="Flag of Netherland"
-                width="40"
-                height="40"
-                loading="lazy"
-              />
-            </li>
-            <li>
-              <img
-                srcSet={`${flag_ua1x} 1x, ${flag_ua2x} 2x`}
-                src={flag_ua1x}
-                alt="Flag of Ukraine"
-                width="40"
-                height="40"
-                loading="lazy"
-              />
-            </li>
-          </ul>
+          <FlagsList className="hidden w-full gap-4" />
 
           <p className="flex justify-center text-center text-[#1e1e1e] md:italic text-[12px] lg:text-[16px] font-normal leading-[1.5] lg:leading-[1.25] w-[220px] md:w-full">
             &copy; 2024 Ukrainian House in Maastricht. All rights reserved.
@@ -354,7 +232,7 @@ export const Footer = () => {
               loading="lazy"
             />
             <img
-              className="absolute top-[100px] right-0 md:left-0 md:top-auto md:bottom-0 lg:left-auto lg:bottom-[30px] lg:right-0 max-w-none"
+              className="absolute top-[100px] right-0 md:left-0 md:top-auto md:bottom-0 lg:left-auto lg:bottom-[60px] lg:right-0 max-w-none"
               srcSet={`${iPhone1x_mob} 1x, ${iPhone2x_mob} 2x`}
               src={iPhone1x_mob}
               alt="Phone in hand"
