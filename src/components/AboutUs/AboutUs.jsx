@@ -1,107 +1,130 @@
-import flagImg1 from "../../assets/images/Flag@1x.png";
-import flagImg2 from "../../assets/images/Flag@2x.png";
+import { useState } from 'react';
+import { Icon } from 'components';
+export const AboutUs = () => {
+  const [isOpen, setIsOpen] = useState({
+    mission: false,
+    vision: false,
+    areas: false,
+  });
 
-const AboutUs = () => {
+  const toggleFullText = section => {
+    setIsOpen(prevState => ({
+      ...prevState,
+      [section]: !prevState[section],
+    }));
+  };
+
   return (
     <section>
       <h2
-        className="font-proza-medium
-text-[60px]
-leading-[1.3]
-text-[#222] mb-[86px]"
+        className="font-proza-medium font-[600]
+text-[20px]
+leading-[1.6]
+ mb-[24px]"
       >
         About Us
       </h2>
-      <ul>
-        <li>
+      <div className="flex flex-col gap-[34px]">
+        {' '}
+        <div className="relative">
           <h3
-            className="font-proza-semibold
-text-[36px]
-leading-[1.33333]
-text-[#ffd437]"
+            className={`text-[#223f86] font-proza-medium font-[500] text-[20px] leading-[1.2] ${
+              isOpen.mission ? 'mb-[10px]' : 'mb-0'
+            }  `}
+            onClick={() => toggleFullText('mission')}
           >
-            Who We Are?
+            Mission:
+            <Icon
+              name={`${isOpen.mission ? 'minus' : 'plus'}`}
+              size={24}
+              className="absolute top-0 right-0"
+            />
           </h3>
-          <p
-            className="font-istok text-[24px] leading-[1.42]
-text-[#222]"
+
+          <ul
+            className={`custom-list ml-[18px] 
+             transition-all duration-500 ease-in-out  ${
+               isOpen.mission
+                 ? 'max-h-screen opacity-100'
+                 : 'max-h-0 opacity-0 transition-delay-500'
+             } `}
           >
-            We are a passionate{" "}
-            <span className="text-[#2355cc] font-[700]">community</span>{" "}
-            dedicated to preserving and promoting the rich heritage and
-            traditions of Ukraine.
-            <br />
-            With a vision of bridging cultures and building connections, we
-            strive to be a beacon of Ukrainian{" "}
-            <span className="text-[#2355cc] font-[700]">
-              culture and identity
-            </span>{" "}
-            in the heart of Limburg.
-          </p>
-        </li>
-        <li>
+            <li className="relative">To preserve the national identity;</li>
+            <li className="relative">Uniting Ukrainians;</li>
+            <li className="relative">
+              Create an ecosystem that helps them adapt to their new
+              environment;
+            </li>
+            <li className="relative">
+              Promote Ukrainian traditions and conduct cultural dialogues with
+              the Dutch;
+            </li>
+            <li className="relative">
+              Defending Ukraine&#39;s democratic values and interests.
+            </li>
+          </ul>
+        </div>
+        <div className="relative">
           <h3
-            className="font-proza-semibold
-text-[36px]
-leading-[1.33333]
-text-[#ffd437]"
+            className={`text-[#223f86] font-proza-medium font-[500] text-[20px] leading-[1.2] ${
+              isOpen.vision ? 'mb-[10px]' : 'mb-0'
+            }  `}
+            onClick={() => toggleFullText('vision')}
           >
-            What We Do?
+            Vision:{' '}
+            <Icon
+              name={`${isOpen.vision ? 'minus' : 'plus'}`}
+              size={24}
+              className="absolute top-0 right-0"
+            />
           </h3>
+
           <p
-            className="font-istok text-[24px] leading-[1.42]
-text-[#222]"
+            className={`
+             transition-all duration-500 ease-in-out  ${
+               isOpen.vision
+                 ? 'max-h-screen opacity-100'
+                 : 'max-h-0 opacity-0 transition-delay-500'
+             } `}
           >
-            We organize cultural events, language classes, and community
-            initiatives to bring people together and foster a deeper
-            understanding and appreciation of{" "}
-            <span className="text-[#2355cc] font-[700]">
-              Ukrainian culture.
-            </span>
-            <br />
-            From concerts and performances to workshops and discussions,
-            there&#39;s always something exciting happening at our center.
+            We aim for the Ukrainian House in Maastricht to become a source of
+            inspiration and support for Ukrainians in the Netherlands,
+            contributing to their adaptation and preserving their cultural
+            heritage.
           </p>
-        </li>
-        <li>
+        </div>
+        <div className="relative">
           <h3
-            className="font-proza-semibold
-text-[36px]
-leading-[1.33333]
-text-[#ffd437]"
+            className={`text-[#223f86] font-proza-medium font-[500] text-[20px] leading-[1.2] ${
+              isOpen.areas ? 'mb-[10px]' : 'mb-0'
+            }  `}
+            onClick={() => toggleFullText('areas')}
           >
-            Why We Do?
+            Areas of Activity:{' '}
+            <Icon
+              name={`${isOpen.areas ? 'minus' : 'plus'}`}
+              size={24}
+              className="absolute top-0 right-0"
+            />
           </h3>
-          <p
-            className="font-istok text-[24px] leading-[1.42]
-text-[#222]"
+
+          <ul
+            className={`custom-list  ml-[18px] mb-[34px] marker:text-[40px]"
+             transition-all duration-500 ease-in-out  ${
+               isOpen.areas
+                 ? 'max-h-screen opacity-100'
+                 : 'max-h-0 opacity-0 transition-delay-500'
+             } `}
           >
-            During challenging times like the ongoing war in Ukraine, we firmly
-            believe in the unifying power of culture.
-            <br />
-            <span className="text-[#2355cc] font-[700]">Our mission</span> is to
-            preserve and share Ukrainian culture, language, and values while
-            fostering a sense of community among Ukrainians in Maastricht and
-            Limburg.
-            <br />
-            Through our efforts, we aim to build bridges and foster connections.
-            Together, we&#39;re striving{" "}
-            <span className="text-[#2355cc] font-[700]">
-              to create a world where everyone feels valued and included.
-            </span>
-          </p>
-        </li>
-      </ul>
-      <picture>
-        <source srcSet={`${flagImg1} 1x, ${flagImg2} 2x`} type="image/png" />
-        <img
-          className="w-[546px] h-[546px]"
-          src={flagImg1}
-          alt="Photo of man with ukrainian flag"
-        />
-      </picture>
+            <li className="relative">Information Support;</li>
+            <li className="relative">Language Courses;</li>
+            <li className="relative">Cultural Events;</li>
+            <li className="relative">Educational Programmes;</li>
+            <li className="relative">Community Gatherings;</li>
+            <li className="relative">Intercultural Projects.</li>
+          </ul>
+        </div>
+      </div>
     </section>
   );
 };
-
-export default AboutUs;

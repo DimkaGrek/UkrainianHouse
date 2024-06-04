@@ -124,3 +124,11 @@
     scrollbar-color: #a6cae5 #daefff;
   }
 }
+
+.custom-list li::before {
+  content: '•';
+  position: absolute;
+  left: -18px;
+  top: -3px;
+  font-size: 20px;
+}
