@@ -2,12 +2,6 @@ import { NavLink, Link } from 'react-router-dom';
 import { useModal } from '../../hooks';
 import { Icon, Modal, Developers, Address, FlagsList } from '../../components';
 
-import tape_1x_mob from '../../assets/images/footer/tape_1x_mob.jpg';
-import tape_2x_mob from '../../assets/images/footer/tape_2x_mob.jpg';
-import tape_1x_tablet from '../../assets/images/footer/tape_1x_tablet.jpg';
-import tape_2x_tablet from '../../assets/images/footer/tape_2x_tablet.jpg';
-import tape_1x_desktop from '../../assets/images/footer/tape_1x_desktop.jpg';
-import tape_2x_desktop from '../../assets/images/footer/tape_2x_desktop.jpg';
 import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
 import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
 import logo_mobile1x from '../../assets/images/footer/logo_mobile1x.png';
@@ -23,32 +17,8 @@ export const Footer = () => {
   const [isOpenDevelopersModal, toggleDevelopersModal] = useModal();
   return (
     <>
-      <footer className="container pb-[32px] lg:pb-[84px]">
-        <div className="mb-[58px] mb:mb-[34px] lg:mb-[76px]">
-          <picture>
-            <source
-              media="(min-width: 1440px)"
-              srcSet={`${tape_1x_desktop} 1x, ${tape_2x_desktop} 2x`}
-              height="76"
-              loading="lazy"
-            />
-            <source
-              media="(min-width: 768px)"
-              srcSet={`${tape_1x_tablet} 1x, ${tape_2x_tablet} 2x`}
-              height="76"
-              loading="lazy"
-            />
-            <img
-              srcSet={`${tape_1x_mob} 1x, ${tape_2x_mob} 2x`}
-              src={tape_1x_mob}
-              alt="Tape with text"
-              height="76"
-              loading="lazy"
-              className="max-w-none w-full"
-            />
-          </picture>
-        </div>
-        <div className="flex flex-col items-center relative">
+      <footer className="container pt-[25vw] md:pt-[15vw] lg:pt-[9vw] pb-[32px] lg:pb-[84px]">
+        <div className="link-wrapper relative flex flex-col items-center">
           <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:gap-0">
             <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:mb-0">
               <Link to="/" className="hidden md:inline-block lg:hidden">
