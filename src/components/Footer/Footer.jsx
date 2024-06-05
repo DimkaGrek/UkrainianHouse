@@ -214,7 +214,7 @@ export const Footer = () => {
         </div>
       </footer>
       {isOpenDevelopersModal && (
-        <Modal bg="white" toggleModal={toggleDevelopersModal}>
+        <Modal className="bg-white" toggleModal={toggleDevelopersModal}>
           <Developers />
         </Modal>
       )}
