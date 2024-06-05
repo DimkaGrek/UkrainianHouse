@@ -201,6 +201,21 @@ export const Icon = ({ name, className, size, viewbox }) => {
           <path d="M16 20.499l-8-8 1.867-1.867 6.133 6.133 6.133-6.133 1.867 1.867-8 8z"></path>
         </Svg>
       );
+    case 'minus':
+      return (
+        <Svg className={className} size={size}>
+          <path d="M5 13V11H19V13H5Z" fill="#1E1E1E"></path>
+        </Svg>
+      );
+    case 'plus':
+      return (
+        <Svg className={className} size={size}>
+          <path
+            d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z"
+            fill="#1E1E1E"
+          ></path>
+        </Svg>
+      );
     default:
       return (
         <svg

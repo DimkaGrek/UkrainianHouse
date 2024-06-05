@@ -1,4 +1,4 @@
-const NewsDigest = () => {
+export const NewsDigest = () => {
   return (
     <section>
       HERE ARE OUR NEWS
@@ -12,5 +12,3 @@ const NewsDigest = () => {
     </section>
   );
 };
-
-export default NewsDigest;

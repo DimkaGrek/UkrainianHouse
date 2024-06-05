@@ -25,3 +25,7 @@ export * from './StatusField/StatusField.jsx';
 export * from './Developers/Developers.jsx';
 export * from './Address/Address.jsx';
 export * from './FlagsList/FlagsList.jsx';
+export * from './Activities/Activities.jsx';
+export * from './Hero/Hero.jsx';
+export * from './AboutUs/AboutUs.jsx';
+export * from './NewsDigest/NewsDigest.jsx';

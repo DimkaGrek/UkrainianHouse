@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
-import AboutUs from '../../components/AboutUs/AboutUs';
-import Activities from '../../components/Activities/Activities';
-import Hero from '../../components/Hero/Hero';
-import NewsDigest from '../../components/NewsDigest/NewsDigest';
+import { Hero, Activities, AboutUs, NewsDigest } from '../../components';
 import { useDispatch } from 'react-redux';
 import { fetchAllNews } from '../../my-redux/News/newsOperations';
 
