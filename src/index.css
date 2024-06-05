@@ -140,7 +140,7 @@
   background-position: center;
   background-size: 100%;
 }
-@media screen and (min-resolution: 192dpi),
+@media screen and (min-resolution: 1.5dppx),
   screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::before {
     background-image: url('./assets/images/contacts/contacts_mobile2x.png');
@@ -167,7 +167,7 @@
   background-position: center;
   background-size: 100%;
 }
-@media screen and (min-resolution: 192dpi),
+@media screen and (min-resolution: 1.5dppx),
   screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::after {
     background-image: url('./assets/images/contacts/contacts_2_mobile2x.png');
@@ -176,11 +176,12 @@
 
 @media screen and (min-width: 768px) {
   .contacts-form-wrapper::after {
-    bottom: -19vw;
+    height: 10vw;
+    bottom: -15vw;
     background-image: url('./assets/images/contacts/contacts_2_tablet1x.png');
   }
 
-  @media screen and (min-resolution: 192dpi),
+  @media screen and (min-resolution: 1.5dppx),
     screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
       background-image: url('./assets/images/contacts/contacts_2_tablet2x.png');
@@ -190,11 +191,12 @@
 
 @media screen and (min-width: 1440px) {
   .contacts-form-wrapper::after {
-    bottom: -16vw;
+    height: 8vw;
+    bottom: -11vw;
     background-image: url('./assets/images/contacts/contacts_2_desktop1x.png');
   }
 
-  @media screen and (min-resolution: 192dpi),
+  @media screen and (min-resolution: 1.5dppx),
     screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
       background-image: url('./assets/images/contacts/contacts_2_desktop2x.png');
@@ -202,7 +204,7 @@
   }
 }
 /* ------------------------------------- */
-.link-wrapper::after {
+.link-wrapper::before {
   content: '';
   position: absolute;
   top: -25vw;
@@ -217,36 +219,37 @@
   background-position: center;
   background-size: 100%;
 }
-@media screen and (min-resolution: 192dpi),
+@media screen and (min-resolution: 1.5dppx),
   screen and (min-device-pixel-ratio: 2) {
-  .link-wrapper::after {
+  .link-wrapper::before {
     background-image: url('./assets/images/footer/tape_2x_mob.jpg');
   }
 }
 
 @media screen and (min-width: 768px) {
-  .link-wrapper::after {
-    top: -15vw;
+  .link-wrapper::before {
+    top: -11vw;
+    height: 4vw;
     background-image: url('./assets/images/footer/tape_1x_tablet.jpg');
   }
 
-  @media screen and (min-resolution: 192dpi),
+  @media screen and (min-resolution: 1.5dppx),
     screen and (min-device-pixel-ratio: 2) {
-    .link-wrapper::after {
+    .link-wrapper::before {
       background-image: url('./assets/images/footer/tape_2x_tablet.jpg');
     }
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .link-wrapper::after {
-    top: -12vw;
+  .link-wrapper::before {
+    top: -8vw;
     background-image: url('./assets/images/footer/tape_1x_desktop.jpg');
   }
 
-  @media screen and (min-resolution: 192dpi),
+  @media screen and (min-resolution: 1.5dppx),
     screen and (min-device-pixel-ratio: 2) {
-    .link-wrapper::after {
+    .link-wrapper::before {
       background-image: url('./assets/images/footer/tape_2x_desktop.jpg');
     }
   }
