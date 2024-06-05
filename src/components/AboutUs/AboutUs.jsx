@@ -20,7 +20,7 @@ export const AboutUs = () => {
         className="font-proza-medium font-[600]
 text-[20px]
 leading-[1.6]
- mb-[24px]"
+ mb-[24px] md:mb-[34px]"
       >
         About Us
       </h2>
