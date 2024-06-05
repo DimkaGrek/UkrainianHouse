@@ -27,7 +27,7 @@ export const NewsDetails = ({
         />
       </div>
 
-      {photoUrls?.length && (
+      {photoUrls?.length ? (
         <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:order-2 ">
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto md:w-auto lg:w-auto">
@@ -41,7 +41,7 @@ export const NewsDetails = ({
             </li>
           ))}
         </ul>
-      )}
+      ) : null}
 
       <ReadMoreButton className="lg:hidden" caption={btnText} link={btnLink} />
     </div>

@@ -14,7 +14,7 @@ export const NewsListItem = ({ item }) => {
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px]">
           <img
             className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] group-focus:scale-[1.05] group-active::scale-[1.05] transition duration-300"
-            src={item.photoUrls[0].photoUrls}
+            src={item.photoUrls[0] ? item.photoUrls[0].photoUrls : ''}
             alt="News"
             width={306}
             height={209}
@@ -38,7 +38,10 @@ export const NewsListItem = ({ item }) => {
         </div>
       </li>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal} className="news-modal" bg="white">
+        <Modal
+          toggleModal={toggleModal}
+          className="py-[58px] pl-[20px] pr-[10px]  md:py-[58px] md:pl-[40px] md:pr-[25px] bg-white"
+        >
           {' '}
           <NewsDetails {...item} />
         </Modal>
