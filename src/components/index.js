@@ -29,3 +29,5 @@ export * from './Activities/Activities.jsx';
 export * from './Hero/Hero.jsx';
 export * from './AboutUs/AboutUs.jsx';
 export * from './NewsDigest/NewsDigest.jsx';
+export * from './GetInvolved/GetInvolved.jsx';
+export * from './PartnersSlider/PartnersSlider.jsx';

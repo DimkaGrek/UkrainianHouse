@@ -262,3 +262,17 @@
   top: -3px;
   font-size: 20px;
 }
+@media screen and (min-width: 1440px) {
+  .custom-list li::before {
+    top: 3px;
+  }
+}
+/* Styles carousel */
+
+.carousel-list {
+  gap: 10px !important;
+}
+
+.carousel-item {
+  width: 122px !important;
+}
