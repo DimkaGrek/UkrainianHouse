@@ -19,6 +19,8 @@ default - yellow hurt
 13 - 'linkedin'
 14 - 'light-theme'
 15 - 'dark-theme'
+16 - 'minus'
+17 - 'plus'
 */
 
 export const Icon = ({ name, className, size, viewbox }) => {

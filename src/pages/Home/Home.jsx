@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Hero, Activities, AboutUs, NewsDigest } from '../../components';
+import { Hero, GetInvolved, AboutUs, NewsDigest } from '../../components';
 import { useDispatch } from 'react-redux';
 import { fetchAllNews } from '../../my-redux/News/newsOperations';
 
@@ -10,12 +10,12 @@ const Home = () => {
     dispatch(fetchAllNews({ status: 'published', page: 1, limit: 3 }));
   }, [dispatch]);
   return (
-    <main>
+    <div className="bg-[url('assets/images/home/BgImg_mobile.png')] bg-no-repeat bg-contain  md:bg-[url('assets/images/home/BgImg_tablet.png')] lg:bg-[url('assets/images/home/BgImg_desktop.png')]">
       <Hero />
       <NewsDigest />
       <AboutUs />
-      <Activities />
-    </main>
+      <GetInvolved />
+    </div>
   );
 };
 
