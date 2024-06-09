@@ -2,9 +2,11 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import { getPartnersLogos } from '../../helpers';
-
 export const PartnersSlider = () => {
   const partnersLogos = getPartnersLogos();
+  // const duplicatedLogos = [
+  //   ...partnersLogos,
+  // ];
 
   return (
     <Carousel
@@ -12,41 +14,41 @@ export const PartnersSlider = () => {
       arrows={false}
       autoPlay
       autoPlaySpeed={1000}
-      itemClass="carousel-item"
+      centerMode={false}
+      itemClass="carousel_item_custom"
       customTransition="all 5s linear"
       focusOnSelect={false}
-      infinite
-      centerMode={false}
-      //   renderArrowsWhenDisabled={false}
-      //   renderButtonGroupOutside={false}
-      //   renderDotsOutside={false}
+      infinite={true}
+      renderArrowsWhenDisabled={false}
+      renderButtonGroupOutside={false}
+      renderDotsOutside={false}
       responsive={{
         desktop: {
           breakpoint: {
             max: 3000,
             min: 1440,
           },
-          items: 3,
-          //   partialVisibilityGutter: 40,
+          items: 5,
+          // partialVisibilityGutter: 40,
         },
         tablet: {
           breakpoint: {
-            max: 1439.99,
+            max: 1440,
             min: 768,
           },
           items: 5,
-          //   partialVisibilityGutter: 100,
+          // partialVisibilityGutter: 100,
         },
       }}
       rewind={false}
       rewindWithAnimation={false}
       rtl={true}
-      //   shouldResetAutoplay
+      shouldResetAutoplay
       showDots={false}
-      sliderClass="carousel-list"
+      sliderClass="carousel_list_custom"
       slidesToSlide={1}
       swipeable
-      transitionDuration={1}
+      transitionDuration={500}
     >
       {partnersLogos.map(({ logos }, index) => (
         <div

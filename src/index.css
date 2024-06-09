@@ -269,10 +269,10 @@
 }
 /* Styles carousel */
 
-.carousel-list {
+.carousel_list_custom {
   gap: 10px !important;
 }
 
-.carousel-item {
+.carousel_item_custom {
   width: 122px !important;
 }
