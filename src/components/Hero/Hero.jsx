@@ -21,7 +21,7 @@ import flagImg6 from '../../assets/images/home/ManwithFlag@2x_desktop.png';
 
 export const Hero = () => {
   return (
-    <section className="md:mb-[80px] ">
+    <section className="md:mb-[80px] mb-[34px] lg:mb-[74px]  ">
       <div className="flex flex-col gap-[16px] md:block md:mb-[40px] lg:mb-[57px] ">
         <picture>
           <source
@@ -82,7 +82,7 @@ export const Hero = () => {
           </div>
           <Link
             to="https://www.facebook.com/ua.maastricht"
-            className=" md:hidden mb-[34px] text-[16px] font-[700] leading-[1.5] h-[44px] w-full flex items-center justify-center gap-[8px] border-[1px] border-[#1e1e1e] rounded-[10px] hover:bg-[#ffd437]  focus:bg-[#ffd437] transition duration-300"
+            className=" md:hidden  text-[16px] font-[700] leading-[1.5] h-[44px] w-full flex items-center justify-center gap-[8px] border-[1px] border-[#1e1e1e] rounded-[10px] hover:bg-[#ffd437]  focus:bg-[#ffd437] transition duration-300"
             target="_blank"
             aria-label="Link to Facebook"
           >
