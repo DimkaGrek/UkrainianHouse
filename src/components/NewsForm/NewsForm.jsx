@@ -72,29 +72,33 @@ export const NewsForm = ({ toggle }) => {
       toast.warn(`You cannot upload more than three images`);
     }
 
+    setSelectedImages(prevImages => {
+      const newImages = [...prevImages];
+
+      selectedFiles.forEach(file => {
+        const index = newImages.indexOf(0);
+        if (index !== -1) {
+          newImages[index] = file;
+        }
+      });
+      return newImages;
+    });
+
+    e.target.value = null;
+  };
+
+  const handleResizeImages = async images => {
     try {
-      const resizedImagesPromises = selectedFiles.map(file =>
+      const resizedImagesPromises = images.map(file =>
         getFileResizer(file, 600, 400)
       );
 
       const resizedImages = await Promise.all(resizedImagesPromises);
-      console.log(resizedImages);
 
-      setSelectedImages(prevImages => {
-        const newImages = [...prevImages];
-        selectedFiles.forEach(file => {
-          const index = newImages.indexOf(0);
-          if (index !== -1) {
-            newImages[index] = file;
-          }
-        });
-        return newImages;
-      });
+      return resizedImages;
     } catch (error) {
-      console.error(error);
+      return false;
     }
-
-    e.target.value = null;
   };
 
   const handleDeleteImage = image => {
@@ -118,15 +122,21 @@ export const NewsForm = ({ toggle }) => {
     setValue('publishDate', date, { shouldValidate: true });
   };
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     if (!hasNonZeroElement) {
       setImageError(true);
       return;
     }
 
-    console.log(data.status);
+    const resizedImages = await handleResizeImages(
+      selectedImages.filter(image => image !== 0)
+    );
 
-    const fd = getFromattedData(selectedImages, 'photos', data, 'news');
+    if (!resizedImages) {
+      return toast.error('Error while resizing images');
+    }
+
+    const fd = getFromattedData(resizedImages, 'photos', data, 'news');
     dispatch(createNews(fd));
 
     setSelectedImages(new Array(3).fill(0));
