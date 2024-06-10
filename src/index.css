@@ -82,6 +82,12 @@
   font-display: swap;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .primaryBtn {
   @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-my-black5 rounded-[10px] hover:bg-my-yellow;
 }
