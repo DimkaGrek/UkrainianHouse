@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
@@ -9,10 +10,10 @@ import { StatusField } from '../StatusField/StatusField';
 
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
-import { getFromattedData } from '../../helpers/getFromattedData';
 import { bookStatuses } from '../../constants';
 import { bookFormSchema } from '../../schemas';
 import { createBook } from '../../my-redux/Books/operations';
+import { getFileResizer, getFromattedData } from '../../helpers';
 
 export const BookForm = ({ toggle }) => {
   const filePicker = useRef(null);
@@ -61,13 +62,29 @@ export const BookForm = ({ toggle }) => {
     filePicker.current.click();
   };
 
-  const onSubmit = data => {
+  const handleResizeCover = async cover => {
+    try {
+      const resizedImages = await getFileResizer(cover, 385, 622);
+
+      return resizedImages;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const onSubmit = async data => {
     if (!selectedCover) {
       setCoverError(true);
       return;
     }
 
-    const fd = getFromattedData(selectedCover, 'cover', data, 'book');
+    const resizedCover = await handleResizeCover(selectedCover);
+
+    if (!resizedCover) {
+      return toast.error('Error while resizing cover');
+    }
+
+    const fd = getFromattedData(resizedCover, 'cover', data, 'book');
     dispatch(createBook(fd));
 
     setSelectedCover(null);
