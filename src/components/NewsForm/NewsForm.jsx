@@ -1,21 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import DatePicker from 'react-datepicker';
 import { LuCalendar } from 'react-icons/lu';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
 import { StatusField } from '../StatusField/StatusField';
 
-import { getFromattedData } from '../../helpers/getFromattedData';
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
-import 'react-datepicker/dist/react-datepicker.css';
 import { newsStatuses } from '../../constants';
 import { newsFormSchema } from '../../schemas';
 import { createNews } from '../../my-redux';
+import { getFileResizer, getFromattedData } from '../../helpers';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const NewsForm = ({ toggle }) => {
   const filePicker = useRef(null);
@@ -49,19 +50,49 @@ export const NewsForm = ({ toggle }) => {
     }
   }, [imageError, hasNonZeroElement]);
 
-  const selectFiles = e => {
+  const selectFiles = async e => {
     let selectedFiles = Array.from(e.target.files);
 
-    setSelectedImages(prevImages => {
-      const newImages = [...prevImages];
-      selectedFiles.forEach(file => {
-        const index = newImages.indexOf(0);
-        if (index !== -1) {
-          newImages[index] = file;
-        }
-      });
-      return newImages;
+    // Check for duplicates in selectedImages and remove them from selectedFiles
+    selectedFiles = selectedFiles.filter(file => {
+      const isDuplicate = selectedImages.some(
+        image => image.name === file.name
+      );
+      if (isDuplicate) {
+        toast.warn(
+          `The image "${file.name}" cannot be added as it is already present`
+        );
+      }
+      return !isDuplicate;
     });
+
+    // Check the remaining slots after removing duplicates
+    const maxImagesToAdd = selectedImages.filter(image => image === 0).length;
+    if (selectedFiles.length > maxImagesToAdd) {
+      toast.warn(`You cannot upload more than three images`);
+    }
+
+    try {
+      const resizedImagesPromises = selectedFiles.map(file =>
+        getFileResizer(file, 600, 400)
+      );
+
+      const resizedImages = await Promise.all(resizedImagesPromises);
+      console.log(resizedImages);
+
+      setSelectedImages(prevImages => {
+        const newImages = [...prevImages];
+        selectedFiles.forEach(file => {
+          const index = newImages.indexOf(0);
+          if (index !== -1) {
+            newImages[index] = file;
+          }
+        });
+        return newImages;
+      });
+    } catch (error) {
+      console.error(error);
+    }
 
     e.target.value = null;
   };
