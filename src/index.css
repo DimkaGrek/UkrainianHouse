@@ -89,7 +89,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .primaryBtn {
-  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-my-black5 rounded-[10px] hover:bg-my-yellow;
+  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-my-black5 rounded-[10px] hover:bg-my-yellow hover:transition-all;
 }
 
 .label {
@@ -107,6 +107,7 @@ input[type='number']::-webkit-outer-spin-button {
 .active {
   @apply border-b-2 border-[#2355cc] text-[#2355cc];
 }
+
 .scrollbar {
   overflow: auto;
   -webkit-overflow-scrolling: touch;

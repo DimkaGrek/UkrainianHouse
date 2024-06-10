@@ -65,7 +65,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
                 <li
                   key={index}
                   onClick={() => handleChangeStatus(option)}
-                  className={`w-full p-[10px] cursor-pointer hover:bg-my-yellow rounded-[10px] ${
+                  className={`w-full p-[10px] cursor-pointer hover:bg-my-yellow rounded-[10px] hover:transition-all ${
                     option === value ? 'bg-yellow-200' : ''
                   }`}
                 >
