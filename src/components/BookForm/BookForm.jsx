@@ -80,15 +80,13 @@ export const BookForm = ({ toggle }) => {
       <div className="flex flex-row gap-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-6">
-            <div>
-              <InputField
-                label="Book Title"
-                name="title"
-                placeholder="Enter the book title"
-                register={register}
-              />
-              <p className="field-error">{errors['title']?.message}</p>
-            </div>
+            <InputField
+              label="Book Title"
+              name="title"
+              placeholder="Enter the book title"
+              register={register}
+              errors={errors}
+            />
             <div>
               <label className="label">
                 Book Description:
@@ -102,40 +100,33 @@ export const BookForm = ({ toggle }) => {
               <p className="field-error">{errors['description']?.message}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <InputField
-                  label="Amount of pages"
-                  name="pageCount"
-                  type="number"
-                  placeholder="Amount pages"
-                  register={register}
-                />
-                <p className="field-error">{errors['pageCount']?.message}</p>
-              </div>
-              <div>
-                <InputField
-                  label="Year of publishing"
-                  name="publicationYear"
-                  type="number"
-                  placeholder="Year of publishing"
-                  register={register}
-                />
-                <p className="field-error">
-                  {errors['publicationYear']?.message}
-                </p>
-              </div>
+              <InputField
+                label="Amount of pages"
+                name="pageCount"
+                type="number"
+                placeholder="Amount pages"
+                register={register}
+                errors={errors}
+              />
+
+              <InputField
+                label="Year of publishing"
+                name="publicationYear"
+                type="number"
+                placeholder="Year of publishing"
+                register={register}
+                errors={errors}
+              />
             </div>
           </div>
           <div className="flex flex-col gap-6">
-            <div>
-              <InputField
-                label="Author"
-                name="author"
-                placeholder="Enter the author"
-                register={register}
-              />
-              <p className="field-error">{errors['author']?.message}</p>
-            </div>
+            <InputField
+              label="Author"
+              name="author"
+              placeholder="Enter the author"
+              register={register}
+              errors={errors}
+            />
             <div>
               <label className="label">
                 About the author:
@@ -149,25 +140,21 @@ export const BookForm = ({ toggle }) => {
               <p className="field-error">{errors['aboutAuthor']?.message}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <InputField
-                  label="Genre"
-                  name="genre"
-                  placeholder="Enter the genre"
-                  register={register}
-                />
-                <p className="field-error">{errors['genre']?.message}</p>
-              </div>
-              <div>
-                <InputField
-                  label="Quantity"
-                  name="quantity"
-                  type="number"
-                  placeholder="Enter the quantity"
-                  register={register}
-                />
-                <p className="field-error">{errors['quantity']?.message}</p>
-              </div>
+              <InputField
+                label="Genre"
+                name="genre"
+                placeholder="Enter the genre"
+                register={register}
+                errors={errors}
+              />
+              <InputField
+                label="Quantity"
+                name="quantity"
+                type="number"
+                placeholder="Enter the quantity"
+                register={register}
+                errors={errors}
+              />
             </div>
           </div>
         </div>

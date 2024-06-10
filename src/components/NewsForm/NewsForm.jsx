@@ -106,15 +106,13 @@ export const NewsForm = ({ toggle }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">
-        <div>
-          <InputField
-            label="Article Title"
-            name="title"
-            placeholder="Enter the article title"
-            register={register}
-          />
-          <p className="field-error">{errors['title']?.message}</p>
-        </div>
+        <InputField
+          label="Article Title"
+          name="title"
+          placeholder="Enter the article title"
+          register={register}
+          errors={errors}
+        />
         <div className="flex gap-4">
           <div className="flex-1">
             <StatusField
@@ -165,25 +163,21 @@ export const NewsForm = ({ toggle }) => {
         <p className="field-error">{errors['content']?.message}</p>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <div>
-          <InputField
-            label="Button Text"
-            name="btnText"
-            placeholder="Enter the button text"
-            register={register}
-            defaultValue="Read more"
-          />
-          <p className="field-error">{errors['btnText']?.message}</p>
-        </div>
-        <div>
-          <InputField
-            label="Button Link "
-            name="btnLink"
-            placeholder="https//www..."
-            register={register}
-          />
-          <p className="field-error">{errors['btnLink']?.message}</p>
-        </div>
+        <InputField
+          label="Button Text"
+          name="btnText"
+          placeholder="Enter the button text"
+          register={register}
+          defaultValue="Read more"
+          errors={errors}
+        />
+        <InputField
+          label="Button Link"
+          name="btnLink"
+          placeholder="https//www..."
+          register={register}
+          errors={errors}
+        />
       </div>
       <div className="flex flex-col gap-6 items-start relative">
         <input
