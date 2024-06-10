@@ -62,6 +62,8 @@ export const NewsForm = ({ toggle }) => {
       });
       return newImages;
     });
+
+    e.target.value = null;
   };
 
   const handleDeleteImage = image => {

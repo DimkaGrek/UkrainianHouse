@@ -44,6 +44,8 @@ export const BookForm = ({ toggle }) => {
 
   const selectFiles = e => {
     setSelectedCover(e.target.files[0]);
+
+    e.target.value = null;
   };
 
   const handleDeleteImage = () => {
