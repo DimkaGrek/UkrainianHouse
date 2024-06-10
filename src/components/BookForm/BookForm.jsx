@@ -33,6 +33,10 @@ export const BookForm = ({ toggle }) => {
   });
 
   useEffect(() => {
+    setValue('status', bookStatuses[0]);
+  }, [setValue]);
+
+  useEffect(() => {
     if (coverError && selectedCover) {
       setCoverError(false);
     }

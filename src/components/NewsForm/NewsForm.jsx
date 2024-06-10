@@ -40,6 +40,7 @@ export const NewsForm = ({ toggle }) => {
 
   useEffect(() => {
     setValue('publishDate', new Date());
+    setValue('status', newsStatuses[0]);
   }, [setValue]);
 
   useEffect(() => {
@@ -89,6 +90,8 @@ export const NewsForm = ({ toggle }) => {
       setImageError(true);
       return;
     }
+
+    console.log(data.status);
 
     const fd = getFromattedData(selectedImages, 'photos', data, 'news');
     dispatch(createNews(fd));

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+
+import { getCapitalizedWord } from '../../helpers';
 
 export const StatusField = ({ statuses, setStatus, status }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(status);
+  const [value, setValue] = useState(getCapitalizedWord(status));
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
   }, []);
 
   const handleChangeStatus = status => {
-    setValue(status);
+    setValue(getCapitalizedWord(status));
     setStatus(status);
     setIsOpen(false);
   };
@@ -57,7 +58,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
         </span>
       </div>
       {isOpen && (
-        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-[#f0f0f0] p-[2px] max-h-[218px] overflow-scroll">
+        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-white p-[2px] max-h-[218px] overflow-scroll shadow-sm">
           <ul className="font-istok font-normal text-[20px] leading-[24px] w-full flex flex-col gap-[2px]">
             {statuses &&
               statuses.map((option, index) => (
@@ -68,7 +69,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
                     option === value ? 'bg-yellow-200' : ''
                   }`}
                 >
-                  {option}
+                  {getCapitalizedWord(option)}
                 </li>
               ))}
           </ul>
