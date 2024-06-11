@@ -108,7 +108,7 @@ export const BookForm = ({ toggle }) => {
             />
             <div>
               <label className="label">
-                Book Description:
+                Book Description
                 <textarea
                   className="field resize-none overflow-auto h-[172px] w-[400px]"
                   type="text"
@@ -148,7 +148,7 @@ export const BookForm = ({ toggle }) => {
             />
             <div>
               <label className="label">
-                About the author:
+                About the author
                 <textarea
                   className="field resize-none overflow-auto h-[172px] w-[400px]"
                   type="text"
@@ -195,13 +195,13 @@ export const BookForm = ({ toggle }) => {
             {!selectedCover ? (
               <picture
                 onClick={handlePick}
-                className="w-fit rounded-[10px] bg-white flex justify-center items-center h-[280px] cursor-pointer"
+                className="w-fit rounded-[10px] bg-white flex justify-center items-center h-[280px] cursor-pointer shadow-md"
               >
                 <source
                   srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
                   type="image/png"
                 />
-                <img width={220} height={119} src={newsImg1} alt="upload img" />
+                <img width={205} height={119} src={newsImg1} alt="upload img" />
               </picture>
             ) : (
               <div className="relative rounded-[10px] shadow-md">
