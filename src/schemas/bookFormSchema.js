@@ -22,6 +22,7 @@ export const bookFormSchema = yup.object().shape({
   pageCount: yup
     .number()
     .typeError('Amount of pages is required')
+    .integer('Amount of pages must be an integer')
     .min(1, 'Amount of pages should be at least 1'),
   publicationYear: yup
     .number()
@@ -39,5 +40,9 @@ export const bookFormSchema = yup.object().shape({
     .required('Genre is required')
     .min(3, 'Genre should be at least 5 letters')
     .max(25, 'Genre must not exceed 80 letters'),
-  quantity: yup.number().typeError('Quantity is required'),
+  quantity: yup
+    .number()
+    .typeError('Quantity is required')
+    .integer('Quantity must be an integer')
+    .min(0, 'Quantity cannot be negative'),
 });

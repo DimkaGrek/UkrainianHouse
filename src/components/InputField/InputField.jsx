@@ -15,7 +15,6 @@ export const InputField = ({
     defaultValue,
     ...register(name),
     autoComplete,
-    ...(type === 'number' ? { min: '0' } : {}),
   };
 
   const errorMessage = errors[name]?.message;
