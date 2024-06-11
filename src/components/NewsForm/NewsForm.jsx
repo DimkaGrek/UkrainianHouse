@@ -1,21 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import DatePicker from 'react-datepicker';
 import { LuCalendar } from 'react-icons/lu';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
 import { StatusField } from '../StatusField/StatusField';
 
-import { getFromattedData } from '../../helpers/getFromattedData';
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
-import 'react-datepicker/dist/react-datepicker.css';
 import { newsStatuses } from '../../constants';
 import { newsFormSchema } from '../../schemas';
 import { createNews } from '../../my-redux';
+import { getFileResizer, getFromattedData } from '../../helpers';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const NewsForm = ({ toggle }) => {
   const filePicker = useRef(null);
@@ -40,6 +41,7 @@ export const NewsForm = ({ toggle }) => {
 
   useEffect(() => {
     setValue('publishDate', new Date());
+    setValue('status', newsStatuses[0]);
   }, [setValue]);
 
   useEffect(() => {
@@ -48,11 +50,31 @@ export const NewsForm = ({ toggle }) => {
     }
   }, [imageError, hasNonZeroElement]);
 
-  const selectFiles = e => {
+  const selectFiles = async e => {
     let selectedFiles = Array.from(e.target.files);
+
+    // Check for duplicates in selectedImages and remove them from selectedFiles
+    selectedFiles = selectedFiles.filter(file => {
+      const isDuplicate = selectedImages.some(
+        image => image.name === file.name
+      );
+      if (isDuplicate) {
+        toast.warn(
+          `The image "${file.name}" cannot be added as it is already present`
+        );
+      }
+      return !isDuplicate;
+    });
+
+    // Check the remaining slots after removing duplicates
+    const maxImagesToAdd = selectedImages.filter(image => image === 0).length;
+    if (selectedFiles.length > maxImagesToAdd) {
+      toast.warn(`You cannot upload more than three images`);
+    }
 
     setSelectedImages(prevImages => {
       const newImages = [...prevImages];
+
       selectedFiles.forEach(file => {
         const index = newImages.indexOf(0);
         if (index !== -1) {
@@ -61,6 +83,22 @@ export const NewsForm = ({ toggle }) => {
       });
       return newImages;
     });
+
+    e.target.value = null;
+  };
+
+  const handleResizeImages = async images => {
+    try {
+      const resizedImagesPromises = images.map(file =>
+        getFileResizer(file, 600, 400)
+      );
+
+      const resizedImages = await Promise.all(resizedImagesPromises);
+
+      return resizedImages;
+    } catch (error) {
+      return false;
+    }
   };
 
   const handleDeleteImage = image => {
@@ -84,13 +122,21 @@ export const NewsForm = ({ toggle }) => {
     setValue('publishDate', date, { shouldValidate: true });
   };
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     if (!hasNonZeroElement) {
       setImageError(true);
       return;
     }
 
-    const fd = getFromattedData(selectedImages, 'photos', data, 'news');
+    const resizedImages = await handleResizeImages(
+      selectedImages.filter(image => image !== 0)
+    );
+
+    if (!resizedImages) {
+      return toast.error('Error while resizing images');
+    }
+
+    const fd = getFromattedData(resizedImages, 'photos', data, 'news');
     dispatch(createNews(fd));
 
     setSelectedImages(new Array(3).fill(0));
@@ -103,15 +149,13 @@ export const NewsForm = ({ toggle }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">
-        <div>
-          <InputField
-            label="Article Title"
-            name="title"
-            placeholder="Enter the article title"
-            register={register}
-          />
-          <p className="field-error">{errors['title']?.message}</p>
-        </div>
+        <InputField
+          label="Article Title"
+          name="title"
+          placeholder="Enter the article title"
+          register={register}
+          errors={errors}
+        />
         <div className="flex gap-4">
           <div className="flex-1">
             <StatusField
@@ -162,25 +206,21 @@ export const NewsForm = ({ toggle }) => {
         <p className="field-error">{errors['content']?.message}</p>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <div>
-          <InputField
-            label="Button Text"
-            name="btnText"
-            placeholder="Enter the button text"
-            register={register}
-            defaultValue="Read more"
-          />
-          <p className="field-error">{errors['btnText']?.message}</p>
-        </div>
-        <div>
-          <InputField
-            label="Button Link "
-            name="btnLink"
-            placeholder="https//www..."
-            register={register}
-          />
-          <p className="field-error">{errors['btnLink']?.message}</p>
-        </div>
+        <InputField
+          label="Button Text"
+          name="btnText"
+          placeholder="Enter the button text"
+          register={register}
+          defaultValue="Read more"
+          errors={errors}
+        />
+        <InputField
+          label="Button Link"
+          name="btnLink"
+          placeholder="https//www..."
+          register={register}
+          errors={errors}
+        />
       </div>
       <div className="flex flex-col gap-6 items-start relative">
         <input

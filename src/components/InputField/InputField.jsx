@@ -3,20 +3,29 @@ export const InputField = ({
   name,
   type = 'text',
   placeholder,
-  register,
   defaultValue,
+  register,
+  errors,
+  autoComplete = 'off',
 }) => {
+  const inputProps = {
+    className: 'field',
+    type,
+    placeholder,
+    defaultValue,
+    ...register(name),
+    autoComplete,
+  };
+
+  const errorMessage = errors[name]?.message;
+
   return (
-    <label className="label">
-      {label}
-      <input
-        className="field"
-        type={type}
-        placeholder={placeholder}
-        {...register(name)}
-        defaultValue={defaultValue}
-        {...(type === 'number' ? { min: '0', defaultValue: '0' } : {})}
-      />
-    </label>
+    <div>
+      <label className="label">
+        {label}
+        <input {...inputProps} />
+      </label>
+      {errorMessage && <p className="field-error">{errorMessage}</p>}
+    </div>
   );
 };

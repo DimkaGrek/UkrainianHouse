@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
@@ -9,10 +10,10 @@ import { StatusField } from '../StatusField/StatusField';
 
 import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
-import { getFromattedData } from '../../helpers/getFromattedData';
 import { bookStatuses } from '../../constants';
 import { bookFormSchema } from '../../schemas';
 import { createBook } from '../../my-redux/Books/operations';
+import { getFileResizer, getFromattedData } from '../../helpers';
 
 export const BookForm = ({ toggle }) => {
   const filePicker = useRef(null);
@@ -33,6 +34,10 @@ export const BookForm = ({ toggle }) => {
   });
 
   useEffect(() => {
+    setValue('status', bookStatuses[0]);
+  }, [setValue]);
+
+  useEffect(() => {
     if (coverError && selectedCover) {
       setCoverError(false);
     }
@@ -40,6 +45,8 @@ export const BookForm = ({ toggle }) => {
 
   const selectFiles = e => {
     setSelectedCover(e.target.files[0]);
+
+    e.target.value = null;
   };
 
   const handleDeleteImage = () => {
@@ -55,13 +62,29 @@ export const BookForm = ({ toggle }) => {
     filePicker.current.click();
   };
 
-  const onSubmit = data => {
+  const handleResizeCover = async cover => {
+    try {
+      const resizedImages = await getFileResizer(cover, 385, 622);
+
+      return resizedImages;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const onSubmit = async data => {
     if (!selectedCover) {
       setCoverError(true);
       return;
     }
 
-    const fd = getFromattedData(selectedCover, 'cover', data, 'book');
+    const resizedCover = await handleResizeCover(selectedCover);
+
+    if (!resizedCover) {
+      return toast.error('Error while resizing cover');
+    }
+
+    const fd = getFromattedData(resizedCover, 'cover', data, 'book');
     dispatch(createBook(fd));
 
     setSelectedCover(null);
@@ -76,15 +99,13 @@ export const BookForm = ({ toggle }) => {
       <div className="flex flex-row gap-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-6">
-            <div>
-              <InputField
-                label="Book Title"
-                name="title"
-                placeholder="Enter the book title"
-                register={register}
-              />
-              <p className="field-error">{errors['title']?.message}</p>
-            </div>
+            <InputField
+              label="Book Title"
+              name="title"
+              placeholder="Enter the book title"
+              register={register}
+              errors={errors}
+            />
             <div>
               <label className="label">
                 Book Description:
@@ -98,40 +119,33 @@ export const BookForm = ({ toggle }) => {
               <p className="field-error">{errors['description']?.message}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <InputField
-                  label="Amount of pages"
-                  name="pageCount"
-                  type="number"
-                  placeholder="Amount pages"
-                  register={register}
-                />
-                <p className="field-error">{errors['pageCount']?.message}</p>
-              </div>
-              <div>
-                <InputField
-                  label="Year of publishing"
-                  name="publicationYear"
-                  type="number"
-                  placeholder="Year of publishing"
-                  register={register}
-                />
-                <p className="field-error">
-                  {errors['publicationYear']?.message}
-                </p>
-              </div>
+              <InputField
+                label="Amount of pages"
+                name="pageCount"
+                type="number"
+                placeholder="Amount pages"
+                register={register}
+                errors={errors}
+              />
+
+              <InputField
+                label="Year of publishing"
+                name="publicationYear"
+                type="number"
+                placeholder="Year of publishing"
+                register={register}
+                errors={errors}
+              />
             </div>
           </div>
           <div className="flex flex-col gap-6">
-            <div>
-              <InputField
-                label="Author"
-                name="author"
-                placeholder="Enter the author"
-                register={register}
-              />
-              <p className="field-error">{errors['author']?.message}</p>
-            </div>
+            <InputField
+              label="Author"
+              name="author"
+              placeholder="Enter the author"
+              register={register}
+              errors={errors}
+            />
             <div>
               <label className="label">
                 About the author:
@@ -145,25 +159,21 @@ export const BookForm = ({ toggle }) => {
               <p className="field-error">{errors['aboutAuthor']?.message}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <InputField
-                  label="Genre"
-                  name="genre"
-                  placeholder="Enter the genre"
-                  register={register}
-                />
-                <p className="field-error">{errors['genre']?.message}</p>
-              </div>
-              <div>
-                <InputField
-                  label="Quantity"
-                  name="quantity"
-                  type="number"
-                  placeholder="Enter the quantity"
-                  register={register}
-                />
-                <p className="field-error">{errors['quantity']?.message}</p>
-              </div>
+              <InputField
+                label="Genre"
+                name="genre"
+                placeholder="Enter the genre"
+                register={register}
+                errors={errors}
+              />
+              <InputField
+                label="Quantity"
+                name="quantity"
+                type="number"
+                placeholder="Enter the quantity"
+                register={register}
+                errors={errors}
+              />
             </div>
           </div>
         </div>
