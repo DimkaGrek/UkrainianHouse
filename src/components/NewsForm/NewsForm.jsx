@@ -195,7 +195,7 @@ export const NewsForm = ({ toggle }) => {
       </div>
       <div>
         <label className="label">
-          Article Text:
+          Article Text
           <textarea
             className="field resize-none overflow-auto h-[265px]"
             type="text"
