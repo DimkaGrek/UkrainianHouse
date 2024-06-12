@@ -4,7 +4,7 @@ import { useModal } from '../../hooks/useModal';
 import { useDispatch } from 'react-redux';
 import { fetchAllNews } from '../../my-redux';
 
-const Admin = () => {
+const AdminNewsPage = () => {
   const [addNewsModal, toggleAddNewsModal] = useModal();
   const [addBookModal, toggleAddBookModal] = useModal();
   const dispatch = useDispatch();
@@ -43,4 +43,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default AdminNewsPage;

@@ -31,3 +31,8 @@ export * from './AboutUs/AboutUs.jsx';
 export * from './NewsDigest/NewsDigest.jsx';
 export * from './GetInvolved/GetInvolved.jsx';
 export * from './PartnersSlider/PartnersSlider.jsx';
+export * from './AdminHeader/AdminHeader.jsx';
+export * from './Sidebar/Sidebar.jsx';
+export * from './LoginForm/LoginForm.jsx';
+export * from './ForgotPasswordForm/ForgotPasswordForm.jsx';
+export * from './ResetPasswordForm/ResetPasswordForm.jsx';

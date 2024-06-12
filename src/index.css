@@ -104,6 +104,10 @@ input[type='number']::-webkit-outer-spin-button {
   @apply absolute text-[13px] text-red-600 mt-[2px];
 }
 
+.auth-form {
+  @apply flex flex-col gap-6 w-[520px] p-10 bg-my-lightblue rounded-[24px] shadow-md;
+}
+
 .active {
   @apply border-b-2 border-[#2355cc] text-[#2355cc];
 }

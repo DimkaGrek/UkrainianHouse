@@ -57,7 +57,7 @@ export default {
         'my-yellow': '#FFD437',
         'my-yellow-back': '#FFF6D5',
         'my-blue': '#2355CC',
-        'my-lightblue': '#F4FAFF',
+        'my-lightblue': '#DAEFFF',
       },
     },
   },
