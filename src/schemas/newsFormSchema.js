@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-
 import { urlPattern } from '../constants';
 
 export const newsFormSchema = yup.object().shape({

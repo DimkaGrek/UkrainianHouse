@@ -1,7 +1,7 @@
-const LibraryPage = () => {
+const NotFound = () => {
   return (
     <div>
-      Library
+      NotFound
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
         labore inventore earum, expedita excepturi nam perferendis temporibus
@@ -11,4 +11,5 @@ const LibraryPage = () => {
     </div>
   );
 };
-export default LibraryPage;
+
+export default NotFound;
