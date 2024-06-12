@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { lazy } from 'react';
 
+import { PrivateRoute, PublicRoute } from '../routes';
+
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
 const LibraryPage = lazy(() => import('../pages/LibraryPage/LibraryPage.jsx'));
@@ -15,6 +17,7 @@ const ResetPage = lazy(() => import('../pages/AuthPage/ResetPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
+  //   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoggedIn = false;
   const adminLink = isLoggedIn ? '/admin/news' : '/auth/login';
   const authLink = isLoggedIn ? '/auth/login' : '/admin/news';
@@ -22,10 +25,38 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="news" element={<NewsPage />} />
-        <Route path="library" element={<LibraryPage />} />
-        <Route path="contacts" element={<ContactsPage />} />
+        <Route
+          index
+          element={
+            <PublicRoute>
+              <HomePage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="news"
+          element={
+            <PublicRoute>
+              <NewsPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="library"
+          element={
+            <PublicRoute>
+              <LibraryPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PublicRoute>
+              <ContactsPage />
+            </PublicRoute>
+          }
+        />
 
         <Route path="*" element={<NotFoundPage />} />
         <Route path="admin" element={<Navigate to={adminLink} replace />} />
@@ -35,19 +66,25 @@ const App = () => {
           <Route
             path="news"
             element={
-              isLoggedIn ? <AdminNewsPage /> : <Navigate to="/auth/login" />
+              <PrivateRoute>
+                <AdminNewsPage />
+              </PrivateRoute>
             }
           />
           <Route
             path="books"
             element={
-              isLoggedIn ? <AdminBooksPage /> : <Navigate to="/auth/login" />
+              <PrivateRoute>
+                <AdminBooksPage />
+              </PrivateRoute>
             }
           />
           <Route
             path="inbox"
             element={
-              isLoggedIn ? <AdminInboxPage /> : <Navigate to="/auth/login" />
+              <PrivateRoute>
+                <AdminInboxPage />
+              </PrivateRoute>
             }
           />
         </Route>
@@ -55,17 +92,27 @@ const App = () => {
         <Route path="auth">
           <Route
             path="login"
-            element={isLoggedIn ? <Navigate to="/admin/news" /> : <LoginPage />}
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
           />
           <Route
             path="fogot"
             element={
-              isLoggedIn ? <Navigate to="/admin/news" /> : <ForgotPage />
+              <PublicRoute>
+                <ForgotPage />
+              </PublicRoute>
             }
           />
           <Route
             path="reset"
-            element={isLoggedIn ? <Navigate to="/admin/news" /> : <ResetPage />}
+            element={
+              <PublicRoute>
+                <ResetPage />
+              </PublicRoute>
+            }
           />
         </Route>
       </Route>
