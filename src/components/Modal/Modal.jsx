@@ -31,7 +31,7 @@ export const Modal = ({ children, toggleModal, className = '' }) => {
       onClick={handleClickOnBackdrop}
     >
       <div
-        className={` relative bg-[#DAEFFF] p-[44px] rounded-[24px] sm-max:max-w-[300px] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px] max-h-[95%] overflow-hidden ${className}`}
+        className={` relative bg-my-lightblue p-[44px] rounded-[24px] sm-max:max-w-[300px] max-w-[350px] md:max-w-[704px] lg:max-w-[1240px] max-h-[95%] overflow-hidden ${className}`}
       >
         <button
           type="button"

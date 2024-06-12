@@ -8,7 +8,7 @@ export const NewsListItem = ({ item }) => {
   return (
     <>
       <li
-        className="group p-[18px] bg-blue-100 shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] transition duration-300"
+        className="group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] transition duration-300"
         onClick={toggleModal}
       >
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px]">

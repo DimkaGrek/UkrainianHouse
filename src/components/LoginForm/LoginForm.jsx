@@ -20,10 +20,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-6 w-[520px] p-10 bg-[#DAEFFF] rounded-[24px] shadow-md"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
       <h2 className="font-proza-medium text-[26px] leading-[34px]">Login</h2>
       <InputField
         label="Email"
