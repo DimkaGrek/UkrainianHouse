@@ -16,7 +16,8 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
   const isLoggedIn = false;
-  const link = isLoggedIn ? '/admin/news' : '/auth/login';
+  const adminLink = isLoggedIn ? '/admin/news' : '/auth/login';
+  const authLink = isLoggedIn ? '/auth/login' : '/admin/news';
 
   return (
     <Routes>
@@ -27,18 +28,45 @@ const App = () => {
         <Route path="contacts" element={<ContactsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="admin" element={<Navigate to={link} replace />} />
+        <Route path="admin" element={<Navigate to={adminLink} replace />} />
+        <Route path="auth" element={<Navigate to={authLink} replace />} />
 
         <Route path="admin">
-          <Route path="news" element={<AdminNewsPage />} />
-          <Route path="books" element={<AdminBooksPage />} />
-          <Route path="inbox" element={<AdminInboxPage />} />
+          <Route
+            path="news"
+            element={
+              isLoggedIn ? <AdminNewsPage /> : <Navigate to="/auth/login" />
+            }
+          />
+          <Route
+            path="books"
+            element={
+              isLoggedIn ? <AdminBooksPage /> : <Navigate to="/auth/login" />
+            }
+          />
+          <Route
+            path="inbox"
+            element={
+              isLoggedIn ? <AdminInboxPage /> : <Navigate to="/auth/login" />
+            }
+          />
         </Route>
 
         <Route path="auth">
-          <Route path="login" element={<LoginPage />} />
-          <Route path="fogot" element={<ForgotPage />} />
-          <Route path="reset" element={<ResetPage />} />
+          <Route
+            path="login"
+            element={isLoggedIn ? <Navigate to="/admin/news" /> : <LoginPage />}
+          />
+          <Route
+            path="fogot"
+            element={
+              isLoggedIn ? <Navigate to="/admin/news" /> : <ForgotPage />
+            }
+          />
+          <Route
+            path="reset"
+            element={isLoggedIn ? <Navigate to="/admin/news" /> : <ResetPage />}
+          />
         </Route>
       </Route>
     </Routes>
