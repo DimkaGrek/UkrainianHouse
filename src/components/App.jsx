@@ -99,7 +99,7 @@ const App = () => {
             }
           />
           <Route
-            path="fogot"
+            path="forgot"
             element={
               <PublicRoute>
                 <ForgotPage />
