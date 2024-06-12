@@ -1,25 +1,22 @@
 import { useForm } from 'react-hook-form';
 import { InputField } from '../InputField/InputField';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { forgotPasswordSchema } from '../../schemas';
+import { resetPaswordShema } from '../../schemas';
 
-export const ForgotPasswordForm = () => {
-  const navigate = useNavigate();
-
+export const ResetPasswordForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     mode: 'onSubmit',
-    resolver: yupResolver(forgotPasswordSchema),
+    resolver: yupResolver(resetPaswordShema),
   });
 
   const onSubmit = data => {
     console.log(data);
-    navigate('/auth/reset');
   };
 
   return (
@@ -28,13 +25,20 @@ export const ForgotPasswordForm = () => {
         <Link to="/auth/login" className="text-[#666666]">
           Login
         </Link>
-        <p>Forgot password</p>
+        <p>Reset password</p>
       </div>
       <InputField
-        label="Email"
-        name="email"
-        type="email"
-        placeholder="Enter your email adress"
+        label="Code"
+        name="code"
+        placeholder="Enter your code"
+        register={register}
+        errors={errors}
+      />
+      <InputField
+        label="Password"
+        name="password"
+        type="text"
+        placeholder="Enter your new password"
         register={register}
         errors={errors}
       />
