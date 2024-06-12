@@ -3,7 +3,7 @@ import { InputField } from '../InputField/InputField';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
 
-import { loginFormShema } from '../../schemas/loginFormSchema';
+import { loginFormShema } from '../../schemas';
 
 export const LoginForm = () => {
   const {

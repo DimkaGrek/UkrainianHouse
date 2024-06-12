@@ -12,8 +12,12 @@ const AdminNewsPage = lazy(() => import('../pages/AdminPage/AdminNewsPage'));
 const AdminBooksPage = lazy(() => import('../pages/AdminPage/AdminBooksPage'));
 const AdminInboxPage = lazy(() => import('../pages/AdminPage/AdminInboxPage'));
 const LoginPage = lazy(() => import('../pages/AuthPage/LoginPage'));
-const ForgotPage = lazy(() => import('../pages/AuthPage/ForgotPage'));
-const ResetPage = lazy(() => import('../pages/AuthPage/ResetPage'));
+const ForgotPasswordPage = lazy(() =>
+  import('../pages/AuthPage/ForgotPasswordPage')
+);
+const ResetPasswordPage = lazy(() =>
+  import('../pages/AuthPage/ResetPasswordPage')
+);
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
@@ -102,7 +106,7 @@ const App = () => {
             path="forgot"
             element={
               <PublicRoute>
-                <ForgotPage />
+                <ForgotPasswordPage />
               </PublicRoute>
             }
           />
@@ -110,7 +114,7 @@ const App = () => {
             path="reset"
             element={
               <PublicRoute>
-                <ResetPage />
+                <ResetPasswordPage />
               </PublicRoute>
             }
           />
