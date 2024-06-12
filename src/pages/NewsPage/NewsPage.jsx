@@ -6,7 +6,7 @@ import { changeFilter } from '../../my-redux';
 
 // import { fetchAllNews, fetchAnnounceNews } from '../../my-redux';
 
-const News = () => {
+const NewsPage = () => {
   // const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -46,4 +46,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default NewsPage;

@@ -1,30 +1,48 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { lazy } from 'react';
 
-const Home = lazy(() => import('../pages/Home/Home'));
-const News = lazy(() => import('../pages/News/News'));
-
-const Library = lazy(() => import('../pages/LibraryBooks/Library'));
-const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
-const LoginPage = lazy(() => import('../pages/Admin/LoginPage'));
-const Admin = lazy(() => import('../pages/Admin/Admin'));
-const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
+const LibraryPage = lazy(() => import('../pages/LibraryPage/LibraryPage.jsx'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const AdminNewsPage = lazy(() => import('../pages/AdminPage/AdminNewsPage'));
+const AdminBooksPage = lazy(() => import('../pages/AdminPage/AdminBooksPage'));
+const AdminInboxPage = lazy(() => import('../pages/AdminPage/AdminInboxPage'));
+const LoginPage = lazy(() => import('../pages/AuthPage/LoginPage'));
+const ForgotPage = lazy(() => import('../pages/AuthPage/ForgotPage'));
+const ResetPage = lazy(() => import('../pages/AuthPage/ResetPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="/news" element={<News />} />
-                <Route path="/library" element={<Library />} />
-                <Route path="/contacts" element={<Contacts />} />
-                <Route path="/loginadmin" element={<LoginPage />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="*" element={<NotFound />} />
-            </Route>
-        </Routes>
-    );
+  const isLoggedIn = false;
+  const link = isLoggedIn ? '/admin/news' : '/auth/login';
+
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="news" element={<NewsPage />} />
+        <Route path="library" element={<LibraryPage />} />
+        <Route path="contacts" element={<ContactsPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="admin" element={<Navigate to={link} replace />} />
+
+        <Route path="admin">
+          <Route path="news" element={<AdminNewsPage />} />
+          <Route path="books" element={<AdminBooksPage />} />
+          <Route path="inbox" element={<AdminInboxPage />} />
+        </Route>
+
+        <Route path="auth">
+          <Route path="login" element={<LoginPage />} />
+          <Route path="fogot" element={<ForgotPage />} />
+          <Route path="reset" element={<ResetPage />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;

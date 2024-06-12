@@ -8,7 +8,7 @@ import {
 import franko_mobile1x from '../../assets/images/contacts/franko_mobile1x.png';
 import franko_mobile2x from '../../assets/images/contacts/franko_mobile2x.png';
 
-const Contacts = () => {
+const ContactsPage = () => {
   return (
     <>
       <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[1.6] mb-[50px] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[1.3] lg:text-[#1e1e1e] lg:mb-[44px]">
@@ -44,4 +44,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default ContactsPage;
