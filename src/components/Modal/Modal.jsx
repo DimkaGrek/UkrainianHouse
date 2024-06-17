@@ -1,7 +1,9 @@
+import ReactDOM from 'react-dom';
 import { useEffect } from 'react';
 
 import { Icon } from '../Icon/Icon';
 
+const modalRoot = document.querySelector('#modalRoot');
 export const Modal = ({ children, toggleModal, className = '' }) => {
   useEffect(() => {
     const handleEscape = e => {
@@ -25,7 +27,7 @@ export const Modal = ({ children, toggleModal, className = '' }) => {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <div
       className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 "
       onClick={handleClickOnBackdrop}
@@ -42,6 +44,7 @@ export const Modal = ({ children, toggleModal, className = '' }) => {
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };
