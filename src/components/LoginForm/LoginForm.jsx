@@ -33,10 +33,11 @@ export const LoginForm = () => {
       <InputField
         label="Password"
         name="password"
-        type="text"
+        type="password"
         placeholder="Enter your password"
         register={register}
         errors={errors}
+        password="true"
       />
       <Link
         to="/auth/forgot"
@@ -44,11 +45,13 @@ export const LoginForm = () => {
       >
         Forgot password?
       </Link>
-      <label className="flex items-center gap-3">
-        <input type="checkbox" className="w-5 h-5" {...register('remember')} />
-        <span className="text-sm leading-[18px] text-[#666666]">
-          Remember me
-        </span>
+      <label className="flex items-center gap-3 text-sm leading-[18px] text-[#666666] cursor-pointer">
+        <input
+          type="checkbox"
+          className="w-5 h-5 cursor-pointer"
+          {...register('remember')}
+        />
+        Remember me
       </label>
       <button className="primaryBtn w-full h-[56px]" type="submit">
         Login

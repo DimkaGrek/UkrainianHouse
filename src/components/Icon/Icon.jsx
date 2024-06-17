@@ -21,6 +21,8 @@ default - yellow hurt
 15 - 'dark-theme'
 16 - 'minus'
 17 - 'plus'
+18) 'eye'
+19) 'eye-off'
 */
 
 export const Icon = ({ name, className, size, viewbox }) => {
@@ -215,6 +217,44 @@ export const Icon = ({ name, className, size, viewbox }) => {
           <path
             d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z"
             fill="#1E1E1E"
+          ></path>
+        </Svg>
+      );
+    case 'eye':
+      return (
+        <Svg className={className} size={size}>
+          <path
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
+            d="M1.333 16c0 0 5.333-10.667 14.667-10.667s14.667 10.667 14.667 10.667-5.333 10.667-14.667 10.667c-9.333 0-14.667-10.667-14.667-10.667z"
+          ></path>
+          <path
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
+            d="M16 20c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4z"
+          ></path>
+        </Svg>
+      );
+    case 'eye-off':
+      return (
+        <Svg className={className} size={size}>
+          <path
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
+            d="M23.92 23.92c-2.279 1.737-5.055 2.7-7.92 2.747-9.333 0-14.667-10.667-14.667-10.667 1.659-3.091 3.959-5.791 6.747-7.92M13.2 5.653c0.918-0.215 1.857-0.322 2.8-0.32 9.333 0 14.667 10.667 14.667 10.667-0.809 1.514-1.775 2.94-2.88 4.253M18.827 18.827c-0.366 0.393-0.808 0.708-1.299 0.927s-1.020 0.336-1.557 0.346c-0.537 0.009-1.071-0.089-1.569-0.291s-0.95-0.501-1.33-0.88c-0.38-0.38-0.679-0.832-0.88-1.33s-0.3-1.032-0.29-1.569c0.009-0.537 0.127-1.067 0.346-1.558s0.534-0.932 0.927-1.298"
+          ></path>
+          <path
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
+            d="M1.333 1.333l29.333 29.333"
           ></path>
         </Svg>
       );
