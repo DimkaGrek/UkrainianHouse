@@ -37,10 +37,11 @@ export const ResetPasswordForm = () => {
       <InputField
         label="Password"
         name="password"
-        type="text"
+        type="password"
         placeholder="Enter your new password"
         register={register}
         errors={errors}
+        password="true"
       />
       <button className="primaryBtn w-full h-[56px] mt-1" type="submit">
         Reset password
