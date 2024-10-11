@@ -40,7 +40,6 @@ leading-[1.6]
         About Us
       </h2>
       <div className="flex flex-col gap-[34px] md:flex-row lg:gap-[65px]">
-        {' '}
         <div className="relative md:flex-1">
           <h3
             className={`text-[#223f86] font-proza-medium font-[500] text-[20px] leading-[1.2] md:mb-[7px] lg:font-[600] lg:text-[36px] lg:mb-[24px] ${
@@ -52,7 +51,7 @@ leading-[1.6]
               className="absolute top-0 right-0 md:hidden"
               onClick={() => toggleFullText('mission')}
             >
-              <Icon name={`${isOpen.areas ? 'minus' : 'plus'}`} size={24} />
+              <Icon name={`${isOpen.mission ? 'minus' : 'plus'}`} size={24} />
             </button>
           </h3>
 
@@ -92,7 +91,7 @@ leading-[1.6]
               className="absolute top-0 right-0 md:hidden"
               onClick={() => toggleFullText('vision')}
             >
-              <Icon name={`${isOpen.areas ? 'minus' : 'plus'}`} size={24} />
+              <Icon name={`${isOpen.vision ? 'minus' : 'plus'}`} size={24} />
             </button>
           </h3>
 
