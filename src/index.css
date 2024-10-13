@@ -10,8 +10,10 @@
 */
 @font-face {
   font-family: 'IstokWeb-Regular';
-  src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2') format('woff2'),
-    url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff') format('woff');
+  src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff')
+      format('woff');
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
@@ -25,8 +27,10 @@
 */
 @font-face {
   font-family: 'ProzaLibre-Regular';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2') format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff') format('woff');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff')
+      format('woff');
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
@@ -40,8 +44,10 @@
 */
 @font-face {
   font-family: 'ProzaLibre-Medium';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2') format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff') format('woff');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff')
+      format('woff');
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
@@ -55,8 +61,10 @@
 */
 @font-face {
   font-family: 'ProzaLibre-SemiBold';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2') format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff') format('woff');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2')
+      format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff')
+      format('woff');
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
@@ -70,7 +78,8 @@
 */
 @font-face {
   font-family: 'ProzaLibre-Bold';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2') format('woff2');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2')
+    format('woff2');
   font-weight: 700;
   font-stretch: normal;
   font-display: swap;
@@ -149,7 +158,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 @media screen and (min-resolution: 1.5dppx),
-screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::before {
     background-image: url('./assets/images/contacts/contacts_mobile2x.png');
   }
@@ -168,7 +177,7 @@ screen and (min-device-pixel-ratio: 2) {
   bottom: -25vw;
   left: 50%;
   transform: translateX(-50%);
-  width: 100vw;
+  width: calc(100vw - 18px);
   height: 18vw;
 
   background-image: url('./assets/images/contacts/contacts_2_mobile1x.png');
@@ -179,7 +188,7 @@ screen and (min-device-pixel-ratio: 2) {
 }
 
 @media screen and (min-resolution: 1.5dppx),
-screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::after {
     background-image: url('./assets/images/contacts/contacts_2_mobile2x.png');
   }
@@ -193,7 +202,7 @@ screen and (min-device-pixel-ratio: 2) {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+    screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
       background-image: url('./assets/images/contacts/contacts_2_tablet2x.png');
     }
@@ -208,7 +217,7 @@ screen and (min-device-pixel-ratio: 2) {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+    screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
       background-image: url('./assets/images/contacts/contacts_2_desktop2x.png');
     }
@@ -222,7 +231,7 @@ screen and (min-device-pixel-ratio: 2) {
   top: -25vw;
   left: 50%;
   transform: translateX(-50%);
-  width: 100vw;
+  width: calc(100vw - 18px);
   height: 11vw;
 
   background-image: url('./assets/images/footer/tape_1x_mob.jpg');
@@ -233,7 +242,7 @@ screen and (min-device-pixel-ratio: 2) {
 }
 
 @media screen and (min-resolution: 1.5dppx),
-screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
   .link-wrapper::before {
     background-image: url('./assets/images/footer/tape_2x_mob.jpg');
   }
@@ -247,7 +256,7 @@ screen and (min-device-pixel-ratio: 2) {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+    screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
       background-image: url('./assets/images/footer/tape_2x_tablet.jpg');
     }
@@ -261,7 +270,7 @@ screen and (min-device-pixel-ratio: 2) {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+    screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
       background-image: url('./assets/images/footer/tape_2x_desktop.jpg');
     }
