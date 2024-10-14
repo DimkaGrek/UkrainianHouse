@@ -15,7 +15,7 @@ export const NewsListItem = ({ item }) => {
           <img
             className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] group-focus:scale-[1.05] group-active::scale-[1.05] transition duration-300"
             src={item.photoUrls[0] ? item.photoUrls[0].photoUrls : ''}
-            alt="News"
+            alt={item.title}
             width={306}
             height={209}
           />
