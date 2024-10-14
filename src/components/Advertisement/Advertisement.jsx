@@ -56,7 +56,10 @@ export const Advertisement = () => {
         </picture>
       </div>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal} className="news-modal" bg="white">
+        <Modal
+          toggleModal={toggleModal}
+          className="py-[58px] pl-[20px] pr-[10px]  md:py-[58px] md:pl-[40px] md:pr-[25px] bg-white"
+        >
           {' '}
           <NewsDetails {...announceNews[0]} />
         </Modal>
