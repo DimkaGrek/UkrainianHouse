@@ -1,33 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../../services/api';
+import { api, clearToken, setToken } from '../../services/api';
 
-const setAuthHeader = token => {
-  api.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  api.defaults.headers.common.Authorization = ``;
-};
-
-// export const registerThunk = createAsyncThunk(
-//   'auth/registerUser',
-//   async (credentials, thunkApi) => {
-//     try {
-//       const { data } = await api.post('users/signup', credentials);
-//       setAuthHeader(data.token);
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-export const userLoginThunk = createAsyncThunk(
-  'auth/loginUser',
+export const loginThunk = createAsyncThunk(
+  'auth/login',
   async (credentials, thunkApi) => {
     try {
-      const { data } = await api.post('users/login', credentials);
-      setAuthHeader(data.token);
+      const { data } = await api.post('/login', credentials);
+      setToken(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -35,34 +14,29 @@ export const userLoginThunk = createAsyncThunk(
   }
 );
 
-export const userLogoutThunk = createAsyncThunk(
-  'auth/logoutUser',
+export const logoutThunk = createAsyncThunk(
+  'auth/logout',
   async (_, thunkApi) => {
     try {
-      await api.post('users/logout');
-      clearAuthHeader();
+      await api.post('/logout');
+      clearToken();
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
 
-export const refreshUserThunk = createAsyncThunk(
-  'auth/refreshUser',
+export const refreshThunk = createAsyncThunk(
+  'auth/refresh',
   async (_, thunkApi) => {
     const {
       auth: { token },
     } = thunkApi.getState();
+
     if (!token) {
       return thunkApi.rejectWithValue('There is no token');
     }
 
-    try {
-      setAuthHeader(token);
-      const { data } = await api.get('users/current');
-      return data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
+    return token;
   }
 );

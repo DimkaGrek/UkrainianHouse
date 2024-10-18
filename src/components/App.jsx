@@ -1,8 +1,16 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { Loader } from './Loader/Loader';
 import { PrivateRoute, PublicRoute } from '../routes';
+
+import {
+  selectIsLoggedIn,
+  selectIsRefreshing,
+} from '../my-redux/Auth/authSlice';
+import { refreshThunk } from '../my-redux/Auth/operations';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
@@ -21,12 +29,19 @@ const ResetPasswordPage = lazy(() =>
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
-  //   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = false;
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
   const adminLink = isLoggedIn ? '/admin/news' : '/auth/login';
   const authLink = isLoggedIn ? '/auth/login' : '/admin/news';
 
-  return (
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route
