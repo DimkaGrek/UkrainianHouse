@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Zoom } from 'react-toastify';
 
 import App from './components/App';
 import store from './my-redux/store';
@@ -13,7 +13,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/UkrainianHouse">
     <Provider store={store}>
       <App />
-      <ToastContainer autoClose={3000} />
+      <ToastContainer
+        autoClose={3000}
+        closeOnClick={true}
+        transition={Zoom}
+        style={{ zIndex: 999 }}
+      />
     </Provider>
   </BrowserRouter>
 );
