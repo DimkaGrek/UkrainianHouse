@@ -15,7 +15,8 @@ import announceNewsData from '../../assets/announceNews.json';
 const initialState = {
   news: newsData,
   announceNews: announceNewsData,
-  oneNews: {},
+  oneNews: null,
+  page: 1,
   totalNews: 0,
   filter: '',
   isLoading: false,
@@ -23,9 +24,10 @@ const initialState = {
 };
 const selectNews = ({ news: { news } }) => news;
 const selectAnnounceNews = ({ news: { announceNews } }) => announceNews;
-const selectFilter = ({ news: { filter } }) => filter;
-const selectIsLoading = ({ news: { isLoading } }) => isLoading;
+const selectPageNews = ({ news: { page } }) => page;
 const selectTotalNews = ({ news: { totalNews } }) => totalNews;
+const selectFilter = ({ news: { filter } }) => filter;
+const selectIsLoadingNews = ({ news: { isLoading } }) => isLoading;
 const selectError = ({ news: { error } }) => error;
 const selectFilteredNews = createSelector(
   [selectNews, selectFilter],
@@ -38,10 +40,14 @@ const selectFilteredNews = createSelector(
     );
   }
 );
+
 const newsSlice = createSlice({
   name: 'news',
   initialState,
   reducers: {
+    increasePage: state => {
+      state.page += 1;
+    },
     changeFilter: (state, { payload }) => {
       state.filter = payload;
     },
@@ -64,8 +70,9 @@ const newsSlice = createSlice({
       .addCase(
         fetchAllNews.fulfilled,
         (state, { payload: { totalNews, news } }) => {
+          state.news.push(...news);
           state.totalNews = totalNews;
-          state.news = news;
+
           state.isLoading = false;
         }
       )
@@ -117,14 +124,15 @@ const newsSlice = createSlice({
         }
       ),
 });
-export const { changeFilter } = newsSlice.actions;
+export const { increasePage, changeFilter } = newsSlice.actions;
 export const newsReducer = newsSlice.reducer;
 export {
   selectNews,
   selectFilteredNews,
   selectAnnounceNews,
+  selectPageNews,
   selectTotalNews,
   selectFilter,
-  selectIsLoading,
+  selectIsLoadingNews,
   selectError,
 };
