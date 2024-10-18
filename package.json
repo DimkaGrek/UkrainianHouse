@@ -29,6 +29,7 @@
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
     "spinners-react": "^1.0.7",
     "swiper": "^11.1.4",
