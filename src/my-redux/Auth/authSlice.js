@@ -29,8 +29,8 @@ const authSlice = createSlice({
         state.isRefreshing = true;
         state.isError = null;
       })
-      .addCase(refreshThunk.rejected, state => {
-        state.isRefreshing = false;
+      .addCase(refreshThunk.rejected, () => {
+        return initialState;
       })
       .addMatcher(isAnyOf(loginThunk.pending, logoutThunk.pending), state => {
         state.isLoading = true;

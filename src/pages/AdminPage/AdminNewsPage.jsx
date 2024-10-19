@@ -3,6 +3,7 @@ import { BookForm, Modal, NewsForm } from '../../components';
 import { useModal } from '../../hooks/useModal';
 import { useDispatch } from 'react-redux';
 import { fetchAllNews } from '../../my-redux';
+import { logoutThunk } from '../../my-redux/Auth/operations';
 
 const AdminNewsPage = () => {
   const [addNewsModal, toggleAddNewsModal] = useModal();
@@ -28,6 +29,13 @@ const AdminNewsPage = () => {
         onClick={() => toggleAddBookModal()}
       >
         Add Book
+      </button>
+      <button
+        className="primaryBtn"
+        type="button"
+        onClick={() => dispatch(logoutThunk())}
+      >
+        Logout
       </button>
       {addNewsModal && (
         <Modal toggleModal={toggleAddNewsModal}>

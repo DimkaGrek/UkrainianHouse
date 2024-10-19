@@ -32,7 +32,7 @@ export const Layout = () => {
           <Sidebar />
         </aside>
         <main>
-          <Suspense fallback={Loader}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </main>
