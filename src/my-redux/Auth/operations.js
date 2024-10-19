@@ -3,40 +3,49 @@ import { api, clearToken, setToken } from '../../services/api';
 
 export const loginThunk = createAsyncThunk(
   'auth/login',
-  async (credentials, thunkApi) => {
+  async (credentials, thunkAPI) => {
     try {
-      const { data } = await api.post('/login', credentials);
-      setToken(data);
-      return data;
+      const {
+        data: { token },
+      } = await api.post('/login', credentials);
+      setToken(token);
+      return token;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const logoutThunk = createAsyncThunk(
   'auth/logout',
-  async (_, thunkApi) => {
+  async (_, thunkAPI) => {
     try {
-      await api.post('/logout');
+      await api.post('/admin/logout');
       clearToken();
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const refreshThunk = createAsyncThunk(
   'auth/refresh',
-  async (_, thunkApi) => {
+  async (_, thunkAPI) => {
     const {
       auth: { token },
-    } = thunkApi.getState();
+    } = thunkAPI.getState();
 
     if (!token) {
-      return thunkApi.rejectWithValue('There is no token');
+      return thunkAPI.rejectWithValue('There is no token');
     }
 
-    return token;
+    setToken(token);
+
+    try {
+      const { data } = await api.get('/admin/checkToken');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
