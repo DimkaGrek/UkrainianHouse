@@ -5,7 +5,6 @@ import logo_2x from '../../assets/images/admin-page/admin-page-logo_@2x.png';
 import { adminNavLinks } from '../../constants';
 
 export const Sidebar = () => {
-  console.log(adminNavLinks);
   return (
     <nav>
       <Link to="/">
