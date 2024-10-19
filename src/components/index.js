@@ -37,3 +37,4 @@ export * from './LoginForm/LoginForm.jsx';
 export * from './ForgotPasswordForm/ForgotPasswordForm.jsx';
 export * from './ResetPasswordForm/ResetPasswordForm.jsx';
 export * from './NewsDigest/NewsDigestItem.jsx';
+export * from './LogoutModal/LogoutModal.jsx';
