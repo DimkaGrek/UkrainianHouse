@@ -60,6 +60,15 @@ export default {
         'my-lightblue': '#DAEFFF',
       },
     },
+    gridTemplateAreas: {
+      layout: ['aside head', 'aside main'],
+    },
+    gridTemplateColumns: {
+      layout: '240px 1fr',
+    },
+    gridTemplateRows: {
+      layout: '72px 1fr',
+    },
   },
   corePlugins: {
     container: false,
@@ -108,6 +117,7 @@ export default {
       });
     },
     daisyui,
+    require('@savvywombat/tailwindcss-grid-areas'),
   ],
   daisyui: {
     themes: ['light'],
