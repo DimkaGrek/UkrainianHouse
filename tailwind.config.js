@@ -67,7 +67,7 @@ export default {
       layout: '240px 1fr',
     },
     gridTemplateRows: {
-      layout: '72px 1fr',
+      layout: '84px 1fr',
     },
   },
   corePlugins: {

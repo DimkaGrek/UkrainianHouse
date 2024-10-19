@@ -26,12 +26,12 @@ export const Layout = () => {
 
   if (location.pathname.includes('/admin/')) {
     return (
-      <div className="grid w-screen h-screen grid-cols-[240px_1fr] grid-rows-[72px_1fr] grid-areas-layout">
+      <div className="grid w-screen h-screen grid-cols-[240px_1fr] grid-rows-[84px_1fr] grid-areas-layout">
         <AdminHeader className="grid-in-head" />
         <aside className="grid-in-aside bg-[#FFD43766] p-6">
           <Sidebar />
         </aside>
-        <main className="grid-in-main overflow-y-auto">
+        <main className="grid-in-main overflow-y-auto px-4">
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
