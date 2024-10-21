@@ -1,17 +1,14 @@
-import { useNews } from '../../hooks';
 import { NewsDigestItem } from 'components';
 import { useEffect, useState } from 'react';
 
-export const NewsDigest = () => {
-  const { announceNews } = useNews();
-  const newsfordevelop = [...announceNews, ...announceNews, ...announceNews];
+export const NewsDigest = ({ news }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(1);
 
   useEffect(() => {
     const updateCardsPerPage = () => {
       if (window.innerWidth >= 1440) {
-        setCardsPerPage(newsfordevelop.length);
+        setCardsPerPage(news?.length);
       } else if (window.innerWidth >= 768) {
         setCardsPerPage(2);
       } else {
@@ -25,13 +22,13 @@ export const NewsDigest = () => {
     return () => {
       window.removeEventListener('resize', updateCardsPerPage);
     };
-  }, [newsfordevelop.length]);
+  }, [news.length]);
 
   const displayedCards = () => {
-    if (activeIndex === newsfordevelop.length - 1 && cardsPerPage === 2) {
-      return [newsfordevelop[activeIndex], newsfordevelop[0]];
+    if (activeIndex === news.length - 1 && cardsPerPage === 2) {
+      return [news[activeIndex], news[0]];
     }
-    return newsfordevelop.slice(activeIndex, activeIndex + cardsPerPage);
+    return news.slice(activeIndex, activeIndex + cardsPerPage);
   };
   const handleDotClick = index => {
     setActiveIndex(index);
@@ -45,7 +42,7 @@ export const NewsDigest = () => {
           ))}
         </div>
         <div className="flex justify-center items-center gap-[6px] lg:hidden">
-          {newsfordevelop.map((_, index) => (
+          {news.map((_, index) => (
             <span
               key={index}
               className={`${' rounded-[50%] cursor-pointer border-[2px] border-my-black1 '} ${
