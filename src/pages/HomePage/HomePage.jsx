@@ -1,22 +1,42 @@
 import { useEffect } from 'react';
-import { Hero, GetInvolved, AboutUs, NewsDigest } from '../../components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import {
+  Hero,
+  GetInvolved,
+  AboutUs,
+  NewsDigest,
+  Loader,
+} from '../../components';
 import { fetchAllNews } from '../../my-redux/News/newsOperations';
+import { selectNews, selectIsLoadingNews } from '../../my-redux/News/newsSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-
+  const news = useSelector(selectNews);
+  console.log(news);
+  const isLoading = useSelector(selectIsLoadingNews);
   useEffect(() => {
-    dispatch(fetchAllNews({ status: 'published', page: 1, limit: 3 }));
+    const fetchNews = async () => {
+      try {
+        await dispatch(fetchAllNews({ limit: 3 })).unwrap();
+      } catch {
+        toast.error('Something went wrong. Please, reload the page.');
+      }
+    };
+    fetchNews();
   }, [dispatch]);
 
   return (
-    <div className="bg-[url('assets/images/home/BgImg_mobile.png')] bg-no-repeat bg-contain  md:bg-[url('assets/images/home/BgImg_tablet.png')] lg:bg-[url('assets/images/home/BgImg_desktop.png')]">
-      <Hero />
-      <NewsDigest />
-      <AboutUs />
-      <GetInvolved />
-    </div>
+    <>
+      {isLoading && <Loader />}
+      <div className="bg-[url('assets/images/home/BgImg_mobile.png')] bg-no-repeat bg-contain  md:bg-[url('assets/images/home/BgImg_tablet.png')] lg:bg-[url('assets/images/home/BgImg_desktop.png')]">
+        <Hero />
+        <NewsDigest news={news} />
+        <AboutUs />
+        <GetInvolved />
+      </div>
+    </>
   );
 };
 

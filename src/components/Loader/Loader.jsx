@@ -5,7 +5,7 @@ export const Loader = ({ placement = 'backdrop', size = 60 }) => {
     <div
       className={`${
         placement === 'backdrop'
-          ? 'fixed w-full h-full flex justify-center items-center top-0 left-0 bg-black bg-opacity-50'
+          ? 'fixed w-full h-full flex justify-center items-center top-0 left-0 bg-black bg-opacity-50 z-10'
           : 'flex justify-center'
       } `}
     >
