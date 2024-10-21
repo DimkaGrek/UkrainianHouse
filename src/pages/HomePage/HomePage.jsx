@@ -19,7 +19,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        await dispatch(fetchAllNews({ limit: 3 })).unwrap();
+        await dispatch(fetchAllNews({ page: 1, limit: 3 })).unwrap();
       } catch {
         toast.error('Something went wrong. Please, reload the page.');
       }
