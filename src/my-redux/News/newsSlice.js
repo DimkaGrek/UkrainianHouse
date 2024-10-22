@@ -1,4 +1,4 @@
-import { createSelector, createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
   createNews,
@@ -9,47 +9,22 @@ import {
   updateNews,
 } from './newsOperations';
 
-import newsData from '../../assets/news.json';
-import announceNewsData from '../../assets/announceNews.json';
-
 const initialState = {
-  news: newsData,
-  announceNews: announceNewsData,
+  news: [],
+  announceNews: [],
   oneNews: null,
-  page: 1,
-  totalNews: 0,
-  filter: '',
+  page: 0,
+  totalPages: 0,
   isLoading: false,
   error: null,
 };
-const selectNews = ({ news: { news } }) => news;
-const selectAnnounceNews = ({ news: { announceNews } }) => announceNews;
-const selectPageNews = ({ news: { page } }) => page;
-const selectTotalNews = ({ news: { totalNews } }) => totalNews;
-const selectFilter = ({ news: { filter } }) => filter;
-const selectIsLoadingNews = ({ news: { isLoading } }) => isLoading;
-const selectError = ({ news: { error } }) => error;
-const selectFilteredNews = createSelector(
-  [selectNews, selectFilter],
-  (news, filter) => {
-    const normalizedFilter = filter?.toLowerCase().trim();
-    return news.filter(
-      item =>
-        item.title.toLowerCase().includes(normalizedFilter) ||
-        item.content.toLowerCase().includes(normalizedFilter)
-    );
-  }
-);
 
 const newsSlice = createSlice({
   name: 'news',
   initialState,
   reducers: {
-    increasePage: state => {
-      state.page += 1;
-    },
-    changeFilter: (state, { payload }) => {
-      state.filter = payload;
+    setPage: (state, { payload }) => {
+      state.page = payload;
     },
   },
   extraReducers: builder =>
@@ -59,19 +34,21 @@ const newsSlice = createSlice({
         state.isLoading = false;
       })
 
-      .addCase(
-        fetchAnnounceNews.fulfilled,
-        (state, { payload: { totalNews, news } }) => {
-          state.totalNews = totalNews;
-          state.announceNews = news;
-          state.isLoading = false;
-        }
-      )
+      .addCase(fetchAnnounceNews.fulfilled, (state, { payload: { news } }) => {
+        state.announceNews = news;
+
+        state.isLoading = false;
+      })
       .addCase(
         fetchAllNews.fulfilled,
-        (state, { payload: { totalNews, news } }) => {
-          state.news.push(...news);
-          state.totalNews = totalNews;
+        (state, { payload: { totalPages, news } }) => {
+          if (state.page === 0) {
+            state.news = news;
+          } else {
+            state.news.push(...news);
+          }
+
+          state.totalPages = totalPages;
 
           state.isLoading = false;
         }
@@ -123,16 +100,23 @@ const newsSlice = createSlice({
           state.error = null;
         }
       ),
+  selectors: {
+    selectNews: state => state.news,
+    selectAnnounceNews: state => state.announceNews,
+    selectPageNews: state => state.page,
+    selectTotalPagesNews: state => state.totalPages,
+    selectIsLoadingNews: state => state.isLoading,
+    selectError: state => state.error,
+  },
 });
-export const { increasePage, changeFilter } = newsSlice.actions;
-export const newsReducer = newsSlice.reducer;
-export {
+export const { setPage } = newsSlice.actions;
+export const {
   selectNews,
   selectFilteredNews,
   selectAnnounceNews,
   selectPageNews,
-  selectTotalNews,
-  selectFilter,
+  selectTotalPagesNews,
   selectIsLoadingNews,
   selectError,
-};
+} = newsSlice.selectors;
+export const newsReducer = newsSlice.reducer;
