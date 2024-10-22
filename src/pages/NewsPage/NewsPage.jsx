@@ -8,7 +8,7 @@ import { fetchAllNews, fetchAnnounceNews, setPage } from '../../my-redux';
 import { useNews } from '../../hooks';
 
 const NewsPage = () => {
-  const { news, page, isLoading } = useNews();
+  const { news, page, isLoading, error } = useNews();
 
   const [isFetching, setIsFetching] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -63,7 +63,7 @@ const NewsPage = () => {
 
     const observer = new IntersectionObserver(
       entries => {
-        if (entries[0].isIntersecting && !isFetching && isMoreItems) {
+        if (entries[0].isIntersecting && !isFetching && isMoreItems && !error) {
           setIsFetching(true);
 
           dispatch(fetchAllNews(params))
@@ -96,7 +96,7 @@ const NewsPage = () => {
         observer.unobserve(currentTarget);
       }
     };
-  }, [dispatch, isFetching, isMoreItems, keyword, page]);
+  }, [dispatch, error, isFetching, isMoreItems, keyword, page]);
 
   const onSearchSubmit = filterValue => {
     dispatch(setPage(0));
@@ -123,6 +123,7 @@ const NewsPage = () => {
           <NewsList />
         )}
         <div ref={observerTarget}></div>
+
         {isLoading && <Loader placement="bottom" />}
       </section>
     </>

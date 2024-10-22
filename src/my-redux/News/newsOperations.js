@@ -7,9 +7,10 @@ export const fetchAllNews = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const { data } = await api.get('/news', { params });
+
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
