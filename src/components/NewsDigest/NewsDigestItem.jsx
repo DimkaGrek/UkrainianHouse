@@ -11,7 +11,7 @@ export const NewsDigestItem = ({ item }) => {
         onClick={toggleModal}
       >
         <img
-          src={item.photoUrls[0].photoUrls}
+          src={item.photoUrls[0]?.photoUrls}
           alt="New's photo"
           className="rounded-[18px] border-[1px] border-[#666] mb-[14px] w-[100%] lg:mb-[18px]  lg:h-[249px]  group-hover:border-[#fff] group-focus:border-[#fff]  group-hover:scale-[1.05] group-focus:scale-[1.05] transition duration-300"
         />
