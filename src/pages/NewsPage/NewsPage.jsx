@@ -4,54 +4,84 @@ import { toast } from 'react-toastify';
 
 import { Advertisement, Loader, NewsList, SearchBar } from '../../components';
 
-import {
-  fetchAllNews,
-  fetchAnnounceNews,
-  changeFilter,
-  increasePage,
-} from '../../my-redux';
+import { fetchAllNews, fetchAnnounceNews, setPage } from '../../my-redux';
 import { useNews } from '../../hooks';
 
 const NewsPage = () => {
+  const { news, page, isLoading } = useNews();
+
+  const [isFetching, setIsFetching] = useState(false);
+  const [keyword, setKeyword] = useState('');
   const [isMoreItems, setIsMoreItems] = useState(true);
-  const { page, totalNews, isLoading } = useNews();
-  const LIMIT = 6;
 
   const dispatch = useDispatch();
 
   const observerTarget = useRef(null);
 
-  useEffect(() => {
-    dispatch(changeFilter(''));
-  }, [dispatch]);
+  const LIMIT = 6;
 
   useEffect(() => {
     dispatch(fetchAnnounceNews())
       .unwrap()
       .then()
-      .catch(e => console.log(e));
+      .catch(e => toast.error(e.message));
   }, [dispatch]);
 
   useEffect(() => {
-    const params = { status: 'PUBLISHED', page, limit: LIMIT };
+    if (keyword) {
+      setIsFetching(true);
+      dispatch(
+        fetchAllNews({ page: 0, size: LIMIT, status: 'PUBLISHED', keyword })
+      )
+        .unwrap()
+        .then(res => {
+          dispatch(setPage(res.currentPage + 1));
+
+          const isMoreNews = res.currentPage + 1 < res.totalPages;
+          setIsMoreItems(isMoreNews);
+
+          if (!isMoreNews) {
+            toast.info('You have reached the end of the news list.');
+          }
+        })
+        .catch(e => {
+          toast.error(e.message);
+        })
+        .finally(() => setIsFetching(false));
+    }
+  }, [dispatch, keyword]);
+
+  useEffect(() => {
+    const params = {
+      page,
+      size: LIMIT,
+      status: 'PUBLISHED',
+      ...(keyword && { keyword }),
+    };
+
     const currentTarget = observerTarget.current;
 
     const observer = new IntersectionObserver(
       entries => {
-        if (entries[0].isIntersecting) {
-          if (!isMoreItems) return;
+        if (entries[0].isIntersecting && !isFetching && isMoreItems) {
+          setIsFetching(true);
+
           dispatch(fetchAllNews(params))
             .unwrap()
-            .then(() => {
-              dispatch(increasePage());
-              const isMoreEvents = page < Math.ceil(totalNews / LIMIT);
-              setIsMoreItems(isMoreEvents);
+            .then(res => {
+              dispatch(setPage(page + 1));
 
-              if (!isMoreEvents) {
-                toast.info('You have reached the end of the mews list.');
+              const isMoreNews = res.currentPage + 1 < res.totalPages;
+              setIsMoreItems(isMoreNews);
+
+              if (!isMoreNews) {
+                toast.info('You have reached the end of the news list.');
               }
             })
-            .catch(e => console.log(e));
+            .catch(e => {
+              toast.error(e.message);
+            })
+            .finally(() => setIsFetching(false));
         }
       },
       { threshold: 1 }
@@ -60,12 +90,18 @@ const NewsPage = () => {
     if (currentTarget) {
       observer.observe(currentTarget);
     }
+
     return () => {
       if (currentTarget) {
         observer.unobserve(currentTarget);
       }
     };
-  }, [dispatch, isMoreItems, page, totalNews]);
+  }, [dispatch, isFetching, isMoreItems, keyword, page]);
+
+  const onSearchSubmit = filterValue => {
+    dispatch(setPage(0));
+    setKeyword(filterValue);
+  };
 
   return (
     <>
@@ -74,10 +110,18 @@ const NewsPage = () => {
           <h3 className="font-proza-semibold font-semibold text-[20px] text-[#222] leading-[160%] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]">
             News
           </h3>
-          <SearchBar />
+          <div className="w-[500px] lg:w-[654px]">
+            <SearchBar setQuery={onSearchSubmit} />
+          </div>
         </div>
         <Advertisement />
-        <NewsList />
+        {!news.length && keyword ? (
+          <h2 className="text-[#1a1a1a] text-3xl font-bold text-center mb-4">
+            No results for &quot;{keyword}&quot;.
+          </h2>
+        ) : (
+          <NewsList />
+        )}
         <div ref={observerTarget}></div>
         {isLoading && <Loader placement="bottom" />}
       </section>
