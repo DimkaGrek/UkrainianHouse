@@ -8,17 +8,14 @@ import { fetchAllNews, fetchAnnounceNews, setPage } from '../../my-redux';
 import { useNews } from '../../hooks';
 
 const NewsPage = () => {
-  const { news, page, isLoading, error } = useNews();
+  const { news, page, isMoreNews, isLoading, error } = useNews();
 
   const [isFetching, setIsFetching] = useState(false);
   const [keyword, setKeyword] = useState('');
-  const [isMoreItems, setIsMoreItems] = useState(true);
 
   const dispatch = useDispatch();
 
   const observerTarget = useRef(null);
-
-  const LIMIT = 6;
 
   useEffect(() => {
     dispatch(fetchAnnounceNews())
@@ -30,15 +27,10 @@ const NewsPage = () => {
   useEffect(() => {
     if (keyword) {
       setIsFetching(true);
-      dispatch(
-        fetchAllNews({ page: 0, size: LIMIT, status: 'PUBLISHED', keyword })
-      )
+      dispatch(fetchAllNews({ page: 0, status: 'PUBLISHED', keyword }))
         .unwrap()
         .then(res => {
           dispatch(setPage(res.currentPage + 1));
-
-          const isMoreNews = res.currentPage + 1 < res.totalPages;
-          setIsMoreItems(isMoreNews);
 
           if (!isMoreNews) {
             toast.info('You have reached the end of the news list.');
@@ -49,12 +41,11 @@ const NewsPage = () => {
         })
         .finally(() => setIsFetching(false));
     }
-  }, [dispatch, keyword]);
+  }, [dispatch, isMoreNews, keyword]);
 
   useEffect(() => {
     const params = {
       page,
-      size: LIMIT,
       status: 'PUBLISHED',
       ...(keyword && { keyword }),
     };
@@ -63,16 +54,13 @@ const NewsPage = () => {
 
     const observer = new IntersectionObserver(
       entries => {
-        if (entries[0].isIntersecting && !isFetching && isMoreItems && !error) {
+        if (entries[0].isIntersecting && !isFetching && isMoreNews && !error) {
           setIsFetching(true);
 
           dispatch(fetchAllNews(params))
             .unwrap()
-            .then(res => {
+            .then(() => {
               dispatch(setPage(page + 1));
-
-              const isMoreNews = res.currentPage + 1 < res.totalPages;
-              setIsMoreItems(isMoreNews);
 
               if (!isMoreNews) {
                 toast.info('You have reached the end of the news list.');
@@ -96,7 +84,7 @@ const NewsPage = () => {
         observer.unobserve(currentTarget);
       }
     };
-  }, [dispatch, error, isFetching, isMoreItems, keyword, page]);
+  }, [dispatch, error, isFetching, isMoreNews, keyword, page]);
 
   const onSearchSubmit = filterValue => {
     dispatch(setPage(0));
