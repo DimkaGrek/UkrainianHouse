@@ -8,18 +8,21 @@ import {
   NewsDigest,
   Loader,
 } from '../../components';
-import { fetchAllNews } from '../../my-redux/News/newsOperations';
-import { selectNews, selectIsLoadingNews } from '../../my-redux/News/newsSlice';
+import { fetchHomeNews } from '../../my-redux/News/newsOperations';
+import {
+  selectIsLoadingNews,
+  selectHomeNews,
+} from '../../my-redux/News/newsSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const news = useSelector(selectNews);
+  const news = useSelector(selectHomeNews);
   console.log(news);
   const isLoading = useSelector(selectIsLoadingNews);
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        await dispatch(fetchAllNews({ page: 1, limit: 3 })).unwrap();
+        await dispatch(fetchHomeNews()).unwrap();
       } catch {
         toast.error('Something went wrong. Please, reload the page.');
       }
