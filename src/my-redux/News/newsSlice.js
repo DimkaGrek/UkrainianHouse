@@ -5,14 +5,12 @@ import {
   deleteOneNews,
   fetchAllNews,
   fetchAnnounceNews,
-  fetchHomeNews,
   getOneNews,
   updateNews,
 } from './newsOperations';
 
 const initialState = {
   news: [],
-  homeNews: [],
   announceNews: [],
   oneNews: null,
   page: 0,
@@ -28,6 +26,10 @@ const newsSlice = createSlice({
   reducers: {
     setPage: (state, { payload }) => {
       state.page = payload;
+    },
+    clearNews: state => {
+      state.news = [];
+      state.page = 0;
     },
   },
   extraReducers: builder =>
@@ -47,11 +49,6 @@ const newsSlice = createSlice({
           state.isLoading = false;
         }
       )
-      .addCase(fetchHomeNews.fulfilled, (state, { payload: { news } }) => {
-        state.homeNews = news;
-
-        state.isLoading = false;
-      })
       .addCase(fetchAnnounceNews.fulfilled, (state, { payload: { news } }) => {
         state.announceNews = news;
 
@@ -82,7 +79,6 @@ const newsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAllNews.rejected,
-          fetchHomeNews.rejected,
           fetchAnnounceNews.rejected,
           createNews.rejected,
           getOneNews.rejected,
@@ -98,7 +94,6 @@ const newsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAllNews.pending,
-          fetchHomeNews.pending,
           fetchAnnounceNews.pending,
           createNews.pending,
           getOneNews.pending,
@@ -112,7 +107,6 @@ const newsSlice = createSlice({
       ),
   selectors: {
     selectNews: state => state.news,
-    selectHomeNews: state => state.homeNews,
     selectAnnounceNews: state => state.announceNews,
     selectPageNews: state => state.page,
     selectTotalPagesNews: state => state.totalPages,
@@ -121,10 +115,9 @@ const newsSlice = createSlice({
     selectError: state => state.error,
   },
 });
-export const { setPage } = newsSlice.actions;
+export const { setPage, clearNews } = newsSlice.actions;
 export const {
   selectNews,
-  selectHomeNews,
   selectAnnounceNews,
   selectPageNews,
   selectTotalPagesNews,
