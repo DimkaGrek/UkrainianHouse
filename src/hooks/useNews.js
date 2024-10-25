@@ -8,12 +8,11 @@ import {
   selectPageNews,
   selectNews,
   selectIsMoreNews,
-  selectHomeNews,
 } from '../my-redux';
 
 export const useNews = () => {
   const news = useSelector(selectNews);
-  const homeNews = useSelector(selectHomeNews);
+
   const announceNews = useSelector(selectAnnounceNews);
   const page = useSelector(selectPageNews);
   const totalPages = useSelector(selectTotalPagesNews);
@@ -23,7 +22,7 @@ export const useNews = () => {
 
   return {
     news,
-    homeNews,
+
     announceNews,
     page,
     totalPages,

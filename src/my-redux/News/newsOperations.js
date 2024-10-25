@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../services/api';
 
 export const fetchAllNews = createAsyncThunk(
-  'news/getAll',
+  'news/getAllNews',
   async (params, thunkAPI) => {
     try {
       const { data } = await api.get('/news', { params });
@@ -14,19 +14,7 @@ export const fetchAllNews = createAsyncThunk(
     }
   }
 );
-export const fetchHomeNews = createAsyncThunk(
-  'news/getHomeNews',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await api.get('/news', {
-        params: { size: 3, status: 'PUBLISHED' },
-      });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+
 export const fetchAnnounceNews = createAsyncThunk(
   'news/getAnnounceNews',
   async (_, thunkAPI) => {
@@ -42,10 +30,10 @@ export const fetchAnnounceNews = createAsyncThunk(
 );
 
 export const createNews = createAsyncThunk(
-  'news/addItem',
+  'news/addNews',
   async (news, thunkAPI) => {
     try {
-      const { data } = await api.post('/news', news, {
+      const { data } = await api.post('/admin/news', news, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -58,7 +46,7 @@ export const createNews = createAsyncThunk(
 );
 
 export const getOneNews = createAsyncThunk(
-  'news/getOneItem',
+  'news/getOneNews',
   async (id, thunkAPI) => {
     try {
       const { data } = await api.get(`news/${id}`);
