@@ -100,7 +100,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .field {
-  @apply text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
+  @apply text-[20px] leading-[24px] min-h-[50px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
 }
 
 .field-error {
@@ -116,6 +116,8 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .scrollbar {
+  --thumb-color: #a6cae5;
+  --track-color: #daefff;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -125,8 +127,9 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: #daefff;
+  background: var(--track-color);
   border-radius: 12px;
+  margin-block: 8px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
@@ -136,7 +139,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 @supports not selector(::-webkit-scrollbar) {
   .scrollbar {
-    scrollbar-color: #a6cae5 #daefff;
+    scrollbar-color: var(--thumb-color) var(--track-color);
   }
 }
 
