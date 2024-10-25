@@ -1,11 +1,16 @@
 import { useForm } from 'react-hook-form';
-import { InputField } from '../InputField/InputField';
+import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { InputField } from '../InputField/InputField';
 
 import { loginFormShema } from '../../schemas';
+import { loginThunk } from '../../my-redux/Auth/operations';
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +21,7 @@ export const LoginForm = () => {
   });
 
   const onSubmit = data => {
-    console.log(data);
+    dispatch(loginThunk(data));
   };
 
   return (
@@ -24,7 +29,7 @@ export const LoginForm = () => {
       <h2 className="font-proza-medium text-[26px] leading-[34px]">Login</h2>
       <InputField
         label="Email"
-        name="email"
+        name="username"
         type="email"
         placeholder="Enter your email adress"
         register={register}
@@ -45,14 +50,14 @@ export const LoginForm = () => {
       >
         Forgot password?
       </Link>
-      <label className="flex items-center gap-3 text-sm leading-[18px] text-[#666666] cursor-pointer">
+      {/* <label className="flex items-center gap-3 text-sm leading-[18px] text-[#666666] cursor-pointer">
         <input
           type="checkbox"
           className="w-5 h-5 cursor-pointer"
           {...register('remember')}
         />
         Remember me
-      </label>
+      </label> */}
       <button className="primaryBtn w-full h-[56px]" type="submit">
         Login
       </button>

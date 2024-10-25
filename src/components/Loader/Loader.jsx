@@ -1,10 +1,16 @@
 import { SpinnerCircularFixed } from 'spinners-react';
 
-export const Loader = () => {
+export const Loader = ({ placement = 'backdrop', size = 60 }) => {
   return (
-    <div className="fixed w-full h-full flex justify-center items-center top-0 left-0 bg-black bg-opacity-50">
+    <div
+      className={`${
+        placement === 'backdrop'
+          ? 'fixed w-full h-full flex justify-center items-center top-0 left-0 bg-black bg-opacity-50 z-10'
+          : 'flex justify-center'
+      } `}
+    >
       <SpinnerCircularFixed
-        size={60}
+        size={size}
         thickness={400}
         speed={100}
         color="#1c4a8a"

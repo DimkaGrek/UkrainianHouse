@@ -2,28 +2,32 @@ import { useSelector } from 'react-redux';
 
 import {
   selectError,
-  selectIsLoading,
-  selectNews,
+  selectIsLoadingNews,
   selectAnnounceNews,
-  selectTotalNews,
-  selectFilter,
-  selectFilteredNews,
+  selectTotalPagesNews,
+  selectPageNews,
+  selectNews,
+  selectIsMoreNews,
+  selectHomeNews,
 } from '../my-redux';
 
 export const useNews = () => {
   const news = useSelector(selectNews);
-  const filteredNews = useSelector(selectFilteredNews);
+  const homeNews = useSelector(selectHomeNews);
   const announceNews = useSelector(selectAnnounceNews);
-  const filter = useSelector(selectFilter);
-  const totalNews = useSelector(selectTotalNews);
-  const isLoading = useSelector(selectIsLoading);
+  const page = useSelector(selectPageNews);
+  const totalPages = useSelector(selectTotalPagesNews);
+  const isMoreNews = useSelector(selectIsMoreNews);
+  const isLoading = useSelector(selectIsLoadingNews);
   const error = useSelector(selectError);
+
   return {
     news,
-    filteredNews,
+    homeNews,
     announceNews,
-    filter,
-    totalNews,
+    page,
+    totalPages,
+    isMoreNews,
     isLoading,
     error,
   };

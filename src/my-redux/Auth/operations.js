@@ -1,68 +1,51 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../../services/api';
+import { api, clearToken, setToken } from '../../services/api';
 
-const setAuthHeader = token => {
-  api.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  api.defaults.headers.common.Authorization = ``;
-};
-
-// export const registerThunk = createAsyncThunk(
-//   'auth/registerUser',
-//   async (credentials, thunkApi) => {
-//     try {
-//       const { data } = await api.post('users/signup', credentials);
-//       setAuthHeader(data.token);
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-export const userLoginThunk = createAsyncThunk(
-  'auth/loginUser',
-  async (credentials, thunkApi) => {
+export const loginThunk = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
     try {
-      const { data } = await api.post('users/login', credentials);
-      setAuthHeader(data.token);
-      return data;
+      const {
+        data: { token },
+      } = await api.post('/login', credentials);
+      setToken(token);
+      return token;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const userLogoutThunk = createAsyncThunk(
-  'auth/logoutUser',
-  async (_, thunkApi) => {
+export const logoutThunk = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
     try {
-      await api.post('users/logout');
-      clearAuthHeader();
+      await api.post('/admin/logout');
+      clearToken();
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const refreshUserThunk = createAsyncThunk(
-  'auth/refreshUser',
-  async (_, thunkApi) => {
+export const refreshThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
     const {
       auth: { token },
-    } = thunkApi.getState();
+    } = thunkAPI.getState();
+
     if (!token) {
-      return thunkApi.rejectWithValue('There is no token');
+      return thunkAPI.rejectWithValue('There is no token');
     }
 
+    setToken(token);
+
     try {
-      setAuthHeader(token);
-      const { data } = await api.get('users/current');
+      const { data } = await api.get('/admin/checkToken');
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

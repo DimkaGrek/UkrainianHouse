@@ -8,14 +8,14 @@ export const NewsListItem = ({ item }) => {
   return (
     <>
       <li
-        className="group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] transition duration-300"
+        className="flex flex-col group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus:bg-[#2355cc] transition duration-300"
         onClick={toggleModal}
       >
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px]">
           <img
             className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] group-focus:scale-[1.05] group-active::scale-[1.05] transition duration-300"
             src={item.photoUrls[0] ? item.photoUrls[0].photoUrls : ''}
-            alt="News"
+            alt={item.title}
             width={306}
             height={209}
           />
@@ -28,13 +28,9 @@ export const NewsListItem = ({ item }) => {
             {item.content}
           </p>
         </div>
-        <div className="flex justify-between">
-          <p className=" font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300">
-            {item.publishDate}
-          </p>
-          <p className="font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300">
-            Maastricht
-          </p>
+        <div className="flex justify-between font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300 mt-auto">
+          <p>{item.publishDate}</p>
+          <p>Maastricht</p>
         </div>
       </li>
       {isOpenModal && (
