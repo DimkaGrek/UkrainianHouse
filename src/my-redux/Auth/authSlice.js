@@ -37,7 +37,7 @@ const authSlice = createSlice({
         state.isError = null;
       })
       .addMatcher(
-        isAnyOf(loginThunk.pending, logoutThunk.pending),
+        isAnyOf(loginThunk.rejected, logoutThunk.rejected),
         (state, { payload }) => {
           state.isLoading = false;
           state.isError = payload;

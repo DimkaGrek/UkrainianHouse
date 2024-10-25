@@ -58,7 +58,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
         </span>
       </div>
       {isOpen && (
-        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-white p-[2px] max-h-[218px] overflow-scroll shadow-sm z-50">
+        <div className="w-full absolute top-[90px] border border-solid border-[#1C1C1C] rounded-[10px] bg-white p-[2px] max-h-[218px] overflow-auto shadow-sm z-50">
           <ul className="font-istok font-normal text-[20px] leading-[24px] w-full flex flex-col gap-[2px]">
             {statuses &&
               statuses.map((option, index) => (
@@ -66,7 +66,9 @@ export const StatusField = ({ statuses, setStatus, status }) => {
                   key={index}
                   onClick={() => handleChangeStatus(option)}
                   className={`w-full p-[10px] cursor-pointer hover:bg-my-yellow rounded-[10px] hover:transition-all ${
-                    option === value ? 'bg-yellow-200' : ''
+                    option.toLowerCase() === value.toLowerCase()
+                      ? 'bg-yellow-200'
+                      : ''
                   }`}
                 >
                   {getCapitalizedWord(option)}

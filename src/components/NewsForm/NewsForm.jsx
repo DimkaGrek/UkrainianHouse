@@ -137,7 +137,15 @@ export const NewsForm = ({ toggle }) => {
     }
 
     const fd = getFromattedData(resizedImages, 'photos', data, 'news');
-    dispatch(createNews(fd));
+    dispatch(createNews(fd))
+      .unwrap()
+      .then(() => {
+        toast.success('News created successfully');
+        toggle();
+      })
+      .catch(e => {
+        toast.error(e.message);
+      });
 
     setSelectedImages(new Array(3).fill(0));
     reset();
@@ -197,7 +205,7 @@ export const NewsForm = ({ toggle }) => {
         <label className="label">
           Article Text
           <textarea
-            className="field resize-none overflow-auto h-[265px]"
+            className="field resize-none overflow-auto h-[200px] scrollbar"
             type="text"
             placeholder="Enter the article text"
             {...register('content')}
@@ -205,8 +213,9 @@ export const NewsForm = ({ toggle }) => {
         </label>
         <p className="field-error">{errors['content']?.message}</p>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="flex gap-4">
         <InputField
+          wrapperClass="w-1/2"
           label="Button Text"
           name="btnText"
           placeholder="Enter the button text"
@@ -215,6 +224,7 @@ export const NewsForm = ({ toggle }) => {
           errors={errors}
         />
         <InputField
+          wrapperClass="w-1/2"
           label="Button Link"
           name="btnLink"
           placeholder="https//www..."

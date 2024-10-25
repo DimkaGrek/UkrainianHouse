@@ -4,7 +4,12 @@ import { toast } from 'react-toastify';
 
 import { Advertisement, Loader, NewsList, SearchBar } from '../../components';
 
-import { fetchAllNews, fetchAnnounceNews, setPage } from '../../my-redux';
+import {
+  clearNews,
+  fetchAllNews,
+  fetchAnnounceNews,
+  setPage,
+} from '../../my-redux';
 import { useNews } from '../../hooks';
 
 const NewsPage = () => {
@@ -16,6 +21,10 @@ const NewsPage = () => {
   const dispatch = useDispatch();
 
   const observerTarget = useRef(null);
+
+  useEffect(() => {
+    dispatch(clearNews());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchAnnounceNews())
