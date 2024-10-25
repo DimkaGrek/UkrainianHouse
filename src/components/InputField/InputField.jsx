@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Icon } from '../Icon/Icon';
 
 export const InputField = ({
+  wrapperClass = '',
   label,
   name,
   type = 'text',
@@ -23,6 +24,7 @@ export const InputField = ({
     ...register(name),
     autoComplete,
   };
+  console.log(inputProps);
 
   const errorMessage = errors[name]?.message;
 
@@ -31,7 +33,7 @@ export const InputField = ({
   };
 
   return (
-    <div>
+    <div className={wrapperClass}>
       <label className="label relative">
         {label}
         <input
