@@ -1,16 +1,17 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { InputField } from '../InputField/InputField';
 
 import { loginFormShema } from '../../schemas';
 import { loginThunk } from '../../my-redux/Auth/operations';
+import { toast } from 'react-toastify';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -21,7 +22,15 @@ export const LoginForm = () => {
   });
 
   const onSubmit = data => {
-    dispatch(loginThunk(data));
+    dispatch(loginThunk(data))
+      .unwrap()
+      .catch(e => {
+        if (e.slice(-3) === '401') {
+          toast.error('Wrong email or password.');
+        } else {
+          toast.error('Something went wrong. Please, reload the page.');
+        }
+      });
   };
 
   return (
