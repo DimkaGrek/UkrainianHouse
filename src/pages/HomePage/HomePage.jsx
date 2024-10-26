@@ -27,10 +27,11 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
+      const config = {
+        params: { page: 0, size: 3, status: 'PUBLISHED' },
+      };
       try {
-        await dispatch(
-          fetchAllNews({ page: 0, size: 3, status: 'PUBLISHED' })
-        ).unwrap();
+        await dispatch(fetchAllNews(config)).unwrap();
       } catch {
         toast.error('Something went wrong. Please, reload the page.');
       }
