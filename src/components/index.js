@@ -38,3 +38,6 @@ export * from './ForgotPasswordForm/ForgotPasswordForm.jsx';
 export * from './ResetPasswordForm/ResetPasswordForm.jsx';
 export * from './NewsDigest/NewsDigestItem.jsx';
 export * from './LogoutModal/LogoutModal.jsx';
+export * from './ContentList/ContentList.jsx';
+export * from './ContentList/ContentListItem.jsx';
+export * from './Pagination/Pagination.jsx';
