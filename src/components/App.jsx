@@ -77,7 +77,8 @@ const App = () => {
           }
         />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+        <Route path="/404" element={<NotFoundPage />} />
         <Route path="admin" element={<Navigate to={adminLink} replace />} />
         <Route path="auth" element={<Navigate to={authLink} replace />} />
 

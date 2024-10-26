@@ -10,10 +10,8 @@
 */
 @font-face {
   font-family: 'IstokWeb-Regular';
-  src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff')
-      format('woff');
+  src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2') format('woff2'),
+    url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff') format('woff');
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
@@ -27,10 +25,8 @@
 */
 @font-face {
   font-family: 'ProzaLibre-Regular';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff')
-      format('woff');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2') format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff') format('woff');
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
@@ -44,10 +40,8 @@
 */
 @font-face {
   font-family: 'ProzaLibre-Medium';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff')
-      format('woff');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2') format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff') format('woff');
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
@@ -61,10 +55,8 @@
 */
 @font-face {
   font-family: 'ProzaLibre-SemiBold';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff')
-      format('woff');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2') format('woff2'),
+    url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff') format('woff');
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
@@ -78,8 +70,7 @@
 */
 @font-face {
   font-family: 'ProzaLibre-Bold';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2')
-    format('woff2');
+  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2') format('woff2');
   font-weight: 700;
   font-stretch: normal;
   font-display: swap;
@@ -161,7 +152,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::before {
     background-image: url('./assets/images/contacts/contacts_mobile2x.png');
   }
@@ -191,7 +182,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::after {
     background-image: url('./assets/images/contacts/contacts_2_mobile2x.png');
   }
@@ -205,7 +196,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
       background-image: url('./assets/images/contacts/contacts_2_tablet2x.png');
     }
@@ -220,7 +211,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
       background-image: url('./assets/images/contacts/contacts_2_desktop2x.png');
     }
@@ -245,7 +236,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 @media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+screen and (min-device-pixel-ratio: 2) {
   .link-wrapper::before {
     background-image: url('./assets/images/footer/tape_2x_mob.jpg');
   }
@@ -259,7 +250,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
       background-image: url('./assets/images/footer/tape_2x_tablet.jpg');
     }
@@ -273,7 +264,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
       background-image: url('./assets/images/footer/tape_2x_desktop.jpg');
     }
@@ -326,4 +317,57 @@ input[type='number']::-webkit-outer-spin-button {
 
 .active-pg {
   @apply border-transparent bg-[#2356CC] text-white;
+}
+
+
+/* styles 404 */
+
+@media screen and (min-width: 768px) {
+  .not-found-section {
+    background-image: url(' assets/images/not-found/notFound@1x_tablet.png');
+  }
+
+  @media screen and (min-resolution: 1.5dppx),
+  screen and (min-device-pixel-ratio: 2) {
+    .not-found-section {
+      background-image: url('assets/images/not-found/notFound@2x_tablet.png');
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .not-found-section {
+    background-image: url('./assets/images/not-found/notFound@1x_desktop.png');
+  }
+
+  @media screen and (min-resolution: 1.5dppx),
+  screen and (min-device-pixel-ratio: 2) {
+    .not-found-section {
+      background-image: url('./assets/images/not-found/notFound@2x_desktop.png');
+    }
+  }
+}
+
+.decoration-lines {
+  background-image: url('./assets/images/not-found/decorationLines@1x_tablet.png');
+}
+
+@media screen and (min-resolution: 1.5dppx),
+screen and (min-device-pixel-ratio: 2) {
+  .decoration-lines {
+    background-image: url('./assets/images/not-found/decorationLines@2x_tablet.png');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .decoration-lines {
+    background-image: url('./assets/images/not-found/decorationLines@1x_desktop.png');
+  }
+
+  @media screen and (min-resolution: 1.5dppx),
+  screen and (min-device-pixel-ratio: 2) {
+    .decoration-lines {
+      background-image: url('./assets/images/not-found/decorationLines@1x_desktop.png');
+    }
+  }
 }

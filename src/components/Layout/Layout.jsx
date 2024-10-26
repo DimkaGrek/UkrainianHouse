@@ -40,6 +40,16 @@ export const Layout = () => {
     );
   }
 
+  if (location.pathname == '/404') {
+    return (
+      <main>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </main>
+    );
+  }
+
   return (
     <>
       <Header />
