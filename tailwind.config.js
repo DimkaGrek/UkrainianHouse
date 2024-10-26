@@ -7,6 +7,7 @@ export default {
       'sm-max': { max: '374.99px' },
       md: '768px',
       lg: '1440px',
+      extralg: '1920px',
     },
     fontFamily: {
       istok: [
