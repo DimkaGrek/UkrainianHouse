@@ -4,9 +4,12 @@ import { api } from '../../services/api';
 
 export const fetchAllNews = createAsyncThunk(
   'news/getAllNews',
-  async (params, thunkAPI) => {
+  async (config, thunkAPI) => {
+    const { params, isAdmin = false } = config;
     try {
-      const { data } = await api.get('/news', { params });
+      const { data } = await api.get(`${isAdmin ? '/admin' : ''}/news`, {
+        params,
+      });
 
       return data;
     } catch (error) {
@@ -58,10 +61,24 @@ export const getOneNews = createAsyncThunk(
 );
 
 export const deleteOneNews = createAsyncThunk(
-  'news/deleteItem',
+  'news/deleteNews',
   async (id, thunkAPI) => {
     try {
-      const { data } = await api.delete(`news/${id}`);
+      const { data } = await api.delete(`admin/news/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const archiveOneNews = createAsyncThunk(
+  'news/archiveNews',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await api.put(`admin/news/${id}`, {
+        status: 'ARCHIVED',
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
