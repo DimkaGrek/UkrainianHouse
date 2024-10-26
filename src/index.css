@@ -319,6 +319,27 @@ screen and (min-device-pixel-ratio: 2) {
   @apply border-transparent bg-[#2356CC] text-white;
 }
 
+.help-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -7px;
+
+  background-image: url('./assets/images/overlay thanks.png');
+
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 279px;
+  height: 380px;
+}
+
+@media screen and (min-resolution: 1.5dppx),
+  screen and (min-device-pixel-ratio: 2) {
+  .help-modal::before {
+    background-image: url('./assets/images/overlay thanks.png');
+  }
+}
+=======
 
 /* styles 404 */
 
