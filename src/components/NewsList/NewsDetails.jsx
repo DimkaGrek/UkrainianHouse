@@ -32,11 +32,11 @@ export const NewsDetails = ({
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto md:w-auto lg:w-auto">
               <img
-                src={`${item.photoUrls}`}
+                src={`http://dev.ukrhouse.pp.ua:8080/${item.photoUrls}`}
                 width={316}
                 height={108}
                 className="w-auto max-w-full md:max-w-[189px] lg:max-w-[400px] h-auto rounded-[18px]"
-                alt={item.caption}
+                alt={item.caption || 'News photo'}
               />
             </li>
           ))}
