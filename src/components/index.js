@@ -41,3 +41,4 @@ export * from './LogoutModal/LogoutModal.jsx';
 export * from './ContentList/ContentList.jsx';
 export * from './ContentList/ContentListItem.jsx';
 export * from './Pagination/Pagination.jsx';
+export * from './NeedHelpModal/NeedHelpModal.jsx';
