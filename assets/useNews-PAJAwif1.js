@@ -1,0 +1,1 @@
+import{b as s,s as w,v as N,w as g,x as u,y as i,z as p,c as P,C as d}from"./index-B0JYQF1T.js";const x=()=>{const e=s(w),t=s(N),o=s(g),a=s(u),c=s(i),n=s(p),r=s(P),l=s(d);return{news:e,announceNews:t,page:o,totalPages:a,totalNews:c,isMoreNews:n,isLoading:r,error:l}};export{x as u};

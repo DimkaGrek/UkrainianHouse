@@ -1,1 +1,0 @@
-import{b as s,s as w,n as N,o as g,p as u,q as i,t as p,c as P,v as d}from"./index-C0xzaJew.js";const I=()=>{const e=s(w),t=s(N),o=s(g),a=s(u),c=s(i),n=s(p),r=s(P),l=s(d);return{news:e,announceNews:t,page:o,totalPages:a,totalNews:c,isMoreNews:n,isLoading:r,error:l}};export{I as u};
