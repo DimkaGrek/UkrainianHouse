@@ -308,3 +308,22 @@ input[type='number']::-webkit-outer-spin-button {
     display: none;
   }
 }
+
+/* Pagination */
+.page-link {
+  @apply size-[44px] flex items-center justify-center rounded-full border border-[#2626265f] bg-transparent text-[18px] font-bold leading-[1.29] text-[#262626] transition duration-300;
+}
+
+.page-item.disabled .page-link,
+.page-link:disabled {
+  @apply border-[#262626] border-opacity-[5%] bg-transparent fill-[#2626267f] text-[#2626267f];
+}
+
+.page-item:not(.disabled):not(.selected):hover .page-link,
+.page-item:not(.disabled):not(.selected):focus-visible .page-link {
+  @apply border-transparent bg-[#c9dbe8];
+}
+
+.active-pg {
+  @apply border-transparent bg-[#2356CC] text-white;
+}
