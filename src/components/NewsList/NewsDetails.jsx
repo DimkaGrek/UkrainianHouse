@@ -1,4 +1,5 @@
 import { ReadMoreButton } from '../../components';
+import { getFormattedDate } from '../../helpers';
 
 export const NewsDetails = ({
   title,
@@ -18,7 +19,7 @@ export const NewsDetails = ({
           {content}
         </p>
         <p className=" font-istok text-[12px] md:text-[14px] lg:text-[20px] text-[#a6a6a6] text-left leading-[150%] md:leading-[129%] lg:leading-[150%] lg:mb-[24px]">
-          {publishDate.slice(0, 10)}
+          {getFormattedDate(publishDate)}
         </p>
         <ReadMoreButton
           className="hidden lg:block"
