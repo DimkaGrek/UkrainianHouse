@@ -12,7 +12,7 @@ import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import { bookStatuses } from '../../constants';
 import { bookFormSchema } from '../../schemas';
-import { createBook } from '../../my-redux/Books/operations';
+import { createBook } from '../../my-redux';
 import { getFileResizer, getFromattedData } from '../../helpers';
 
 export const BookForm = ({ toggle }) => {
