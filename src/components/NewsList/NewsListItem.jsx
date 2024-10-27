@@ -1,5 +1,6 @@
 import { Modal, NewsDetails } from '../../components';
 
+import { getFormattedDate } from '../../helpers';
 import { useModal } from '../../hooks';
 
 export const NewsListItem = ({ item }) => {
@@ -14,12 +15,12 @@ export const NewsListItem = ({ item }) => {
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus:text-[#fbfbfb] transition duration-300">
           <img
             className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] group-focus:scale-[1.05] group-active::scale-[1.05] transition duration-300"
-            src={item.photoUrls[0] ? item.photoUrls[0].photoUrls : ''}
-            alt={
-              item.photoUrls[0]?.caption
-                ? item.photoUrls[0].caption
-                : item.title
+            src={
+              item.photoUrls[0]
+                ? `http://dev.ukrhouse.pp.ua:8080/${item.photoUrls[0].photoUrls}`
+                : ''
             }
+            alt={item.photoUrls[0]?.caption || item.title}
             width={306}
             height={209}
           />
@@ -33,7 +34,7 @@ export const NewsListItem = ({ item }) => {
           </p>
         </div>
         <div className="flex justify-between font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300 mt-auto">
-          <p>{item.publishDate.slice(0, 10)}</p>
+          <p>{getFormattedDate(item.publishDate)}</p>
           <p>Maastricht</p>
         </div>
       </li>

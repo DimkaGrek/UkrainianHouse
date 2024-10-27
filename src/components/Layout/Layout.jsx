@@ -31,12 +31,22 @@ export const Layout = () => {
         <aside className="grid-in-aside bg-[#FFD43766] p-6">
           <Sidebar />
         </aside>
-        <main className="grid-in-main overflow-y-auto px-4">
+        <main className="grid-in-main overflow-y-auto px-8">
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </main>
       </div>
+    );
+  }
+
+  if (location.pathname == '/404') {
+    return (
+      <main>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </main>
     );
   }
 

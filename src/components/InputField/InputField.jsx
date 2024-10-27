@@ -24,7 +24,6 @@ export const InputField = ({
     ...register(name),
     autoComplete,
   };
-  console.log(inputProps);
 
   const errorMessage = errors[name]?.message;
 

@@ -8,7 +8,7 @@ import {
   clearNews,
   fetchAllNews,
   fetchAnnounceNews,
-  setPage,
+  setPageNews,
 } from '../../my-redux';
 import { useNews } from '../../hooks';
 
@@ -35,11 +35,14 @@ const NewsPage = () => {
 
   useEffect(() => {
     if (keyword) {
+      const config = {
+        params: { page: 0, status: 'PUBLISHED', keyword },
+      };
       setIsFetching(true);
-      dispatch(fetchAllNews({ page: 0, status: 'PUBLISHED', keyword }))
+      dispatch(fetchAllNews(config))
         .unwrap()
         .then(res => {
-          dispatch(setPage(res.currentPage + 1));
+          dispatch(setPageNews(res.currentPage + 1));
 
           if (!isMoreNews) {
             toast.info('You have reached the end of the news list.');
@@ -53,10 +56,8 @@ const NewsPage = () => {
   }, [dispatch, isMoreNews, keyword]);
 
   useEffect(() => {
-    const params = {
-      page,
-      status: 'PUBLISHED',
-      ...(keyword && { keyword }),
+    const config = {
+      params: { page, status: 'PUBLISHED', ...(keyword && { keyword }) },
     };
 
     const currentTarget = observerTarget.current;
@@ -66,10 +67,10 @@ const NewsPage = () => {
         if (entries[0].isIntersecting && !isFetching && isMoreNews && !error) {
           setIsFetching(true);
 
-          dispatch(fetchAllNews(params))
+          dispatch(fetchAllNews(config))
             .unwrap()
             .then(() => {
-              dispatch(setPage(page + 1));
+              dispatch(setPageNews(page + 1));
 
               if (!isMoreNews) {
                 toast.info('You have reached the end of the news list.');
@@ -96,14 +97,14 @@ const NewsPage = () => {
   }, [dispatch, error, isFetching, isMoreNews, keyword, page]);
 
   const onSearchSubmit = filterValue => {
-    dispatch(setPage(0));
+    dispatch(setPageNews(0));
     setKeyword(filterValue);
   };
 
   return (
     <>
       <section className="pb-[74px] md:pb-[50px] lg:pb-[110px]">
-        <div className="hidden  md:flex justify-between items-center mb-[40px] lg:mb:[44px]">
+        <div className="hidden  md:flex justify-between items-center mb-[40px] lg:mb-[44px]">
           <h3 className="font-proza-semibold font-semibold text-[20px] text-[#222] leading-[160%] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]">
             News
           </h3>
