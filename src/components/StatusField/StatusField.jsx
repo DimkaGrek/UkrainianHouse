@@ -36,7 +36,7 @@ export const StatusField = ({ statuses, setStatus, status }) => {
     <div className="relative">
       <p className="label mb-[6px]">Status</p>
       <div
-        className={`text-[20px] leading-[24px] min-h-[56px] w-full py-[14px] px-[18px] border border-solid border-my-black5 rounded-[10px] cursor-pointer bg-white ${
+        className={`text-[20px] leading-[24px] min-h-[56px] min-w-[200px] w-full py-[14px] px-[18px] border border-solid border-my-black5 rounded-[10px] cursor-pointer bg-white ${
           isOpen ? 'border-my-yellow' : ''
         }`}
         ref={dropdownRef}
