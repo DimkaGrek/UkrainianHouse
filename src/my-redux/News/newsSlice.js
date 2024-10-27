@@ -2,12 +2,11 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
   archiveOneNews,
-  createNews,
+  createOneNews,
   deleteOneNews,
   fetchAllNews,
   fetchAnnounceNews,
-  getOneNews,
-  updateNews,
+  updateOneNews,
 } from './newsOperations';
 
 const initialState = {
@@ -60,15 +59,11 @@ const newsSlice = createSlice({
 
         state.isLoading = false;
       })
-      .addCase(getOneNews.fulfilled, (state, { payload }) => {
-        state.oneNews = payload;
-        state.isLoading = false;
-      })
-      .addCase(createNews.fulfilled, (state, { payload }) => {
+      .addCase(createOneNews.fulfilled, (state, { payload }) => {
         state.news.unshift(payload);
         state.isLoading = false;
       })
-      .addCase(updateNews.fulfilled, (state, { payload }) => {
+      .addCase(updateOneNews.fulfilled, (state, { payload }) => {
         state.news = state.news.map(item => {
           if (item.id === payload.id) {
             return payload;
@@ -96,9 +91,8 @@ const newsSlice = createSlice({
         isAnyOf(
           fetchAllNews.rejected,
           fetchAnnounceNews.rejected,
-          createNews.rejected,
-          getOneNews.rejected,
-          updateNews.rejected,
+          createOneNews.rejected,
+          updateOneNews.rejected,
           deleteOneNews.rejected
         ),
         (state, { payload }) => {
@@ -111,9 +105,8 @@ const newsSlice = createSlice({
         isAnyOf(
           fetchAllNews.pending,
           fetchAnnounceNews.pending,
-          createNews.pending,
-          getOneNews.pending,
-          updateNews.pending,
+          createOneNews.pending,
+          updateOneNews.pending,
           deleteOneNews.pending
         ),
         state => {
