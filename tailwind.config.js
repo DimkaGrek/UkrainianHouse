@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from 'daisyui';
+import gridAreas from '@savvywombat/tailwindcss-grid-areas';
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -99,8 +100,6 @@ export default {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          // opacity: '0',
-          // visibility: 'hidden',
           zIndex: '49',
           position: 'fixed',
           bottom: '-54px',
@@ -118,7 +117,7 @@ export default {
       });
     },
     daisyui,
-    require('@savvywombat/tailwindcss-grid-areas'),
+    gridAreas,
   ],
   daisyui: {
     themes: ['light'],
