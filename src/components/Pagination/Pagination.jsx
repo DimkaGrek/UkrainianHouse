@@ -1,15 +1,10 @@
+import ReactPaginate from 'react-paginate';
 import { BiChevronsRight } from 'react-icons/bi';
 import { BiChevronRight } from 'react-icons/bi';
 import { BiChevronLeft } from 'react-icons/bi';
 import { BiChevronsLeft } from 'react-icons/bi';
-import { useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
 
 export const Pagination = ({ setPage, page, totalPages }) => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [page]);
-
   const handlePageClick = event => {
     setPage(event.selected);
   };
