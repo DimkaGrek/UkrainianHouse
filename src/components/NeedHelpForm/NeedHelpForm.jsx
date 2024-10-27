@@ -14,7 +14,7 @@ export const NeedHelpForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isSubmitted },
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(needHelpFormSchema),
@@ -44,7 +44,7 @@ export const NeedHelpForm = () => {
     const errorClass = 'border-red-700';
     const successClass = 'border-green-700 hover:shadow-sm focus:shadow-sm';
 
-    if (errors[fieldName] && dirtyFields[fieldName]) {
+    if (errors[fieldName] && (dirtyFields[fieldName] || isSubmitted)) {
       return `${baseClass} ${errorClass}`;
     }
     if (!errors[fieldName] && dirtyFields[fieldName]) {
@@ -54,7 +54,7 @@ export const NeedHelpForm = () => {
   };
 
   const renderMessage = fieldName => {
-    if (errors[fieldName] && dirtyFields[fieldName]) {
+    if (errors[fieldName] && (dirtyFields[fieldName] || isSubmitted)) {
       return (
         <p className="text-red-700 text-[12px] md:text-[14px] absolute -bottom-4 md:-bottom-5 left-0">
           {errors[fieldName].message}
@@ -148,7 +148,7 @@ export const NeedHelpForm = () => {
       {isOpenModal && (
         <Modal
           toggleModal={toggleModal}
-          className="w-[320] max-h-[674px] md:w-[390px] py-[58px] pl-[21px] pr-[27px] pb-[47px] pt-[36px] bg-white"
+          className="px-[24px] lg:pl-[124px] lg:py-[181px] lg:pr-[479px] pb-[47px] pt-[36px] bg-white"
         >
           <NeedHelpModal toggleModal={toggleModal} />
         </Modal>
