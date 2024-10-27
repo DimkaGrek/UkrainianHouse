@@ -1,23 +1,44 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { LibraryBookItem } from './LibraryBookItem';
 import { Quotes } from './Quotes';
 
 export const LibraryList = () => {
-  const [random, setRendom] = useState();
+  // const [random, setRendom] = useState();
 
-  const handleReload = () => {
-    const randomIndex = () => (Math.random() * (32 - 1) + 1).toFixed(0);
-    setRendom(randomIndex());
-    console.log(random);
-  };
+  // const handleReload = () => {
+  //   const randomIndex = () => (Math.random() * (32 - 1) + 1).toFixed(0);
+  //   setRendom(randomIndex());
+  //   console.log(random);
+  // };
 
   return (
-    <div className="my-[48px]">
+    <div className=" relative mb-[120px]  ">
       <Quotes />
+      <ul className="flex gap-x-[60px] mb-[120px]">
+        <li>
+          <LibraryBookItem />
+        </li>
+        <li>
+          <LibraryBookItem />
+        </li>
+        <li>
+          <LibraryBookItem />
+        </li>
+      </ul>
 
-      <LibraryBookItem />
-      {random}
-      <button onClick={handleReload}>перезавантаження</button>
+      <ul className="flex justify-end gap-[60px] mb-[0]">
+        <li>
+          <LibraryBookItem />
+        </li>
+        <li>
+          <LibraryBookItem />
+        </li>
+        <li>
+          <LibraryBookItem />
+        </li>
+      </ul>
+      {/* {random}
+      <button onClick={handleReload}>Перезавантаження</button> */}
     </div>
   );
 };

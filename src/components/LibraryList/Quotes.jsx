@@ -12,8 +12,8 @@ export const Quotes = () => {
 
   return (
     <>
-      <div className="flex justify-between flex-col items-end">
-        <picture className="mr-0 my-[5px] ml-auto ">
+      <div>
+        <picture className="absolute top-[-40px] right-0">
           <source
             media="(min-width: 768px)"
             srcSet={`${quotes[randomIdx1][2]} 1x, ${quotes[randomIdx1][3]} 2x`}
@@ -29,13 +29,13 @@ export const Quotes = () => {
             srcSet={`${quotes[randomIdx1][0]} 1x, ${quotes[randomIdx1][1]} 2x`}
             src={quotes[randomIdx1][0]}
             alt={` Image with a quote ${[randomIdx1]} `}
-            width="294"
-            height="356"
+            width="310"
+            // height="356"
             loading="lazy"
           />
         </picture>
 
-        <picture className="mr-auto my-[5px] ml-0 ">
+        <picture className="absolute bottom-[210px] left-[-10px] ">
           <source
             media="(min-width: 768px)"
             srcSet={`${quotes[randomIdx2][2]} 1x, ${quotes[randomIdx2][3]} 2x`}
@@ -51,8 +51,8 @@ export const Quotes = () => {
             srcSet={`${quotes[randomIdx2][0]} 1x, ${quotes[randomIdx2][1]} 2x`}
             src={quotes[randomIdx2][0]}
             alt={`Image with a quote ${[randomIdx2]} `}
-            width="294"
-            height="356"
+            width="310"
+            // height="356"
             loading="lazy"
           />
         </picture>

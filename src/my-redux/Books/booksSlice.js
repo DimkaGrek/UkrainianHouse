@@ -30,7 +30,7 @@ const booksSlice = createSlice({
 
       .addCase(fetchAllBooks.fulfilled, (state, action) => {
         state.totalBooks = action.payload.totalBooks;
-        state.books = action.payload;
+        state.books = action.payload.books;
         state.isLoading = false;
       })
       .addCase(getOneBook.fulfilled, (state, action) => {
