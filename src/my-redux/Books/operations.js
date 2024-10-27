@@ -17,7 +17,7 @@ export const createBook = createAsyncThunk(
   'book/addItem',
   async (book, thunkAPI) => {
     try {
-      const { data } = await api.post('/books', book, {
+      const { data } = await api.post('/admin/books', book, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
