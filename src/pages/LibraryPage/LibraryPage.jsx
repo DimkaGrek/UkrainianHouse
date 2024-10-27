@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { LibraryList } from '../../components/LibraryList/LibraryList';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
-import { fetchAllBooks } from '../../my-redux/Books/operations';
+import { fetchAllBooks } from '../../my-redux';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { selectorsBooks } from '../../my-redux/Books/booksSlice';
