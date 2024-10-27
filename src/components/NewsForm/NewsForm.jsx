@@ -193,7 +193,7 @@ export const NewsForm = ({ item, toggle }) => {
 
   return (
     <form
-      className="flex flex-col gap-6 h-auto w-[1100px]"
+      className="flex flex-col gap-6 lg:gap-6 h-auto w-full"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">
@@ -245,7 +245,7 @@ export const NewsForm = ({ item, toggle }) => {
         <label className="label">
           Article Text
           <textarea
-            className="field resize-none overflow-auto h-[200px] scrollbar"
+            className="field resize-none overflow-auto h-[130px] lg:h-[200px] scrollbar"
             type="text"
             placeholder="Enter the article text"
             {...register('content')}
@@ -329,13 +329,16 @@ export const NewsForm = ({ item, toggle }) => {
         )}
         <div className="flex gap-6 mx-auto">
           <button
-            className="primaryBtn w-[185px] h-[56px]"
+            className="primaryBtn w-[185px] h-[40px] lg:h-[56px]"
             type="button"
             onClick={toggle}
           >
             Cancel
           </button>
-          <button className="primaryBtn w-[185px] h-[56px]" type="submit">
+          <button
+            className="primaryBtn w-[185px] h-[40px] lg:h-[56px]"
+            type="submit"
+          >
             {item ? 'Save' : 'Add'}
           </button>
         </div>

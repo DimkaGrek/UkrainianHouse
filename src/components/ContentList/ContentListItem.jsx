@@ -27,7 +27,10 @@ export const ContentListItem = ({ item }) => {
       return (
         <>
           <div className="min-w-[250px] w-[25vw]">
-            <h2 className=" font-medium text-[26px] leading-[131%] text-my-black2 mb-[6px] truncate">
+            <h2
+              title={item.title}
+              className=" font-medium text-[26px] leading-[131%] text-my-black2 mb-[6px] truncate"
+            >
               {item.title}
             </h2>
             <p className=" text-my-black3 leading-[137%] truncate">
@@ -61,7 +64,10 @@ export const ContentListItem = ({ item }) => {
               <p className=" text-my-black1 leading-6 font-medium">
                 {item.author}
               </p>
-              <p className=" text-my-black1 leading-6 truncate font-semibold">
+              <p
+                title={item.title}
+                className=" text-my-black1 leading-6 truncate font-semibold"
+              >
                 {item.title}
               </p>
             </div>
