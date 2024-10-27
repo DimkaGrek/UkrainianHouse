@@ -1,5 +1,6 @@
 import { Modal, NewsDetails } from '../../components';
 
+import { getFormattedDate } from '../../helpers';
 import { useModal } from '../../hooks';
 
 export const NewsListItem = ({ item }) => {
@@ -33,7 +34,7 @@ export const NewsListItem = ({ item }) => {
           </p>
         </div>
         <div className="flex justify-between font-istok text-[12px] text-[#a6a6a6] leading-[150%] group-active:text-[##dbdbdb] group-hover:text-[##dbdbdb] group-focus:text-[##dbdbdb] transition duration-300 mt-auto">
-          <p>{item.publishDate.slice(0, 10)}</p>
+          <p>{getFormattedDate(item.publishDate)}</p>
           <p>Maastricht</p>
         </div>
       </li>
