@@ -28,7 +28,7 @@ export const Advertisement = () => {
             the Carnival, where the air is filled with the lively melodies of
             traditional Carnival songs and the joyous laughter of children...
           </p>
-          <ReadMoreButton onClick={toggleModal} />
+          <ReadMoreButton toggleModal={toggleModal} />
         </div>
 
         <picture>
