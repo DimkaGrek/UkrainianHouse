@@ -7,6 +7,8 @@ import { Modal, NewsForm } from '../../components';
 
 import { archiveOneNews } from '../../my-redux';
 import { useModal } from '../../hooks';
+import { newsStatusesColors } from '../../constants';
+import { getFormattedDate } from '../../helpers';
 
 export const ContentListItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ export const ContentListItem = ({ item }) => {
 
   const itemContent = () => {
     if (Object.hasOwn(item, 'btnLink')) {
+      const bgStatus = newsStatusesColors[item.status];
       return (
         <>
           <div className="w-[520px]">
@@ -32,10 +35,15 @@ export const ContentListItem = ({ item }) => {
             </p>
           </div>
           <span className="text-[#666]">
-            {item.publishDate.slice(0, 10).split('-').join('.')}
+            {getFormattedDate(item.publishDate, '.')}
           </span>
           <span className="font-bold leading-[143%]">Maastricht</span>
-          <span>{item.status}</span>
+          <span
+            className={`inline-block h-[32px] w-[120px] py-1 px-3 bg-[${bgStatus}] rounded-[35px] text-white text-center`}
+            style={{ backgroundColor: bgStatus }}
+          >
+            {item.status}
+          </span>
         </>
       );
     }
@@ -49,7 +57,7 @@ export const ContentListItem = ({ item }) => {
 
   return (
     <>
-      <li className="flex gap-[80px] items-center">
+      <li className="flex justify-between items-center">
         {itemContent()}
 
         <div className="flex gap-6">
