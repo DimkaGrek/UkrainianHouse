@@ -53,7 +53,7 @@ const booksSlice = createSlice({
         }
       )
       .addCase(createBook.fulfilled, (state, action) => {
-        state.books = [...state.books, action.payload];
+        state.books.unshift(action.payload);
         state.isLoading = false;
       })
       .addCase(updateBook.fulfilled, (state, action) => {
