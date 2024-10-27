@@ -66,7 +66,7 @@ export default {
       layout: ['aside head', 'aside main'],
     },
     gridTemplateColumns: {
-      layout: '240px 1fr',
+      layout: '200px 1fr',
     },
     gridTemplateRows: {
       layout: '84px 1fr',
