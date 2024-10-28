@@ -2,19 +2,20 @@
 import { useDispatch } from 'react-redux';
 // import { LibraryList } from '../../components/LibraryList/LibraryList';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
-import { fetchAllBooks } from '../../my-redux/Books/operations';
+import { fetchAllBooks } from '../../my-redux';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useLibrary } from '../../hooks/useLibrary';
+// import { useLibrary } from '../../hooks/useLibrary';
 import NotFoundBook from '../../components/LibraryList/NotFoundBook';
 
 const LibraryPage = () => {
-  const { books } = useLibrary();
+  // const { books } = useLibrary();
   const dispatch = useDispatch();
+  // const { books } = useBooks();
 
   // const books = useSelector(selectorsBooks);
   // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
-  console.log(books);
+  // console.log(books);
 
   useEffect(() => {
     dispatch(fetchAllBooks())

@@ -3,11 +3,11 @@ import { FiEdit2 } from 'react-icons/fi';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
-import { Modal, NewsForm } from '../../components';
+import { BookForm, Modal, NewsForm } from '../../components';
 
 import { archiveOneNews } from '../../my-redux';
 import { useModal } from '../../hooks';
-import { newsStatusesColors } from '../../constants';
+import { bookStatusesColors, newsStatusesColors } from '../../constants';
 import { getFormattedDate } from '../../helpers';
 
 export const ContentListItem = ({ item }) => {
@@ -26,8 +26,11 @@ export const ContentListItem = ({ item }) => {
       const bgStatus = newsStatusesColors[item.status];
       return (
         <>
-          <div className="w-[520px]">
-            <h2 className=" font-medium text-[26px] leading-[131%] text-my-black2 mb-[6px]">
+          <div className="min-w-[250px] w-[25vw]">
+            <h2
+              title={item.title}
+              className=" font-medium text-[26px] leading-[131%] text-my-black2 mb-[6px] truncate"
+            >
               {item.title}
             </h2>
             <p className=" text-my-black3 leading-[137%] truncate">
@@ -47,20 +50,59 @@ export const ContentListItem = ({ item }) => {
         </>
       );
     }
+
+    if (Object.hasOwn(item, 'coverImageUrl')) {
+      const bgStatus = bookStatusesColors[item.status];
+      return (
+        <>
+          <div className="flex justify-center items-center gap-3">
+            <img
+              src={`http://dev.ukrhouse.pp.ua:8080/${item.coverImageUrl}`}
+              className="w-[47px] h-[74px] rounded"
+            />
+            <div className="leading-6 text-xl min-w-[180px] w-[25vw]">
+              <p className=" text-my-black1 leading-6 font-medium">
+                {item.author}
+              </p>
+              <p
+                title={item.title}
+                className=" text-my-black1 leading-6 truncate font-semibold"
+              >
+                {item.title}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center justify-start gap-4 text-sm leading-5 w-[240px]">
+            <p className="text-[#666666]">{item.genre}</p>
+            <p>{item.pageCount} pages</p>
+            <p>{item.publicationYear}</p>
+          </div>
+          <span
+            className={`inline-block h-[32px] w-[120px] py-1 px-3 bg-[${bgStatus}] rounded-[35px] text-white text-center`}
+            style={{ backgroundColor: bgStatus }}
+          >
+            {item.status}
+          </span>
+        </>
+      );
+    }
   };
 
   const renderModalContent = () => {
     if (Object.hasOwn(item, 'btnLink')) {
-      return <NewsForm item={item} toggleModal={toggleModal} />;
+      return <NewsForm item={item} toggle={toggleModal} />;
+    }
+    if (Object.hasOwn(item, 'coverImageUrl')) {
+      return <BookForm item={item} toggle={toggleModal} />;
     }
   };
 
   return (
     <>
-      <li className="flex justify-between items-center">
+      <li className="h-[100px] flex justify-between items-center px-2 py-2.5 hover:bg-my-lightblue border-b border-[#C4C4C4] last:border-none">
         {itemContent()}
 
-        <div className="flex gap-6">
+        <div className="flex gap-4">
           <button type="button" onClick={toggleModal}>
             <FiEdit2 size={24} />
           </button>

@@ -1,16 +1,17 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   createBook,
-  deleteOneBook,
+  deleteBook,
   fetchAllBooks,
-  getOneBook,
   updateBook,
-} from './operations';
+} from './booksOperations';
 
 const initialState = {
   books: [],
-  book: {},
+  page: 0,
+  totalPages: 0,
   totalBooks: 0,
+  isMoreBooks: true,
   isLoading: false,
   error: null,
 };
@@ -21,20 +22,38 @@ const booksSlice = createSlice({
   selectors: {
     selectorsBooks: state => state.books,
   },
+  reducers: {
+    setPageBooks: (state, { payload }) => {
+      state.page = payload;
+    },
+    clearBooks: state => {
+      state.news = [];
+      state.page = 0;
+    },
+  },
   extraReducers: builder =>
     builder
-      .addCase(createBook.fulfilled, (state, action) => {
-        state.books = [...state.books, action.payload];
-        state.isLoading = false;
-      })
+      .addCase(
+        fetchAllBooks.fulfilled,
+        (
+          state,
+          { payload: { currentPage, totalPages, totalBooks, books }, meta }
+        ) => {
+          if (meta.arg.isAdmin) {
+            state.books = books;
+          } else {
+            state.books.push(...books);
+          }
 
-      .addCase(fetchAllBooks.fulfilled, (state, action) => {
-        state.totalBooks = action.payload.totalBooks;
-        state.books = action.payload.books;
-        state.isLoading = false;
-      })
-      .addCase(getOneBook.fulfilled, (state, action) => {
-        state.book = action.payload;
+          state.totalPages = totalPages;
+          state.totalBooks = totalBooks;
+          state.isMoreBooks = currentPage + 1 < totalPages;
+
+          state.isLoading = false;
+        }
+      )
+      .addCase(createBook.fulfilled, (state, action) => {
+        state.books.unshift(action.payload);
         state.isLoading = false;
       })
       .addCase(updateBook.fulfilled, (state, action) => {
@@ -46,39 +65,53 @@ const booksSlice = createSlice({
         });
         state.isLoading = false;
       })
-      .addCase(deleteOneBook.fulfilled, (state, action) => {
+      .addCase(deleteBook.fulfilled, (state, action) => {
         state.books = state.books.filter(item => item.id !== action.payload.id);
         state.isLoading = false;
       })
-
       .addMatcher(
         isAnyOf(
           fetchAllBooks.rejected,
           createBook.rejected,
-          getOneBook.rejected,
           updateBook.rejected,
-          deleteOneBook.rejected
+          deleteBook.rejected
         ),
         (state, action) => {
-          state.error = action.payload;
           state.isLoading = false;
+          state.error = action.payload;
         }
       )
-
       .addMatcher(
         isAnyOf(
           fetchAllBooks.pending,
           createBook.pending,
-          getOneBook.pending,
           updateBook.pending,
-          deleteOneBook.pending
+          deleteBook.pending
         ),
         state => {
           state.isLoading = true;
           state.error = null;
         }
       ),
+  selectors: {
+    selectBooks: state => state.books,
+    selectPageBooks: state => state.page,
+    selectTotalPagesBooks: state => state.totalPages,
+    selectTotalBooks: state => state.totalBooks,
+    selectIsMoreBooks: state => state.isMoreBooks,
+    selectIsLoadingBooks: state => state.isLoading,
+    selectBooksError: state => state.error,
+  },
 });
 
+export const { setPageBooks, clearBooks } = booksSlice.actions;
+export const {
+  selectBooks,
+  selectPageBooks,
+  selectTotalPagesBooks,
+  selectTotalBooks,
+  selectIsMoreBooks,
+  selectIsLoadingBooks,
+  selectBooksError,
+} = booksSlice.selectors;
 export const booksReducer = booksSlice.reducer;
-export const { selectorsBooks } = booksSlice.selectors;

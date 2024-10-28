@@ -7,3 +7,4 @@ export * from './getCapitalizedWord';
 export * from './getFileResizer';
 export * from './getQuotes';
 export * from './getFormattedDate';
+export * from './checkObjectEquality';

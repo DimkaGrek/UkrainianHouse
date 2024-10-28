@@ -12,7 +12,7 @@ import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import { bookStatuses } from '../../constants';
 import { bookFormSchema } from '../../schemas';
-import { createBook } from '../../my-redux/Books/operations';
+import { createBook } from '../../my-redux';
 import { getFileResizer, getFromattedData } from '../../helpers';
 
 export const BookForm = ({ toggle }) => {
@@ -85,10 +85,14 @@ export const BookForm = ({ toggle }) => {
     }
 
     const fd = getFromattedData(resizedCover, 'cover', data, 'book');
-    dispatch(createBook(fd));
-
-    setSelectedCover(null);
-    reset();
+    dispatch(createBook(fd))
+      .unwrap()
+      .then(() => {
+        setSelectedCover(null);
+        reset();
+        toggle();
+      })
+      .catch(error => console.log(error));
   };
 
   return (
@@ -97,7 +101,7 @@ export const BookForm = ({ toggle }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-row gap-4">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-row gap-4">
           <div className="flex flex-col gap-6">
             <InputField
               label="Book Title"
@@ -118,9 +122,9 @@ export const BookForm = ({ toggle }) => {
               </label>
               <p className="field-error">{errors['description']?.message}</p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex gap-4">
               <InputField
-                label="Amount of pages"
+                label="Pages"
                 name="pageCount"
                 type="number"
                 placeholder="Amount pages"
@@ -129,7 +133,7 @@ export const BookForm = ({ toggle }) => {
               />
 
               <InputField
-                label="Year of publishing"
+                label="Year"
                 name="publicationYear"
                 type="number"
                 placeholder="Year of publishing"
@@ -158,7 +162,7 @@ export const BookForm = ({ toggle }) => {
               </label>
               <p className="field-error">{errors['aboutAuthor']?.message}</p>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex gap-4">
               <InputField
                 label="Genre"
                 name="genre"
@@ -195,7 +199,7 @@ export const BookForm = ({ toggle }) => {
             {!selectedCover ? (
               <picture
                 onClick={handlePick}
-                className="w-fit rounded-[10px] bg-white flex justify-center items-center h-[280px] cursor-pointer shadow-md"
+                className="w-fit rounded-[10px] bg-white flex justify-center items-center h-[276px] cursor-pointer shadow-md"
               >
                 <source
                   srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
