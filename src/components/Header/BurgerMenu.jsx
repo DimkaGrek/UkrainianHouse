@@ -6,7 +6,12 @@ import { Icon, Address, FlagsList } from '../../components';
 import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
 import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
 
-export const BurgerMenu = ({ toggleMenu, classBackdrop, classMenu }) => {
+export const BurgerMenu = ({
+  isOpen,
+  toggleMenu,
+  classBackdrop,
+  classMenu,
+}) => {
   const navigate = useNavigate();
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
@@ -15,6 +20,8 @@ export const BurgerMenu = ({ toggleMenu, classBackdrop, classMenu }) => {
   };
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleEscape = event => {
       if (event.code === 'Escape') {
         toggleMenu();
@@ -27,7 +34,7 @@ export const BurgerMenu = ({ toggleMenu, classBackdrop, classMenu }) => {
       window.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'auto';
     };
-  }, [toggleMenu]);
+  }, [isOpen, toggleMenu]);
 
   return (
     <div
