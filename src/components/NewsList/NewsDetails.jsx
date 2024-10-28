@@ -10,8 +10,8 @@ export const NewsDetails = ({
   btnText,
 }) => {
   return (
-    <div className=" h-[70vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
-      <div className="md:order-1 lg:order-1">
+    <div className="max-h-[70vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
+      <div className="md:order-1 lg:order-1 lg:w-2/3">
         <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%]">
           {title}
         </h3>
@@ -29,7 +29,7 @@ export const NewsDetails = ({
       </div>
 
       {photoUrls?.length ? (
-        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:order-2 ">
+        <ul className=" flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:order-2 ">
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto md:w-auto lg:w-auto">
               <img

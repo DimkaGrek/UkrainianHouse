@@ -22,10 +22,12 @@ export const Header = () => {
   return (
     <header className="container py-[34px] pb-[29px] md:pb-[48px] ">
       <BurgerMenu
+        isOpen={isMenuOpen}
         toggleMenu={toggleMenu}
         classBackdrop={`${isMenuOpen ? 'scale-1' : 'scale-0'}`}
         classMenu={`${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       />
+
       <nav className="flex items-center justify-between text-center">
         <Link to="/">
           <picture>

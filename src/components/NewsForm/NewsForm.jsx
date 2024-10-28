@@ -193,7 +193,7 @@ export const NewsForm = ({ item, toggle }) => {
 
   return (
     <form
-      className="flex flex-col gap-6 lg:gap-6 h-auto w-full"
+      className="flex flex-col gap-6 lg:gap-6 h-auto w-full lg:w-[1150px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">
