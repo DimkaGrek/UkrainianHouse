@@ -1,8 +1,10 @@
 // import { useState } from 'react';
+// import { useLibrary } from '../../hooks/useLibrary';
 import { LibraryBookItem } from './LibraryBookItem';
 import { Quotes } from './Quotes';
 
 export const LibraryList = () => {
+  // const { books } = useLibrary();
   // const [random, setRendom] = useState();
 
   // const handleReload = () => {
@@ -14,6 +16,12 @@ export const LibraryList = () => {
   return (
     <div className=" relative mb-[120px]  ">
       <Quotes />
+
+      {/* <ul className="flex gap-x-[60px] mb-[120px]">
+        {books.map(item => {
+          return <LibraryBookItem key={item.id} item={item} />;
+        })}
+      </ul> */}
       <ul className="flex gap-x-[60px] mb-[120px]">
         <li>
           <LibraryBookItem />

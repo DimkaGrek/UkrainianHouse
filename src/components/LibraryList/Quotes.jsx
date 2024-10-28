@@ -1,8 +1,6 @@
 import { getQuotes } from '../../helpers';
 
 export const Quotes = () => {
-  console.log(getQuotes());
-
   const quotes = getQuotes();
 
   const randomIndex = () => (Math.random() * (32 - 1) + 1).toFixed(0);

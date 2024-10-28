@@ -1,16 +1,18 @@
 // import { Loader } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { LibraryList } from '../../components/LibraryList/LibraryList';
+import { useDispatch } from 'react-redux';
+// import { LibraryList } from '../../components/LibraryList/LibraryList';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
 import { fetchAllBooks } from '../../my-redux/Books/operations';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { selectorsBooks } from '../../my-redux/Books/booksSlice';
+import { useLibrary } from '../../hooks/useLibrary';
+import NotFoundBook from '../../components/LibraryList/NotFoundBook';
 
 const LibraryPage = () => {
+  const { books } = useLibrary();
   const dispatch = useDispatch();
 
-  const books = useSelector(selectorsBooks);
+  // const books = useSelector(selectorsBooks);
   // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
   console.log(books);
 
@@ -45,8 +47,9 @@ const LibraryPage = () => {
             </div>
           );
         })} */}
-      <LibraryList />
-      <LibraryList />
+      {/* <LibraryList /> */}
+      {/* <LibraryList /> */}
+      <NotFoundBook />
       {/* {isLoading && <Loader placement="bottom" />} */}
     </section>
   );
