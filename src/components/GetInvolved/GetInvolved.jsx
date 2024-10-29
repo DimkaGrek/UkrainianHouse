@@ -7,7 +7,7 @@ export const GetInvolved = () => {
   const { homeImages } = images;
 
   return (
-    <section className="relative lg:mb-[40px] bg-[url('../../assets/images/home/ManwithFlag@2x_tablet.png')]">
+    <section className="relative lg:mb-[40px] bg-[url('../../assets/images/home/ManwithFlag@2x_tablet.webp')]">
       <div className="md:flex md:flex-row-reverse md:justify-between md:mb-[40px] lg:flex-col lg:mb-[28px]">
         <picture>
           <source
@@ -15,12 +15,12 @@ export const GetInvolved = () => {
             srcSet={`${homeImages.friendsImg5} 1x, ${homeImages.friendsImg6} 2x`}
             height="413"
             width="473"
-            type="image/png"
+            type="image/webp"
           />
           <source
             media="(min-width: 768px)"
             srcSet={`${homeImages.friendsImg3} 1x, ${homeImages.friendsImg4} 2x`}
-            type="image/png"
+            type="image/webp"
             height="274"
             width="310"
           />
