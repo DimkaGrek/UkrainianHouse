@@ -1,4 +1,4 @@
-import { NewsDigestItem } from 'components';
+import { NewsListItem } from 'components';
 import { useEffect, useState } from 'react';
 
 export const NewsDigest = ({ news }) => {
@@ -36,9 +36,13 @@ export const NewsDigest = ({ news }) => {
   return (
     <section className="mb-[34px] md:mb-[40px] lg:mb-[100px]">
       <div className="flex flex-col gap-[16px] items-center justify-center">
-        <div className="flex gap-[24px] overflow-hidden">
+        <div className="flex gap-[24px]">
           {displayedCards().map((item, index) => (
-            <NewsDigestItem item={item} key={index} />
+            <NewsListItem
+              item={item}
+              key={index}
+              className="h-[439px] md:h-[440px] lg:h-[491px] "
+            />
           ))}
         </div>
         <div className="flex justify-center items-center gap-[6px] lg:hidden">
