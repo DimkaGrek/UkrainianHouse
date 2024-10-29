@@ -1,4 +1,5 @@
 import { ReadMoreButton } from '../../components';
+import { getFormattedDate } from '../../helpers';
 
 export const NewsDetails = ({
   title,
@@ -9,8 +10,8 @@ export const NewsDetails = ({
   btnText,
 }) => {
   return (
-    <div className=" h-[70vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
-      <div className="md:order-1 lg:order-1">
+    <div className="max-h-[70vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
+      <div className="md:order-1 lg:order-1 lg:w-2/3">
         <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%]">
           {title}
         </h3>
@@ -18,7 +19,7 @@ export const NewsDetails = ({
           {content}
         </p>
         <p className=" font-istok text-[12px] md:text-[14px] lg:text-[20px] text-[#a6a6a6] text-left leading-[150%] md:leading-[129%] lg:leading-[150%] lg:mb-[24px]">
-          {publishDate.slice(0, 10)}
+          {getFormattedDate(publishDate)}
         </p>
         <ReadMoreButton
           className="hidden lg:block"
@@ -28,15 +29,15 @@ export const NewsDetails = ({
       </div>
 
       {photoUrls?.length ? (
-        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:order-2 ">
+        <ul className=" flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:order-2 ">
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto md:w-auto lg:w-auto">
               <img
-                src={`${item.photoUrls}`}
+                src={`http://dev.ukrhouse.pp.ua:8080/${item.photoUrls}`}
                 width={316}
                 height={108}
                 className="w-auto max-w-full md:max-w-[189px] lg:max-w-[400px] h-auto rounded-[18px]"
-                alt={item.caption}
+                alt={item.caption || 'News photo'}
               />
             </li>
           ))}

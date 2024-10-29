@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from 'daisyui';
+import gridAreas from '@savvywombat/tailwindcss-grid-areas';
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -7,6 +8,7 @@ export default {
       'sm-max': { max: '374.99px' },
       md: '768px',
       lg: '1440px',
+      extralg: '1920px',
     },
     fontFamily: {
       istok: [
@@ -64,7 +66,7 @@ export default {
       layout: ['aside head', 'aside main'],
     },
     gridTemplateColumns: {
-      layout: '240px 1fr',
+      layout: '200px 1fr',
     },
     gridTemplateRows: {
       layout: '84px 1fr',
@@ -98,8 +100,6 @@ export default {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          // opacity: '0',
-          // visibility: 'hidden',
           zIndex: '49',
           position: 'fixed',
           bottom: '-54px',
@@ -117,7 +117,7 @@ export default {
       });
     },
     daisyui,
-    require('@savvywombat/tailwindcss-grid-areas'),
+    gridAreas,
   ],
   daisyui: {
     themes: ['light'],

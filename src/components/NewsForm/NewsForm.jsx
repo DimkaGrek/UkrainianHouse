@@ -14,14 +14,18 @@ import newsImg1 from '../../assets/images/news-img@1x.jpg';
 import newsImg2 from '../../assets/images/news-img@2x.jpg';
 import { newsStatuses } from '../../constants';
 import { newsFormSchema } from '../../schemas';
-import { createNews } from '../../my-redux';
-import { getFileResizer, getFromattedData } from '../../helpers';
+import { createOneNews, updateOneNews } from '../../my-redux';
+import {
+  checkObjectEquality,
+  getFileResizer,
+  getFromattedData,
+} from '../../helpers';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export const NewsForm = ({ toggle }) => {
+export const NewsForm = ({ item, toggle }) => {
   const filePicker = useRef(null);
   const [selectedImages, setSelectedImages] = useState(new Array(3).fill(0));
-  const [status, setStatus] = useState(newsStatuses[0]);
+  const [status, setStatus] = useState(item ? item.status : newsStatuses[0]);
   const [imageError, setImageError] = useState(false);
   const dispatch = useDispatch();
 
@@ -40,9 +44,18 @@ export const NewsForm = ({ toggle }) => {
   });
 
   useEffect(() => {
-    setValue('publishDate', new Date());
-    setValue('status', newsStatuses[0]);
-  }, [setValue]);
+    if (item) {
+      setValue('title', item.title);
+      setValue('content', item.content);
+      setStatus(item.status);
+      setValue('btnLink', item.btnLink);
+    }
+  }, [item, setValue]);
+
+  useEffect(() => {
+    setValue('publishDate', item ? item.publishDate : new Date());
+    setValue('status', item ? item.status : newsStatuses[0]);
+  }, [item, setValue]);
 
   useEffect(() => {
     if (imageError && hasNonZeroElement) {
@@ -123,7 +136,7 @@ export const NewsForm = ({ toggle }) => {
   };
 
   const onSubmit = async data => {
-    if (!hasNonZeroElement) {
+    if (!hasNonZeroElement && !item) {
       setImageError(true);
       return;
     }
@@ -136,24 +149,51 @@ export const NewsForm = ({ toggle }) => {
       return toast.error('Error while resizing images');
     }
 
-    const fd = getFromattedData(resizedImages, 'photos', data, 'news');
-    dispatch(createNews(fd))
+    let action;
+    if (!item) {
+      const fd = getFromattedData(resizedImages, 'photos', data, 'news');
+      action = createOneNews(fd);
+    } else {
+      data = {
+        ...data,
+        id: item.id,
+      };
+      action = updateOneNews(data);
+    }
+
+    if (item) {
+      item = { ...item, publishDate: new Date(item.publishDate) };
+      // TODO
+      // eslint-disable-next-line
+      const { photoUrls, ...itemData } = item;
+
+      const isEqual = checkObjectEquality(data, itemData);
+
+      if (item && isEqual) {
+        toggle();
+        return;
+      }
+    }
+
+    dispatch(action)
       .unwrap()
       .then(() => {
-        toast.success('News created successfully');
+        toast.success(
+          item ? 'News updated successfully' : 'News created successfully'
+        );
+
+        setSelectedImages(new Array(3).fill(0));
+        reset();
         toggle();
       })
       .catch(e => {
-        toast.error(e.message);
+        toast.error(e);
       });
-
-    setSelectedImages(new Array(3).fill(0));
-    reset();
   };
 
   return (
     <form
-      className="flex flex-col gap-6 h-auto w-[1100px]"
+      className="flex flex-col gap-6 lg:gap-6 h-auto w-full lg:w-[1150px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">
@@ -205,7 +245,7 @@ export const NewsForm = ({ toggle }) => {
         <label className="label">
           Article Text
           <textarea
-            className="field resize-none overflow-auto h-[200px] scrollbar"
+            className="field resize-none overflow-auto h-[130px] lg:h-[200px] scrollbar"
             type="text"
             placeholder="Enter the article text"
             {...register('content')}
@@ -220,7 +260,7 @@ export const NewsForm = ({ toggle }) => {
           name="btnText"
           placeholder="Enter the button text"
           register={register}
-          defaultValue="Read more"
+          defaultValue={`${item?.btnText ? item.btnText : 'Read more'}`}
           errors={errors}
         />
         <InputField
@@ -289,14 +329,17 @@ export const NewsForm = ({ toggle }) => {
         )}
         <div className="flex gap-6 mx-auto">
           <button
-            className="primaryBtn w-[185px] h-[56px]"
+            className="primaryBtn w-[185px] h-[40px] lg:h-[56px]"
             type="button"
             onClick={toggle}
           >
             Cancel
           </button>
-          <button className="primaryBtn w-[185px] h-[56px]" type="submit">
-            Add
+          <button
+            className="primaryBtn w-[185px] h-[40px] lg:h-[56px]"
+            type="submit"
+          >
+            {item ? 'Save' : 'Add'}
           </button>
         </div>
       </div>

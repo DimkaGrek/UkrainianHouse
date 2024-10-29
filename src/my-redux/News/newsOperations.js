@@ -4,9 +4,12 @@ import { api } from '../../services/api';
 
 export const fetchAllNews = createAsyncThunk(
   'news/getAllNews',
-  async (params, thunkAPI) => {
+  async (config, thunkAPI) => {
+    const { params, isAdmin = false } = config;
     try {
-      const { data } = await api.get('/news', { params });
+      const { data } = await api.get(`${isAdmin ? '/admin' : ''}/news`, {
+        params,
+      });
 
       return data;
     } catch (error) {
@@ -29,8 +32,8 @@ export const fetchAnnounceNews = createAsyncThunk(
   }
 );
 
-export const createNews = createAsyncThunk(
-  'news/addNews',
+export const createOneNews = createAsyncThunk(
+  'news/createNews',
   async (news, thunkAPI) => {
     try {
       const { data } = await api.post('/admin/news', news, {
@@ -45,37 +48,24 @@ export const createNews = createAsyncThunk(
   }
 );
 
-export const getOneNews = createAsyncThunk(
-  'news/getOneNews',
-  async (id, thunkAPI) => {
-    try {
-      const { data } = await api.get(`news/${id}`);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const deleteOneNews = createAsyncThunk(
-  'news/deleteItem',
-  async (id, thunkAPI) => {
-    try {
-      const { data } = await api.delete(`news/${id}`);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const updateNews = createAsyncThunk(
+export const updateOneNews = createAsyncThunk(
   'news/updateNews',
   async (news, thunkAPI) => {
     try {
-      const { id } = news;
-      delete news.id;
-      const { data } = await api.put(`news/${id}`, news);
+      const { id, ...newsChanges } = news;
+
+      const { data } = await api.put(`/admin/news/${id}`, newsChanges);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteOneNews = createAsyncThunk(
+  'news/deleteNews',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await api.delete(`/admin/news/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -83,14 +73,16 @@ export const updateNews = createAsyncThunk(
   }
 );
 
-// export const fetchCurrentAnnounce = createAsyncThunk(
-//   'announce',
-//   async (_, thunkAPI) => {
-//     try {
-//       const { data } = await api.get('/announce');
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const archiveOneNews = createAsyncThunk(
+  'news/archiveNews',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await api.put(`/admin/news/${id}`, {
+        status: 'ARCHIVED',
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

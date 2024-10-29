@@ -5,3 +5,6 @@ export * from './getDevelopers';
 export * from './getPartnersLogos';
 export * from './getCapitalizedWord';
 export * from './getFileResizer';
+export * from './getQuotes';
+export * from './getFormattedDate';
+export * from './checkObjectEquality';
