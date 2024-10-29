@@ -3,13 +3,13 @@ import { Modal, NewsDetails } from '../../components';
 import { getFormattedDate } from '../../helpers';
 import { useModal } from '../../hooks';
 
-export const NewsListItem = ({ item }) => {
+export const NewsListItem = ({ item, className = '' }) => {
   const [isOpenModal, toggleModal] = useModal();
 
   return (
     <>
       <li
-        className="flex flex-col group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus-visible:bg-[#2355cc] transition duration-300"
+        className={`${className} flex flex-col group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus-visible:bg-[#2355cc] transition duration-300`}
         onClick={toggleModal}
       >
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus-visible:text-[#fbfbfb] transition duration-300">
