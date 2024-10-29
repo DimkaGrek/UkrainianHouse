@@ -1,38 +1,34 @@
 import { Link } from 'react-router-dom';
 import { Activities } from 'components';
-import friendsImg1 from '../../assets/images/home/Friends@1x_mobile.png';
-import friendsImg2 from '../../assets/images/home/Friends@2x_mobile.png';
 
-import friendsImg3 from '../../assets/images/home/Friends@1x_tablet.png';
-import friendsImg4 from '../../assets/images/home/Friends@2x_tablet.png';
-
-import friendsImg5 from '../../assets/images/home/Friends@1x_desktop.png';
-import friendsImg6 from '../../assets/images/home/Friends@2x_desktop.png';
+import { images } from '../../assets';
 
 export const GetInvolved = () => {
+  const { homeImages } = images;
+
   return (
-    <section className="relative lg:mb-[40px] bg-[url('../../assets/images/home/ManwithFlag@2x_tablet.png')]">
+    <section className="relative lg:mb-[40px] bg-[url('../../assets/images/home/ManwithFlag@2x_tablet.webp')]">
       <div className="md:flex md:flex-row-reverse md:justify-between md:mb-[40px] lg:flex-col lg:mb-[28px]">
         <picture>
           <source
             media="(min-width: 1440px)"
-            srcSet={`${friendsImg5} 1x, ${friendsImg6} 2x`}
+            srcSet={`${homeImages.friendsImg5} 1x, ${homeImages.friendsImg6} 2x`}
             height="413"
             width="473"
-            type="image/png"
+            type="image/webp"
           />
           <source
             media="(min-width: 768px)"
-            srcSet={`${friendsImg3} 1x, ${friendsImg4} 2x`}
-            type="image/png"
+            srcSet={`${homeImages.friendsImg3} 1x, ${homeImages.friendsImg4} 2x`}
+            type="image/webp"
             height="274"
             width="310"
           />
 
           <img
             className="mb-[34px] md:mb-0 lg:absolute lg:top-[-380px] lg:left-[-100px]"
-            src={friendsImg1}
-            srcSet={`${friendsImg1} 1x, ${friendsImg2} 2x`}
+            src={homeImages.friendsImg1}
+            srcSet={`${homeImages.friendsImg1} 1x, ${homeImages.friendsImg2} 2x`}
             alt="Photo of friends"
             height="247"
             width="300"

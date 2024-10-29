@@ -3,8 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { Icon, Address, FlagsList } from '../../components';
 
-import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
-import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
+import { images } from '../../assets';
 
 export const BurgerMenu = ({
   isOpen,
@@ -13,6 +12,9 @@ export const BurgerMenu = ({
   classMenu,
 }) => {
   const navigate = useNavigate();
+
+  const { headerImages } = images;
+
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
       toggleMenu();
@@ -58,8 +60,8 @@ export const BurgerMenu = ({
 
         <Link to="/" onClick={toggleMenu}>
           <img
-            srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
-            src={logo_desktop1x}
+            srcSet={`${headerImages.logo_desktop1x} 1x, ${headerImages.logo_desktop2x} 2x`}
+            src={headerImages.logo_desktop1x}
             alt="logotype"
             width="116"
             height="78"

@@ -4,16 +4,13 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { Icon } from '../../components';
 import { BurgerMenu } from './BurgerMenu';
 
-import logo_1x from '../../assets/images/header/logo_1x.png';
-import logo_2x from '../../assets/images/header/logo_2x.png';
-import logo_mob_1x from '../../assets/images/header/logo_mob_1x.png';
-import logo_mob_2x from '../../assets/images/header/logo_mob_2x.png';
-import flag_eng1x from '../../assets/images/header/flag_eng1x.png';
-import flag_eng2x from '../../assets/images/header/flag_eng2x.png';
+import { images } from '../../assets';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const { headerImages } = images;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -33,14 +30,14 @@ export const Header = () => {
           <picture>
             <source
               media="(min-width: 1440px)"
-              srcSet={`${logo_1x} 1x, ${logo_2x} 2x`}
+              srcSet={`${headerImages.logo_1x} 1x, ${headerImages.logo_2x} 2x`}
               width="47"
               height="69"
               loading="lazy"
             />
             <img
-              srcSet={`${logo_mob_1x} 1x, ${logo_mob_2x} 2x`}
-              src={logo_mob_1x}
+              srcSet={`${headerImages.logo_mob_1x} 1x, ${headerImages.logo_mob_2x} 2x`}
+              src={headerImages.logo_mob_1x}
               alt="logotype"
               width="22"
               height="33"
@@ -88,8 +85,8 @@ export const Header = () => {
             Get in touch
           </button>
           <img
-            srcSet={`${flag_eng1x} 1x, ${flag_eng2x} 2x`}
-            src={flag_eng1x}
+            srcSet={`${headerImages.flag_eng1x} 1x, ${headerImages.flag_eng2x} 2x`}
+            src={headerImages.flag_eng1x}
             alt="Flag of England"
             width="40"
             height="40"

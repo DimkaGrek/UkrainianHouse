@@ -42,7 +42,7 @@ const HomePage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="bg-[url('assets/images/home/BgImg_mobile.png')] bg-no-repeat bg-contain  md:bg-[url('assets/images/home/BgImg_tablet.png')] lg:bg-[url('assets/images/home/BgImg_desktop.png')]">
+      <div className="bg-[url('assets/images/home/BgImg_mobile.webp')] bg-no-repeat bg-contain  md:bg-[url('assets/images/home/BgImg_tablet.webp')] lg:bg-[url('assets/images/home/BgImg_desktop.webp')]">
         <Hero />
         <NewsDigest news={news} />
         <AboutUs />

@@ -1,20 +1,14 @@
 import { Modal, NewsDetails, ReadMoreButton } from '../../components';
 
-import { getImages } from '../../helpers';
 import { useModal, useNews } from '../../hooks';
+
+import { images } from '../../assets';
 
 export const Advertisement = () => {
   const { announceNews } = useNews();
   const [isOpenModal, toggleModal] = useModal();
 
-  const {
-    people_mob1x,
-    people_mob2x,
-    people_tab1x,
-    people_tab2x,
-    people_desk1x,
-    people_desk2x,
-  } = getImages();
+  const { newsImages } = images;
 
   return announceNews?.length ? (
     <>
@@ -34,21 +28,21 @@ export const Advertisement = () => {
         <picture>
           <source
             media="(min-width: 1440px)"
-            srcSet={`${people_desk1x} 1x, ${people_desk2x} 2x`}
+            srcSet={`${newsImages.people_desk1x} 1x, ${newsImages.people_desk2x} 2x`}
             width="520"
             height="232"
           />
           <source
             media="(min-width: 768px)"
-            srcSet={`${people_tab1x} 1x, ${people_tab2x} 2x`}
+            srcSet={`${newsImages.people_tab1x} 1x, ${newsImages.people_tab2x} 2x`}
             width="263"
             height="214"
           />
 
           <img
             className="md:max-w-none rounded-[10px] md:rounded-[18px]"
-            srcSet={`${people_mob1x} 1x, ${people_mob2x} 2x`}
-            src={people_desk1x}
+            srcSet={`${newsImages.people_mob1x} 1x, ${newsImages.people_mob2x} 2x`}
+            src={newsImages.people_desk1x}
             alt="People"
             width="308"
             height="250"
@@ -58,7 +52,7 @@ export const Advertisement = () => {
       {isOpenModal && (
         <Modal
           toggleModal={toggleModal}
-          className="py-[58px] pl-[20px] pr-[10px]  md:py-[58px] md:pl-[40px] md:pr-[25px] bg-white"
+          className="py-[58px] pl-[20px] pr-[10px] md:py-[58px] md:pl-[40px] md:pr-[25px] bg-white"
         >
           {' '}
           <NewsDetails {...announceNews[0]} />
