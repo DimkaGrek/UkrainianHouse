@@ -13,7 +13,7 @@ export const Hero = () => {
           <source
             media="(min-width: 1440px)"
             srcSet={`${homeImages.titleImg5} 1x, ${homeImages.titleImg6} 2x`}
-            type="image/png"
+            type="image/webp"
             height="316"
             width="600"
           />
@@ -21,7 +21,7 @@ export const Hero = () => {
           <source
             media="(min-width: 768px)"
             srcSet={`${homeImages.titleImg3} 1x, ${homeImages.titleImg4} 2x`}
-            type="image/png"
+            type="image/webp"
             height="188"
             width="360"
           />
@@ -46,12 +46,12 @@ export const Hero = () => {
                 srcSet={`${homeImages.flagImg5} 1x, ${homeImages.flagImg6} 2x`}
                 height="362"
                 width="400"
-                type="image/png"
+                type="image/webp"
               />
               <source
                 media="(min-width: 768px)"
                 srcSet={`${homeImages.flagImg3} 1x, ${homeImages.flagImg4} 2x`}
-                type="image/png"
+                type="image/webp"
                 height="177"
                 width="193"
               />

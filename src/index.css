@@ -237,7 +237,7 @@ input[type='number']::-webkit-outer-spin-button {
   width: calc(100vw - 18px);
   height: 11vw;
 
-  background-image: url('./assets/images/footer/tape_1x_mob.jpg');
+  background-image: url('./assets/images/footer/tape_1x_mob.webp');
 
   background-repeat: no-repeat;
   background-position: center;
@@ -247,7 +247,7 @@ input[type='number']::-webkit-outer-spin-button {
 @media screen and (min-resolution: 1.5dppx),
   screen and (min-device-pixel-ratio: 2) {
   .link-wrapper::before {
-    background-image: url('./assets/images/footer/tape_2x_mob.jpg');
+    background-image: url('./assets/images/footer/tape_2x_mob.webp');
   }
 }
 
@@ -255,13 +255,13 @@ input[type='number']::-webkit-outer-spin-button {
   .link-wrapper::before {
     top: -11vw;
     height: 4vw;
-    background-image: url('./assets/images/footer/tape_1x_tablet.jpg');
+    background-image: url('./assets/images/footer/tape_1x_tablet.webp');
   }
 
   @media screen and (min-resolution: 1.5dppx),
     screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
-      background-image: url('./assets/images/footer/tape_2x_tablet.jpg');
+      background-image: url('./assets/images/footer/tape_2x_tablet.webp');
     }
   }
 }
@@ -269,13 +269,13 @@ input[type='number']::-webkit-outer-spin-button {
 @media screen and (min-width: 1440px) {
   .link-wrapper::before {
     top: -8vw;
-    background-image: url('./assets/images/footer/tape_1x_desktop.jpg');
+    background-image: url('./assets/images/footer/tape_1x_desktop.webp');
   }
 
   @media screen and (min-resolution: 1.5dppx),
     screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
-      background-image: url('./assets/images/footer/tape_2x_desktop.jpg');
+      background-image: url('./assets/images/footer/tape_2x_desktop.webp');
     }
   }
 }
