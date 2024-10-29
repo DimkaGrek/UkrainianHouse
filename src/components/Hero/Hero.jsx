@@ -1,32 +1,18 @@
 import { Link } from 'react-router-dom';
 import { Icon, PartnersSlider } from 'components';
 
-import titleImg1 from '../../assets/images/home/Title@1x_mobile.png';
-import titleImg2 from '../../assets/images/home/Title@2x_mobile.png';
-
-import titleImg3 from '../../assets/images/home/Title@1x_tablet.png';
-import titleImg4 from '../../assets/images/home/Title@2x_tablet.png';
-
-import titleImg5 from '../../assets/images/home/Title@1x_desktop.png';
-import titleImg6 from '../../assets/images/home/Title@2x_desktop.png';
-
-import flagImg1 from '../../assets/images/home/ManwithFlag@1x_mobile.png';
-import flagImg2 from '../../assets/images/home/ManwithFlag@2x_mobile.png';
-
-import flagImg3 from '../../assets/images/home/ManwithFlag@1x_tablet.png';
-import flagImg4 from '../../assets/images/home/ManwithFlag@2x_tablet.png';
-
-import flagImg5 from '../../assets/images/home/ManwithFlag@1x_desktop.png';
-import flagImg6 from '../../assets/images/home/ManwithFlag@2x_desktop.png';
+import { images } from '../../assets';
 
 export const Hero = () => {
+  const { homeImages } = images;
+
   return (
     <section className="md:mb-[80px] mb-[34px] lg:mb-[74px]  ">
       <div className="flex flex-col gap-[16px] md:block md:mb-[40px] lg:mb-[57px] ">
         <picture>
           <source
             media="(min-width: 1440px)"
-            srcSet={`${titleImg5} 1x, ${titleImg6} 2x`}
+            srcSet={`${homeImages.titleImg5} 1x, ${homeImages.titleImg6} 2x`}
             type="image/png"
             height="316"
             width="600"
@@ -34,7 +20,7 @@ export const Hero = () => {
 
           <source
             media="(min-width: 768px)"
-            srcSet={`${titleImg3} 1x, ${titleImg4} 2x`}
+            srcSet={`${homeImages.titleImg3} 1x, ${homeImages.titleImg4} 2x`}
             type="image/png"
             height="188"
             width="360"
@@ -43,8 +29,8 @@ export const Hero = () => {
           <img
             height="180"
             width="342"
-            srcSet={`${titleImg1} 1x, ${titleImg2} 2x`}
-            src={titleImg1}
+            srcSet={`${homeImages.titleImg1} 1x, ${homeImages.titleImg2} 2x`}
+            src={homeImages.titleImg1}
             alt="Title"
             className="lg:mb-[131px]"
           />
@@ -57,22 +43,22 @@ export const Hero = () => {
             <picture>
               <source
                 media="(min-width: 1440px)"
-                srcSet={`${flagImg5} 1x, ${flagImg6} 2x`}
+                srcSet={`${homeImages.flagImg5} 1x, ${homeImages.flagImg6} 2x`}
                 height="362"
                 width="400"
                 type="image/png"
               />
               <source
                 media="(min-width: 768px)"
-                srcSet={`${flagImg3} 1x, ${flagImg4} 2x`}
+                srcSet={`${homeImages.flagImg3} 1x, ${homeImages.flagImg4} 2x`}
                 type="image/png"
                 height="177"
                 width="193"
               />
 
               <img
-                src={flagImg1}
-                srcSet={`${flagImg1} 1x, ${flagImg2} 2x`}
+                src={homeImages.flagImg1}
+                srcSet={`${homeImages.flagImg1} 1x, ${homeImages.flagImg2} 2x`}
                 height="148"
                 width="177"
                 alt="Photo of man with ukrainian flag"

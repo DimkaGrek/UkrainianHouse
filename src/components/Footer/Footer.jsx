@@ -2,19 +2,12 @@ import { NavLink, Link } from 'react-router-dom';
 import { useModal } from '../../hooks';
 import { Icon, Modal, Developers, Address, FlagsList } from '../../components';
 
-import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
-import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
-import logo_mobile1x from '../../assets/images/footer/logo_mobile1x.png';
-import logo_mobile2x from '../../assets/images/footer/logo_mobile2x.png';
-import iPhone1x_desktop from '../../assets/images/footer/iPhone1x_desktop.png';
-import iPhone2x_desktop from '../../assets/images/footer/iPhone2x_desktop.png';
-import iPhone1x_tablet from '../../assets/images/footer/iPhone1x_tablet.png';
-import iPhone2x_tablet from '../../assets/images/footer/iPhone2x_tablet.png';
-import iPhone1x_mob from '../../assets/images/footer/iPhone1x_mob.png';
-import iPhone2x_mob from '../../assets/images/footer/iPhone2x_mob.png';
+import { images } from '../../assets';
 
 export const Footer = () => {
   const [isOpenDevelopersModal, toggleDevelopersModal] = useModal();
+
+  const { footerImages } = images;
   return (
     <>
       <footer className="container pt-[25vw] md:pt-[15vw] lg:pt-[9vw] pb-[32px] lg:pb-[84px]">
@@ -23,8 +16,8 @@ export const Footer = () => {
             <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:mb-0">
               <Link to="/" className="hidden md:inline-block lg:hidden">
                 <img
-                  srcSet={`${logo_mobile1x} 1x, ${logo_mobile2x} 2x`}
-                  src={logo_mobile1x}
+                  srcSet={`${footerImages.footer_logo_mobile1x} 1x, ${footerImages.footer_logo_mobile2x} 2x`}
+                  src={footerImages.footer_logo_mobile1x}
                   alt="logotype"
                   width="66"
                   height="44"
@@ -61,8 +54,8 @@ export const Footer = () => {
             <div className="flex justify-between mb-[50px] w-full md:hidden">
               <Link to="/">
                 <img
-                  srcSet={`${logo_mobile1x} 1x, ${logo_mobile2x} 2x`}
-                  src={logo_mobile1x}
+                  srcSet={`${footerImages.footer_logo_mobile1x} 1x, ${footerImages.footer_logo_mobile2x} 2x`}
+                  src={footerImages.footer_logo_mobile1x}
                   alt="logotype"
                   width="66"
                   height="44"
@@ -154,8 +147,8 @@ export const Footer = () => {
           <div className="w-full mb-[50px] md:flex md:justify-end md:mb-[36px] lg:justify-between lg:mb-0">
             <Link to="/" className="hidden lg:inline-block">
               <img
-                srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
-                src={logo_mobile1x}
+                srcSet={`${footerImages.footer_logo_desktop1x} 1x, ${footerImages.footer_logo_desktop2x} 2x`}
+                src={footerImages.footer_logo_mobile1x}
                 alt="logotype"
                 width="116"
                 height="78"
@@ -189,22 +182,22 @@ export const Footer = () => {
           <picture>
             <source
               media="(min-width: 1440px)"
-              srcSet={`${iPhone1x_desktop} 1x, ${iPhone2x_desktop} 2x`}
+              srcSet={`${footerImages.iPhone1x_desktop} 1x, ${footerImages.iPhone2x_desktop} 2x`}
               width="125"
               height="249"
               loading="lazy"
             />
             <source
               media="(min-width: 768px)"
-              srcSet={`${iPhone1x_tablet} 1x, ${iPhone2x_tablet} 2x`}
+              srcSet={`${footerImages.iPhone1x_tablet} 1x, ${footerImages.iPhone2x_tablet} 2x`}
               width="80"
               height="160"
               loading="lazy"
             />
             <img
               className="absolute top-[100px] right-0 md:left-0 md:top-auto md:bottom-0 lg:left-auto lg:bottom-[60px] lg:right-0 max-w-none"
-              srcSet={`${iPhone1x_mob} 1x, ${iPhone2x_mob} 2x`}
-              src={iPhone1x_mob}
+              srcSet={`${footerImages.iPhone1x_mob} 1x, ${footerImages.iPhone2x_mob} 2x`}
+              src={footerImages.iPhone1x_mob}
               alt="Phone in hand"
               width="96"
               height="192"
