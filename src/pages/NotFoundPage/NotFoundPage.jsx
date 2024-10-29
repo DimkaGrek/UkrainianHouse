@@ -1,12 +1,15 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FlagsList } from '../../components';
 
-import notFoundImg1 from '../../assets/images/not-found/notFound@1x_mobile.png';
-import notFoundImg2 from '../../assets/images/not-found/notFound@2x_mobile.png';
+import { images } from '../../assets';
+
 const NotFoundPage = () => {
   const navigate = useNavigate();
+
+  const { notFoundImages } = images;
+
   return (
-    <section className="relative pt-[44px] pr-[24px] h-screen md:pt-[225px] md:pr-0 md:pl-[58px] lg:pt-[229px] lg:pl-[20px]  not-found-section bg-no-repeat bg-cover md:bg-[url('assets/images/not-found/notFound@1x_tablet.png')] md:h-screen lg:bg-[url('assets/images/not-found/notFound@1x_desktop.png')]">
+    <section className="relative pt-[44px] pr-[24px] h-screen md:pt-[225px] md:pr-0 md:pl-[58px] lg:pt-[229px] lg:pl-[20px]  not-found-section bg-no-repeat bg-cover md:bg-[url('assets/images/not-found/notFound@1x_tablet.webp')] md:h-screen lg:bg-[url('assets/images/not-found/notFound@1x_desktop.webp')]">
       <FlagsList className="flex justify-end items-center gap-4 mb-[100px] md:mb-[31px]  md:justify-start lg:absolute lg:top-[370px] lg:left-[607px]" />
       <div className="flex flex-col gap-[25px] items-end mb-[24px] md:gap-0 md:mb-[31px] md:items-start lg:mb-[60px]">
         <p className="w-[203px] text-[20px] text-right leading-[1.4] text-my-black1 md:w-[524px] md:text-left lg:w-[734px] lg:text-[28px] lg:leading-[1.29]">
@@ -43,8 +46,8 @@ const NotFoundPage = () => {
         <img
           height="844"
           width="375"
-          srcSet={`${notFoundImg1} 1x, ${notFoundImg2} 2x`}
-          src={notFoundImg1}
+          srcSet={`${notFoundImages.notFoundImg1} 1x, ${notFoundImages.notFoundImg2} 2x`}
+          src={notFoundImages.notFoundImg1}
           alt="Ukranian field"
           className="w-[100%] h-auto"
         />
