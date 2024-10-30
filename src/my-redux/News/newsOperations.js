@@ -61,6 +61,24 @@ export const updateOneNews = createAsyncThunk(
     }
   }
 );
+
+export const updateNewsPhoto = createAsyncThunk(
+  'news/updateNewsPhoto',
+  async (data, thunkAPI) => {
+    const { id, ...photoChanges } = data;
+    try {
+      const { data } = await api.put(`/admin/news/${id}/update`, photoChanges, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const deleteOneNews = createAsyncThunk(
   'news/deleteNews',
   async (id, thunkAPI) => {
