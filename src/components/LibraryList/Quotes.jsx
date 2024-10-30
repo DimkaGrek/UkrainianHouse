@@ -15,12 +15,12 @@ export const Quotes = () => {
           <source
             media="(min-width: 768px)"
             srcSet={`${quotes[randomIdx1][2]} 1x, ${quotes[randomIdx1][3]} 2x`}
-            type="image/png"
+            type="image/webp"
           ></source>
           <source
             media="(min-width: 320px)"
             srcSet={`${quotes[randomIdx1][0]} 1x, ${quotes[randomIdx1][1]} 2x`}
-            type="image/png"
+            type="image/webp"
           ></source>
 
           <img
@@ -37,7 +37,7 @@ export const Quotes = () => {
           <source
             media="(min-width: 768px)"
             srcSet={`${quotes[randomIdx2][2]} 1x, ${quotes[randomIdx2][3]} 2x`}
-            type="image/png"
+            type="image/webp"
           ></source>
           <source
             media="(min-width: 320px)"

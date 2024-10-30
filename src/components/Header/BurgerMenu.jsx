@@ -3,11 +3,18 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { Icon, Address, FlagsList } from '../../components';
 
-import logo_desktop1x from '../../assets/images/footer/logo_desktop1x.png';
-import logo_desktop2x from '../../assets/images/footer/logo_desktop2x.png';
+import { images } from '../../assets';
 
-export const BurgerMenu = ({ toggleMenu }) => {
+export const BurgerMenu = ({
+  isOpen,
+  toggleMenu,
+  classBackdrop,
+  classMenu,
+}) => {
   const navigate = useNavigate();
+
+  const { headerImages } = images;
+
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
       toggleMenu();
@@ -15,6 +22,8 @@ export const BurgerMenu = ({ toggleMenu }) => {
   };
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleEscape = event => {
       if (event.code === 'Escape') {
         toggleMenu();
@@ -27,14 +36,16 @@ export const BurgerMenu = ({ toggleMenu }) => {
       window.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'auto';
     };
-  }, [toggleMenu]);
+  }, [isOpen, toggleMenu]);
 
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden"
+      className={`${classBackdrop} fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden`}
     >
-      <div className="relative flex flex-col justify-start items-center gap-[35px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full">
+      <div
+        className={`${classMenu} relative flex flex-col justify-start items-center gap-[35px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full transition duration-500`}
+      >
         <button
           type="button"
           className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
@@ -49,8 +60,8 @@ export const BurgerMenu = ({ toggleMenu }) => {
 
         <Link to="/" onClick={toggleMenu}>
           <img
-            srcSet={`${logo_desktop1x} 1x, ${logo_desktop2x} 2x`}
-            src={logo_desktop1x}
+            srcSet={`${headerImages.logo_desktop1x} 1x, ${headerImages.logo_desktop2x} 2x`}
+            src={headerImages.logo_desktop1x}
             alt="logotype"
             width="116"
             height="78"

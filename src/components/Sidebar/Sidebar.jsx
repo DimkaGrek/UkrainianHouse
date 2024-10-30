@@ -1,17 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 
-import logo_1x from '../../assets/images/admin-page/admin-page-logo_@1x.png';
-import logo_2x from '../../assets/images/admin-page/admin-page-logo_@2x.png';
 import { adminNavLinks } from '../../constants';
 
+import { images } from '../../assets';
+
 export const Sidebar = () => {
+  const { headerImages } = images;
   return (
     <nav>
       <Link to="/">
         <picture>
           <img
-            srcSet={`${logo_1x} 1x, ${logo_2x} 2x`}
-            src={logo_1x}
+            srcSet={`${headerImages.admin_logo_1x} 1x, ${headerImages.admin_logo_2x} 2x`}
+            src={headerImages.admin_logo_1x}
             alt="logo"
             width="116"
             height="78"

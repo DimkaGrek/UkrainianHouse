@@ -1,10 +1,10 @@
 import { getTeamMembers } from '../../helpers';
 
-import franko_desktop1x from '../../assets/images/contacts/franko_desktop1x.png';
-import franko_desktop2x from '../../assets/images/contacts/franko_desktop2x.png';
+import { images } from '../../assets';
 
 export const CarouselTeam = () => {
   const teamMembers = getTeamMembers();
+  const { contactsImages } = images;
   return (
     <div className="carousel carousel-center max-w-full space-x-[24px] mb-[16px] md:mb-[94px] lg:flex-wrap lg:gap-x-[23px] lg:gap-y-[60px] lg:mb-[56px] lg:space-x-0">
       {teamMembers.map(({ name, position, photos }, index) => (
@@ -40,8 +40,8 @@ export const CarouselTeam = () => {
       ))}
       <div className="pl-[29px]">
         <img
-          srcSet={`${franko_desktop1x} 1x, ${franko_desktop2x} 2x`}
-          src={franko_desktop1x}
+          srcSet={`${contactsImages.franko_desktop1x} 1x, ${contactsImages.franko_desktop2x} 2x`}
+          src={contactsImages.franko_desktop1x}
           alt="Image of the writer Ivan Franko"
           height="440"
           width="369"
