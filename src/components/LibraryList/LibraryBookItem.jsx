@@ -1,4 +1,4 @@
-export const LibraryBookItem = () => {
+export const LibraryBookItem = ({ item: { coverImageUrl, author } }) => {
   // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
   return (
     // outline outline-[2px] outline-red-500
@@ -13,16 +13,16 @@ export const LibraryBookItem = () => {
 
         <img
           className="mb-[6px]"
-          src="https://biblioteka.cdu.edu.ua/images/prosvrobota/kotsubinskii/image024.jpg"
+          // src="https://biblioteka.cdu.edu.ua/images/prosvrobota/kotsubinskii/image024.jpg"
           // src={imgURL + '/' + item.coverImageUrl}
-          // src={http://dev.ukrhouse.pp.ua:8080 + '/' + item.coverImageUrl}
+          src={'http://dev.ukrhouse.pp.ua:8080' + '/' + coverImageUrl}
           alt=""
           width={238}
           height={380}
         />
         <h4 className="font-['Istok_Web'] font-normal text-[28px] leading-[1.28571] text-[#1e1e1e] text-center">
-          Тарас Шевченко
-          {/* {item.author} */}
+          {/* Тарас Шевченко */}
+          {author}
         </h4>
         <ul className="pt-0 pl-5 pr-5 pb-8 ">
           <li>

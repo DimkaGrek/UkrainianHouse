@@ -5,20 +5,21 @@ import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
 import { fetchAllBooks } from '../../my-redux';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-// import { useLibrary } from '../../hooks/useLibrary';
-import NotFoundBook from '../../components/LibraryList/NotFoundBook';
+
+import { LibraryList } from '../../components/LibraryList/LibraryList';
+// import NotFoundBook from '../../components/LibraryList/NotFoundBook';
 
 const LibraryPage = () => {
-  // const { books } = useLibrary();
   const dispatch = useDispatch();
-  // const { books } = useBooks();
 
-  // const books = useSelector(selectorsBooks);
+  // const books = useSelector(selectBooks);
   // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
-  // console.log(books);
 
   useEffect(() => {
-    dispatch(fetchAllBooks())
+    const config = {
+      params: { page: 0 },
+    };
+    dispatch(fetchAllBooks(config))
       .unwrap()
       .then(() => {})
       .catch(e => {
@@ -38,19 +39,10 @@ const LibraryPage = () => {
           Here you can find your favorite book waiting for you in our library
         </p>
       </div>
-      {/* {books.length > 0 &&
-        books.map(item => {
-          return (
-            <div key={item.id}>
-              <img src={imgURL + '/' + item.coverImageUrl} alt="" />
 
-              <h4>{item.author}</h4>
-            </div>
-          );
-        })} */}
+      <LibraryList />
       {/* <LibraryList /> */}
-      {/* <LibraryList /> */}
-      <NotFoundBook />
+      {/* <NotFoundBook /> */}
       {/* {isLoading && <Loader placement="bottom" />} */}
     </section>
   );

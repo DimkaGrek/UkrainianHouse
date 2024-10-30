@@ -1,10 +1,11 @@
 // import { useState } from 'react';
 // import { useLibrary } from '../../hooks/useLibrary';
+import { useBooks } from '../../hooks/useBooks';
 import { LibraryBookItem } from './LibraryBookItem';
 import { Quotes } from './Quotes';
 
 export const LibraryList = () => {
-  // const { books } = useLibrary();
+  const { books } = useBooks();
   // const [random, setRendom] = useState();
 
   // const handleReload = () => {
@@ -12,39 +13,18 @@ export const LibraryList = () => {
   //   setRendom(randomIndex());
   //   console.log(random);
   // };
+  console.log(books);
 
   return (
-    <div className=" relative mb-[120px]  ">
+    <div className=" relative mb-[120px] h-[1000px] ">
       <Quotes />
 
-      {/* <ul className="flex gap-x-[60px] mb-[120px]">
+      <ul className="flex gap-x-[60px] mb-[120px]">
         {books.map(item => {
           return <LibraryBookItem key={item.id} item={item} />;
         })}
-      </ul> */}
-      <ul className="flex gap-x-[60px] mb-[120px]">
-        <li>
-          <LibraryBookItem />
-        </li>
-        <li>
-          <LibraryBookItem />
-        </li>
-        <li>
-          <LibraryBookItem />
-        </li>
       </ul>
 
-      <ul className="flex justify-end gap-[60px] mb-[0]">
-        <li>
-          <LibraryBookItem />
-        </li>
-        <li>
-          <LibraryBookItem />
-        </li>
-        <li>
-          <LibraryBookItem />
-        </li>
-      </ul>
       {/* {random}
       <button onClick={handleReload}>Перезавантаження</button> */}
     </div>
