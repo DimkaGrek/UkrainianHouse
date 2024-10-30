@@ -1,6 +1,5 @@
 // import { Loader } from '../../components';
 import { useDispatch } from 'react-redux';
-// import { LibraryList } from '../../components/LibraryList/LibraryList';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
 import { fetchAllBooks } from '../../my-redux';
 import { useEffect } from 'react';
@@ -11,9 +10,6 @@ import { LibraryList } from '../../components/LibraryList/LibraryList';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
-
-  // const books = useSelector(selectBooks);
-  // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
 
   useEffect(() => {
     const config = {
@@ -41,7 +37,7 @@ const LibraryPage = () => {
       </div>
 
       <LibraryList />
-      {/* <LibraryList /> */}
+
       {/* <NotFoundBook /> */}
       {/* {isLoading && <Loader placement="bottom" />} */}
     </section>

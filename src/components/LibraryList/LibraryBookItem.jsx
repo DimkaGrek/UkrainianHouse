@@ -1,10 +1,13 @@
-export const LibraryBookItem = ({ item: { coverImageUrl, author } }) => {
+export const LibraryBookItem = ({
+  item: { coverImageUrl, author, title, publicationYear, pageCount, genre },
+}) => {
+  console.log(coverImageUrl);
   // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
   return (
     // outline outline-[2px] outline-red-500
     <>
       <div
-        className="max-w-[300px]    transition-all duration-300 ease-in-out
+        className="w-[238px]    transition-all duration-300 ease-in-out
   border border-transparent rounded-b-[18px]
     hover:border-[#666] hover:bg-[#b0e0ff] cursor-pointer
     focus:border-[#666] focus:bg-[#b0e0ff] cursor-pointer "
@@ -13,33 +16,33 @@ export const LibraryBookItem = ({ item: { coverImageUrl, author } }) => {
 
         <img
           className="mb-[6px]"
-          // src="https://biblioteka.cdu.edu.ua/images/prosvrobota/kotsubinskii/image024.jpg"
+          src="https://biblioteka.cdu.edu.ua/images/prosvrobota/kotsubinskii/image024.jpg"
           // src={imgURL + '/' + item.coverImageUrl}
-          src={'http://dev.ukrhouse.pp.ua:8080' + '/' + coverImageUrl}
-          alt=""
+          // src={'http://dev.ukrhouse.pp.ua:8080' + '/' + coverImageUrl}
+          // src={coverImageUrl}
+          alt="шось там таке як понаписуть..."
           width={238}
           height={380}
         />
         <h4 className="font-['Istok_Web'] font-normal text-[28px] leading-[1.28571] text-[#1e1e1e] text-center">
-          {/* Тарас Шевченко */}
           {author}
         </h4>
-        <ul className="pt-0 pl-5 pr-5 pb-8 ">
+        <ul className="pt-0 pl-1 pr-1 pb-1 ">
           <li>
-            <p className="font-sans font-semibold text-[20px] leading-[1.6] text-center text-[#1e1e1e] ">
-              Кобзар
+            <p className="font-sans font-semibold text-[20px] leading-[1.6] text-center text-[#1e1e1e] h-[64px]   mb-[4px] ">
+              {title}
             </p>
           </li>
           <li>
             <p className="font-sans italic font-normal text-[20px] leading-normal text-[#666666]">
-              поезія
+              {genre}
             </p>
           </li>
           <li>
             <p className="font-sans italic font-normal text-[20px] leading-normal text-[#1e1e1e] flex justify-between items-center ">
-              475 pages
+              {pageCount} pages
               <span className="font-sans italic font-normal text-[20px] leading-normal text-right text-[#1e1e1e]  ">
-                2018
+                {publicationYear}
               </span>
             </p>
           </li>
