@@ -91,13 +91,11 @@ export const deleteOneNews = createAsyncThunk(
   }
 );
 
-export const archiveOneNews = createAsyncThunk(
-  'news/archiveNews',
+export const deleteNewsPhoto = createAsyncThunk(
+  'news/deleteNewsPhoto',
   async (id, thunkAPI) => {
     try {
-      const { data } = await api.put(`/admin/news/${id}`, {
-        status: 'ARCHIVED',
-      });
+      const { data } = await api.delete(`/api/admin/news/photo/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
