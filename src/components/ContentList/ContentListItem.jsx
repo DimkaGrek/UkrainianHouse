@@ -1,24 +1,19 @@
-import { useDispatch } from 'react-redux';
 import { FiEdit2 } from 'react-icons/fi';
 import { MdOutlineDeleteForever } from 'react-icons/md';
-import { toast } from 'react-toastify';
 
-import { BookForm, Modal, NewsForm } from '../../components';
+import { BookForm, ConfirmDelete, Modal, NewsForm } from '../../components';
 
-import { archiveOneNews } from '../../my-redux';
 import { useModal } from '../../hooks';
 import { bookStatusesColors, newsStatusesColors } from '../../constants';
 import { getFormattedDate } from '../../helpers';
 
 export const ContentListItem = ({ item }) => {
-  const dispatch = useDispatch();
   const [isOpen, toggleModal] = useModal();
+  const [isOpenConfirmDelete, toggleConfirmDelete] = useModal();
 
-  const handleDelete = () => {
-    dispatch(archiveOneNews(item.id))
-      .unwrap()
-      .then(() => toast.success('News deleted successfully'))
-      .catch(e => toast.error(e.message));
+  const handleDelete = e => {
+    e.stopPropagation();
+    toggleConfirmDelete();
   };
 
   const itemContent = () => {
@@ -117,6 +112,9 @@ export const ContentListItem = ({ item }) => {
       </li>
       {isOpen && (
         <Modal toggleModal={toggleModal}>{renderModalContent()}</Modal>
+      )}
+      {isOpenConfirmDelete && (
+        <ConfirmDelete toggleModal={toggleConfirmDelete} item={item} />
       )}
     </>
   );

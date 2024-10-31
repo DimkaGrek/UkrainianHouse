@@ -42,3 +42,4 @@ export * from './ContentList/ContentListItem.jsx';
 export * from './Pagination/Pagination.jsx';
 export * from './NeedHelpModal/NeedHelpModal.jsx';
 export * from './NewsList/NewsListItem.jsx';
+export * from './ConfirmDelete/ConfirmDelete.jsx';
