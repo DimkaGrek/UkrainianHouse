@@ -7,7 +7,6 @@ import {
   selectTotalPagesNews,
   selectPageNews,
   selectNews,
-  selectIsMoreNews,
   selectTotalNews,
 } from '../my-redux';
 
@@ -17,7 +16,6 @@ export const useNews = () => {
   const page = useSelector(selectPageNews);
   const totalPages = useSelector(selectTotalPagesNews);
   const totalNews = useSelector(selectTotalNews);
-  const isMoreNews = useSelector(selectIsMoreNews);
   const isLoading = useSelector(selectIsLoadingNews);
   const error = useSelector(selectError);
 
@@ -27,7 +25,6 @@ export const useNews = () => {
     page,
     totalPages,
     totalNews,
-    isMoreNews,
     isLoading,
     error,
   };

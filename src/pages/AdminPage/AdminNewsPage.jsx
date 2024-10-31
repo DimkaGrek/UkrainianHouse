@@ -5,6 +5,7 @@ import { ContentList, Pagination } from '../../components';
 
 import { clearNews, fetchAllNews, setPageNews } from '../../my-redux';
 import { useNews } from '../../hooks';
+import { PAGE_LIMIT } from '../../constants';
 
 const AdminNewsPage = () => {
   const { news, page, totalNews, totalPages } = useNews();
@@ -15,7 +16,7 @@ const AdminNewsPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const config = { params: { page, size: 7 }, isAdmin: true };
+    const config = { params: { page, size: PAGE_LIMIT }, isAdmin: true };
 
     dispatch(fetchAllNews(config));
   }, [dispatch, page]);
