@@ -34,7 +34,7 @@ export const NewsDetails = ({
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto">
               <img
-                src={`http://dev.ukrhouse.pp.ua:8080/${item.photoUrls}`}
+                src={item.photoUrls}
                 width={316}
                 height={108}
                 className="w-auto h-auto max-w-full md:max-w-[189px] lg:max-w-[400px] rounded-[18px]"
