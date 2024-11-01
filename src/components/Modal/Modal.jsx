@@ -29,7 +29,7 @@ export const Modal = ({ children, toggleModal, className = '' }) => {
 
   return ReactDOM.createPortal(
     <div
-      className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 "
+      className="flex items-center justify-center fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-[49] "
       onClick={handleClickOnBackdrop}
     >
       <div
