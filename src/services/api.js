@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  // baseURL: 'https://ukrhouse.pp.ua/api',
-  baseURL: 'http://dev.ukrhouse.pp.ua:8080/api',
+  baseURL: 'https://ukrhouse.pp.ua/api',
 });
 
 export const setToken = token => {
