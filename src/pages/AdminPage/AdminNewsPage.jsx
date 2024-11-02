@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ContentList, Pagination } from '../../components';
+import { ContentList, Loader, Pagination } from '../../components';
 
 import { clearNews, fetchAllNews, setPageNews } from '../../my-redux';
 import { useNews } from '../../hooks';
 import { PAGE_LIMIT } from '../../constants';
 
 const AdminNewsPage = () => {
-  const { news, page, totalNews, totalPages } = useNews();
+  const { news, page, totalNews, totalPages, isLoading } = useNews();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,11 +26,20 @@ const AdminNewsPage = () => {
   };
 
   return (
-    <section className="py-5">
-      <h2 className="text-[24px] font-medium mb-6">Total news: {totalNews}</h2>
-      <ContentList items={news} />
-      <Pagination setPage={handleSetPage} page={page} totalPages={totalPages} />
-    </section>
+    <>
+      <section className="py-5">
+        <h2 className="text-[24px] font-medium mb-6">
+          Total news: {totalNews}
+        </h2>
+        <ContentList items={news} />
+        <Pagination
+          setPage={handleSetPage}
+          page={page}
+          totalPages={totalPages}
+        />
+      </section>
+      {isLoading && <Loader />}
+    </>
   );
 };
 
