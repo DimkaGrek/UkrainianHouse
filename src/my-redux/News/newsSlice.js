@@ -1,13 +1,15 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import {
-  archiveOneNews,
+  createNewsPhoto,
   createOneNews,
+  deleteNewsPhoto,
   deleteOneNews,
   fetchAllNews,
   fetchAnnounceNews,
   updateOneNews,
 } from './newsOperations';
+import { PAGE_LIMIT } from '../../constants';
 
 const initialState = {
   news: [],
@@ -16,7 +18,6 @@ const initialState = {
   page: 0,
   totalPages: 0,
   totalNews: 0,
-  isMoreNews: true,
   isLoading: false,
   error: null,
 };
@@ -37,10 +38,7 @@ const newsSlice = createSlice({
     builder
       .addCase(
         fetchAllNews.fulfilled,
-        (
-          state,
-          { payload: { currentPage, totalPages, totalNews, news }, meta }
-        ) => {
+        (state, { payload: { totalPages, totalNews, news }, meta }) => {
           if (meta.arg.isAdmin) {
             state.news = news;
           } else {
@@ -49,8 +47,6 @@ const newsSlice = createSlice({
 
           state.totalPages = totalPages;
           state.totalNews = totalNews;
-          state.isMoreNews = currentPage + 1 < totalPages;
-
           state.isLoading = false;
         }
       )
@@ -61,29 +57,52 @@ const newsSlice = createSlice({
       })
       .addCase(createOneNews.fulfilled, (state, { payload }) => {
         state.news.unshift(payload);
+        state.totalNews += 1;
+        state.totalPages = Math.ceil(state.totalNews / PAGE_LIMIT);
+
         state.isLoading = false;
       })
       .addCase(updateOneNews.fulfilled, (state, { payload }) => {
         state.news = state.news.map(item => {
           if (item.id === payload.id) {
-            return payload;
+            return { ...item, ...payload };
           }
           return item;
         });
+
         state.isLoading = false;
       })
-      .addCase(archiveOneNews.fulfilled, (state, { payload }) => {
-        // state.news = state.news.filter(item => item.id !== payload.id);
-        state.news = state.news.map(item => {
-          if (item.id === payload.id) {
-            return payload;
-          }
-          return item;
-        });
+      .addCase(createNewsPhoto.fulfilled, (state, { payload }) => {
+        state.news
+          .find(item => item.id === payload.newsId)
+          ?.photoUrls.push(payload);
+
         state.isLoading = false;
       })
       .addCase(deleteOneNews.fulfilled, (state, { payload }) => {
-        state.news = state.news.filter(item => item.id !== payload.id);
+        state.news = state.news.filter(item => item.id !== payload);
+
+        state.totalNews -= 1;
+        state.totalPages = Math.ceil(state.totalNews / PAGE_LIMIT);
+        state.page =
+          state.page > 0 &&
+          state.totalNews % PAGE_LIMIT === 0 &&
+          state.page === state.totalPages
+            ? state.page - 1
+            : state.page;
+
+        state.isLoading = false;
+      })
+      .addCase(deleteNewsPhoto.fulfilled, (state, { payload }) => {
+        const { newsId, photoId } = payload;
+
+        const newsItem = state.news.find(item => item.id === newsId);
+        if (newsItem) {
+          newsItem.photoUrls = newsItem.photoUrls.filter(
+            photo => photo.id !== photoId
+          );
+        }
+
         state.isLoading = false;
       })
 
@@ -92,8 +111,11 @@ const newsSlice = createSlice({
           fetchAllNews.rejected,
           fetchAnnounceNews.rejected,
           createOneNews.rejected,
+          createNewsPhoto.rejected,
           updateOneNews.rejected,
-          deleteOneNews.rejected
+
+          deleteOneNews.rejected,
+          deleteNewsPhoto.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
@@ -106,8 +128,11 @@ const newsSlice = createSlice({
           fetchAllNews.pending,
           fetchAnnounceNews.pending,
           createOneNews.pending,
+          createNewsPhoto.pending,
           updateOneNews.pending,
-          deleteOneNews.pending
+
+          deleteOneNews.pending,
+          deleteNewsPhoto.pending
         ),
         state => {
           state.isLoading = true;
@@ -120,7 +145,6 @@ const newsSlice = createSlice({
     selectPageNews: state => state.page,
     selectTotalPagesNews: state => state.totalPages,
     selectTotalNews: state => state.totalNews,
-    selectIsMoreNews: state => state.isMoreNews,
     selectIsLoadingNews: state => state.isLoading,
     selectError: state => state.error,
   },
@@ -132,7 +156,6 @@ export const {
   selectPageNews,
   selectTotalPagesNews,
   selectTotalNews,
-  selectIsMoreNews,
   selectIsLoadingNews,
   selectError,
 } = newsSlice.selectors;
