@@ -4,8 +4,7 @@ import { api } from '../../services/api';
 
 export const fetchAllNews = createAsyncThunk(
   'news/getAllNews',
-  async (config, thunkAPI) => {
-    const { params, isAdmin = false } = config;
+  async ({ params, isAdmin = false }, thunkAPI) => {
     try {
       const { data } = await api.get(`${isAdmin ? '/admin' : ''}/news`, {
         params,
@@ -50,17 +49,30 @@ export const createOneNews = createAsyncThunk(
   }
 );
 
+export const createNewsPhoto = createAsyncThunk(
+  'news/createNewsPhoto',
+  async ({ newsId, fd }, thunkAPI) => {
+    try {
+      const { data } = await api.put(`/admin/news/${newsId}/addphoto`, fd, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return { newsId, data };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const updateOneNews = createAsyncThunk(
   'news/updateNews',
-  async (news, thunkAPI) => {
+  async ({ id, ...newsChanges }, thunkAPI) => {
     try {
-      const { id, ...newsChanges } = news;
-
       const { data } = await api.put(`/admin/news/${id}`, newsChanges);
-      // eslint-disable-next-line no-unused-vars
-      const { photoUrls, ...updatedPhoto } = data;
 
-      return updatedPhoto;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -69,8 +81,7 @@ export const updateOneNews = createAsyncThunk(
 
 export const updateNewsPhoto = createAsyncThunk(
   'news/updateNewsPhoto',
-  async (data, thunkAPI) => {
-    const { newsId, ...photoChanges } = data;
+  async ({ newsId, ...photoChanges }, thunkAPI) => {
     try {
       const { data } = await api.put(
         `/admin/news/${newsId}/update`,
@@ -106,7 +117,7 @@ export const deleteNewsPhoto = createAsyncThunk(
   'news/deleteNewsPhoto',
   async (ids, thunkAPI) => {
     try {
-      await api.delete(`/api/admin/news/photo/${ids.photoId}`);
+      await api.delete(`/admin/news/photo/${ids.photoId}`);
 
       return ids;
     } catch (error) {
