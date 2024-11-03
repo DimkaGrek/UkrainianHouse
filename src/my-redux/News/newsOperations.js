@@ -4,8 +4,7 @@ import { api } from '../../services/api';
 
 export const fetchAllNews = createAsyncThunk(
   'news/getAllNews',
-  async (config, thunkAPI) => {
-    const { params, isAdmin = false } = config;
+  async ({ params, isAdmin = false }, thunkAPI) => {
     try {
       const { data } = await api.get(`${isAdmin ? '/admin' : ''}/news`, {
         params,
@@ -25,6 +24,7 @@ export const fetchAnnounceNews = createAsyncThunk(
       const { data } = await api.get('/news', {
         params: { status: 'ANNOUNCE' },
       });
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -41,7 +41,25 @@ export const createOneNews = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
+
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const createNewsPhoto = createAsyncThunk(
+  'news/createNewsPhoto',
+  async ({ newsId, fd }, thunkAPI) => {
+    try {
+      const { data } = await api.put(`/admin/news/${newsId}/addphoto`, fd, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return { newsId, data };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -50,37 +68,58 @@ export const createOneNews = createAsyncThunk(
 
 export const updateOneNews = createAsyncThunk(
   'news/updateNews',
-  async (news, thunkAPI) => {
+  async ({ id, ...newsChanges }, thunkAPI) => {
     try {
-      const { id, ...newsChanges } = news;
-
       const { data } = await api.put(`/admin/news/${id}`, newsChanges);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+export const updateNewsPhoto = createAsyncThunk(
+  'news/updateNewsPhoto',
+  async ({ newsId, ...photoChanges }, thunkAPI) => {
+    try {
+      const { data } = await api.put(
+        `/admin/news/${newsId}/update`,
+        photoChanges,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const deleteOneNews = createAsyncThunk(
   'news/deleteNews',
   async (id, thunkAPI) => {
     try {
-      const { data } = await api.delete(`/admin/news/${id}`);
-      return data;
+      await api.delete(`/admin/news/${id}`);
+
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const archiveOneNews = createAsyncThunk(
-  'news/archiveNews',
-  async (id, thunkAPI) => {
+export const deleteNewsPhoto = createAsyncThunk(
+  'news/deleteNewsPhoto',
+  async (ids, thunkAPI) => {
     try {
-      const { data } = await api.put(`/admin/news/${id}`, {
-        status: 'ARCHIVED',
-      });
-      return data;
+      await api.delete(`/admin/news/photo/${ids.photoId}`);
+
+      return ids;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

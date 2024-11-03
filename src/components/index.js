@@ -48,3 +48,4 @@ export * from './LibraryList/NotFoundBook.jsx';
 export * from './LibraryList/LibraryList.jsx';
 export * from './LibraryList/DetailsBook.jsx';
 export * from './LibraryList/LibraryBookItem.jsx';
+export * from './ConfirmDelete/ConfirmDelete.jsx';

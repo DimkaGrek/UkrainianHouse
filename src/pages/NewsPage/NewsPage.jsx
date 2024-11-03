@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -13,20 +13,40 @@ import {
 import { useNews } from '../../hooks';
 
 const NewsPage = () => {
-  const { news, page, isMoreNews, isLoading, error } = useNews();
+  const { news, page, isLoading, error } = useNews();
 
-  const [isFetching, setIsFetching] = useState(false);
+  const [isMoreNews, setIsMoreNews] = useState(true);
   const [keyword, setKeyword] = useState('');
+  const [isSearchTriggered, setIsSearchTriggered] = useState(false);
 
   const dispatch = useDispatch();
 
   const observerTarget = useRef(null);
 
-  useEffect(() => {
-    dispatch(clearNews());
-  }, [dispatch]);
+  const fetchNewsData = useCallback(() => {
+    const config = {
+      params: {
+        page,
+        status: 'PUBLISHED',
+        ...(keyword && { keyword }),
+      },
+    };
+    dispatch(fetchAllNews(config))
+      .unwrap()
+      .then(res => {
+        dispatch(setPageNews(res.currentPage + 1));
+
+        const hasMoreNews = res.currentPage + 1 < res.totalPages;
+        setIsMoreNews(hasMoreNews);
+        if (!hasMoreNews) {
+          toast.info('You have reached the end of the news list.');
+        }
+      })
+      .catch(e => toast.error(e.message));
+  }, [dispatch, page, keyword]);
 
   useEffect(() => {
+    dispatch(clearNews());
     dispatch(fetchAnnounceNews())
       .unwrap()
       .then()
@@ -34,52 +54,19 @@ const NewsPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (keyword) {
-      const config = {
-        params: { page: 0, status: 'PUBLISHED', keyword },
-      };
-      setIsFetching(true);
-      dispatch(fetchAllNews(config))
-        .unwrap()
-        .then(res => {
-          dispatch(setPageNews(res.currentPage + 1));
-
-          if (!isMoreNews) {
-            toast.info('You have reached the end of the news list.');
-          }
-        })
-        .catch(e => {
-          toast.error(e.message);
-        })
-        .finally(() => setIsFetching(false));
+    if (isSearchTriggered && !isLoading) {
+      fetchNewsData();
+      setIsSearchTriggered(false);
     }
-  }, [dispatch, isMoreNews, keyword]);
+  }, [isSearchTriggered, fetchNewsData, dispatch, isLoading]);
 
   useEffect(() => {
-    const config = {
-      params: { page, status: 'PUBLISHED', ...(keyword && { keyword }) },
-    };
-
     const currentTarget = observerTarget.current;
 
     const observer = new IntersectionObserver(
       entries => {
-        if (entries[0].isIntersecting && !isFetching && isMoreNews && !error) {
-          setIsFetching(true);
-
-          dispatch(fetchAllNews(config))
-            .unwrap()
-            .then(() => {
-              dispatch(setPageNews(page + 1));
-
-              if (!isMoreNews) {
-                toast.info('You have reached the end of the news list.');
-              }
-            })
-            .catch(e => {
-              toast.error(e.message);
-            })
-            .finally(() => setIsFetching(false));
+        if (entries[0].isIntersecting && isMoreNews && !isLoading && !error) {
+          fetchNewsData();
         }
       },
       { threshold: 1 }
@@ -94,11 +81,12 @@ const NewsPage = () => {
         observer.unobserve(currentTarget);
       }
     };
-  }, [dispatch, error, isFetching, isMoreNews, keyword, page]);
+  }, [dispatch, fetchNewsData, error, isMoreNews, keyword, page, isLoading]);
 
   const onSearchSubmit = filterValue => {
-    dispatch(setPageNews(0));
+    dispatch(clearNews());
     setKeyword(filterValue);
+    setIsSearchTriggered(true);
   };
 
   return (
@@ -121,7 +109,6 @@ const NewsPage = () => {
           <NewsList />
         )}
         <div ref={observerTarget}></div>
-
         {isLoading && <Loader placement="bottom" />}
       </section>
     </>
