@@ -1,12 +1,19 @@
+import { useModal } from '../../hooks';
+import { Modal } from '../../components';
+import { DetailsBook } from './DetailsBook';
+
 export const LibraryBookItem = ({
   item: { coverImageUrl, author, title, publicationYear, pageCount, genre },
 }) => {
+  const [isOpenModal, toggleModal] = useModal();
+
   console.log(coverImageUrl);
   // const imgURL = 'http://dev.ukrhouse.pp.ua:8080';
   return (
     // outline outline-[2px] outline-red-500
     <>
       <div
+        onClick={toggleModal}
         className="w-[238px]    transition-all duration-300 ease-in-out
   border border-transparent rounded-b-[18px]
     hover:border-[#666] hover:bg-[#b0e0ff] cursor-pointer
@@ -20,16 +27,16 @@ export const LibraryBookItem = ({
           // src={imgURL + '/' + item.coverImageUrl}
           // src={'http://dev.ukrhouse.pp.ua:8080' + '/' + coverImageUrl}
           // src={coverImageUrl}
-          alt="шось там таке як понаписуть..."
+          alt={`книга бібліотеки, автор: ${author}, назва твору: ${title} `}
           width={238}
           height={380}
         />
         <h4 className="font-['Istok_Web'] font-normal text-[28px] leading-[1.28571] text-[#1e1e1e] text-center">
           {author}
         </h4>
-        <ul className="pt-0 pl-1 pr-1 pb-1 ">
+        <ul className="pt-0 pl-2 pr-2 pb-2 ">
           <li>
-            <p className="font-sans font-semibold text-[20px] leading-[1.6] text-center text-[#1e1e1e] h-[64px]   mb-[4px] ">
+            <p className=" line-clamp-1  font-sans font-semibold text-[20px] leading-[1.6] text-center text-[#1e1e1e]   mb-[4px] ">
               {title}
             </p>
           </li>
@@ -48,6 +55,24 @@ export const LibraryBookItem = ({
           </li>
         </ul>
       </div>
+      {isOpenModal && (
+        <Modal
+          toggleModal={toggleModal}
+          className="py-[58px] pl-[20px] pr-[10px] md:py-[58px] md:pl-[40px] md:pr-[25px] bg-white"
+        >
+          {' '}
+          <DetailsBook
+            {...{
+              coverImageUrl,
+              author,
+              title,
+              publicationYear,
+              pageCount,
+              genre,
+            }}
+          />
+        </Modal>
+      )}
     </>
   );
 };

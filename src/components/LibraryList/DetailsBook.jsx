@@ -1,48 +1,39 @@
-export const DetailsBook = () => {
+export const DetailsBook = ({
+  coverImageUrl,
+  author,
+  title,
+  publicationYear,
+  pageCount,
+  genre,
+  description,
+}) => {
+  console.log(coverImageUrl);
   return (
     <div className="flex justify-center items-center gap-[25px]">
       <div>
         <header>
-          <h1 id="book-title">Вибрані твори</h1>
-          <h2>Михайло Коцюбинський</h2>
+          <h1 id="book-title"> {title} </h1>
+          <h2>{author} </h2>
           <p>
-            <strong>Жанр:</strong> поезія
+            <strong>Жанр:</strong> {genre}
           </p>
         </header>
 
         <article>
           <h3>Опис книги</h3>
-          <p>
-            «Вибрані твори» Михайла Коцюбинського – це збірка, що знайомить
-            читача з найкращими й найвідомішими творами видатного українського
-            письменника. До неї увійшли такі шедеври:
-          </p>
-          <ul>
-            <li>
-              <strong>«Тіні забутих предків»</strong> – містична повість про
-              життя гуцулів, сповнена фольклорних мотивів та опису природи
-              Карпат.
-            </li>
-            <li>
-              <strong>«Intermezzo»</strong> – психологічна повість, що досліджує
-              глибини людських почуттів та переживань на тлі гармонії природи.
-            </li>
-            <li>
-              <strong>«Оповідання»</strong> – добірка оповідань, що розкривають
-              різні аспекти життя українського села та змальовують психологічні
-              портрети селян.
-            </li>
-          </ul>
+          <p>{description}</p>
         </article>
 
         <aside>
           <h3>Інформація про книгу</h3>
           <ul>
             <li>
-              <strong>Сторінок:</strong> 475
+              <strong>Сторінок:</strong>
+              {pageCount}
             </li>
             <li>
-              <strong>Рік видання:</strong> 2018
+              <strong>Рік видання:</strong>
+              {publicationYear}
             </li>
           </ul>
         </aside>
