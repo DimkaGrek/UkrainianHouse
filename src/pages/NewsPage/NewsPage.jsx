@@ -38,12 +38,12 @@ const NewsPage = () => {
 
         const hasMoreNews = res.currentPage + 1 < res.totalPages;
         setIsMoreNews(hasMoreNews);
-        if (!hasMoreNews) {
+        if (!hasMoreNews && news.length) {
           toast.info('You have reached the end of the news list.');
         }
       })
       .catch(e => toast.error(e.message));
-  }, [dispatch, page, keyword]);
+  }, [page, keyword, dispatch, news.length]);
 
   useEffect(() => {
     dispatch(clearNews());
@@ -92,11 +92,11 @@ const NewsPage = () => {
   return (
     <>
       <section className="pb-[74px] md:pb-[50px] lg:pb-[110px]">
-        <div className="hidden  md:flex justify-between items-center mb-[40px] lg:mb-[44px]">
-          <h3 className="font-proza-semibold font-semibold text-[20px] text-[#222] leading-[160%] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]">
+        <div className="flex md:justify-between md:items-center mb-5 md:mb-[40px] lg:mb-[44px]">
+          <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[160%] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]">
             News
           </h3>
-          <div className="w-[500px] lg:w-[654px]">
+          <div className="md:w-[500px] lg:w-[654px]">
             <SearchBar setQuery={onSearchSubmit} />
           </div>
         </div>
