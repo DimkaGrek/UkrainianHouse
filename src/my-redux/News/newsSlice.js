@@ -44,21 +44,28 @@ const newsSlice = createSlice({
           } else {
             state.news.push(...news);
           }
-
           state.totalPages = totalPages;
           state.totalNews = totalNews;
+
           state.isLoading = false;
         }
       )
       .addCase(fetchAnnounceNews.fulfilled, (state, { payload: { news } }) => {
         state.announceNews = news;
-
         state.isLoading = false;
       })
       .addCase(createOneNews.fulfilled, (state, { payload }) => {
         state.news.unshift(payload);
         state.totalNews += 1;
         state.totalPages = Math.ceil(state.totalNews / PAGE_LIMIT);
+
+        state.isLoading = false;
+      })
+      .addCase(createNewsPhoto.fulfilled, (state, { payload }) => {
+        const newsItem = state.news.find(item => item.id === payload.newsId);
+        if (newsItem) {
+          newsItem.photoUrls.push(payload.data);
+        }
 
         state.isLoading = false;
       })
@@ -72,16 +79,8 @@ const newsSlice = createSlice({
 
         state.isLoading = false;
       })
-      .addCase(createNewsPhoto.fulfilled, (state, { payload }) => {
-        state.news
-          .find(item => item.id === payload.newsId)
-          ?.photoUrls.push(payload);
-
-        state.isLoading = false;
-      })
       .addCase(deleteOneNews.fulfilled, (state, { payload }) => {
         state.news = state.news.filter(item => item.id !== payload);
-
         state.totalNews -= 1;
         state.totalPages = Math.ceil(state.totalNews / PAGE_LIMIT);
         state.page =
@@ -95,7 +94,6 @@ const newsSlice = createSlice({
       })
       .addCase(deleteNewsPhoto.fulfilled, (state, { payload }) => {
         const { newsId, photoId } = payload;
-
         const newsItem = state.news.find(item => item.id === newsId);
         if (newsItem) {
           newsItem.photoUrls = newsItem.photoUrls.filter(
@@ -113,7 +111,6 @@ const newsSlice = createSlice({
           createOneNews.rejected,
           createNewsPhoto.rejected,
           updateOneNews.rejected,
-
           deleteOneNews.rejected,
           deleteNewsPhoto.rejected
         ),
@@ -130,7 +127,6 @@ const newsSlice = createSlice({
           createOneNews.pending,
           createNewsPhoto.pending,
           updateOneNews.pending,
-
           deleteOneNews.pending,
           deleteNewsPhoto.pending
         ),
