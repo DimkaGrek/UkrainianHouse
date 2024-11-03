@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { MdOutlineLogout } from 'react-icons/md';
 
 import {
@@ -12,6 +12,8 @@ import {
 import { useModal } from '../../hooks';
 
 export const AdminHeader = () => {
+  const [, setSearchParams] = useSearchParams();
+
   const location = useLocation();
   const isNewsPage = location.pathname.includes('news');
   const isBooksPage = location.pathname.includes('books');
@@ -21,8 +23,8 @@ export const AdminHeader = () => {
   const [addBookModal, toggleAddBookModal] = useModal();
   const [logoutModal, toggleLogoutModal] = useModal();
 
-  const handleSetQuery = query => {
-    console.log('Search', query);
+  const handleSetQuery = keyword => {
+    setSearchParams({ keyword });
   };
 
   return (
