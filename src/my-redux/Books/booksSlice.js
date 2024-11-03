@@ -19,9 +19,6 @@ const initialState = {
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  selectors: {
-    selectorsBooks: state => state.books,
-  },
   reducers: {
     setPageBooks: (state, { payload }) => {
       state.page = payload;
