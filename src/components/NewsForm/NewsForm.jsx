@@ -111,7 +111,7 @@ export const NewsForm = ({ item, toggle }) => {
           if (item) {
             const resizedFiles = await handleResizeImages(selectedFiles);
             if (!resizedFiles) {
-              toast.error('Error resizing photos');
+              toast.error('Error resizing images.');
               return;
             }
 
@@ -189,7 +189,7 @@ export const NewsForm = ({ item, toggle }) => {
   };
 
   const onSubmit = async data => {
-    if (!hasNonZeroElement && !item) {
+    if (!hasNonZeroElement) {
       setImageError(true);
       return;
     }
@@ -336,13 +336,11 @@ export const NewsForm = ({ item, toggle }) => {
           onChange={selectFiles}
         />
         <div className="flex flex-1 justify-between gap-6">
-          {console.log('selectedImages--------------', selectedImages)}
           {selectedImages.map((image, index) => (
             <div
               key={index}
               className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-md"
             >
-              {console.log('image--------------', index + 1, image)}
               {image === 0 ? (
                 <picture className="h-auto w-fit rounded-[10px]">
                   <source
