@@ -53,7 +53,7 @@ export const createNewsPhoto = createAsyncThunk(
   'news/createNewsPhoto',
   async ({ newsId, fd }, thunkAPI) => {
     try {
-      const { data } = await api.put(`/admin/news/${newsId}/addphoto`, fd, {
+      const { data } = await api.post(`/admin/news/${newsId}/addphoto`, fd, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
