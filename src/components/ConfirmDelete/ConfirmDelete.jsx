@@ -1,21 +1,17 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { Loader, Modal } from '../../components';
+import { Modal } from '../../components';
 
 import { deleteOneNews } from '../../my-redux';
 
 export const ConfirmDelete = ({ item, toggleModal }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
 
   const truncatedItemName =
     item.title.length > 10 ? `${item.title.slice(0, 20)}...` : item.title;
 
   const handleDeleteAction = (deleteAction, itemName) => {
-    setIsLoading(true);
     dispatch(deleteAction)
       .unwrap()
       .then(() => {
@@ -25,8 +21,7 @@ export const ConfirmDelete = ({ item, toggleModal }) => {
       .catch(error => {
         const errorMessage = error.message || 'Unknown error';
         toast.error(` ${itemName} was not deleted. ${errorMessage}`);
-      })
-      .finally(() => setIsLoading(false));
+      });
   };
 
   const handleDelete = () => {
@@ -51,12 +46,10 @@ export const ConfirmDelete = ({ item, toggleModal }) => {
         </button>
         <button
           type="button"
-          className="relative primaryBtn w-1/2 disabled:text-gray-300 disabled:bg-gray-400  disabled:cursor-not-allowed"
+          className="primaryBtn w-1/2"
           onClick={handleDelete}
-          disabled={isLoading}
         >
           Yes
-          {isLoading && <Loader placement="absolute" size={20} />}
         </button>
       </div>
     </Modal>

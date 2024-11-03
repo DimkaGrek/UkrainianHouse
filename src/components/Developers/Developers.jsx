@@ -6,7 +6,7 @@ export const Developers = () => {
   return (
     <>
       <h4 className="font-proza font-medium text-[20px] text-[#1e1e1e] leading-[1.2] w-[280px] mb-[16px] sm-max:w-[212px] md:w-[450px] md:mb-[21px] md:text-[24px] md:font-semibold md:leading-[1.6] lg:w-full lg:text-[36px] lg:mb-[32px]">
-        Web-developers “Ukrainian House” in Maastricht”
+        Web-developers “Ukrainian House in Maastricht”
       </h4>
       <div className="carousel carousel-vertical h-[315px] md:flex-row md:carousel-center md:h-[380px] md:space-x-[44px] sm-max:h-[260px] md:w-full lg:flex-wrap lg:gap-x-[44px] lg:gap-y-0 lg:space-x-0 lg:h-full">
         {developers.map(({ name, url, position, photos }, index) => (
