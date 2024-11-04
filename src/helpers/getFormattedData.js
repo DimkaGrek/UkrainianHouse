@@ -1,4 +1,4 @@
-export const getFromattedData = (files, filesKey, jsonData, jsonDateKey) => {
+export const getFormattedData = (files, filesKey, jsonData, jsonDateKey) => {
   const formData = new FormData();
 
   if (Array.isArray(files)) {
