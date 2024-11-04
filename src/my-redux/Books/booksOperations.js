@@ -18,7 +18,7 @@ export const fetchAllBooks = createAsyncThunk(
 );
 
 export const createBook = createAsyncThunk(
-  'book/addItem',
+  'books/addBook',
   async (book, thunkAPI) => {
     try {
       const { data } = await api.post('/admin/books', book, {
@@ -34,12 +34,28 @@ export const createBook = createAsyncThunk(
 );
 
 export const updateBook = createAsyncThunk(
-  'book/updateBook',
-  async (book, thunkAPI) => {
+  'books/updateBook',
+  async ({ id, ...bookChanges }, thunkAPI) => {
     try {
-      const { id } = book;
-      delete book.id;
-      const { data } = await api.put(`books/${id}`, book);
+      const { data } = await api.put(`/admin/books/${id}`, bookChanges);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateCoverBook = createAsyncThunk(
+  'books/updateCoverBook',
+  async ({ bookId, cover }, thunkAPI) => {
+    try {
+      const { data } = await api.put(`/admin/books/${bookId}/cover`, cover, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,11 +64,11 @@ export const updateBook = createAsyncThunk(
 );
 
 export const deleteBook = createAsyncThunk(
-  'book/deleteItem',
+  'book/deleteBook',
   async (id, thunkAPI) => {
     try {
-      const { data } = await api.delete(`books/${id}`);
-      return data;
+      await api.delete(`/admin/books/${id}`);
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

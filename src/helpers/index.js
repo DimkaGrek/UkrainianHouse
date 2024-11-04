@@ -1,4 +1,4 @@
-export * from './getFromattedData';
+export * from './getFormattedData';
 export * from './getTeamMembers';
 export * from './getDevelopers';
 export * from './getPartnersLogos';

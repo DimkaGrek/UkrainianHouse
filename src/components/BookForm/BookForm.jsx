@@ -8,17 +8,21 @@ import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
 import { StatusField } from '../StatusField/StatusField';
 
-import newsImg1 from '../../assets/images/news-img@1x.jpg';
-import newsImg2 from '../../assets/images/news-img@2x.jpg';
+import defaultImg1 from '../../assets/images/default-img@1x.webp';
+import defaultImg2 from '../../assets/images/default-img@2x.webp';
 import { bookStatuses } from '../../constants';
 import { bookFormSchema } from '../../schemas';
-import { createBook } from '../../my-redux';
-import { getFileResizer, getFromattedData } from '../../helpers';
+import { createBook, updateBook, updateCoverBook } from '../../my-redux';
+import {
+  checkObjectEquality,
+  getFileResizer,
+  getFormattedData,
+} from '../../helpers';
 
-export const BookForm = ({ toggle }) => {
+export const BookForm = ({ item, toggle }) => {
   const filePicker = useRef(null);
   const [selectedCover, setSelectedCover] = useState(null);
-  const [status, setStatus] = useState(bookStatuses[0]);
+  const [status, setStatus] = useState(item ? item.status : bookStatuses[0]);
   const [coverError, setCoverError] = useState(false);
   const dispatch = useDispatch();
 
@@ -34,8 +38,37 @@ export const BookForm = ({ toggle }) => {
   });
 
   useEffect(() => {
-    setValue('status', bookStatuses[0]);
-  }, [setValue]);
+    if (item) {
+      setValue('title', item.title);
+      setValue('content', item.content);
+      setStatus(item.status);
+      setValue('btnLink', item.btnLink);
+    }
+    setValue('publishDate', item ? item.publishDate : new Date());
+    setValue('status', item ? item.status : bookStatuses[0]);
+  }, [item, setValue]);
+
+  useEffect(() => {
+    if (item) {
+      setValue('title', item.title);
+      setValue('description', item.description);
+      setValue('pageCount', item.pageCount);
+      setValue('publicationYear', item.publicationYear);
+      setValue('author', item.author);
+      setValue('aboutAuthor', item.aboutAuthor);
+      setValue('genre', item.genre);
+      setValue('quantity', item.quantity);
+      setStatus(item.status);
+    }
+
+    setValue('status', item ? item.status : bookStatuses[0]);
+  }, [item, setValue]);
+
+  useEffect(() => {
+    if (item?.coverImageUrl) {
+      setSelectedCover(item.coverImageUrl);
+    }
+  }, [item?.coverImageUrl]);
 
   useEffect(() => {
     if (coverError && selectedCover) {
@@ -43,8 +76,28 @@ export const BookForm = ({ toggle }) => {
     }
   }, [coverError, selectedCover]);
 
-  const selectFiles = e => {
+  const selectFiles = async e => {
     setSelectedCover(e.target.files[0]);
+
+    if (item) {
+      const resizedCover = await handleResizeCover(e.target.files[0]);
+
+      if (!resizedCover) {
+        toast.error('Error resizing images.');
+        return;
+      }
+
+      const fd = getFormattedData(resizedCover, 'cover');
+
+      await dispatch(updateCoverBook({ bookId: item.id, cover: fd }))
+        .unwrap()
+        .then(() => {
+          toast.success('Cover was uploaded successfully.');
+        })
+        .catch(error =>
+          toast.error(`Error uploading images: ${error.message}`)
+        );
+    }
 
     e.target.value = null;
   };
@@ -64,9 +117,9 @@ export const BookForm = ({ toggle }) => {
 
   const handleResizeCover = async cover => {
     try {
-      const resizedImages = await getFileResizer(cover, 385, 622);
+      const resizedCover = await getFileResizer(cover, 385, 622);
 
-      return resizedImages;
+      return resizedCover;
     } catch (error) {
       return false;
     }
@@ -78,16 +131,43 @@ export const BookForm = ({ toggle }) => {
       return;
     }
 
-    const resizedCover = await handleResizeCover(selectedCover);
+    let action;
 
-    if (!resizedCover) {
-      return toast.error('Error while resizing cover');
+    if (!item) {
+      const resizedCover = await handleResizeCover(selectedCover);
+
+      if (!resizedCover) {
+        return toast.error('Error while resizing cover');
+      }
+
+      const fd = getFormattedData(resizedCover, 'cover', data, 'book');
+      action = createBook(fd);
+    } else {
+      data = {
+        ...data,
+        id: item.id,
+      };
+      action = updateBook(data);
     }
 
-    const fd = getFromattedData(resizedCover, 'cover', data, 'book');
-    dispatch(createBook(fd))
+    if (item) {
+      const { coverImageUrl, deleted, deletedAt, ...itemData } = item;
+      const isEqual = checkObjectEquality(data, itemData);
+
+      if (item && isEqual) {
+        toggle();
+        return;
+      }
+    }
+
+    dispatch(action)
       .unwrap()
       .then(() => {
+        toast.success(
+          item
+            ? 'The book updated successfully'
+            : 'The book created successfully'
+        );
         setSelectedCover(null);
         reset();
         toggle();
@@ -114,7 +194,7 @@ export const BookForm = ({ toggle }) => {
               <label className="label">
                 Book Description
                 <textarea
-                  className="field resize-none overflow-auto h-[172px] w-[400px]"
+                  className="field resize-none overflow-auto h-[202px] w-[400px]"
                   type="text"
                   placeholder="Enter the book description"
                   {...register('description')}
@@ -154,7 +234,7 @@ export const BookForm = ({ toggle }) => {
               <label className="label">
                 About the author
                 <textarea
-                  className="field resize-none overflow-auto h-[172px] w-[400px]"
+                  className="field resize-none overflow-auto h-[202px] w-[400px]"
                   type="text"
                   placeholder="Enter information about author"
                   {...register('aboutAuthor')}
@@ -199,22 +279,36 @@ export const BookForm = ({ toggle }) => {
             {!selectedCover ? (
               <picture
                 onClick={handlePick}
-                className="w-fit rounded-[10px] bg-white flex justify-center items-center h-[276px] cursor-pointer shadow-md"
+                className="w-fit rounded-[10px] bg-white flex justify-center items-center h-[306px] cursor-pointer shadow-md"
               >
                 <source
-                  srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
-                  type="image/png"
+                  srcSet={`${defaultImg1} 1x, ${defaultImg2} 2x`}
+                  type="image/webp"
                 />
-                <img width={205} height={119} src={newsImg1} alt="upload img" />
+                <img
+                  width={205}
+                  height={119}
+                  src={defaultImg1}
+                  alt="upload img"
+                />
               </picture>
             ) : (
               <div className="relative rounded-[10px] shadow-md">
-                <img
-                  src={URL.createObjectURL(selectedCover)}
-                  alt="upload"
-                  className="rounded-[10px] shadow-md"
-                  width={220}
-                />
+                {typeof selectedCover === 'string' ? (
+                  <img
+                    src={selectedCover}
+                    alt="existing cover"
+                    className="rounded-[10px] shadow-md max-h-[306px] object-cover"
+                    width={220}
+                  />
+                ) : (
+                  <img
+                    src={URL.createObjectURL(selectedCover)}
+                    alt="upload"
+                    className="rounded-[10px] shadow-md max-h-[306px] object-cover"
+                    width={220}
+                  />
+                )}
                 <button
                   type="button"
                   className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
@@ -225,7 +319,7 @@ export const BookForm = ({ toggle }) => {
               </div>
             )}
             {coverError && (
-              <p className="field-error top-[460px]">Add cover for book</p>
+              <p className="field-error top-[485px]">Add cover for book</p>
             )}
           </div>
         </div>
@@ -239,7 +333,7 @@ export const BookForm = ({ toggle }) => {
           Cancel
         </button>
         <button className="primaryBtn w-[185px] h-[56px]" type="submit">
-          Add
+          {item ? 'Save' : 'Add'}
         </button>
       </div>
     </form>

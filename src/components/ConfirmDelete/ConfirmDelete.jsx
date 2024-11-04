@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { Modal } from '../../components';
 
-import { deleteOneNews } from '../../my-redux';
+import { deleteBook, deleteOneNews } from '../../my-redux';
 
 export const ConfirmDelete = ({ item, toggleModal }) => {
   const dispatch = useDispatch();
@@ -27,6 +27,10 @@ export const ConfirmDelete = ({ item, toggleModal }) => {
   const handleDelete = () => {
     if (Object.hasOwn(item, 'btnLink')) {
       handleDeleteAction(deleteOneNews(item.id), truncatedItemName);
+    }
+
+    if (Object.hasOwn(item, 'coverImageUrl')) {
+      handleDeleteAction(deleteBook(item.id), truncatedItemName);
     }
   };
 
