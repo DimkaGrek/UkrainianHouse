@@ -42,7 +42,8 @@ export const NeedHelpForm = () => {
         ? 'overflow-hidden resize-none w-full h-[123px] py-[14px] px-[18px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] leading-[1.4] placeholder-[#666] md:placeholder:w-[550px] lg:placeholder:w-[390px] outline-none hover:border-[#ffd437] transition duration-300 sm-max:h-[145px] md:h-[110px] md:text-[20px] md:leading-[1.2] lg:h-[129px]'
         : 'py-[14px] px-[18px] w-full h-[50px] md:h-[52px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] placeholder-[#666] outline-none hover:border-[#ffd437] transition duration-300 md:text-[20px]';
     const errorClass = 'border-red-700';
-    const successClass = 'border-green-700 hover:shadow-sm focus:shadow-sm';
+    const successClass =
+      'border-green-700 hover:shadow-sm focus-visible:shadow-sm';
 
     if (errors[fieldName] && (dirtyFields[fieldName] || isSubmitted)) {
       return `${baseClass} ${errorClass}`;
@@ -140,7 +141,7 @@ export const NeedHelpForm = () => {
 
         <button
           type="submit"
-          className="border border-[#1e1e1e] rounded-[10px] py-[10px] px-[18px] w-full h-[44px] font-bold text-[16px] text-[#1e1e1e] leading-none hover:bg-[#ffd437] focus:bg-[#ffd437] transition duration-300 md:text-[20px] md:font-bold md:h-[52px]"
+          className="border border-[#1e1e1e] rounded-[10px] py-[10px] px-[18px] w-full h-[44px] font-bold text-[16px] text-[#1e1e1e] leading-none hover:bg-[#ffd437] focus-visible:bg-[#ffd437] transition duration-300 md:text-[20px] md:font-bold md:h-[52px]"
         >
           Submit
         </button>
