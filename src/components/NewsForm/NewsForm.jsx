@@ -10,8 +10,8 @@ import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
 import { StatusField } from '../StatusField/StatusField';
 
-import newsImg1 from '../../assets/images/news-img@1x.jpg';
-import newsImg2 from '../../assets/images/news-img@2x.jpg';
+import defaultImg1 from '../../assets/images/default-img@1x.webp';
+import defaultImg2 from '../../assets/images/default-img@2x.webp';
 import { newsStatuses } from '../../constants';
 import { newsFormSchema } from '../../schemas';
 import {
@@ -344,13 +344,13 @@ export const NewsForm = ({ item, toggle }) => {
               {image === 0 ? (
                 <picture className="h-auto w-fit rounded-[10px]">
                   <source
-                    srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
-                    type="image/png"
+                    srcSet={`${defaultImg1} 1x, ${defaultImg2} 2x`}
+                    type="image/webp"
                   />
                   <img
                     width={185}
                     height={119}
-                    src={newsImg1}
+                    src={defaultImg1}
                     alt="upload img"
                     className="rounded-[10px] cursor-pointer"
                     onClick={handlePick}
