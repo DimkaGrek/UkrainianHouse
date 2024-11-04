@@ -23,7 +23,7 @@ import {
 import {
   checkObjectEquality,
   getFileResizer,
-  getFromattedData,
+  getFormattedData,
 } from '../../helpers';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -116,7 +116,7 @@ export const NewsForm = ({ item, toggle }) => {
             }
 
             const uploadPromises = resizedFiles.map(file => {
-              const fd = getFromattedData(file, 'photo');
+              const fd = getFormattedData(file, 'photo');
               return dispatch(createNewsPhoto({ newsId: item.id, fd }));
             });
 
@@ -204,7 +204,7 @@ export const NewsForm = ({ item, toggle }) => {
         return toast.error('Error while resizing images');
       }
 
-      const fd = getFromattedData(resizedImages, 'photos', data, 'news');
+      const fd = getFormattedData(resizedImages, 'photos', data, 'news');
       action = createOneNews(fd);
     } else {
       data = {
