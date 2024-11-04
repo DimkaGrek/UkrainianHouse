@@ -4,7 +4,6 @@ import {
   selectBooks,
   selectBooksError,
   selectIsLoadingBooks,
-  selectIsMoreBooks,
   selectPageBooks,
   selectTotalBooks,
   selectTotalPagesBooks,
@@ -15,9 +14,8 @@ export const useBooks = () => {
   const page = useSelector(selectPageBooks);
   const totalPages = useSelector(selectTotalPagesBooks);
   const totalBooks = useSelector(selectTotalBooks);
-  const isMoreBooks = useSelector(selectIsMoreBooks);
   const isLoading = useSelector(selectIsLoadingBooks);
   const error = useSelector(selectBooksError);
 
-  return { books, page, totalPages, totalBooks, isMoreBooks, isLoading, error };
+  return { books, page, totalPages, totalBooks, isLoading, error };
 };
