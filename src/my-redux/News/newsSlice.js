@@ -14,7 +14,6 @@ import { PAGE_LIMIT } from '../../constants';
 const initialState = {
   news: [],
   announceNews: [],
-  oneNews: null,
   page: 0,
   totalPages: 0,
   totalNews: 0,
