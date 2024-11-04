@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 import { ContentList, Loader, Pagination, StatusField } from '../../components';
 
-import { clearNews, fetchAllNews, setPageNews } from '../../my-redux';
 import { useNews } from '../../hooks';
+import { fetchAllNews, setPageNews } from '../../my-redux';
 import { newsStatuses, PAGE_LIMIT } from '../../constants';
-import { useSearchParams } from 'react-router-dom';
 
 const AdminNewsPage = () => {
   const { news, page, totalNews, totalPages, isLoading } = useNews();
@@ -19,10 +19,6 @@ const AdminNewsPage = () => {
   useEffect(() => {
     setStatuses(['Show All', ...newsStatuses]);
   }, []);
-
-  useEffect(() => {
-    dispatch(clearNews());
-  }, [dispatch]);
 
   useEffect(() => {
     const keyword = searchParams.get('keyword');
@@ -39,6 +35,11 @@ const AdminNewsPage = () => {
     dispatch(fetchAllNews(config));
   }, [dispatch, page, searchParams, status]);
 
+  const handleChangeStatus = status => {
+    dispatch(setPageNews(0));
+    setStatus(status);
+  };
+
   const handleSetPage = page => {
     dispatch(setPageNews(page));
   };
@@ -50,7 +51,7 @@ const AdminNewsPage = () => {
           <h2 className="text-[24px] font-medium">Total news: {totalNews}</h2>
           <StatusField
             status={status}
-            setStatus={setStatus}
+            setStatus={handleChangeStatus}
             statuses={statuses}
             showLabel={false}
           />
