@@ -10,9 +10,13 @@ import {
 } from '../../components';
 
 import { useModal } from '../../hooks';
+import { useDispatch } from 'react-redux';
+import { setPageBooks, setPageNews } from '../../my-redux';
 
 export const AdminHeader = () => {
   const [, setSearchParams] = useSearchParams();
+
+  const dispatch = useDispatch();
 
   const location = useLocation();
   const isNewsPage = location.pathname.includes('news');
@@ -24,6 +28,14 @@ export const AdminHeader = () => {
   const [logoutModal, toggleLogoutModal] = useModal();
 
   const handleSetQuery = keyword => {
+    if (isNewsPage) {
+      dispatch(setPageNews(0));
+    } else if (isBooksPage) {
+      dispatch(setPageBooks(0));
+    } else if (isInboxPage) {
+      // dispatch(setPageInbox(0));
+    }
+
     setSearchParams({ keyword });
   };
 
