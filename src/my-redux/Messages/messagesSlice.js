@@ -65,15 +65,31 @@ const messagesSlice = createSlice({
         state.isLoading = false;
       })
 
-      .addMatcher(isAnyOf(createMessage.rejected), (state, { payload }) => {
-        state.error = payload;
-        state.isLoading = false;
-      })
+      .addMatcher(
+        isAnyOf(
+          fetchAllMessages.rejected,
+          fetchAllMessagescreateMessage.rejected,
+          changeMessageStatus.rejected,
+          deleteMessage.rejected
+        ),
+        (state, { payload }) => {
+          state.error = payload;
+          state.isLoading = false;
+        }
+      )
 
-      .addMatcher(isAnyOf(createMessage.pending), state => {
-        state.isLoading = true;
-        state.error = null;
-      }),
+      .addMatcher(
+        isAnyOf(
+          fetchAllMessages.pending,
+          createMessage.pending,
+          changeMessageStatus.pending,
+          deleteMessage.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      ),
 
   selectors: {
     selectMessages: state => state.messages,
