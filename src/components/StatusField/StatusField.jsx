@@ -55,7 +55,7 @@ export const StatusField = ({
         >
           <IoIosArrowUp
             className={`size-5 transition duration-300 ${
-              isOpen ? 'rotate-180' : ''
+              isOpen ? '' : 'rotate-180'
             }`}
             onClick={e => handleIconClick(e)}
           />
