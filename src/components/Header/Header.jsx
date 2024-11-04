@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import { Icon } from '../../components';
 import { BurgerMenu } from './BurgerMenu';
@@ -8,7 +8,6 @@ import { images } from '../../assets';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   const { headerImages } = images;
 
@@ -62,28 +61,26 @@ export const Header = () => {
 
         <div className="hidden lg:flex items-center justify-center text-center">
           <ul className="flex gap-16 font-normal text-[24px] leading-relaxed text-center text-[#222] mr-[74px]">
-            <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
               <NavLink to="/">Home</NavLink>
             </li>
-            <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
               <NavLink to="/news">News</NavLink>
             </li>
-            <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
               <NavLink to="/library">Library</NavLink>
             </li>
-            <li className="hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
               <NavLink to="/contacts">Contacts</NavLink>
             </li>
           </ul>
-          <button
-            type="button"
-            onClick={() => {
-              navigate('/contacts/#contacts-form');
-            }}
-            className=" font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[159px] h-[54px] mr-[24px] hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300"
+
+          <a
+            href="mailto:ukrainianhouse.maastricht@gmail.com"
+            className="font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[159px] h-[54px] mr-[24px] hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300"
           >
             Get in touch
-          </button>
+          </a>
           <img
             srcSet={`${headerImages.flag_eng1x} 1x, ${headerImages.flag_eng2x} 2x`}
             src={headerImages.flag_eng1x}
