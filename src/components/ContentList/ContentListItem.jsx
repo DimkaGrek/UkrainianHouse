@@ -24,7 +24,7 @@ export const ContentListItem = ({ item }) => {
           <div className="min-w-[250px] w-[25vw]">
             <h2
               title={item.title}
-              className=" font-medium text-[26px] leading-[131%] text-my-black2 mb-[6px] truncate"
+              className="font-medium text-[26px] leading-[131%] text-my-black2 mb-[6px] truncate"
             >
               {item.title}
             </h2>
@@ -52,7 +52,7 @@ export const ContentListItem = ({ item }) => {
         <>
           <div className="flex justify-center items-center gap-3">
             <img
-              src={`http://dev.ukrhouse.pp.ua:8080/${item.coverImageUrl}`}
+              src={item.coverImageUrl}
               className="w-[47px] h-[74px] rounded"
             />
             <div className="leading-6 text-xl min-w-[180px] w-[25vw]">
@@ -73,7 +73,7 @@ export const ContentListItem = ({ item }) => {
             <p>{item.publicationYear}</p>
           </div>
           <span
-            className={`inline-block h-[32px] w-[120px] py-1 px-3 bg-[${bgStatus}] rounded-[35px] text-white text-center`}
+            className={`inline-block h-[32px] w-[162px] py-1 px-3 bg-[${bgStatus}] rounded-[35px] text-white text-center`}
             style={{ backgroundColor: bgStatus }}
           >
             {item.status}
