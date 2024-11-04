@@ -1,15 +1,26 @@
 import { FiEdit2 } from 'react-icons/fi';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 
-import { BookForm, ConfirmDelete, Modal, NewsForm } from '../../components';
+import {
+  BookForm,
+  ConfirmDelete,
+  MessageContent,
+  Modal,
+  NewsForm,
+} from '../../components';
 
 import { useModal } from '../../hooks';
 import { bookStatusesColors, newsStatusesColors } from '../../constants';
 import { getFormattedDate } from '../../helpers';
+import { format } from 'date-fns';
 
 export const ContentListItem = ({ item }) => {
   const [isOpen, toggleModal] = useModal();
   const [isOpenConfirmDelete, toggleConfirmDelete] = useModal();
+  const isNews = Object.hasOwn(item, 'btnLink');
+  const isBook = Object.hasOwn(item, 'coverImageUrl');
+  const isMessage = Object.hasOwn(item, 'message');
+  const isNewMessage = Object.hasOwn(item, 'message') && !item.read;
 
   const handleDelete = e => {
     e.stopPropagation();
@@ -17,7 +28,7 @@ export const ContentListItem = ({ item }) => {
   };
 
   const itemContent = () => {
-    if (Object.hasOwn(item, 'btnLink')) {
+    if (isNews) {
       const bgStatus = newsStatusesColors[item.status];
       return (
         <>
@@ -46,7 +57,7 @@ export const ContentListItem = ({ item }) => {
       );
     }
 
-    if (Object.hasOwn(item, 'coverImageUrl')) {
+    if (isBook) {
       const bgStatus = bookStatusesColors[item.status];
       return (
         <>
@@ -56,7 +67,7 @@ export const ContentListItem = ({ item }) => {
               className="w-[47px] h-[74px] rounded"
             />
             <div className="leading-6 text-xl min-w-[180px] w-[25vw]">
-              <p className=" text-my-black1 leading-6 font-medium">
+              <p className="text-my-black1 leading-6 font-medium">
                 {item.author}
               </p>
               <p
@@ -81,26 +92,51 @@ export const ContentListItem = ({ item }) => {
         </>
       );
     }
+
+    if (isMessage) {
+      return (
+        <>
+          <h3 className="w-[300px] text-[22px] leading-[26px] font-medium truncate color-my-black2">
+            {item.name}
+          </h3>
+          <p className="w-[400px] leading-[22px] color-my-black3 truncate">
+            {item.message}
+          </p>
+          <p className="color-my-black2">
+            {format(item.createdAt, 'HH:mm / dd MMM yyyy')}
+          </p>
+        </>
+      );
+    }
   };
 
   const renderModalContent = () => {
-    if (Object.hasOwn(item, 'btnLink')) {
+    if (isNews) {
       return <NewsForm item={item} toggle={toggleModal} />;
     }
-    if (Object.hasOwn(item, 'coverImageUrl')) {
+    if (isBook) {
       return <BookForm item={item} toggle={toggleModal} />;
+    }
+    if (isMessage) {
+      return <MessageContent item={item} toggle={toggleModal} />;
     }
   };
 
   return (
     <>
-      <li className="h-[100px] flex justify-between items-center px-2 py-2.5 hover:bg-my-lightblue border-b border-[#C4C4C4] last:border-none">
+      <li
+        className={`h-[100px] flex justify-between items-center px-2 py-2.5 hover:bg-my-lightblue border-b border-[#C4C4C4] last:border-none ${
+          isNewMessage && 'bg-slate-200 '
+        } ${isMessage && 'cursor-pointer'}`}
+        onClick={isMessage ? toggleModal : undefined}
+      >
         {itemContent()}
-
         <div className="flex gap-4">
-          <button type="button" onClick={toggleModal}>
-            <FiEdit2 size={24} />
-          </button>
+          {!isMessage && (
+            <button type="button" onClick={toggleModal}>
+              <FiEdit2 size={24} />
+            </button>
+          )}
           <button
             type="button"
             onClick={handleDelete}
