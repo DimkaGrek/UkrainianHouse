@@ -8,7 +8,7 @@ export const PublicRoute = ({ children }) => {
   const location = useLocation();
 
   if (isLoggedIn && location.pathname.includes('/auth/')) {
-    return <Navigate to={'/admin/news' || location.state?.from} />;
+    return <Navigate to={location.state?.from || '/admin/news'} />;
   }
 
   return children;
