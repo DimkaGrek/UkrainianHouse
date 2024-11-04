@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { Icon, Address, FlagsList } from '../../components';
 
@@ -11,8 +11,6 @@ export const BurgerMenu = ({
   classBackdrop,
   classMenu,
 }) => {
-  const navigate = useNavigate();
-
   const { headerImages } = images;
 
   const handleBackdropClick = event => {
@@ -54,7 +52,7 @@ export const BurgerMenu = ({
           <Icon
             name="close"
             size="38"
-            className="fill-[#1e1e1e] group-focus:fill-[#2355cc] transition duration-300"
+            className="fill-[#1e1e1e] group-focus-visible:fill-[#2355cc] transition duration-300"
           />
         </button>
 
@@ -74,7 +72,7 @@ export const BurgerMenu = ({
           <li onClick={toggleMenu}>
             <NavLink
               to="/"
-              className="focus:text-[#3e38c8] transition duration-300"
+              className="focus-visible:text-[#3e38c8] transition duration-300"
             >
               Home
             </NavLink>
@@ -82,7 +80,7 @@ export const BurgerMenu = ({
           <li onClick={toggleMenu}>
             <NavLink
               to="/news"
-              className="focus:text-[#3e38c8] transition duration-300"
+              className="focus-visible:text-[#3e38c8] transition duration-300"
             >
               News
             </NavLink>
@@ -90,7 +88,7 @@ export const BurgerMenu = ({
           <li onClick={toggleMenu}>
             <NavLink
               to="/library"
-              className="focus:text-[#3e38c8] transition duration-300"
+              className="focus-visible:text-[#3e38c8] transition duration-300"
             >
               Library
             </NavLink>
@@ -98,7 +96,7 @@ export const BurgerMenu = ({
           <li onClick={toggleMenu}>
             <NavLink
               to="/contacts"
-              className="focus:text-[#3e38c8] transition duration-300"
+              className="focus-visible:text-[#3e38c8] transition duration-300"
             >
               Contacts
             </NavLink>
@@ -112,16 +110,13 @@ export const BurgerMenu = ({
           listClass="flex justify-center items-center flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic sm-max:text-[12px] sm-max:items-start"
           iconClass="fill-[#1e1e1e]  sm-max:size-[20px]"
         />
-        <button
-          type="button"
-          onClick={() => {
-            toggleMenu();
-            navigate('/contacts/#contacts-form');
-          }}
-          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-full h-[54px] md:w-[605px] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 outline-none"
+
+        <a
+          href="mailto:ukrainianhouse.maastricht@gmail.com"
+          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-full h-[54px] md:w-[605px] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 outline-none"
         >
           Get in touch
-        </button>
+        </a>
       </div>
     </div>
   );
