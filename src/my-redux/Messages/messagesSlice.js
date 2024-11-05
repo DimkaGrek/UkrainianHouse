@@ -68,7 +68,7 @@ const messagesSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAllMessages.rejected,
-          fetchAllMessagescreateMessage.rejected,
+          createMessage.rejected,
           changeMessageStatus.rejected,
           deleteMessage.rejected
         ),
