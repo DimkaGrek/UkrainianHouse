@@ -16,8 +16,15 @@ export const MessageContent = ({ item }) => {
   return (
     <div className="w-[500px] flex flex-col gap-8">
       <div className="flex flex-col  justify-start text-sm">
-        <p>Name: {item.name}</p>
-        <p>Email: {item.email}</p>
+        <p>
+          <span className="font-medium">Name:</span> {item.name}
+        </p>
+        <p>
+          <span className="font-medium">Phone:</span> {item.phone}
+        </p>
+        <p>
+          <span className="font-medium">Email:</span> {item.email}
+        </p>
       </div>
       <div className="h-auto color-my-black2 text-lg text-justify">
         {item.message}
