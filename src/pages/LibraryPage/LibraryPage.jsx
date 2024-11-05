@@ -7,19 +7,23 @@ import { toast } from 'react-toastify';
 import { useWindowSizeHook } from '../../helpers/useWindowSizeHook';
 import { getTextForLibrary } from '../../helpers';
 
-// import { LibraryList } from '../../components/LibraryList/LibraryList';
-import NotFoundBook from '../../components/LibraryList/NotFoundBook';
+import { LibraryList } from '../../components/LibraryList/LibraryList';
+// import NotFoundBook from '../../components/LibraryList/NotFoundBook';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const config = {
-      params: { page: 0 },
+      params: {
+        page: 0,
+      },
     };
     dispatch(fetchAllBooks(config))
       .unwrap()
-      .then(() => {})
+      .then(data => {
+        console.log('Fetched books data:', data);
+      })
       .catch(e => {
         toast.error(e.message);
       });
@@ -49,15 +53,11 @@ const LibraryPage = () => {
         >
           <h3
             className="hidden md:block md:font-proza-semibold md:font-semibold md:text-[20px] md:text-[#1e1e1e] md:leading-[160%] 
-                    lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]"
+           lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]"
           >
             Library
           </h3>
-          <div
-            className="md:w-[500px] lg:w-auto 
-          
-          "
-          >
+          <div className="md:w-[500px] lg:w-auto ">
             <SearchBarLibary />
           </div>
         </div>
@@ -71,11 +71,10 @@ const LibraryPage = () => {
         </p>
       </div>
 
-      {/* <LibraryList /> */}
-      {/* <LibraryList /> */}
-      <NotFoundBook />
-      {/* {isLoading && <Loader placement="bottom" />} */}
+      <LibraryList />
     </section>
   );
 };
 export default LibraryPage;
+// <NotFoundBook />
+// {isLoading && <Loader placement="bottom" />}

@@ -12,7 +12,7 @@ export const Quotes = ({ index }) => {
     <>
       <div>
         {index % 2 === 0 ? (
-          <picture className="absolute top-[-40px] right-[-60px] outline outline-[1px] outline-green-500">
+          <picture>
             <source
               media="(min-width: 768px)"
               srcSet={`${quotes[randomIdx1][2]} 1x, ${quotes[randomIdx1][3]} 2x`}
@@ -25,16 +25,17 @@ export const Quotes = ({ index }) => {
             ></source>
 
             <img
+              className="absolute w-[324px] top-[395px] right-1/2 translate-x-1/2
+           md:translate-x-0 md:top-0 md:right-0 md:w-[300px]
+           lg:w-[430px]  lg:top-[-20px] lg:right-[-60px]  "
               srcSet={`${quotes[randomIdx1][0]} 1x, ${quotes[randomIdx1][1]} 2x`}
               src={quotes[randomIdx1][0]}
               alt={` Image with a quote ${[randomIdx1]} `}
-              width="410"
-              // height="356"
               loading="lazy"
             />
           </picture>
         ) : (
-          <picture className="absolute bottom-[60px] left-[-80px] outline outline-[1px] outline-green-500">
+          <picture>
             <source
               media="(min-width: 768px)"
               srcSet={`${quotes[randomIdx2][2]} 1x, ${quotes[randomIdx2][3]} 2x`}
@@ -47,11 +48,14 @@ export const Quotes = ({ index }) => {
             ></source>
 
             <img
+              className="absolute w-[324px] top-[395px] right-1/2 translate-x-1/2
+            
+          md:translate-x-0  md:left-0 md:w-[300px] md:top-0
+          lg:w-[430px] lg:top-[-20px] lg:right-auto   lg:left-[-60px] "
+              // outline outline-[1px] outline-green-500
               srcSet={`${quotes[randomIdx2][0]} 1x, ${quotes[randomIdx2][1]} 2x`}
               src={quotes[randomIdx2][0]}
               alt={`Image with a quote ${[randomIdx2]} `}
-              width="410"
-              // height="356"
               loading="lazy"
             />
           </picture>

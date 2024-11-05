@@ -7,6 +7,7 @@ export default {
     screens: {
       'sm-max': { max: '374.99px' },
       // від 768, від 1440 ...
+      sm: '320px',
       md: '768px',
       lg: '1440px',
       extralg: '1920px',
