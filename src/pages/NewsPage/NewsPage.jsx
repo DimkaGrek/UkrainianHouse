@@ -17,7 +17,6 @@ import {
   setPageNews,
 } from '../../redux';
 import { useNews } from '../../hooks';
-import { InfoMessageTypes } from '../../constants';
 
 const NewsPage = () => {
   const { news, page, isLoading, error } = useNews();
@@ -109,10 +108,7 @@ const NewsPage = () => {
         </div>
         <Advertisement />
         {!news.length && keyword ? (
-          <InfoMessage
-            type={InfoMessageTypes.NoResults}
-            searchValue={keyword}
-          />
+          <InfoMessage keyword={keyword} />
         ) : (
           <NewsList />
         )}

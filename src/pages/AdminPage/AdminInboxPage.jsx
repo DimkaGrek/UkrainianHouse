@@ -12,11 +12,7 @@ import {
 
 import { clearMessages, fetchAllMessages, setPageMessages } from '../../redux';
 import { useMessages } from '../../hooks';
-import {
-  InfoMessageTypes,
-  PAGE_LIMIT,
-  messagesStatuses,
-} from '../../constants';
+import { PAGE_LIMIT, messagesStatuses } from '../../constants';
 
 const AdminInboxPage = () => {
   const { messages, page, totalMessages, totalPages, isLoading } =
@@ -77,20 +73,15 @@ const AdminInboxPage = () => {
             showLabel={false}
           />
         </div>
-        {messages.length === 0 && keyword ? (
+        {messages.length ? (
           <InfoMessage
-            type={InfoMessageTypes.NoResults}
-            messageText={keyword}
+            messageText="No messages received."
+            keyword={keyword}
+            status={status}
           />
         ) : (
-          messages.length === 0 && (
-            <InfoMessage
-              type={InfoMessageTypes.Empty}
-              messageText="No messages received."
-            />
-          )
+          <ContentList items={messages} />
         )}
-        {messages.length ? <ContentList items={messages} /> : null}
         <Pagination
           setPage={handleSetPage}
           page={page}

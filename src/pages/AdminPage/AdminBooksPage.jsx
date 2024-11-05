@@ -12,7 +12,7 @@ import {
 
 import { useBooks } from '../../hooks';
 import { clearBooks, fetchAllBooks, setPageBooks } from '../../redux';
-import { InfoMessageTypes, PAGE_LIMIT, bookStatuses } from '../../constants';
+import { PAGE_LIMIT, bookStatuses } from '../../constants';
 
 const AdminBooksPage = () => {
   const { books, page, totalBooks, totalPages, isLoading } = useBooks();
@@ -68,20 +68,16 @@ const AdminBooksPage = () => {
             showLabel={false}
           />
         </div>
-        {books.length === 0 && keyword ? (
+
+        {!books.length ? (
           <InfoMessage
-            type={InfoMessageTypes.NoResults}
-            messageText={keyword}
+            messageText="Please add a book."
+            keyword={keyword}
+            status={status}
           />
         ) : (
-          books.length === 0 && (
-            <InfoMessage
-              type={InfoMessageTypes.Empty}
-              messageText="Please add a book."
-            />
-          )
+          <ContentList items={books} />
         )}
-        {books.length ? <ContentList items={books} /> : null}
         <Pagination
           setPage={handleSetPage}
           page={page}
