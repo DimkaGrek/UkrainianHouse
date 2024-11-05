@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { ContentList, Loader, Pagination } from '../../components';
+import { ContentList, Loader, Pagination, StatusField } from '../../components';
 
 import {
   clearMessages,
@@ -10,14 +10,21 @@ import {
   setPageMessages,
 } from '../../my-redux';
 import { useMessages } from '../../hooks';
-import { PAGE_LIMIT } from '../../constants';
+import { PAGE_LIMIT, messagesStatuses } from '../../constants';
 
 const AdminInboxPage = () => {
   const { messages, page, totalMessages, totalPages, isLoading } =
     useMessages();
 
+  const [status, setStatus] = useState('Show All');
+  const [statuses, setStatuses] = useState([]);
+
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setStatuses(['Show All', ...messagesStatuses]);
+  }, []);
 
   useEffect(() => {
     dispatch(clearMessages());
@@ -30,13 +37,20 @@ const AdminInboxPage = () => {
         page,
         size: PAGE_LIMIT,
         ...(keyword && { keyword }),
+        ...(status !== 'Show All' && {
+          read:
+            status === 'UNREAD' ? false : status === 'READ' ? true : undefined,
+        }),
       },
     };
 
     dispatch(fetchAllMessages(config));
-  }, [dispatch, page, searchParams]);
+  }, [dispatch, page, status, searchParams]);
 
-  console.log(messages);
+  const handleChangeStatus = status => {
+    dispatch(setPageMessages(0));
+    setStatus(status);
+  };
 
   const handleSetPage = page => {
     dispatch(setPageMessages(page));
@@ -45,10 +59,16 @@ const AdminInboxPage = () => {
   return (
     <>
       <section className="py-5">
-        <div className="flex justify-start mb-3">
+        <div className="flex justify-between mb-3">
           <h2 className="text-[24px] font-medium">
             Total messages: {totalMessages}
           </h2>
+          <StatusField
+            status={status}
+            setStatus={handleChangeStatus}
+            statuses={statuses}
+            showLabel={false}
+          />
         </div>
         <ContentList items={messages} />
         <Pagination
