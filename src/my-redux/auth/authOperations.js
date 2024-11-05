@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { api, clearToken, setToken } from '../../services/api';
-import { fetchAllMessages } from '../Messages/operations';
+import { fetchAllMessages } from '../messages/messagesOperations';
 
 export const loginThunk = createAsyncThunk(
   'auth/login',

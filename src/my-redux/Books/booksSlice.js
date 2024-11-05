@@ -8,6 +8,7 @@ import {
   updateCoverBook,
 } from './booksOperations';
 import { PAGE_LIMIT } from '../../constants';
+import { logoutThunk } from '../auth/authOperations';
 
 const initialState = {
   books: [],
@@ -82,6 +83,9 @@ const booksSlice = createSlice({
             : state.page;
 
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
