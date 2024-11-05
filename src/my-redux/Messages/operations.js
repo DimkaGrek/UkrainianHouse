@@ -6,8 +6,9 @@ export const fetchAllMessages = createAsyncThunk(
   'messages/getAll',
   async (config, thunkAPI) => {
     try {
+      const { params } = config;
       const { data } = await api.get('/admin/messages', {
-        config,
+        params,
       });
 
       return data;
@@ -34,7 +35,6 @@ export const changeMessageStatus = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await api.put(`/admin/messages/${id}/read`);
-      console.log(data);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

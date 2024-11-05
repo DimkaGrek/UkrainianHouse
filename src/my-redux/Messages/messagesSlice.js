@@ -13,6 +13,7 @@ const initialState = {
   page: 0,
   totalPages: 0,
   totalMessages: 0,
+  totalUnreadMessages: 0,
   isLoading: false,
   error: null,
 };
@@ -33,10 +34,14 @@ const messagesSlice = createSlice({
     builder
       .addCase(
         fetchAllMessages.fulfilled,
-        (state, { payload: { totalPages, totalMessages, messages } }) => {
+        (
+          state,
+          { payload: { totalPages, totalMessages, messages, unread } }
+        ) => {
           state.messages = messages;
           state.totalPages = totalPages;
           state.totalMessages = totalMessages;
+          state.totalUnreadMessages = unread;
           state.isLoading = false;
         }
       )
@@ -49,6 +54,7 @@ const messagesSlice = createSlice({
         if (messageItem) {
           messageItem.read = true;
         }
+        state.totalUnreadMessages -= 1;
         state.isLoading = false;
       })
       .addCase(deleteMessage.fulfilled, (state, { payload }) => {
@@ -96,6 +102,7 @@ const messagesSlice = createSlice({
     selectPageMessages: state => state.page,
     selectTotalPagesMessages: state => state.totalPages,
     selectTotalMessages: state => state.totalMessages,
+    selectTotalUnreadMessages: state => state.totalUnreadMessages,
     selectIsLoadingMessages: state => state.isLoading,
     selectErrorMessages: state => state.error,
   },
@@ -107,6 +114,7 @@ export const {
   selectPageMessages,
   selectTotalPagesMessages,
   selectTotalMessages,
+  selectTotalUnreadMessages,
   selectIsLoadingMessages,
   selectErrorMessages,
 } = messagesSlice.selectors;

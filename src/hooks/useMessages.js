@@ -7,6 +7,7 @@ import {
   selectPageMessages,
   selectTotalMessages,
   selectTotalPagesMessages,
+  selectTotalUnreadMessages,
 } from '../my-redux';
 
 export const useMessages = () => {
@@ -14,8 +15,17 @@ export const useMessages = () => {
   const page = useSelector(selectPageMessages);
   const totalPages = useSelector(selectTotalPagesMessages);
   const totalMessages = useSelector(selectTotalMessages);
+  const totalUnreadMessages = useSelector(selectTotalUnreadMessages);
   const isLoading = useSelector(selectIsLoadingMessages);
   const error = useSelector(selectErrorMessages);
 
-  return { messages, page, totalPages, totalMessages, isLoading, error };
+  return {
+    messages,
+    page,
+    totalPages,
+    totalMessages,
+    totalUnreadMessages,
+    isLoading,
+    error,
+  };
 };
