@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Loader, Layout } from '../components';
 
 import { PrivateRoute, PublicRoute } from '../routes';
-import {
-  refreshThunk,
-  selectIsLoggedIn,
-  selectIsRefreshing,
-} from '../my-redux';
+import { refreshThunk, selectIsLoggedIn, selectIsRefreshing } from '../redux';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));

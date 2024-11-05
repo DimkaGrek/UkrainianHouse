@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { InputField } from '../InputField/InputField';
 
 import { loginFormShema } from '../../schemas';
-import { loginThunk } from '../../my-redux';
+import { loginThunk } from '../../redux';
 import { toast } from 'react-toastify';
 
 export const LoginForm = () => {

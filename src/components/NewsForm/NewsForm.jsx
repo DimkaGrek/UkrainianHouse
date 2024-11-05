@@ -19,7 +19,7 @@ import {
   createOneNews,
   deleteNewsPhoto,
   updateOneNews,
-} from '../../my-redux';
+} from '../../redux';
 import {
   checkObjectEquality,
   getFileResizer,

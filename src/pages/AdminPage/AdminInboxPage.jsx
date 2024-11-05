@@ -10,11 +10,7 @@ import {
   StatusField,
 } from '../../components';
 
-import {
-  clearMessages,
-  fetchAllMessages,
-  setPageMessages,
-} from '../../my-redux';
+import { clearMessages, fetchAllMessages, setPageMessages } from '../../redux';
 import { useMessages } from '../../hooks';
 import {
   InfoMessageTypes,

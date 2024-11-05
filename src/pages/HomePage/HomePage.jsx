@@ -10,7 +10,7 @@ import {
   Loader,
 } from '../../components';
 
-import { fetchAllNews, clearNews } from '../../my-redux';
+import { fetchAllNews, clearNews } from '../../redux';
 import { useNews } from '../../hooks';
 
 const HomePage = () => {

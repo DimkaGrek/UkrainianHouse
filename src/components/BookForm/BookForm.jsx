@@ -12,7 +12,7 @@ import defaultImg1 from '../../assets/images/default-img@1x.webp';
 import defaultImg2 from '../../assets/images/default-img@2x.webp';
 import { bookStatuses } from '../../constants';
 import { bookFormSchema } from '../../schemas';
-import { createBook, updateBook, updateCoverBook } from '../../my-redux';
+import { createBook, updateBook, updateCoverBook } from '../../redux';
 import {
   checkObjectEquality,
   getFileResizer,
@@ -151,6 +151,7 @@ export const BookForm = ({ item, toggle }) => {
     }
 
     if (item) {
+      // eslint-disable-next-line
       const { coverImageUrl, deleted, deletedAt, ...itemData } = item;
       const isEqual = checkObjectEquality(data, itemData);
 
