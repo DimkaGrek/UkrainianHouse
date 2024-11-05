@@ -7,7 +7,7 @@ import {
   selectPageBooks,
   selectTotalBooks,
   selectTotalPagesBooks,
-} from '../my-redux';
+} from '../redux';
 
 export const useBooks = () => {
   const books = useSelector(selectBooks);

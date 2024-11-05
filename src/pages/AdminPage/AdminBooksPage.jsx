@@ -11,7 +11,7 @@ import {
 } from '../../components';
 
 import { useBooks } from '../../hooks';
-import { clearBooks, fetchAllBooks, setPageBooks } from '../../my-redux';
+import { clearBooks, fetchAllBooks, setPageBooks } from '../../redux';
 import { InfoMessageTypes, PAGE_LIMIT, bookStatuses } from '../../constants';
 
 const AdminBooksPage = () => {

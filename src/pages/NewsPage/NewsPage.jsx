@@ -15,7 +15,7 @@ import {
   fetchAllNews,
   fetchAnnounceNews,
   setPageNews,
-} from '../../my-redux';
+} from '../../redux';
 import { useNews } from '../../hooks';
 import { InfoMessageTypes } from '../../constants';
 

@@ -11,6 +11,8 @@ export const loginThunk = createAsyncThunk(
         data: { token },
       } = await api.post('/login', credentials);
       setToken(token);
+
+      await thunkAPI.dispatch(fetchAllMessages());
       return token;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -24,7 +26,6 @@ export const logoutThunk = createAsyncThunk(
     try {
       await api.post('/admin/logout');
       clearToken();
-      thunkAPI.dispatch(fetchAllMessages());
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -43,9 +44,10 @@ export const refreshThunk = createAsyncThunk(
     }
 
     setToken(token);
-    thunkAPI.dispatch(fetchAllMessages());
+
     try {
       const { data } = await api.get('/admin/checkToken');
+      await thunkAPI.dispatch(fetchAllMessages());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

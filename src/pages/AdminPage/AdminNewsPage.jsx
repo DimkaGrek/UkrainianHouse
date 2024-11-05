@@ -11,7 +11,7 @@ import {
 } from '../../components';
 
 import { useNews } from '../../hooks';
-import { fetchAllNews, setPageNews } from '../../my-redux';
+import { fetchAllNews, setPageNews } from '../../redux';
 import { InfoMessageTypes, newsStatuses, PAGE_LIMIT } from '../../constants';
 
 const AdminNewsPage = () => {

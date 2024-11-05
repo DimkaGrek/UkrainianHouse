@@ -1,7 +1,7 @@
 // import { Loader } from '../../components';
 import { useDispatch } from 'react-redux';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
-import { fetchAllBooks } from '../../my-redux';
+import { fetchAllBooks } from '../../redux';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useWindowSizeHook } from '../../helpers/useWindowSizeHook';

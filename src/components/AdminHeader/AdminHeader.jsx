@@ -11,7 +11,7 @@ import {
 
 import { useModal } from '../../hooks';
 import { useDispatch } from 'react-redux';
-import { setPageBooks, setPageNews } from '../../my-redux';
+import { setPageBooks, setPageNews } from '../../redux';
 
 export const AdminHeader = () => {
   const [, setSearchParams] = useSearchParams();

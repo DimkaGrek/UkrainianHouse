@@ -16,7 +16,7 @@ import {
   booksReducer,
   authReducer,
   messagesReducer,
-} from '../my-redux';
+} from '../redux';
 
 const persistConfig = {
   key: 'auth',

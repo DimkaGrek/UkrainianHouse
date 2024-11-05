@@ -6,10 +6,7 @@ export const fetchAllMessages = createAsyncThunk(
   'messages/getAll',
   async (config, thunkAPI) => {
     try {
-      const { params } = config;
-      const { data } = await api.get('/admin/messages', {
-        params,
-      });
+      const { data } = await api.get('/admin/messages', config);
 
       return data;
     } catch (error) {
