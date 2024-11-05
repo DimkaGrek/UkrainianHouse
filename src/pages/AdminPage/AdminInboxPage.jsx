@@ -2,7 +2,13 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { ContentList, Loader, Pagination, StatusField } from '../../components';
+import {
+  ContentList,
+  InfoMessage,
+  Loader,
+  Pagination,
+  StatusField,
+} from '../../components';
 
 import {
   clearMessages,
@@ -10,7 +16,11 @@ import {
   setPageMessages,
 } from '../../my-redux';
 import { useMessages } from '../../hooks';
-import { PAGE_LIMIT, messagesStatuses } from '../../constants';
+import {
+  InfoMessageTypes,
+  PAGE_LIMIT,
+  messagesStatuses,
+} from '../../constants';
 
 const AdminInboxPage = () => {
   const { messages, page, totalMessages, totalPages, isLoading } =
@@ -22,6 +32,8 @@ const AdminInboxPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
+  const keyword = searchParams.get('keyword');
+
   useEffect(() => {
     setStatuses(['Show All', ...messagesStatuses]);
   }, []);
@@ -31,7 +43,6 @@ const AdminInboxPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const keyword = searchParams.get('keyword');
     const config = {
       params: {
         page,
@@ -45,7 +56,7 @@ const AdminInboxPage = () => {
     };
 
     dispatch(fetchAllMessages(config));
-  }, [dispatch, page, status, searchParams]);
+  }, [dispatch, page, status, keyword]);
 
   const handleChangeStatus = status => {
     dispatch(setPageMessages(0));
@@ -70,7 +81,20 @@ const AdminInboxPage = () => {
             showLabel={false}
           />
         </div>
-        <ContentList items={messages} />
+        {messages.length === 0 && keyword ? (
+          <InfoMessage
+            type={InfoMessageTypes.NoResults}
+            messageText={keyword}
+          />
+        ) : (
+          messages.length === 0 && (
+            <InfoMessage
+              type={InfoMessageTypes.Empty}
+              messageText="No messages received."
+            />
+          )
+        )}
+        {messages.length ? <ContentList items={messages} /> : null}
         <Pagination
           setPage={handleSetPage}
           page={page}

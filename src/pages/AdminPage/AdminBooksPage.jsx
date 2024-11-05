@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import { ContentList, Loader, Pagination, StatusField } from '../../components';
+import {
+  ContentList,
+  InfoMessage,
+  Loader,
+  Pagination,
+  StatusField,
+} from '../../components';
 
 import { useBooks } from '../../hooks';
 import { clearBooks, fetchAllBooks, setPageBooks } from '../../my-redux';
-import { PAGE_LIMIT, bookStatuses } from '../../constants';
+import { InfoMessageTypes, PAGE_LIMIT, bookStatuses } from '../../constants';
 
 const AdminBooksPage = () => {
   const { books, page, totalBooks, totalPages, isLoading } = useBooks();
@@ -17,6 +23,8 @@ const AdminBooksPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
+  const keyword = searchParams.get('keyword');
+
   useEffect(() => {
     setStatuses(['Show All', ...bookStatuses]);
   }, []);
@@ -26,7 +34,6 @@ const AdminBooksPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const keyword = searchParams.get('keyword');
     const config = {
       params: {
         page,
@@ -38,7 +45,7 @@ const AdminBooksPage = () => {
     };
 
     dispatch(fetchAllBooks(config));
-  }, [dispatch, page, searchParams, status]);
+  }, [dispatch, page, keyword, status]);
 
   const handleChangeStatus = status => {
     dispatch(setPageBooks(0));
@@ -61,7 +68,20 @@ const AdminBooksPage = () => {
             showLabel={false}
           />
         </div>
-        <ContentList items={books} />
+        {books.length === 0 && keyword ? (
+          <InfoMessage
+            type={InfoMessageTypes.NoResults}
+            messageText={keyword}
+          />
+        ) : (
+          books.length === 0 && (
+            <InfoMessage
+              type={InfoMessageTypes.Empty}
+              messageText="Please add a book."
+            />
+          )
+        )}
+        {books.length ? <ContentList items={books} /> : null}
         <Pagination
           setPage={handleSetPage}
           page={page}
