@@ -11,10 +11,12 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { newsReducer } from './news/newsSlice';
-import { booksReducer } from './books/booksSlice';
-import { authReducer } from './auth/authSlice';
-import { messagesReducer } from './messages/messagesSlice';
+import {
+  newsReducer,
+  booksReducer,
+  authReducer,
+  messagesReducer,
+} from '../my-redux';
 
 const persistConfig = {
   key: 'auth',
