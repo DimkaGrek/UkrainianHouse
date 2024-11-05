@@ -1,0 +1,1 @@
+import{a as o,H as l,J as n,K as k,N as B,O as g,Q as i}from"./index-DaTG4oW1.js";const p=()=>{const s=o(l),e=o(n),t=o(k),a=o(B),c=o(g),r=o(i);return{books:s,page:e,totalPages:t,totalBooks:a,isLoading:c,error:r}};export{p as u};
