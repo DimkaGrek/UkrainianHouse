@@ -4,14 +4,22 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { MdClear } from 'react-icons/md';
 
 export const SearchBar = ({ setQuery }) => {
-  const { watch, register, reset, handleSubmit } = useForm();
+  const { watch, register, setValue, reset, handleSubmit } = useForm();
   const location = useLocation();
 
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     reset();
   }, [location.pathname, reset]);
+
+  useEffect(() => {
+    const keyword = searchParams.get('keyword');
+
+    if (keyword) {
+      setValue('query', keyword);
+    }
+  }, [searchParams, setValue]);
 
   const onSubmit = ({ query }) => {
     if (!query) return;
