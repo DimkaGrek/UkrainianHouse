@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-
+import { images } from '../../assets';
 import {
   Hero,
   GetInvolved,
@@ -16,7 +16,7 @@ import { useNews } from '../../hooks';
 const HomePage = () => {
   const dispatch = useDispatch();
   const { news, isLoading } = useNews();
-
+  const { homeImages } = images;
   useEffect(() => {
     dispatch(clearNews());
   }, [dispatch]);
@@ -38,7 +38,31 @@ const HomePage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="bg-[url('assets/images/home/BgImg_mobile.webp')] bg-no-repeat bg-contain  md:bg-[url('assets/images/home/BgImg_tablet.webp')] lg:bg-[url('assets/images/home/BgImg_desktop.webp')]">
+      <div className="relative">
+        <picture className="z-[-1] absolute top-0 left-[10px] md:left-[20px] lg:left-[100px]">
+          <source
+            media="(min-width: 1440px)"
+            srcSet={homeImages.BgImg_desktop}
+            height="1711"
+            width="1040"
+            loading="lazy"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet={homeImages.BgImg_tablet}
+            height="1093"
+            width="664"
+            loading="lazy"
+          />
+          <img
+            src={homeImages.BgImg_mobile}
+            height="525"
+            width="319"
+            alt={`Photo of Tryzub`}
+            loading="lazy"
+          />
+        </picture>
+
         <Hero />
         <NewsDigest news={news} />
         <AboutUs />
