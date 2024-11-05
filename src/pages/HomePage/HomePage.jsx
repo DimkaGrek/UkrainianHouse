@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+
 import {
   Hero,
   GetInvolved,
@@ -8,18 +9,13 @@ import {
   NewsDigest,
   Loader,
 } from '../../components';
-import { fetchAllNews } from '../../my-redux/News/newsOperations';
-import {
-  selectIsLoadingNews,
-  clearNews,
-  selectNews,
-} from '../../my-redux/News/newsSlice';
+
+import { fetchAllNews, clearNews } from '../../redux';
+import { useNews } from '../../hooks';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-
-  const news = useSelector(selectNews);
-  const isLoading = useSelector(selectIsLoadingNews);
+  const { news, isLoading } = useNews();
 
   useEffect(() => {
     dispatch(clearNews());

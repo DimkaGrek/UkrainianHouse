@@ -22,29 +22,67 @@ export const LibraryList = () => {
       rows.push(books.slice(i, i + 2));
     }
   }
+  const calculatedWidth =
+    innerWidth >= 375 ? (375 * 160) / 360 : (innerWidth * 160) / 360;
 
+  const getJustifyClass = (index, rowLength) => {
+    if (index % 2 === 0) return 'md:justify-start';
+    if (rowLength < 2)
+      return 'sm:justify-center md:justify-center md:pl-[160px]';
+    return 'md:justify-end';
+  };
+
+  // outline outline-[1px] outline-red-500
   return (
-    <div className=" mb-[150px] outline outline-[1px] outline-red-500">
-      {rows.map((row, index) => (
-        <div key={index} className="relative mb-[220px]">
-          <Quotes index={index} />
-          <ul
-            className={`flex ${
-              index % 2 === 0
-                ? 'justify-start'
-                : row.length < 2
-                ? 'justify-center'
-                : 'justify-end'
-            } gap-x-[50px] outline outline-[0.3px] outline-blue-500`}
+    <div className=" mb-[150px] ">
+      {rows.map((row, index) => {
+        const justifyClass = getJustifyClass(index, row.length);
+        return (
+          <div
+            key={index}
+            className="relative mb-[436px]  md:mb-[75px]  h-auto  lg:mb-[220px] 
+        
+        
+        " //  max-h-[420px] outline outline-[0.5px] outline-yellow-500 outline outline-[0.3px] outline-blue-500
           >
-            {row.map(item => (
-              <li key={item.id}>
-                <LibraryBookItem item={item} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+            <Quotes index={index} />
+
+            {console.log(row)}
+            <ul
+              className={`flex justify-between gap-x-[5px] ${justifyClass} md:gap-x-[16px] lg:gap-x-[50px] `}
+            >
+              {row.map(item => (
+                <li
+                  key={item.id}
+                  className="flex-shrink-0 lg:w-[238px] lg:flex-shrink-1"
+                  style={{
+                    width:
+                      innerWidth < 1440 ? `${calculatedWidth}px` : undefined,
+                  }}
+                >
+                  <LibraryBookItem item={item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };
+
+// const fetchBooksData = useCallback(() => {
+//   const config = {
+//     params: {
+//       page,
+//     },
+//   };
+//   dispatch(fetchAllBooks(config))
+//     .unwrap()
+//     .then(data => {
+//       console.log('Fetched books data:', data);
+//     })
+//     .catch(e => {
+//       toast.error(e.message);
+//     });
+// }, [dispatch]);

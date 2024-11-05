@@ -11,10 +11,12 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { newsReducer } from './News/newsSlice';
-import { booksReducer } from './Books/booksSlice';
-import { authReducer } from './Auth/authSlice';
-import { messagesReducer } from './Messages/messagesSlice';
+import {
+  newsReducer,
+  booksReducer,
+  authReducer,
+  messagesReducer,
+} from '../redux';
 
 const persistConfig = {
   key: 'auth',
@@ -30,6 +32,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authReducer),
     messages: messagesReducer,
   },
+  // devTools: process.env.NODE_ENV !== 'production',
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

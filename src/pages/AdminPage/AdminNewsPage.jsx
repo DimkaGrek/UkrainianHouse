@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import { ContentList, Loader, Pagination, StatusField } from '../../components';
+import {
+  ContentList,
+  InfoMessage,
+  Loader,
+  Pagination,
+  StatusField,
+} from '../../components';
 
 import { useNews } from '../../hooks';
-import { fetchAllNews, setPageNews } from '../../my-redux';
-import { newsStatuses, PAGE_LIMIT } from '../../constants';
+import { fetchAllNews, setPageNews } from '../../redux';
+import { InfoMessageTypes, newsStatuses, PAGE_LIMIT } from '../../constants';
 
 const AdminNewsPage = () => {
   const { news, page, totalNews, totalPages, isLoading } = useNews();
@@ -16,12 +22,13 @@ const AdminNewsPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
+  const keyword = searchParams.get('keyword');
+
   useEffect(() => {
     setStatuses(['Show All', ...newsStatuses]);
   }, []);
 
   useEffect(() => {
-    const keyword = searchParams.get('keyword');
     const config = {
       params: {
         page,
@@ -33,7 +40,7 @@ const AdminNewsPage = () => {
     };
 
     dispatch(fetchAllNews(config));
-  }, [dispatch, page, searchParams, status]);
+  }, [dispatch, keyword, page, status]);
 
   const handleChangeStatus = status => {
     dispatch(setPageNews(0));
@@ -56,7 +63,20 @@ const AdminNewsPage = () => {
             showLabel={false}
           />
         </div>
-        <ContentList items={news} />
+        {news.length === 0 && keyword ? (
+          <InfoMessage
+            type={InfoMessageTypes.NoResults}
+            messageText={keyword}
+          />
+        ) : (
+          news.length === 0 && (
+            <InfoMessage
+              type={InfoMessageTypes.Empty}
+              messageText="Please add an article."
+            />
+          )
+        )}
+        {news.length ? <ContentList items={news} /> : null}
         <Pagination
           setPage={handleSetPage}
           page={page}
