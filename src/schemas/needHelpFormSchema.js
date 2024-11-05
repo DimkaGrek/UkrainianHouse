@@ -23,5 +23,5 @@ export const needHelpFormSchema = yup.object().shape({
     .string()
     .required('Message is required')
     .min(3, 'Message should be at least 3 letters')
-    .max(300, 'Message must not exceed 300 letters'),
+    .max(300, 'Message must not exceed 1000 letters'),
 });
