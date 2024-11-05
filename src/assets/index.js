@@ -82,6 +82,10 @@ import friendsImg4 from './images/home/Friends@2x_tablet.webp';
 import friendsImg5 from './images/home/Friends@1x_desktop.webp';
 import friendsImg6 from './images/home/Friends@2x_desktop.webp';
 
+import BgImg_mobile from './images/home/BgImg_mobile.webp';
+import BgImg_tablet from './images/home/BgImg_tablet.webp';
+import BgImg_desktop from './images/home/BgImg_desktop.webp';
+
 // ===============================NEWS===============================
 import people_mob1x from './images/news/people_mob_@1x.webp';
 import people_mob2x from './images/news/people_mob_@2x.webp';
@@ -432,6 +436,9 @@ export const images = {
     friendsImg4,
     friendsImg5,
     friendsImg6,
+    BgImg_mobile,
+    BgImg_tablet,
+    BgImg_desktop,
   },
   newsImages: {
     people_mob1x,
