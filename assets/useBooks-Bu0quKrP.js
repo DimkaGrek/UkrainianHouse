@@ -1,0 +1,1 @@
+import{h as o,G as l,H as n,J as k,K as B,N as g,O as i}from"./index-DTY8SZ0-.js";const p=()=>{const s=o(l),e=o(n),t=o(k),a=o(B),c=o(g),r=o(i);return{books:s,page:e,totalPages:t,totalBooks:a,isLoading:c,error:r}};export{p as u};
