@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { api, clearToken, setToken } from '../../services/api';
+import { fetchAllMessages } from '../Messages/operations';
 
 export const loginThunk = createAsyncThunk(
   'auth/login',
@@ -22,6 +24,7 @@ export const logoutThunk = createAsyncThunk(
     try {
       await api.post('/admin/logout');
       clearToken();
+      thunkAPI.dispatch(fetchAllMessages());
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -40,7 +43,7 @@ export const refreshThunk = createAsyncThunk(
     }
 
     setToken(token);
-
+    thunkAPI.dispatch(fetchAllMessages());
     try {
       const { data } = await api.get('/admin/checkToken');
       return data;
