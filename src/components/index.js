@@ -49,3 +49,5 @@ export * from './LibraryList/LibraryList.jsx';
 export * from './LibraryList/DetailsBook.jsx';
 export * from './LibraryList/LibraryBookItem.jsx';
 export * from './ConfirmDelete/ConfirmDelete.jsx';
+export * from './Layout/Layout.jsx';
+export * from './InfoMessage/InfoMessage.jsx';
