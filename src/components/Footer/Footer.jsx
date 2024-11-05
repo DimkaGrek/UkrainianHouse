@@ -27,25 +27,25 @@ export const Footer = () => {
               </Link>
 
               <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] lg:gap-y-[40px] lg:w-[543px] lg:gap-x-[24px]">
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
                   <NavLink to="/">Home</NavLink>
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
                   <NavLink to="/news">News</NavLink>
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
                   <NavLink to="/library">Library</NavLink>
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
                   <NavLink to="/contacts">Contacts</NavLink>
                 </li>
                 <li
                   onClick={toggleDevelopersModal}
-                  className="md:w-[110px] lg:w-[165px] cursor-pointer hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300"
+                  className="md:w-[110px] lg:w-[165px] cursor-pointer hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300"
                 >
                   Site developers
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] cursor-pointer hover:text-[#3e38c8] focus:text-[#3e38c8] transition duration-300">
+                <li className="md:w-[110px] lg:w-[165px] cursor-pointer hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
                   Activities
                 </li>
               </ul>
@@ -79,7 +79,7 @@ export const Footer = () => {
             <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:w-[697px]">
               <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
                   href="https://www.facebook.com/ua.maastricht"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -87,7 +87,7 @@ export const Footer = () => {
                 >
                   <Icon
                     name="fb"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
                     size="24"
                   />
                   Let&#39;s be friends on facebook
@@ -95,7 +95,7 @@ export const Footer = () => {
               </li>
               <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[330px] lg:h-[54px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
                   href="https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -103,7 +103,7 @@ export const Footer = () => {
                 >
                   <Icon
                     name="insta"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
                     size="24"
                   />
                   Follow us on instagram
@@ -111,7 +111,7 @@ export const Footer = () => {
               </li>
               <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
                   href="https://t.me/+cGjweuHlhU00N2E8"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -119,7 +119,7 @@ export const Footer = () => {
                 >
                   <Icon
                     name="telegram"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
                     size="24"
                   />
                   Connect us on telegram
@@ -127,7 +127,7 @@ export const Footer = () => {
               </li>
               <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[330px] lg:h-[54px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus:text-[#fff] focus:bg-[#2355cc] transition duration-300 group"
+                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
                   href="https://www.linkedin.com/company/ukrainian-house-in-maastricht/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -135,7 +135,7 @@ export const Footer = () => {
                 >
                   <Icon
                     name="linkedin"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus:fill-[#fff] transition duration-300"
+                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
                     size="24"
                   />
                   Find us in LinkedIn

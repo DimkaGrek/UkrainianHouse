@@ -42,7 +42,7 @@ export * from './ContentList/ContentListItem.jsx';
 export * from './Pagination/Pagination.jsx';
 export * from './NeedHelpModal/NeedHelpModal.jsx';
 export * from './NewsList/NewsListItem.jsx';
-
+export * from './MessageContent/MessageContent.jsx';
 export * from './LibraryList/Quotes.jsx';
 export * from './LibraryList/NotFoundBook.jsx';
 export * from './LibraryList/LibraryList.jsx';

@@ -10,15 +10,20 @@ import { Icon } from '../Icon/Icon';
 import { InputField } from '../InputField/InputField';
 import { StatusField } from '../StatusField/StatusField';
 
-import newsImg1 from '../../assets/images/news-img@1x.jpg';
-import newsImg2 from '../../assets/images/news-img@2x.jpg';
+import defaultImg1 from '../../assets/images/default-img@1x.webp';
+import defaultImg2 from '../../assets/images/default-img@2x.webp';
 import { newsStatuses } from '../../constants';
 import { newsFormSchema } from '../../schemas';
-import { createOneNews, updateOneNews } from '../../my-redux';
+import {
+  createNewsPhoto,
+  createOneNews,
+  deleteNewsPhoto,
+  updateOneNews,
+} from '../../my-redux';
 import {
   checkObjectEquality,
   getFileResizer,
-  getFromattedData,
+  getFormattedData,
 } from '../../helpers';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -50,12 +55,18 @@ export const NewsForm = ({ item, toggle }) => {
       setStatus(item.status);
       setValue('btnLink', item.btnLink);
     }
-  }, [item, setValue]);
-
-  useEffect(() => {
     setValue('publishDate', item ? item.publishDate : new Date());
     setValue('status', item ? item.status : newsStatuses[0]);
   }, [item, setValue]);
+
+  useEffect(() => {
+    if (item?.photoUrls) {
+      const filledImages = Array(3)
+        .fill(0)
+        .map((_, index) => item.photoUrls[index] || 0);
+      setSelectedImages(filledImages);
+    }
+  }, [item?.photoUrls]);
 
   useEffect(() => {
     if (imageError && hasNonZeroElement) {
@@ -88,12 +99,42 @@ export const NewsForm = ({ item, toggle }) => {
     setSelectedImages(prevImages => {
       const newImages = [...prevImages];
 
-      selectedFiles.forEach(file => {
-        const index = newImages.indexOf(0);
-        if (index !== -1) {
-          newImages[index] = file;
+      const processFiles = async () => {
+        try {
+          selectedFiles.forEach(file => {
+            const newIndex = newImages.indexOf(0);
+            if (newIndex !== -1) {
+              newImages[newIndex] = file;
+            }
+          });
+
+          if (item) {
+            const resizedFiles = await handleResizeImages(selectedFiles);
+            if (!resizedFiles) {
+              toast.error('Error resizing images.');
+              return;
+            }
+
+            const uploadPromises = resizedFiles.map(file => {
+              const fd = getFormattedData(file, 'photo');
+              return dispatch(createNewsPhoto({ newsId: item.id, fd }));
+            });
+
+            await Promise.all(uploadPromises);
+            toast.success(
+              `${
+                uploadPromises.length > 1
+                  ? 'All images were uploaded successfully.'
+                  : 'Image was uploaded successfully.'
+              }`
+            );
+          }
+        } catch (error) {
+          toast.error(`Error uploading images: ${error.message}`);
         }
-      });
+      };
+
+      processFiles();
       return newImages;
     });
 
@@ -115,9 +156,21 @@ export const NewsForm = ({ item, toggle }) => {
   };
 
   const handleDeleteImage = image => {
+    if (item && !(image instanceof File)) {
+      const ids = { newsId: item.id, photoId: image.id };
+      dispatch(deleteNewsPhoto(ids))
+        .unwrap()
+        .then(() => {
+          toast.success('Image was deleted successfully.');
+        })
+        .catch(e =>
+          toast.error(`Error while deleting the image. ${e.message}`)
+        );
+    }
     setSelectedImages(prevImages => {
       const newImages = prevImages.filter(item => item !== image);
       newImages.push(0);
+
       return newImages;
     });
   };
@@ -136,22 +189,22 @@ export const NewsForm = ({ item, toggle }) => {
   };
 
   const onSubmit = async data => {
-    if (!hasNonZeroElement && !item) {
+    if (!hasNonZeroElement) {
       setImageError(true);
       return;
     }
 
-    const resizedImages = await handleResizeImages(
-      selectedImages.filter(image => image !== 0)
-    );
-
-    if (!resizedImages) {
-      return toast.error('Error while resizing images');
-    }
-
     let action;
     if (!item) {
-      const fd = getFromattedData(resizedImages, 'photos', data, 'news');
+      const resizedImages = await handleResizeImages(
+        selectedImages.filter(image => image !== 0 && typeof image !== 'string')
+      );
+
+      if (!resizedImages) {
+        return toast.error('Error while resizing images');
+      }
+
+      const fd = getFormattedData(resizedImages, 'photos', data, 'news');
       action = createOneNews(fd);
     } else {
       data = {
@@ -163,10 +216,8 @@ export const NewsForm = ({ item, toggle }) => {
 
     if (item) {
       item = { ...item, publishDate: new Date(item.publishDate) };
-      // TODO
       // eslint-disable-next-line
-      const { photoUrls, ...itemData } = item;
-
+      const { photoUrls, deleted, deletedAt, ...itemData } = item;
       const isEqual = checkObjectEquality(data, itemData);
 
       if (item && isEqual) {
@@ -179,7 +230,9 @@ export const NewsForm = ({ item, toggle }) => {
       .unwrap()
       .then(() => {
         toast.success(
-          item ? 'News updated successfully' : 'News created successfully'
+          item
+            ? 'The news updated successfully'
+            : 'The news created successfully'
         );
 
         setSelectedImages(new Array(3).fill(0));
@@ -291,13 +344,13 @@ export const NewsForm = ({ item, toggle }) => {
               {image === 0 ? (
                 <picture className="h-auto w-fit rounded-[10px]">
                   <source
-                    srcSet={`${newsImg1} 1x, ${newsImg2} 2x`}
-                    type="image/png"
+                    srcSet={`${defaultImg1} 1x, ${defaultImg2} 2x`}
+                    type="image/webp"
                   />
                   <img
                     width={185}
                     height={119}
-                    src={newsImg1}
+                    src={defaultImg1}
                     alt="upload img"
                     className="rounded-[10px] cursor-pointer"
                     onClick={handlePick}
@@ -306,10 +359,17 @@ export const NewsForm = ({ item, toggle }) => {
               ) : (
                 <>
                   <img
-                    src={URL.createObjectURL(image)}
+                    src={
+                      Array.isArray(item?.photoUrls) && item.photoUrls[index]
+                        ? item.photoUrls[index].photoUrls
+                        : image instanceof File
+                        ? URL.createObjectURL(image)
+                        : ''
+                    }
                     alt="upload"
-                    className="rounded-[10px] shadow-md max-h-[119px] max-w-[185px]"
+                    className="rounded-[10px] shadow-md max-h-[100px] max-w-[180px] lg:max-h-[119px] lg:max-w-full"
                   />
+
                   <button
                     type="button"
                     className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
