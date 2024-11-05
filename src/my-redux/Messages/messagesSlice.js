@@ -5,7 +5,8 @@ import {
   createMessage,
   deleteMessage,
   fetchAllMessages,
-} from './operations';
+} from './messagesOperations';
+import { logoutThunk } from '../auth/authOperations';
 import { PAGE_LIMIT } from '../../constants';
 
 const initialState = {
@@ -69,6 +70,9 @@ const messagesSlice = createSlice({
             : state.page;
 
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
 
       .addMatcher(

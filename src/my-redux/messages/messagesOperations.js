@@ -34,7 +34,7 @@ export const changeMessageStatus = createAsyncThunk(
   'messages/changeMessageStatus',
   async (id, thunkAPI) => {
     try {
-      const { data } = await api.put(`/admin/messages/${id}/read`);
+      await api.put(`/admin/messages/${id}/read`);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

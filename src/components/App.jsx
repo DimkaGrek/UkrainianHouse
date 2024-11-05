@@ -1,16 +1,15 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Loader } from './Loader/Loader';
-import { PrivateRoute, PublicRoute } from '../routes';
+import { Loader, Layout } from '../components';
 
+import { PrivateRoute, PublicRoute } from '../routes';
 import {
+  refreshThunk,
   selectIsLoggedIn,
   selectIsRefreshing,
-} from '../my-redux/Auth/authSlice';
-import { refreshThunk } from '../my-redux/Auth/operations';
+} from '../my-redux';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
