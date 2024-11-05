@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 export const NewsDigest = ({ news }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(1);
+  const [touchStartX, setTouchStartX] = useState(0);
 
   useEffect(() => {
     const updateCardsPerPage = () => {
@@ -33,9 +34,31 @@ export const NewsDigest = ({ news }) => {
   const handleDotClick = index => {
     setActiveIndex(index);
   };
+  const handleTouchStart = e => {
+    if (window.innerWidth >= 1440) return;
+    setTouchStartX(e.touches[0].clientX);
+  };
+  const handleTouchEnd = e => {
+    if (window.innerWidth >= 1440) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const swipeThreshold = 20;
+
+    if (touchStartX - touchEndX > swipeThreshold) {
+      // Swipe left
+      setActiveIndex(prevIndex => (prevIndex + 1) % news.length);
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      // Swipe right
+      setActiveIndex(prevIndex => (prevIndex - 1 + news.length) % news.length);
+    }
+  };
+
   return (
     <section className="mb-[34px] md:mb-[40px] lg:mb-[100px]">
-      <div className="flex flex-col gap-[16px] items-center justify-center">
+      <div
+        className="flex flex-col gap-[16px] items-center justify-center"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="flex gap-[24px]">
           {displayedCards().map((item, index) => (
             <NewsListItem
