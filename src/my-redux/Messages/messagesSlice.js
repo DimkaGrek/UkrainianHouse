@@ -6,7 +6,7 @@ import {
   deleteMessage,
   fetchAllMessages,
 } from './messagesOperations';
-import { logoutThunk } from '../auth/authOperations';
+import { logoutThunk } from '../Auth/authOperations';
 import { PAGE_LIMIT } from '../../constants';
 
 const initialState = {

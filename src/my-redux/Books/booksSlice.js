@@ -8,7 +8,7 @@ import {
   updateCoverBook,
 } from './booksOperations';
 import { PAGE_LIMIT } from '../../constants';
-import { logoutThunk } from '../auth/authOperations';
+import { logoutThunk } from '../Auth/authOperations';
 
 const initialState = {
   books: [],
