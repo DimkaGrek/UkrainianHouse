@@ -313,7 +313,7 @@ export const NewsForm = ({ item, toggle }) => {
           name="btnText"
           placeholder="Enter the button text"
           register={register}
-          defaultValue={`${item?.btnText ? item.btnText : 'Read more'}`}
+          defaultValue={`${item?.btnText ? item.btnText : ''}`}
           errors={errors}
         />
         <InputField
