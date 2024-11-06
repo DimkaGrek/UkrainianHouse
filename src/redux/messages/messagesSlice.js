@@ -5,6 +5,7 @@ import {
   createMessage,
   deleteMessage,
   fetchAllMessages,
+  fetchUnreadMessages,
 } from './messagesOperations';
 import { logoutThunk } from '../auth/authOperations';
 import { PAGE_LIMIT } from '../../constants';
@@ -46,6 +47,10 @@ const messagesSlice = createSlice({
           state.isLoading = false;
         }
       )
+      .addCase(fetchUnreadMessages.fulfilled, (state, { payload }) => {
+        state.totalUnreadMessages = payload;
+        state.isLoading = false;
+      })
       .addCase(createMessage.fulfilled, state => {
         state.isLoading = false;
         state.error = null;
@@ -78,6 +83,7 @@ const messagesSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAllMessages.rejected,
+          fetchUnreadMessages.rejected,
           createMessage.rejected,
           changeMessageStatus.rejected,
           deleteMessage.rejected
@@ -91,6 +97,7 @@ const messagesSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAllMessages.pending,
+          fetchUnreadMessages.pending,
           createMessage.pending,
           changeMessageStatus.pending,
           deleteMessage.pending
