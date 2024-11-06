@@ -12,10 +12,11 @@ export const DetailsBook = ({
     <div
       className="flex justify-center items-start gap-[25px]
    
-      lg:pr-[130px]  lg:pl-[130px]
-    lg:w-[989px] lg:h-[571px]
+      
+    
         "
     >
+      {/* // lg:w-[989px] lg:h-[571px]lg:pr-[100px]  lg:pl-[100px] */}
       <div className="items-start">
         <header>
           <h1

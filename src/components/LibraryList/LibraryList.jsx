@@ -27,8 +27,7 @@ export const LibraryList = () => {
 
   const getJustifyClass = (index, rowLength) => {
     if (index % 2 === 0) return 'md:justify-start';
-    if (rowLength < 2)
-      return 'sm:justify-center md:justify-center md:pl-[160px]';
+    if (rowLength < 2) return 'md:justify-center md:pl-[160px]';
     return 'md:justify-end';
   };
 
@@ -46,7 +45,6 @@ export const LibraryList = () => {
         " //  max-h-[420px] outline outline-[0.5px] outline-yellow-500 outline outline-[0.3px] outline-blue-500
           >
             <Quotes index={index} />
-
             {console.log(row)}
             <ul
               className={`flex justify-between gap-x-[5px] ${justifyClass} md:gap-x-[16px] lg:gap-x-[50px] `}
@@ -70,19 +68,3 @@ export const LibraryList = () => {
     </div>
   );
 };
-
-// const fetchBooksData = useCallback(() => {
-//   const config = {
-//     params: {
-//       page,
-//     },
-//   };
-//   dispatch(fetchAllBooks(config))
-//     .unwrap()
-//     .then(data => {
-//       console.log('Fetched books data:', data);
-//     })
-//     .catch(e => {
-//       toast.error(e.message);
-//     });
-// }, [dispatch]);

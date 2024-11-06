@@ -26,7 +26,7 @@ const booksSlice = createSlice({
       state.page = payload;
     },
     clearBooks: state => {
-      state.news = [];
+      state.books = [];
       state.page = 0;
     },
   },
