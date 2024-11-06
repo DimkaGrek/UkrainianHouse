@@ -14,7 +14,7 @@ export const NewsListItem = ({ item, className = '' }) => {
       >
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus-visible:text-[#fbfbfb] transition duration-300">
           <img
-            className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] group-focus:scale-[1.05] group-active::scale-[1.05] transition duration-300"
+            className="w-[306px] h-[209px] rounded-[18px] lg:w-[469px] lg:h-[249px] group-hover:scale-[1.05] group-focus:scale-[1.05] group-active:scale-[1.05] transition duration-300"
             src={item.photoUrls[0]?.photoUrls || ''}
             alt={item.photoUrls[0]?.caption || item.title}
             width={306}
