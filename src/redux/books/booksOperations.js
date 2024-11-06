@@ -39,7 +39,7 @@ export const updateBook = createAsyncThunk(
     try {
       const { data } = await api.put(`/admin/books/${id}`, bookChanges);
 
-      return data;
+      return { data, id };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
