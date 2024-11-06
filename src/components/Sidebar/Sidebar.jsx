@@ -1,13 +1,21 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
 import { adminNavLinks } from '../../constants';
 
 import { images } from '../../assets';
 import { useMessages } from '../../hooks';
+import { fetchUnreadMessages } from '../../redux';
 
 export const Sidebar = () => {
   const { headerImages } = images;
   const { totalUnreadMessages } = useMessages();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUnreadMessages());
+  }, []);
 
   return (
     <nav>

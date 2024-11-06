@@ -7,7 +7,6 @@ export const fetchAllMessages = createAsyncThunk(
   async (config, thunkAPI) => {
     try {
       const { data } = await api.get('/admin/messages', config);
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -45,6 +44,18 @@ export const deleteMessage = createAsyncThunk(
     try {
       await api.delete(`/admin/messages/${id}`);
       return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchUnreadMessages = createAsyncThunk(
+  'messages/getTotalUnreadMessages',
+  async (config, thunkAPI) => {
+    try {
+      const { data } = await api.get('/admin/messages/unread');
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
