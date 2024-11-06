@@ -8,7 +8,7 @@ import {
   selectTotalMessages,
   selectTotalPagesMessages,
   selectTotalUnreadMessages,
-} from '../my-redux';
+} from '../redux';
 
 export const useMessages = () => {
   const messages = useSelector(selectMessages);

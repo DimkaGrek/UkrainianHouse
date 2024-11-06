@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { Modal } from '../../components';
 
-import { deleteBook, deleteMessage, deleteOneNews } from '../../my-redux';
+import { deleteBook, deleteMessage, deleteOneNews } from '../../redux';
 
 export const ConfirmDelete = ({ item, toggleModal }) => {
   const isNews = Object.hasOwn(item, 'btnLink');

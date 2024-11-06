@@ -9,6 +9,7 @@ import {
   fetchAnnounceNews,
   updateOneNews,
 } from './newsOperations';
+import { logoutThunk } from '../auth/authOperations';
 import { PAGE_LIMIT } from '../../constants';
 
 const initialState = {
@@ -102,7 +103,9 @@ const newsSlice = createSlice({
 
         state.isLoading = false;
       })
-
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
+      })
       .addMatcher(
         isAnyOf(
           fetchAllNews.rejected,

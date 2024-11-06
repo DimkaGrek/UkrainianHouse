@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { ContentList, Loader, Pagination, StatusField } from '../../components';
-
 import {
-  clearMessages,
-  fetchAllMessages,
-  setPageMessages,
-} from '../../my-redux';
+  ContentList,
+  InfoMessage,
+  Loader,
+  Pagination,
+  StatusField,
+} from '../../components';
+
+import { clearMessages, fetchAllMessages, setPageMessages } from '../../redux';
 import { useMessages } from '../../hooks';
 import { PAGE_LIMIT, messagesStatuses } from '../../constants';
 
@@ -22,6 +24,8 @@ const AdminInboxPage = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
+  const keyword = searchParams.get('keyword');
+
   useEffect(() => {
     setStatuses(['Show All', ...messagesStatuses]);
   }, []);
@@ -31,7 +35,6 @@ const AdminInboxPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const keyword = searchParams.get('keyword');
     const config = {
       params: {
         page,
@@ -45,7 +48,7 @@ const AdminInboxPage = () => {
     };
 
     dispatch(fetchAllMessages(config));
-  }, [dispatch, page, status, searchParams]);
+  }, [dispatch, page, status, keyword]);
 
   const handleChangeStatus = status => {
     dispatch(setPageMessages(0));
@@ -70,7 +73,15 @@ const AdminInboxPage = () => {
             showLabel={false}
           />
         </div>
-        <ContentList items={messages} />
+        {!messages.length ? (
+          <InfoMessage
+            messageText="No messages received."
+            keyword={keyword}
+            status={status}
+          />
+        ) : (
+          <ContentList items={messages} />
+        )}
         <Pagination
           setPage={handleSetPage}
           page={page}

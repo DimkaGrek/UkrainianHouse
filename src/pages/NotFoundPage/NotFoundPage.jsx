@@ -16,7 +16,7 @@ const NotFoundPage = () => {
           Seems like this page has gone astray.
         </p>
         <p className="w-[203px] text-[20px] text-right leading-[1.4] text-my-black1 md:w-[524px] md:text-left lg:w-[734px] lg:text-[28px] lg:leading-[1.29]">
-          But just like Ukraine, we &#39;ll rebuild and come back stronger.
+          But just like Ukraine, we&#39;ll rebuild and come back stronger.
         </p>
       </div>
       <div className="flex flex-col gap-[8px] items-end md:gap-[17px] md:items-start md:flex-row">

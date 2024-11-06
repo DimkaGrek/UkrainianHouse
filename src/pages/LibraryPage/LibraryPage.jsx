@@ -1,8 +1,8 @@
 // import { Loader } from '../../components';
 import { useDispatch } from 'react-redux';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
-import { clearBooks, fetchAllBooks, setPageBooks } from '../../my-redux';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { clearBooks, fetchAllBooks, setPageBooks } from '../../redux';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useWindowSizeHook } from '../../helpers/useWindowSizeHook';
 import { getTextForLibrary } from '../../helpers';
@@ -23,7 +23,6 @@ const LibraryPage = () => {
 
   useEffect(() => {
     dispatch(clearBooks());
-    console.log('шось тут є');
   }, [dispatch]);
 
   const observerTarget = useRef(null);

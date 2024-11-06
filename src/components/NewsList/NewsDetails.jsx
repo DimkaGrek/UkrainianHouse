@@ -12,7 +12,7 @@ export const NewsDetails = ({
 }) => {
   return (
     <div className="max-h-[70vh] pr-[10px] md:pr-[15px] flex flex-col gap-[24px] lg:flex-row scrollbar">
-      <div className="md:order-1">
+      <div className="md:order-1 lg:min-h-full lg:flex lg:flex-col">
         <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%]">
           {title}
         </h3>
@@ -23,7 +23,7 @@ export const NewsDetails = ({
           {getFormattedDate(publishDate)}
         </p>
         <ReadMoreButton
-          className="hidden lg:block"
+          className="hidden lg:block mt-auto"
           caption={btnText}
           link={btnLink}
         />

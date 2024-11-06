@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
 
-import { changeMessageStatus } from '../../my-redux';
+import { changeMessageStatus } from '../../redux';
 
 export const MessageContent = ({ item }) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export const MessageContent = ({ item }) => {
     if (!item.read) {
       dispatch(changeMessageStatus(item.id));
     }
-  }, []);
+  }, [dispatch, item]);
 
   return (
     <div className="w-[500px] flex flex-col gap-8">

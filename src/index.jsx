@@ -6,7 +6,7 @@ import { ToastContainer, Zoom } from 'react-toastify';
 
 import App from './components/App';
 
-import { persistor, store } from './my-redux/store';
+import { persistor, store } from './redux/store';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 

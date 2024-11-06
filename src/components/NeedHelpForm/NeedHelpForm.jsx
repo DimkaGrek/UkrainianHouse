@@ -3,10 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { needHelpFormSchema } from '../../schemas';
-import { createMessage } from '../../my-redux/Messages/operations';
-import { selectIsLoadingMessages } from '../../my-redux/Messages/messagesSlice';
 import { Loader, Modal, NeedHelpModal } from '../../components';
+
+import { needHelpFormSchema } from '../../schemas';
+import { createMessage, selectIsLoadingMessages } from '../../redux';
 import { useModal } from '../../hooks';
 
 export const NeedHelpForm = () => {
