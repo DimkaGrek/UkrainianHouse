@@ -425,11 +425,13 @@ textarea:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
   box-shadow: 0 0 0px 1000px #fff inset;
   -webkit-text-fill-color: #1e1e1e !important;
+}
 
-  &:hover,
-  &:focus {
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    box-shadow: 0 0 0px 1000px #fff inset;
-    -webkit-text-fill-color: #1e1e1e !important;
-  }
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-text-fill-color: #1e1e1e !important;
 }

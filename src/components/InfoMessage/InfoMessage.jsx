@@ -1,21 +1,15 @@
-import { useSearchParams } from 'react-router-dom';
-
-import { InfoMessageTypes } from '../../constants';
-
-export const InfoMessage = ({ type, messageText = '', searchValue = '' }) => {
-  const [searchParams] = useSearchParams();
-  const keyword = searchParams.get('keyword');
-
+export const InfoMessage = ({
+  messageText = '',
+  keyword = '',
+  status = 'Show All',
+}) => {
   const getMessage = () => {
-    switch (type) {
-      case InfoMessageTypes.Empty:
-        return `The list is empty. ${messageText}`;
-      case InfoMessageTypes.NoResults:
-        return `No results for "${searchValue || keyword}".`;
+    if (keyword) return `No results for "${keyword}".`;
 
-      default:
-        break;
-    }
+    if (status !== 'Show All')
+      return `No results for items with the status "${status}".`;
+
+    return `The list is empty. ${messageText}`;
   };
 
   return (
@@ -24,7 +18,7 @@ export const InfoMessage = ({ type, messageText = '', searchValue = '' }) => {
         messageText && 'h-[60vh]'
       } w-full flex items-center justify-center`}
     >
-      <p className="text-[#1a1a1a] text-[32px] lg:text-[40px] font-bold leading-[1.3]">
+      <p className="text-[#1a1a1a] text-[32px] lg:text-[40px] font-bold leading-[1.3] text-center">
         {getMessage()}
       </p>
     </div>
