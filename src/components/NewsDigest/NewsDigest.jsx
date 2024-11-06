@@ -55,7 +55,7 @@ export const NewsDigest = ({ news }) => {
   return (
     <section className="mb-[34px] md:mb-[40px] lg:mb-[100px]">
       <div
-        className="flex flex-col gap-[16px] items-center justify-center"
+        className="flex flex-col gap-[16px]  justify-center"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
