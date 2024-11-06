@@ -1,33 +1,100 @@
 // import { Loader } from '../../components';
 import { useDispatch } from 'react-redux';
 import { SearchBarLibary } from '../../components/SearchBar/SearchBarLibary';
-import { fetchAllBooks } from '../../redux';
-import { useEffect, useState } from 'react';
+import { clearBooks, fetchAllBooks, setPageBooks } from '../../redux';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useWindowSizeHook } from '../../helpers/useWindowSizeHook';
 import { getTextForLibrary } from '../../helpers';
 
 import { LibraryList } from '../../components/LibraryList/LibraryList';
-// import NotFoundBook from '../../components/LibraryList/NotFoundBook';
+import { useBooks } from '../../hooks';
+import { Loader } from '../../components';
+import NotFoundBook from '../../components/LibraryList/NotFoundBook';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
 
+  const { books, page, isLoading, error } = useBooks();
+
+  const [isMoreBooks, setIsMoreBooks] = useState(true);
+  const [keyword, setKeyword] = useState('');
+  const [isSearchTriggered, setIsSearchTriggered] = useState(false);
+
   useEffect(() => {
+    dispatch(clearBooks());
+  }, [dispatch]);
+
+  const observerTarget = useRef(null);
+  console.log(books);
+  const fetchBooksData = useCallback(() => {
     const config = {
       params: {
-        page: 0,
+        page,
+        ...(keyword && { keyword }),
       },
     };
     dispatch(fetchAllBooks(config))
       .unwrap()
-      .then(data => {
-        console.log('Fetched books data:', data);
+      .then(res => {
+        dispatch(setPageBooks(res.currentPage + 1));
+        const hasMoreBooks = res.currentPage + 1 < res.totalPages;
+
+        setIsMoreBooks(hasMoreBooks);
+        if (!hasMoreBooks && books.length) {
+          console.log('You have reached the end of the news list.');
+        }
       })
       .catch(e => {
         toast.error(e.message);
       });
-  }, [dispatch]);
+  }, [dispatch, page, books.length, keyword]);
+
+  // useEffect(() => {
+  //   const config = {
+  //     params: {
+  //       page: 0,
+  //     },
+  //   };
+  //   dispatch(fetchAllBooks(config))
+  //     .unwrap()
+  //     .then(data => {
+  //       console.log('Fetched books data:', data);
+  //     })
+  //     .catch(e => {
+  //       toast.error(e.message);
+  //     });
+  // }, [dispatch]);
+
+  useEffect(() => {
+    if (isSearchTriggered && !isLoading) {
+      fetchBooksData();
+      setIsSearchTriggered(false);
+    }
+  }, [isSearchTriggered, fetchBooksData, dispatch, isLoading]);
+
+  useEffect(() => {
+    const currentTarget = observerTarget.current;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && isMoreBooks && !isLoading && !error) {
+          fetchBooksData();
+        }
+      },
+      { threshold: 1 }
+    );
+
+    if (currentTarget) {
+      observer.observe(currentTarget);
+    }
+
+    return () => {
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
+    };
+  }, [dispatch, fetchBooksData, error, isMoreBooks, page, isLoading]);
 
   const { innerWidth } = useWindowSizeHook();
 
@@ -37,6 +104,12 @@ const LibraryPage = () => {
   useEffect(() => {
     setExplanation(innerWidth >= 1440 ? explanations[0] : explanations[1]);
   }, [innerWidth, explanations]);
+
+  const onSearchSubmit = filterValue => {
+    dispatch(clearBooks());
+    setKeyword(filterValue);
+    setIsSearchTriggered(true);
+  };
 
   return (
     <section
@@ -58,7 +131,7 @@ const LibraryPage = () => {
             Library
           </h3>
           <div className="md:w-[500px] lg:w-auto ">
-            <SearchBarLibary />
+            <SearchBarLibary setQuery={onSearchSubmit} />
           </div>
         </div>
 
@@ -70,11 +143,17 @@ const LibraryPage = () => {
           {explanation}
         </p>
       </div>
+      {!books.length && keyword && !isLoading ? (
+        <NotFoundBook />
+      ) : (
+        <LibraryList />
+      )}
 
-      <LibraryList />
+      <div ref={observerTarget}></div>
+      {isLoading && <Loader placement="bottom" />}
     </section>
   );
 };
 export default LibraryPage;
-// <NotFoundBook />
+//
 // {isLoading && <Loader placement="bottom" />}

@@ -1,16 +1,40 @@
-// import { useDispatch } from 'react-redux';
-
 import { useForm } from 'react-hook-form';
 import { useWindowSizeHook } from '../../helpers/useWindowSizeHook';
 import { useEffect, useState } from 'react';
 import { getTextForLibrary } from '../../helpers';
+import { MdClear } from 'react-icons/md';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
-export const SearchBarLibary = () => {
-  // const dispatch = useDispatch();
+export const SearchBarLibary = ({ setQuery }) => {
+  const { watch, register, setValue, reset, handleSubmit } = useForm();
+  const location = useLocation();
 
-  const { register, handleSubmit } = useForm();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const onSubmit = () => {};
+  useEffect(() => {
+    reset();
+  }, [location.pathname, reset]);
+
+  useEffect(() => {
+    const keyword = searchParams.get('keyword');
+
+    if (keyword) {
+      setValue('query', keyword);
+    }
+  }, [searchParams, setValue]);
+
+  const onSubmit = ({ query }) => {
+    if (!query) return;
+    setQuery(query.trim());
+  };
+
+  const handleClearClick = () => {
+    reset();
+    setQuery('');
+    setSearchParams({});
+  };
+
+  const query = watch('query');
 
   const { innerWidth } = useWindowSizeHook();
   const [placeholder, setPlaceholder] = useState('');
@@ -23,13 +47,14 @@ export const SearchBarLibary = () => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex justify-between gap-x-1 md:gap-x-0 md:w-full
-
+relative
      "
     >
       <input
         type="text"
         placeholder={placeholder}
         name="query"
+        autoComplete="off"
         {...register('query')}
         className="
         h-[50px]  min-w-[231px]
@@ -41,6 +66,15 @@ export const SearchBarLibary = () => {
         
         lg:w-[430px] hover:border-[#ffd437] focus:border-[#ffd437] transition duration-300  "
       />
+      {query && (
+        <button
+          type="button"
+          className="absolute top-1/2 -translate-y-1/2 right-[120px] "
+          onClick={handleClearClick}
+        >
+          <MdClear size={24} />
+        </button>
+      )}
       <button
         type="submit"
         className=" flex justify-center items-center w-[90px] h-[50px]
