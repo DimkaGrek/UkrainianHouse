@@ -12,7 +12,7 @@ import {
 
 import { useNews } from '../../hooks';
 import { fetchAllNews, setPageNews } from '../../redux';
-import { InfoMessageTypes, newsStatuses, PAGE_LIMIT } from '../../constants';
+import { newsStatuses, PAGE_LIMIT } from '../../constants';
 
 const AdminNewsPage = () => {
   const { news, page, totalNews, totalPages, isLoading } = useNews();
@@ -63,20 +63,17 @@ const AdminNewsPage = () => {
             showLabel={false}
           />
         </div>
-        {news.length === 0 && keyword ? (
+
+        {!news.length ? (
           <InfoMessage
-            type={InfoMessageTypes.NoResults}
-            messageText={keyword}
+            messageText="Please add an article."
+            keyword={keyword}
+            status={status}
           />
         ) : (
-          news.length === 0 && (
-            <InfoMessage
-              type={InfoMessageTypes.Empty}
-              messageText="Please add an article."
-            />
-          )
+          <ContentList items={news} />
         )}
-        {news.length ? <ContentList items={news} /> : null}
+
         <Pagination
           setPage={handleSetPage}
           page={page}
