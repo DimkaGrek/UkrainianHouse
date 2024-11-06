@@ -73,7 +73,7 @@ const AdminInboxPage = () => {
             showLabel={false}
           />
         </div>
-        {messages.length ? (
+        {!messages.length ? (
           <InfoMessage
             messageText="No messages received."
             keyword={keyword}
