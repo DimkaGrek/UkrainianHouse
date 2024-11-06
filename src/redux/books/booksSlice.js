@@ -56,7 +56,7 @@ const booksSlice = createSlice({
       .addCase(updateBook.fulfilled, (state, { payload }) => {
         state.books = state.books.map(item => {
           if (item.id === payload.id) {
-            return { ...item, ...payload };
+            return { ...item, ...payload.data };
           }
           return item;
         });
