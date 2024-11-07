@@ -49,7 +49,7 @@ export const SearchBar = ({ setQuery }) => {
       {query && (
         <button
           type="button"
-          className="absolute top-1/2 -translate-y-1/2 right-[120px] outline outline-[1px] outline-red-500"
+          className="absolute top-1/2 -translate-y-1/2 right-[120px]"
           onClick={handleClearClick}
         >
           <MdClear size={24} />
