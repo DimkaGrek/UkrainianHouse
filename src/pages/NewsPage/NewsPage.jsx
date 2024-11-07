@@ -107,7 +107,7 @@ const NewsPage = () => {
           </div>
         </div>
         <Advertisement />
-        {!news.length && keyword ? (
+        {!news.length && keyword && !isLoading ? (
           <InfoMessage keyword={keyword} />
         ) : (
           <NewsList />
