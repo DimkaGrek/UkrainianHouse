@@ -24,16 +24,15 @@ export const ScrollUpBtn = () => {
   const handleClickBtn = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
     });
   };
 
   return (
     <button
-      className={`p-[10px] size-[50px] md:size-[54px] flex justify-center items-center bg-blue-600 shadow-lg fixed  z-[49] right-[5%] border-none rounded-full hover:bg-hover-blue focus-visible:bg-hover-blue active:bg-hover-blue `}
+      className="p-[10px] size-[50px] md:size-[54px] flex justify-center items-center bg-blue-600 shadow-lg fixed  z-[49] sm-max:right-5 right-[5%] border-none rounded-full hover:bg-hover-blue focus-visible:bg-hover-blue active:bg-hover-blue"
       style={{
         bottom: isVisible ? '54px' : '-54px',
-        transition: 'bottom 0.350s',
+        transition: 'all 0.350s',
       }}
       type="button"
       onClick={handleClickBtn}
