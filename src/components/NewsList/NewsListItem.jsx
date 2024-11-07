@@ -9,7 +9,7 @@ export const NewsListItem = ({ item, className = '' }) => {
   return (
     <>
       <li
-        className={`${className} flex flex-col group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-[#2355cc] hover:bg-[#2355cc] focus-visible:bg-[#2355cc] transition duration-300`}
+        className={`${className} flex flex-col group p-[18px] bg-my-lightblue shadow-md rounded-[18px] w-[100%] md:w-[342px] lg:w-[397px] lg:p-[24px] cursor-pointer active:bg-my-blue hover:bg-my-blue focus-visible:bg-my-blue transition duration-300`}
         onClick={toggleModal}
       >
         <div className="overflow-hidden rounded-[18px] mb-[14px] lg:mb-[18px] group-active:text-[#fbfbfb] group-hover:text-[#fbfbfb] group-focus-visible:text-[#fbfbfb] transition duration-300">
