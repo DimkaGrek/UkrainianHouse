@@ -10,10 +10,15 @@ export const NewsDetails = ({
   btnLink,
   btnText,
 }) => {
+  const isReadMoreAvailable = btnText && btnLink;
   return (
     <div className="max-h-[70vh] pr-[10px] md:pr-[15px] lg:pr-0 flex flex-col gap-[24px] lg:gap-5 lg:flex-row scrollbar">
       <div className="md:order-1 lg:min-h-full lg:flex lg:flex-col ">
-        <div className="max-w-[736px] lg:max-h-[520px] lg:pr-1 mb-[24px] scrollbar-desktop">
+        <div
+          className={`max-w-[736px] ${
+            isReadMoreAvailable ? 'lg:max-h-[520px]' : 'lg:max-h-[574px]'
+          } lg:pr-1 mb-[24px] scrollbar-desktop`}
+        >
           <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%] break-words">
             {title}
           </h3>
@@ -21,7 +26,11 @@ export const NewsDetails = ({
             {content}
           </p>
         </div>
-        <p className="font-istok text-[12px] md:text-[14px] lg:text-[20px] text-[#a6a6a6] text-left leading-[150%] md:leading-[129%] lg:leading-[150%] lg:mb-[24px]">
+        <p
+          className={`font-istok text-[12px] md:text-[14px] lg:text-[20px] text-[#a6a6a6] text-left leading-[150%] md:leading-[129%] lg:leading-[150%] ${
+            isReadMoreAvailable ? 'lg:mb-[24px]' : 'lg:mb-0'
+          }`}
+        >
           {getFormattedDate(publishDate)}
         </p>
         <ReadMoreButton
