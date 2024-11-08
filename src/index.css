@@ -122,7 +122,6 @@ input[type='number']::-webkit-outer-spin-button {
   --thumb-color: #a6cae5;
   --track-color: #daefff;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -143,6 +142,37 @@ input[type='number']::-webkit-outer-spin-button {
 @supports not selector(::-webkit-scrollbar) {
   .scrollbar {
     scrollbar-color: var(--thumb-color) var(--track-color);
+  }
+}
+/* Desktop */
+
+@media (min-width: 1440px) {
+  .scrollbar-desktop {
+    --thumb-color: #a6cae5;
+    --track-color: #daefff;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .scrollbar-desktop::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-desktop::-webkit-scrollbar-track {
+    background: var(--track-color);
+    border-radius: 12px;
+    margin-block: 8px;
+  }
+
+  .scrollbar-desktop::-webkit-scrollbar-thumb {
+    background: var(--thumb-color);
+    border-radius: 12px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .scrollbar-desktop {
+      scrollbar-color: var(--thumb-color) var(--track-color);
+    }
   }
 }
 
