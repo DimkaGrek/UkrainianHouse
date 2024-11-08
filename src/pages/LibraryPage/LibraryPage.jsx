@@ -113,7 +113,7 @@ const LibraryPage = () => {
 
   return (
     <section
-      className="pb-[74px] md:pb-[50px] lg:pb-[110px] 
+      className="pb-[74px] md:pb-[50px] lg:pb-0 
     "
     >
       <div
