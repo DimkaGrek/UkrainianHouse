@@ -2,14 +2,20 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { Advertisement, Loader, NewsList, SearchBar } from '../../components';
+import {
+  Advertisement,
+  InfoMessage,
+  Loader,
+  NewsList,
+  SearchBar,
+} from '../../components';
 
 import {
   clearNews,
   fetchAllNews,
   fetchAnnounceNews,
   setPageNews,
-} from '../../my-redux';
+} from '../../redux';
 import { useNews } from '../../hooks';
 
 const NewsPage = () => {
@@ -101,10 +107,8 @@ const NewsPage = () => {
           </div>
         </div>
         <Advertisement />
-        {!news.length && keyword ? (
-          <h2 className="text-[#1a1a1a] text-3xl font-bold text-center mb-4">
-            No results for &quot;{keyword}&quot;.
-          </h2>
+        {!news.length && keyword && !isLoading ? (
+          <InfoMessage keyword={keyword} />
         ) : (
           <NewsList />
         )}

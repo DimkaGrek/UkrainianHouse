@@ -6,11 +6,7 @@ export const fetchAllMessages = createAsyncThunk(
   'messages/getAll',
   async (config, thunkAPI) => {
     try {
-      const { params } = config;
-      const { data } = await api.get('/admin/messages', {
-        params,
-      });
-
+      const { data } = await api.get('/admin/messages', config);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -34,7 +30,7 @@ export const changeMessageStatus = createAsyncThunk(
   'messages/changeMessageStatus',
   async (id, thunkAPI) => {
     try {
-      const { data } = await api.put(`/admin/messages/${id}/read`);
+      await api.put(`/admin/messages/${id}/read`);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,6 +44,18 @@ export const deleteMessage = createAsyncThunk(
     try {
       await api.delete(`/admin/messages/${id}`);
       return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchUnreadMessages = createAsyncThunk(
+  'messages/getTotalUnreadMessages',
+  async (config, thunkAPI) => {
+    try {
+      const { data } = await api.get('/admin/messages/unread');
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

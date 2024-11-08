@@ -84,6 +84,9 @@
   font-stretch: normal;
   font-display: swap;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
@@ -119,7 +122,6 @@ input[type='number']::-webkit-outer-spin-button {
   --thumb-color: #a6cae5;
   --track-color: #daefff;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -140,6 +142,37 @@ input[type='number']::-webkit-outer-spin-button {
 @supports not selector(::-webkit-scrollbar) {
   .scrollbar {
     scrollbar-color: var(--thumb-color) var(--track-color);
+  }
+}
+/* Desktop */
+
+@media (min-width: 1440px) {
+  .scrollbar-desktop {
+    --thumb-color: #a6cae5;
+    --track-color: #daefff;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .scrollbar-desktop::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-desktop::-webkit-scrollbar-track {
+    background: var(--track-color);
+    border-radius: 12px;
+    margin-block: 8px;
+  }
+
+  .scrollbar-desktop::-webkit-scrollbar-thumb {
+    background: var(--thumb-color);
+    border-radius: 12px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .scrollbar-desktop {
+      scrollbar-color: var(--thumb-color) var(--track-color);
+    }
   }
 }
 
@@ -418,4 +451,20 @@ input[type='number']::-webkit-outer-spin-button {
       background-image: url('./assets/images/not-found/decorationLines@1x_desktop.webp');
     }
   }
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-text-fill-color: #1e1e1e !important;
+}
+
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-text-fill-color: #1e1e1e !important;
 }

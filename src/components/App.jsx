@@ -1,16 +1,11 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Loader } from './Loader/Loader';
-import { PrivateRoute, PublicRoute } from '../routes';
+import { Loader, Layout } from '../components';
 
-import {
-  selectIsLoggedIn,
-  selectIsRefreshing,
-} from '../my-redux/Auth/authSlice';
-import { refreshThunk } from '../my-redux/Auth/operations';
+import { PrivateRoute, PublicRoute } from '../routes';
+import { refreshThunk, selectIsLoggedIn, selectIsRefreshing } from '../redux';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../pages/NewsPage/NewsPage'));
@@ -29,6 +24,7 @@ const ResetPasswordPage = lazy(() =>
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -38,6 +34,12 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [pathname]);
 
   return isRefreshing ? (
     <Loader />

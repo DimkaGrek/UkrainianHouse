@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { logoutThunk } from '../../my-redux/Auth/operations';
+import { logoutThunk } from '../../redux';
 
 export const LogoutModal = ({ toggleModal }) => {
   const dispatch = useDispatch();
