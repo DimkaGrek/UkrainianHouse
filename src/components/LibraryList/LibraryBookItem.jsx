@@ -8,7 +8,6 @@ export const LibraryBookItem = ({
   const [isOpenModal, toggleModal] = useModal();
 
   console.log(coverImageUrl);
-  // const imgURL = 'http://dev.ukrhouse.pp.ua:8080/api';
   return (
     // outline outline-[1px] outline-red-500
     <>
