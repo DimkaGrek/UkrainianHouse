@@ -12,12 +12,12 @@ export const NewsDetails = ({
 }) => {
   const isReadMoreAvailable = btnText && btnLink;
   return (
-    <div className="max-h-[70vh] pr-[10px] md:pr-[15px] lg:pr-0 flex flex-col gap-[24px] lg:gap-5 lg:flex-row scrollbar">
+    <div className=" max-h-[70vh] pb-2 md:pb-0 pr-[10px] md:pr-[15px] lg:pr-0 flex flex-col gap-[24px] lg:gap-5 lg:flex-row scrollbar">
       <div className="md:order-1 lg:min-h-full lg:flex lg:flex-col ">
         <div
           className={`max-w-[736px] ${
             isReadMoreAvailable ? 'lg:max-h-[520px]' : 'lg:max-h-[574px]'
-          } lg:pr-1 mb-[24px] scrollbar-desktop`}
+          } lg:pr-2 mb-[24px] scrollbar-desktop`}
         >
           <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%] break-words">
             {title}
@@ -41,7 +41,7 @@ export const NewsDetails = ({
       </div>
 
       {photoUrls?.length ? (
-        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:max-h-[628px] lg:pr-1 scrollbar-desktop">
+        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:max-h-[628px] lg:pr-2 scrollbar-desktop">
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto">
               <img
