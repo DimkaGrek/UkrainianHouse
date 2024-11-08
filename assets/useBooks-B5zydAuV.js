@@ -1,0 +1,1 @@
+import{o,J as l,K as n,N as k,O as B,Q as g,R as i}from"./index-BR7Ba_xm.js";const p=()=>{const s=o(l),e=o(n),t=o(k),a=o(B),c=o(g),r=o(i);return{books:s,page:e,totalPages:t,totalBooks:a,isLoading:c,error:r}};export{p as u};
