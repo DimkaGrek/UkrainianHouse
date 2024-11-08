@@ -3,7 +3,15 @@ import { Modal } from '../../components';
 import { DetailsBook } from './DetailsBook';
 
 export const LibraryBookItem = ({
-  item: { coverImageUrl, author, title, publicationYear, pageCount, genre },
+  item: {
+    coverImageUrl,
+    author,
+    title,
+    publicationYear,
+    pageCount,
+    genre,
+    description,
+  },
 }) => {
   const [isOpenModal, toggleModal] = useModal();
 
@@ -69,6 +77,7 @@ export const LibraryBookItem = ({
               publicationYear,
               pageCount,
               genre,
+              description,
             }}
           />
         </Modal>
