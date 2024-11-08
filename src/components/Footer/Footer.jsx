@@ -26,7 +26,7 @@ export const Footer = () => {
                 />
               </Link>
 
-              <ul className="flex flex-col gap-[20px] justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] lg:gap-y-[40px] lg:w-[543px] lg:gap-x-[24px]">
+              <ul className="flex flex-col gap-[20px] whitespace-nowrap justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] lg:gap-y-[40px] lg:w-[543px] lg:gap-x-[24px]">
                 <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
                   <NavLink to="/">Home</NavLink>
                 </li>
@@ -37,7 +37,9 @@ export const Footer = () => {
                   <NavLink to="/library">Library</NavLink>
                 </li>
                 <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
-                  <NavLink to="/contacts">Contacts</NavLink>
+                  <NavLink aria-disabled to="/contacts">
+                    Contacts
+                  </NavLink>
                 </li>
                 <li
                   onClick={toggleDevelopersModal}
@@ -45,7 +47,7 @@ export const Footer = () => {
                 >
                   Site developers
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] cursor-pointer hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+                <li className="md:w-[110px] lg:w-[165px] cursor-not-allowed hover:text-gray-600 transition duration-300">
                   Activities
                 </li>
               </ul>
@@ -76,7 +78,7 @@ export const Footer = () => {
               <FlagsList className="flex gap-4" />
             </div>
 
-            <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:w-[697px]">
+            <ul className="flex flex-col whitespace-nowrap justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:w-[697px]">
               <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
                 <a
                   className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
