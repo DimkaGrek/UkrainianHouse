@@ -9,6 +9,7 @@ export default {
       // від 768, від 1440 ...
       sm: '320px',
       md: '768px',
+      tablet: { min: '768px', max: '1439.98px' },
       lg: '1440px',
       extralg: '1920px',
     },
