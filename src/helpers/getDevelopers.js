@@ -4,14 +4,14 @@ export const getDevelopers = () => {
   const { developersImages } = images;
   return [
     {
-      name: 'Vasyl Popaz',
-      url: 'https://www.linkedin.com/in/vasyl-popaz/',
-      position: 'Front-end developer',
+      name: 'Dmytro Zinkovskyi',
+      url: 'https://www.linkedin.com/in/dmytro-zinkovsky/',
+      position: 'Team leader, \n Front-end & Back-end developer',
       photos: [
-        developersImages.popaz_mob_1x,
-        developersImages.popaz_mob_2x,
-        developersImages.popaz_desktop_1x,
-        developersImages.popaz_desktop_2x,
+        developersImages.zinkovskyi_mob_1x,
+        developersImages.zinkovskyi_mob_2x,
+        developersImages.zinkovskyi_desktop_1x,
+        developersImages.zinkovskyi_desktop_2x,
       ],
     },
     {
@@ -71,14 +71,14 @@ export const getDevelopers = () => {
       ],
     },
     {
-      name: 'Dmytro Zinkovskyi',
-      url: 'https://www.linkedin.com/in/dmytro-zinkovsky/',
-      position: 'Team leader, \nFront-end & Back-end developer  ',
+      name: 'Vasyl Popaz',
+      url: 'https://www.linkedin.com/in/vasyl-popaz/',
+      position: 'Front-end developer',
       photos: [
-        developersImages.zinkovskyi_mob_1x,
-        developersImages.zinkovskyi_mob_2x,
-        developersImages.zinkovskyi_desktop_1x,
-        developersImages.zinkovskyi_desktop_2x,
+        developersImages.popaz_mob_1x,
+        developersImages.popaz_mob_2x,
+        developersImages.popaz_desktop_1x,
+        developersImages.popaz_desktop_2x,
       ],
     },
     {
