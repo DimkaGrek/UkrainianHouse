@@ -105,7 +105,7 @@ export const NeedHelpForm = () => {
           <input
             type="tel"
             id="phone"
-            placeholder="+xx(xx) xxx xx xx"
+            placeholder="Type your phone..."
             {...register('phone')}
             className={inputClass('phone')}
           />
