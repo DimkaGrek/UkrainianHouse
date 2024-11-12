@@ -26,14 +26,15 @@ export const getDevelopers = () => {
       ],
     },
     {
-      name: 'Sergey Kabanets',
-      url: 'https://www.linkedin.com/in/serhii-kabanets/',
-      position: 'Front-end developer',
+      name: 'Yuri Kuksa',
+      url: 'https://www.linkedin.com/in/yurii-kuksa/',
+      position:
+        'Project Founder & Product Manager. Also Scrum Master & Front-end developer',
       photos: [
-        developersImages.kabanets_mob_1x,
-        developersImages.kabanets_mob_2x,
-        developersImages.kabanets_desktop_1x,
-        developersImages.kabanets_desktop_2x,
+        developersImages.kuksa_mob_1x,
+        developersImages.kuksa_mob_2x,
+        developersImages.kuksa_desktop_1x,
+        developersImages.kuksa_desktop_2x,
       ],
     },
     {
@@ -48,15 +49,14 @@ export const getDevelopers = () => {
       ],
     },
     {
-      name: 'Yuri Kuksa',
-      url: 'https://www.linkedin.com/in/yurii-kuksa/',
-      position:
-        'Project Founder, Product Manager, Scrum Master & Front-end developer',
+      name: 'Sergey Kabanets',
+      url: 'https://www.linkedin.com/in/serhii-kabanets/',
+      position: 'Front-end developer',
       photos: [
-        developersImages.kuksa_mob_1x,
-        developersImages.kuksa_mob_2x,
-        developersImages.kuksa_desktop_1x,
-        developersImages.kuksa_desktop_2x,
+        developersImages.kabanets_mob_1x,
+        developersImages.kabanets_mob_2x,
+        developersImages.kabanets_desktop_1x,
+        developersImages.kabanets_desktop_2x,
       ],
     },
     {
