@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { emailPattern } from '../constants';
+import { emailPattern, phonePattern } from '../constants';
 
 export const needHelpFormSchema = yup.object().shape({
   name: yup
@@ -11,8 +11,12 @@ export const needHelpFormSchema = yup.object().shape({
   phone: yup
     .string()
     .required('Phone number is required')
-    .min(13, 'Enter a valid phone number')
-    .max(13, 'Enter a valid phone number'),
+    .matches(
+      phonePattern,
+      'Phone number must begin with "+" and contain only digits'
+    )
+    .min(8, 'Enter a valid phone number')
+    .max(15, 'Enter a valid phone number'),
   email: yup
     .string()
     .required('Email is required')

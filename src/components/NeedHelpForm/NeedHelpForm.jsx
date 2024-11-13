@@ -39,7 +39,7 @@ export const NeedHelpForm = () => {
   const inputClass = fieldName => {
     const baseClass =
       fieldName === 'message'
-        ? 'overflow-hidden resize-none w-full h-[123px] py-[14px] px-[18px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] leading-[1.4] placeholder-[#666] md:placeholder:w-[550px] lg:placeholder:w-[390px] outline-none hover:border-[#ffd437] transition duration-300 sm-max:h-[145px] md:h-[110px] md:text-[20px] md:leading-[1.2] lg:h-[129px]'
+        ? 'scrollbar resize-none w-full h-[123px] py-[14px] px-[18px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] leading-[1.4] placeholder-[#666] md:placeholder:w-[550px] lg:placeholder:w-[390px] outline-none hover:border-[#ffd437] transition duration-300 sm-max:h-[145px] md:h-[110px] md:text-[20px] md:leading-[1.2] lg:h-[129px]'
         : 'py-[14px] px-[18px] w-full h-[50px] md:h-[52px] border border-[#b3b3b3] rounded-[10px] bg-[#fff] text-[#1e1e1e] placeholder-[#666] outline-none hover:border-[#ffd437] transition duration-300 md:text-[20px]';
     const errorClass = 'border-red-700';
     const successClass =
@@ -105,7 +105,7 @@ export const NeedHelpForm = () => {
           <input
             type="tel"
             id="phone"
-            placeholder="+xx(xx) xxx xx xx"
+            placeholder="Type your phone..."
             {...register('phone')}
             className={inputClass('phone')}
           />

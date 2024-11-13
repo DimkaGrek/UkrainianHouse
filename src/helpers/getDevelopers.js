@@ -4,14 +4,14 @@ export const getDevelopers = () => {
   const { developersImages } = images;
   return [
     {
-      name: 'Vasyl Popaz',
-      url: 'https://www.linkedin.com/in/vasyl-popaz/',
-      position: 'Front-end developer',
+      name: 'Dmytro Zinkovskyi',
+      url: 'https://www.linkedin.com/in/dmytro-zinkovsky/',
+      position: 'Team leader, \n Front-end & Back-end developer',
       photos: [
-        developersImages.popaz_mob_1x,
-        developersImages.popaz_mob_2x,
-        developersImages.popaz_desktop_1x,
-        developersImages.popaz_desktop_2x,
+        developersImages.zinkovskyi_mob_1x,
+        developersImages.zinkovskyi_mob_2x,
+        developersImages.zinkovskyi_desktop_1x,
+        developersImages.zinkovskyi_desktop_2x,
       ],
     },
     {
@@ -26,14 +26,15 @@ export const getDevelopers = () => {
       ],
     },
     {
-      name: 'Sergey Kabanets',
-      url: 'https://www.linkedin.com/in/serhii-kabanets/',
-      position: 'Front-end developer',
+      name: 'Yuri Kuksa',
+      url: 'https://www.linkedin.com/in/yurii-kuksa/',
+      position:
+        'Project Founder & Product Manager. Also Scrum Master & Front-end developer',
       photos: [
-        developersImages.kabanets_mob_1x,
-        developersImages.kabanets_mob_2x,
-        developersImages.kabanets_desktop_1x,
-        developersImages.kabanets_desktop_2x,
+        developersImages.kuksa_mob_1x,
+        developersImages.kuksa_mob_2x,
+        developersImages.kuksa_desktop_1x,
+        developersImages.kuksa_desktop_2x,
       ],
     },
     {
@@ -48,14 +49,14 @@ export const getDevelopers = () => {
       ],
     },
     {
-      name: 'Yuri Kuksa',
-      url: 'https://www.linkedin.com/in/yurii-kuksa/',
-      position: 'PM & Front-end developer',
+      name: 'Sergey Kabanets',
+      url: 'https://www.linkedin.com/in/serhii-kabanets/',
+      position: 'Front-end developer',
       photos: [
-        developersImages.kuksa_mob_1x,
-        developersImages.kuksa_mob_2x,
-        developersImages.kuksa_desktop_1x,
-        developersImages.kuksa_desktop_2x,
+        developersImages.kabanets_mob_1x,
+        developersImages.kabanets_mob_2x,
+        developersImages.kabanets_desktop_1x,
+        developersImages.kabanets_desktop_2x,
       ],
     },
     {
@@ -70,14 +71,14 @@ export const getDevelopers = () => {
       ],
     },
     {
-      name: 'Dmytro Zinkovskyi',
-      url: 'https://www.linkedin.com/in/dmytro-zinkovsky/',
-      position: 'Front-end & Back-end developer, Team leader',
+      name: 'Vasyl Popaz',
+      url: 'https://www.linkedin.com/in/vasyl-popaz/',
+      position: 'Front-end developer',
       photos: [
-        developersImages.zinkovskyi_mob_1x,
-        developersImages.zinkovskyi_mob_2x,
-        developersImages.zinkovskyi_desktop_1x,
-        developersImages.zinkovskyi_desktop_2x,
+        developersImages.popaz_mob_1x,
+        developersImages.popaz_mob_2x,
+        developersImages.popaz_desktop_1x,
+        developersImages.popaz_desktop_2x,
       ],
     },
     {
