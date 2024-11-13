@@ -13,10 +13,10 @@ export const DetailsBook = ({
     <div className="items-start md:pr-[205px] lg:pr-[415px] relative">
       <div className="flex gap-[10px] ">
         <img
-          className=" mb-[16px] w-[163px] h-[260px]  rounded-[18px]   
+          className=" mb-[16px] w-[163px] h-[260px]   sm-max:w-[100px] sm-max:h-[159px]   rounded-[18px]   
             md:absolute md:top-[90px] md:right-0 
             md:w-[200px] md:h-[324px]
-            lg:w-[390px]   lg:  lg:top-0   lg:right-4
+            lg:w-[390px]    lg:top-0   lg:right-4
        lg:h-auto
         "
           src={coverImageUrl}
@@ -56,7 +56,7 @@ export const DetailsBook = ({
             <span className=" ">{publicationYear}</span>
           </p>
           <p className="font-istok font-normal  text-[12px] leading-[1.5] text-[#f9a407] pb-[4px] md:text-[16px] lg:text-[18px] lg:mb-[6px]  ">
-            *книгу можна знайти в бібліотеці “Оселі”.
+            *книгу можна знайти в бібліотеці «Оселя».
           </p>
         </div>
       </div>

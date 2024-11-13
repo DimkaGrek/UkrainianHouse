@@ -57,7 +57,7 @@ relative
         autoComplete="off"
         {...register('query')}
         className="
-        h-[50px]  min-w-[231px]
+        h-[50px]     min-w-[231px] sm-max:min-w-[220px]
         md:w-full md:h-[52px]
         md:leading-6 md:text-[#1E1E1E] 
 
