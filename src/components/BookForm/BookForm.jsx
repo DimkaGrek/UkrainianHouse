@@ -195,7 +195,7 @@ export const BookForm = ({ item, toggle }) => {
               <label className="label">
                 Book Description
                 <textarea
-                  className="field resize-none overflow-auto h-[202px] w-[400px]"
+                  className="field resize-none h-[202px] w-[400px] scrollbar"
                   type="text"
                   placeholder="Enter the book description"
                   {...register('description')}
@@ -235,7 +235,7 @@ export const BookForm = ({ item, toggle }) => {
               <label className="label">
                 About the author
                 <textarea
-                  className="field resize-none overflow-auto h-[202px] w-[400px]"
+                  className="field resize-none h-[202px] w-[400px] scrollbar"
                   type="text"
                   placeholder="Enter information about author"
                   {...register('aboutAuthor')}
