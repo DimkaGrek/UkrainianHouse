@@ -29,9 +29,7 @@ export const Activities = () => {
     <ul className="flex flex-col gap-[16px] mb-[44px] leading-[1.2] text-[20px] font-[500] font-proza-medium md:grid md:gap-[24px] md:grid-cols-1 md:grid-rows-4  lg:mb-0 lg:gap-[34px] lg:gap-y-[24px] lg:gap-x-[84px]   lg:leading-[1.6] lg:absolute lg:top-[-180px] lg:left-[586px]">
       <li className="font-[600] flex items-center gap-[8px] md:col-start-1 lg:gap-[24px]">
         <Icon size={getIconSize()} />
-        <Link className="border-b-2 border-[#2355cc] text-[#2355cc]">
-          Ukrainian Echo
-        </Link>
+        Ukrainian Echo
       </li>
       <li className="flex items-center gap-[8px] md:col-start-1 lg:gap-[24px]">
         {' '}
