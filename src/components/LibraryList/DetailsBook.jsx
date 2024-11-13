@@ -56,7 +56,7 @@ export const DetailsBook = ({
             <span className=" ">{publicationYear}</span>
           </p>
           <p className="font-istok font-normal  text-[12px] leading-[1.5] text-[#f9a407] pb-[4px] md:text-[16px] lg:text-[18px] lg:mb-[6px]  ">
-            *книгу можна знайти в бібліотеці “Оселі”.
+            *книгу можна знайти в бібліотеці «Оселя».
           </p>
         </div>
       </div>
