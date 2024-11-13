@@ -51,7 +51,7 @@ export const getDevelopers = () => {
       name: 'Yuri Kuksa',
       url: 'https://www.linkedin.com/in/yurii-kuksa/',
       position:
-        'Project Founder, Product Manager, Scrum Master & Front-end developer',
+        'Project Founder & Product Manager. Also Scrum Master & Front-end developer',
       photos: [
         developersImages.kuksa_mob_1x,
         developersImages.kuksa_mob_2x,
@@ -73,7 +73,7 @@ export const getDevelopers = () => {
     {
       name: 'Dmytro Zinkovskyi',
       url: 'https://www.linkedin.com/in/dmytro-zinkovsky/',
-      position: 'Team leader, \nFront-end & Back-end developer  ',
+      position: 'Team leader,\nFront-end & Back-end developer  ',
       photos: [
         developersImages.zinkovskyi_mob_1x,
         developersImages.zinkovskyi_mob_2x,

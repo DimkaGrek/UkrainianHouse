@@ -32,7 +32,7 @@ export const Developers = () => {
                   />
                 </a>
               </div>
-              <p className="font-normal text-[12px] text-[#666] leading-[1.5] mb-[8px] md:text-[20px] md:italic md:leading-[1.5] md:mb-0 lg:text-[18px]">
+              <p className="font-normal text-[12px] text-[#666] leading-[1.5] mb-[8px] md:text-[20px] md:italic md:leading-[1.5] md:mb-0 lg:text-[18px] whitespace-pre-line">
                 {position}
               </p>
             </div>
