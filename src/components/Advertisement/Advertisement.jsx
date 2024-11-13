@@ -23,7 +23,7 @@ export const Advertisement = () => {
         </div>
 
         <img
-          className="shrink-0 md:max-w-none md:w-[300px] lg:w-[450px] lg:max-w-[500px] max-h-[450px] rounded-[10px] md:rounded-[18px]"
+          className="object-cover shrink-0 md:max-w-none md:w-[300px] lg:w-[450px] lg:max-w-[500px] max-h-[450px] rounded-[10px] md:rounded-[18px]"
           src={announceNews[0].photoUrls[0]?.photoUrls}
           alt={`${announceNews[0].photoUrls[0]?.caption || 'Announce photo'}`}
           width="308"

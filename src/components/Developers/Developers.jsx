@@ -27,12 +27,12 @@ export const Developers = () => {
                 >
                   <Icon
                     name="linkedin"
-                    className="fill-[#1e1e1e] md:size-[44px] lg:size-[38px] hover:fill-[#2355cc] focus:fill-[#2355cc transition duration-300"
+                    className="fill-[#1e1e1e] md:size-[44px] lg:size-[38px] hover:fill-[#2355cc] focus:fill-[#2355cc] transition duration-300"
                     size="28"
                   />
                 </a>
               </div>
-              <p className="font-normal text-[12px] text-[#666] leading-[1.5] mb-[8px] md:text-[20px] md:italic md:leading-[1.5] md:mb-0 lg:text-[18px] whitespace-pre-line">
+              <p className="font-normal whitespace-pre-line text-[12px] text-[#666] leading-[1.5] mb-[8px] md:text-[20px] md:italic md:leading-[1.5] md:mb-0 lg:text-[18px]">
                 {position}
               </p>
             </div>

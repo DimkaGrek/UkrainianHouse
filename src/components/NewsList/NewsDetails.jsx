@@ -12,8 +12,8 @@ export const NewsDetails = ({
 }) => {
   const isReadMoreAvailable = btnText && btnLink;
   return (
-    <div className=" max-h-[70vh] pb-2 md:pb-0 pr-[10px] md:pr-[15px] lg:pr-0 flex flex-col gap-[24px] lg:gap-5 lg:flex-row scrollbar">
-      <div className="md:order-1 lg:min-h-full lg:flex lg:flex-col ">
+    <div className="max-h-[70vh] pb-2 md:pb-0 pr-[10px] md:pr-[15px] lg:pr-0 flex flex-col gap-[24px] lg:gap-5 lg:flex-row scrollbar">
+      <div className="md:order-1 lg:min-h-full lg:flex lg:flex-col">
         <div
           className={`max-w-[736px] ${
             isReadMoreAvailable ? 'lg:max-h-[520px]' : 'lg:max-h-[574px]'
@@ -48,7 +48,7 @@ export const NewsDetails = ({
                 src={item.photoUrls}
                 width={316}
                 height={108}
-                className="w-auto h-auto max-w-full md:max-w-[189px] lg:max-w-[400px] rounded-[18px]"
+                className="w-auto h-auto max-w-full tablet:w-[190px] tablet:h-[150px] lg:max-w-[400px] rounded-[18px] object-cover"
                 alt={item.caption || 'News photo'}
               />
             </li>
