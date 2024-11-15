@@ -65,7 +65,7 @@ export const StatusField = ({
         <div
           className={`w-full absolute ${
             showLabel ? 'top-[90px]' : 'top-[62px]'
-          } border border-solid border-[#1C1C1C] rounded-[10px] bg-white p-[2px] max-h-[218px] overflow-auto shadow-sm z-50 scrollbar`}
+          } border border-solid border-[#1C1C1C] rounded-[10px] bg-white p-[2px] max-h-[240px] overflow-auto shadow-sm z-50 scrollbar`}
         >
           <ul className="font-istok font-normal text-[20px] leading-[24px] w-full flex flex-col gap-[2px]">
             {statuses &&
