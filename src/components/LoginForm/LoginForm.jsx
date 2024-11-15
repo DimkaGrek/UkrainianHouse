@@ -39,7 +39,7 @@ export const LoginForm = () => {
       <InputField
         label="Email"
         name="username"
-        type="email"
+        type="text"
         placeholder="Enter your email adress"
         register={register}
         errors={errors}
