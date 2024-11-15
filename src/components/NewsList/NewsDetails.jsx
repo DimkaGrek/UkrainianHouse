@@ -41,14 +41,14 @@ export const NewsDetails = ({
       </div>
 
       {photoUrls?.length ? (
-        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-[12px] md:gap-[24px] md:order-2 lg:max-h-[628px] lg:pr-2 scrollbar-desktop">
+        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-3 md:order-2 lg:gap-6 lg:max-h-[628px] lg:pr-2 scrollbar-desktop">
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto">
               <img
                 src={item.photoUrls}
                 width={316}
                 height={108}
-                className="w-auto h-auto max-w-full tablet:w-[190px] tablet:h-[150px] lg:max-w-[400px] rounded-[18px] object-cover"
+                className="w-auto tablet:w-[198px] tablet:h-[150px] lg:w-[400px] rounded-[18px] object-cover"
                 alt={item.caption || 'News photo'}
               />
             </li>
