@@ -1,6 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
-import { useModal } from "../../hooks";
+
 import { Icon, Modal, Developers, Address, FlagsList } from "../../components";
+
+import { useModal } from "../../hooks";
 
 import { images } from "../../assets";
 
@@ -8,6 +10,7 @@ export const Footer = () => {
   const [isOpenDevelopersModal, toggleDevelopersModal] = useModal();
 
   const { footerImages } = images;
+
   return (
     <>
       <footer className="container pb-[32px] pt-[25vw] md:pt-[15vw] lg:pb-[84px] lg:pt-[9vw]">

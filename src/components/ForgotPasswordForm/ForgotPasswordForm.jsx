@@ -1,7 +1,8 @@
-import { useForm } from "react-hook-form";
-import { InputField } from "../InputField/InputField";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { InputField } from "../../components";
 
 import { forgotPasswordSchema } from "../../schemas";
 
@@ -17,8 +18,7 @@ export const ForgotPasswordForm = () => {
     resolver: yupResolver(forgotPasswordSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     navigate("/auth/reset");
   };
 

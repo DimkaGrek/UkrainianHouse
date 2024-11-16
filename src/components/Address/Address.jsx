@@ -6,6 +6,7 @@ export const Address = ({
   itemClass = "flex items-center gap-[6px]",
   iconClass,
 }) => {
+  
   return (
     <address className={className}>
       <ul className={listClass}>

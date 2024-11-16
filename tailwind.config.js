@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
 import gridAreas from "@savvywombat/tailwindcss-grid-areas";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      "sm-max": { max: "374.99px" },
-      // від 768, від 1440 ...
+      "sm-max": { max: "374.98px" },
       sm: "320px",
       md: "768px",
       tablet: { min: "768px", max: "1439.98px" },

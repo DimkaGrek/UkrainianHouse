@@ -2,6 +2,7 @@ import { images } from "../../assets";
 
 export const FlagsList = ({ className }) => {
   const { headerImages } = images;
+  
   return (
     <ul className={className}>
       <li>

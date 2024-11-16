@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../../components";
 
 export const InputField = ({
   wrapperClass = "",

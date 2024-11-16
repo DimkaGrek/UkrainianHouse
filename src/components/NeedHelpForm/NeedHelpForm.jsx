@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Loader, Modal, NeedHelpModal } from "../../components";
 
+import { useModal } from "../../hooks";
 import { needHelpFormSchema } from "../../schemas";
 import { createMessage, selectIsLoadingMessages } from "../../redux";
-import { useModal } from "../../hooks";
 
 export const NeedHelpForm = () => {
   const {

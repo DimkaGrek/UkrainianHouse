@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { Activities } from "components";
 
 import { images } from "../../assets";

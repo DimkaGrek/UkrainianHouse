@@ -6,16 +6,14 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 
-import { Icon } from "../Icon/Icon";
-import { InputField } from "../InputField/InputField";
-import { StatusField } from "../StatusField/StatusField";
+import { Icon, InputField, StatusField } from "../../components";
 
-import defaultImg1 from "../../assets/images/default-img@1x.webp";
-import defaultImg2 from "../../assets/images/default-img@2x.webp";
 import { newsStatuses } from "../../constants";
 import { newsFormSchema } from "../../schemas";
-import { createNewsPhoto, createOneNews, deleteNewsPhoto, updateOneNews } from "../../redux";
 import { checkObjectEquality, getFileResizer, getFormattedData } from "../../helpers";
+import { createNewsPhoto, createOneNews, deleteNewsPhoto, updateOneNews } from "../../redux";
+import defaultImg1 from "../../assets/images/default-img@1x.webp";
+import defaultImg2 from "../../assets/images/default-img@2x.webp";
 import "react-datepicker/dist/react-datepicker.css";
 
 export const NewsForm = ({ item, toggle }) => {

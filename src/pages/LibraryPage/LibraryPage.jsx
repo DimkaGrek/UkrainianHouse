@@ -1,16 +1,13 @@
-// import { Loader } from '../../components';
 import { useDispatch } from "react-redux";
-import { SearchBarLibary } from "../../components/SearchBar/SearchBarLibary";
-import { clearBooks, fetchAllBooks, setPageBooks } from "../../redux";
 import { useEffect, useState, useCallback, useRef } from "react";
 import { toast } from "react-toastify";
-import { useWindowSizeHook } from "../../helpers/useWindowSizeHook";
-import { getTextForLibrary } from "../../helpers";
 
-import { LibraryList } from "../../components/LibraryList/LibraryList";
-import { useBooks } from "../../hooks";
-import { Loader } from "../../components";
-import NotFoundBook from "../../components/LibraryList/NotFoundBook";
+import { LibraryList, NotFoundBook, Loader } from "../../components/";
+import { SearchBarLibary } from "../../components/SearchBar/SearchBarLibary";
+
+import { getTextForLibrary } from "../../helpers";
+import { useBooks,useWindowSizeHook } from "../../hooks";
+import { clearBooks, fetchAllBooks, setPageBooks } from "../../redux";
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
@@ -26,7 +23,6 @@ const LibraryPage = () => {
   }, [dispatch]);
 
   const observerTarget = useRef(null);
-  console.log(books);
   const fetchBooksData = useCallback(() => {
     const config = {
       params: {
@@ -42,7 +38,7 @@ const LibraryPage = () => {
 
         setIsMoreBooks(hasMoreBooks);
         if (!hasMoreBooks && books.length) {
-          console.log("You have reached the end of the news list.");
+          toast.info("You have reached the end of the news list.");
         }
       })
       .catch((e) => {
@@ -50,21 +46,6 @@ const LibraryPage = () => {
       });
   }, [dispatch, page, books.length, keyword]);
 
-  // useEffect(() => {
-  //   const config = {
-  //     params: {
-  //       page: 0,
-  //     },
-  //   };
-  //   dispatch(fetchAllBooks(config))
-  //     .unwrap()
-  //     .then(data => {
-  //       console.log('Fetched books data:', data);
-  //     })
-  //     .catch(e => {
-  //       toast.error(e.message);
-  //     });
-  // }, [dispatch]);
 
   useEffect(() => {
     if (isSearchTriggered && !isLoading) {

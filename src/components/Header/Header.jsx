@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import { Icon } from "../../components";
-import { BurgerMenu } from "./BurgerMenu";
+import { Icon,BurgerMenu } from "../../components";
 
 import { images } from "../../assets";
 

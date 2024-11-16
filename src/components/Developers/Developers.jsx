@@ -1,12 +1,14 @@
+import { Icon } from "../../components";
+
 import { getDevelopers } from "../../helpers";
-import { Icon } from "../Icon/Icon";
+
 export const Developers = () => {
   const developers = getDevelopers();
 
   return (
     <>
       <h4 className="mb-[16px] w-[280px] font-proza text-[20px] font-medium leading-[1.2] text-[#1e1e1e] sm-max:w-[212px] md:mb-[21px] md:w-[450px] md:text-[24px] md:font-semibold md:leading-[1.6] lg:mb-[32px] lg:w-full lg:text-[36px]">
-        Web-developers “Ukrainian House in Maastricht”
+        Web-developers {`\u201c`}Ukrainian House in Maastricht{`\u201d`}
       </h4>
       <div className="carousel carousel-vertical h-[315px] md:carousel-center sm-max:h-[260px] md:h-[380px] md:w-full md:flex-row md:space-x-[44px] lg:h-full lg:flex-wrap lg:gap-x-[44px] lg:gap-y-0 lg:space-x-0">
         {developers.map(({ name, url, position, photos }, index) => (

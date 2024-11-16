@@ -2,12 +2,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-
-import { InputField } from "../InputField/InputField";
-
-import { loginFormShema } from "../../schemas";
-import { loginThunk } from "../../redux";
 import { toast } from "react-toastify";
+
+import { InputField } from "../../components";
+
+import { loginThunk } from "../../redux";
+import { loginFormShema } from "../../schemas";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

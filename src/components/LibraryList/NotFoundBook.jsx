@@ -5,9 +5,7 @@ import searchPic2x from "../../assets/images/libraryBooksQuotes/social_media_ico
 import searchMob1x from "../../assets/images/libraryBooksQuotes/search1x.png";
 import searchMob2x from "../../assets/images/libraryBooksQuotes/search2x.png";
 
-// outline outline-[2px] outline-red-500
-//  outline outline-[1px] outline-green-500
-const NotFoundBook = () => {
+export const NotFoundBook = () => {
   return (
     <section className="md:pl-[55px] lg:pl-8 lg:pr-6">
       <div className="relative flex h-[353px] flex-col items-center justify-center pt-[68px] md:ml-auto md:mr-auto md:w-[347px] lg:flex lg:h-full lg:flex-row lg:items-center lg:justify-end lg:pt-0 lg:md:w-full">
@@ -37,7 +35,7 @@ const NotFoundBook = () => {
           />
         </picture>
 
-        <p className="font-sans absolute left-0 top-0 w-[342px] text-[26px] font-medium leading-[1.30769] leading-tight text-[#1e1e1e] lg:left-[41%] lg:top-[27%] lg:w-[446px] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:text-4xl lg:font-semibold">
+        <p className="font-sans absolute left-0 top-0 w-[342px] text-[26px] font-medium leading-tight text-[#1e1e1e] lg:left-[41%] lg:top-[27%] lg:w-[446px] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:text-4xl lg:font-semibold">
           Sorry, but nothing was found for this request...
         </p>
 
@@ -66,4 +64,3 @@ const NotFoundBook = () => {
   );
 };
 
-export default NotFoundBook;

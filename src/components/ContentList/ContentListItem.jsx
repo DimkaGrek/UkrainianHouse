@@ -1,12 +1,12 @@
 import { FiEdit2 } from "react-icons/fi";
 import { MdOutlineDeleteForever } from "react-icons/md";
+import { format } from "date-fns";
 
 import { BookForm, ConfirmDelete, MessageContent, Modal, NewsForm } from "../../components";
 
 import { useModal } from "../../hooks";
-import { bookStatusesColors, newsStatusesColors } from "../../constants";
 import { getFormattedDate } from "../../helpers";
-import { format } from "date-fns";
+import { bookStatusesColors, newsStatusesColors } from "../../constants";
 
 export const ContentListItem = ({ item }) => {
   const [isOpen, toggleModal] = useModal();

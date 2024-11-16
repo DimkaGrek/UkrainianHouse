@@ -4,16 +4,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-import { Icon } from "../Icon/Icon";
-import { InputField } from "../InputField/InputField";
-import { StatusField } from "../StatusField/StatusField";
+import { Icon,InputField,StatusField } from "../../components";
 
-import defaultImg1 from "../../assets/images/default-img@1x.webp";
-import defaultImg2 from "../../assets/images/default-img@2x.webp";
 import { bookStatuses } from "../../constants";
 import { bookFormSchema } from "../../schemas";
 import { createBook, updateBook, updateCoverBook } from "../../redux";
 import { checkObjectEquality, getFileResizer, getFormattedData } from "../../helpers";
+
+import defaultImg1 from "../../assets/images/default-img@1x.webp";
+import defaultImg2 from "../../assets/images/default-img@2x.webp";
 
 export const BookForm = ({ item, toggle }) => {
   const filePicker = useRef(null);
@@ -163,7 +162,7 @@ export const BookForm = ({ item, toggle }) => {
         reset();
         toggle();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error));
   };
 
   return (

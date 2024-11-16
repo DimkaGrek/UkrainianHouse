@@ -1,16 +1,11 @@
-import { useBooks } from "../../hooks/useBooks";
-import { LibraryBookItem } from "./LibraryBookItem";
-import { Quotes } from "./Quotes";
+import { Quotes,LibraryBookItem } from "../../components";
 
-import { useWindowSizeHook } from "../../helpers/useWindowSizeHook";
+import { useBooks,useWindowSizeHook } from "../../hooks";
 
 export const LibraryList = () => {
   const { books } = useBooks();
 
   const { innerWidth } = useWindowSizeHook();
-  console.log(innerWidth);
-
-  console.log(books);
 
   const rows = [];
   if (innerWidth >= 1440) {
@@ -30,7 +25,6 @@ export const LibraryList = () => {
     return "md:justify-end";
   };
 
-  // outline outline-[1px] outline-red-500
   return (
     <div className="mb-[150px]">
       {rows.map((row, index) => {
@@ -38,10 +32,10 @@ export const LibraryList = () => {
         return (
           <div
             key={index}
-            className="relative mb-[436px] h-auto md:mb-[75px] lg:mb-[220px]" //  max-h-[420px] outline outline-[0.5px] outline-yellow-500 outline outline-[0.3px] outline-blue-500
+            className="relative mb-[436px] h-auto md:mb-[75px] lg:mb-[220px]" 
           >
             <Quotes index={index} />
-            {console.log(row)}
+          
             <ul
               className={`flex justify-between gap-x-[5px] ${justifyClass} md:gap-x-[16px] lg:gap-x-[50px]`}
             >

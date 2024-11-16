@@ -1,11 +1,11 @@
 import { useLocation, useSearchParams } from "react-router-dom";
 import { MdOutlineLogout } from "react-icons/md";
+import { useDispatch } from "react-redux";
 
 import { Modal, LogoutModal, SearchBar, NewsForm, BookForm } from "../../components";
 
 import { useModal } from "../../hooks";
-import { useDispatch } from "react-redux";
-import { setPageBooks, setPageNews } from "../../redux";
+import { setPageBooks, setPageMessages, setPageNews } from "../../redux";
 
 export const AdminHeader = () => {
   const [, setSearchParams] = useSearchParams();
@@ -27,7 +27,7 @@ export const AdminHeader = () => {
     } else if (isBooksPage) {
       dispatch(setPageBooks(0));
     } else if (isInboxPage) {
-      // dispatch(setPageInbox(0));
+      dispatch(setPageMessages(0));
     }
 
     setSearchParams({ keyword });

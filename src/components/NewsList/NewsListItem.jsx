@@ -1,7 +1,7 @@
 import { Modal, NewsDetails } from "../../components";
 
-import { getFormattedDate } from "../../helpers";
 import { useModal } from "../../hooks";
+import { getFormattedDate } from "../../helpers";
 
 export const NewsListItem = ({ item, className = "" }) => {
   const [isOpenModal, toggleModal] = useModal();
