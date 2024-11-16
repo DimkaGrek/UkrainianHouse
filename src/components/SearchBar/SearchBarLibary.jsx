@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useWindowSizeHook } from "../../helpers/useWindowSizeHook";
+import { useWindowSizeHook } from "../../hooks";
 import { useEffect, useState } from "react";
 import { getTextForLibrary } from "../../helpers";
 import { MdClear } from "react-icons/md";

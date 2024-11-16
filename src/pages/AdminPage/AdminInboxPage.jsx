@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 
 import { ContentList, InfoMessage, Loader, Pagination, StatusField } from "../../components";
 
-import { clearMessages, fetchAllMessages, setPageMessages } from "../../redux";
 import { useMessages } from "../../hooks";
 import { PAGE_LIMIT, messagesStatuses } from "../../constants";
+import { clearMessages, fetchAllMessages, setPageMessages } from "../../redux";
 
 const AdminInboxPage = () => {
   const { messages, page, totalMessages, totalPages, isLoading } = useMessages();

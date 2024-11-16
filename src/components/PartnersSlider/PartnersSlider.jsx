@@ -1,4 +1,5 @@
 import Marquee from "react-fast-marquee";
+
 import { getPartnersLogos } from "../../helpers";
 
 export const PartnersSlider = () => {

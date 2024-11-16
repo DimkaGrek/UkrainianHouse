@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { images } from "../../assets";
+
 import { Hero, GetInvolved, AboutUs, NewsDigest, Loader } from "../../components";
 
-import { fetchAllNews, clearNews } from "../../redux";
 import { useNews } from "../../hooks";
+import { fetchAllNews, clearNews } from "../../redux";
+import { images } from "../../assets";
 
 const HomePage = () => {
   const dispatch = useDispatch();

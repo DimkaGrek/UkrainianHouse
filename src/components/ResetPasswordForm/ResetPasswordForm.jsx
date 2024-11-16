@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
-import { InputField } from "../InputField/InputField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
+
+import { InputField } from "../../components";
 
 import { resetPaswordShema } from "../../schemas";
 
@@ -15,8 +16,8 @@ export const ResetPasswordForm = () => {
     resolver: yupResolver(resetPaswordShema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+
   };
 
   return (

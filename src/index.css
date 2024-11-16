@@ -121,44 +121,50 @@ input[type="number"]::-webkit-outer-spin-button {
 .scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-color: auto !important;
 }
 
-.scrollbar::-webkit-scrollbar {
-  width: 7px;
-}
+
+/* ----------Desktop-------- */
 @media (min-width: 1440px) {
+  .scrollbar-desktop {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: auto !important;
+  }
+}
+
+/* Chrome, Safari, Edge */
+@supports selector(::-webkit-scrollbar) {
+  .scrollbar::-webkit-scrollbar {
+    width: 7px;
+  }
+  @media (min-width: 1440px) {
   .scrollbar::-webkit-scrollbar,
   .scrollbar-desktop::-webkit-scrollbar {
     width: 8px;
   }
 }
 
-.scrollbar::-webkit-scrollbar-track,
-.scrollbar-desktop::-webkit-scrollbar-track {
-  background: var(--track-color);
-  border-radius: 12px;
-  margin-block: 8px;
-}
+  .scrollbar::-webkit-scrollbar-track,
+  .scrollbar-desktop::-webkit-scrollbar-track  {
+    background: var(--track-color);
+    border-radius: 12px;
+    margin-block: 8px;
+  }
 
-.scrollbar::-webkit-scrollbar-thumb,
-.scrollbar-desktop::-webkit-scrollbar-thumb {
+  .scrollbar::-webkit-scrollbar-thumb,
+  .scrollbar-desktop::-webkit-scrollbar-thumb {
   background: var(--thumb-color);
   border-radius: 12px;
 }
-/* ----------Desktop-------- */
-@media (min-width: 1440px) {
-  .scrollbar-desktop {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
 }
 
-@supports not selector(::-webkit-scrollbar) {
-  .scrollbar {
-    scrollbar-color: var(--thumb-color) var(--track-color);
-  }
-  .scrollbar-desktop {
-    scrollbar-color: var(--thumb-color) var(--track-color);
+/* Firefox */
+@-moz-document url-prefix() {
+  .scrollbar,.scrollbar-desktop {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumb-color) var(--track-color) !important;
   }
 }
 /* ========================================== */

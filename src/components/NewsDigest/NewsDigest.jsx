@@ -1,5 +1,6 @@
-import { NewsListItem } from "components";
 import { useEffect, useState } from "react";
+
+import { NewsListItem } from "../../components";
 
 export const NewsDigest = ({ news }) => {
   const [activeIndex, setActiveIndex] = useState(0);

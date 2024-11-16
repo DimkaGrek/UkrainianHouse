@@ -9,6 +9,7 @@ export const DetailsBook = ({
   genre,
   description,
 }) => {
+  
   return (
     <div className="relative items-start md:pr-[205px] lg:pr-[415px]">
       <div className="flex gap-[10px]">
@@ -48,14 +49,6 @@ export const DetailsBook = ({
           {pageCount} pages
           <span className=" ">{publicationYear}</span>
         </p>
-        {/* <img
-            className=" hidden md:block mb-[16px] w-[163px] h-[260px]    lg:w-[290px]  lg:mb-[6px] 
-       lg:h-[462px]
-        "
-            src={coverImageUrl}
-            alt={`книга бібліотеки, автор: ${author}, назва твору: ${title} `}
-            loading="lazy"
-          /> */}
       </article>
       <Icon
         name="heart"

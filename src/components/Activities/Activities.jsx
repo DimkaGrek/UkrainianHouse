@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Icon } from "components";
 import { useEffect, useState } from "react";
+
+import { Icon } from "components";
 
 export const Activities = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

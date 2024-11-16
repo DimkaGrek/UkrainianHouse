@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
 
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../../components";
 
 const modalRoot = document.querySelector("#modalRoot");
 export const Modal = ({ children, toggleModal, className = "" }) => {

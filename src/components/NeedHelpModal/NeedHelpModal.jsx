@@ -1,4 +1,4 @@
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../../components";
 
 export const NeedHelpModal = ({ toggleModal }) => {
   return (

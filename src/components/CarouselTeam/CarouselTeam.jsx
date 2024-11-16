@@ -5,6 +5,7 @@ import { images } from "../../assets";
 export const CarouselTeam = () => {
   const teamMembers = getTeamMembers();
   const { contactsImages } = images;
+  
   return (
     <div className="carousel carousel-center mb-[16px] max-w-full space-x-[24px] md:mb-[94px] lg:mb-[56px] lg:flex-wrap lg:gap-x-[23px] lg:gap-y-[60px] lg:space-x-0">
       {teamMembers.map(({ name, position, photos }, index) => (
