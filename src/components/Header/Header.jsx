@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import { Icon,BurgerMenu } from "../../components";
+import { Icon, BurgerMenu } from "../../components";
 
 import { images } from "../../assets";
 
@@ -80,13 +80,13 @@ export const Header = () => {
           >
             Get in touch
           </a>
-          <img
+          {/* <img
             srcSet={`${headerImages.flag_eng1x} 1x, ${headerImages.flag_eng2x} 2x`}
             src={headerImages.flag_eng1x}
             alt="Flag of England"
             width="40"
             height="40"
-          />
+          /> */}
         </div>
       </nav>
     </header>
