@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import throttle from 'lodash.throttle';
+import { useEffect, useRef, useState } from "react";
+import throttle from "lodash.throttle";
 
-import { Icon } from '../../components';
+import { Icon } from "../../components";
 
 export const ScrollUpBtn = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,10 +14,10 @@ export const ScrollUpBtn = () => {
       setIsVisible(scrollYRef.current > 300);
     }, 500);
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -29,10 +29,10 @@ export const ScrollUpBtn = () => {
 
   return (
     <button
-      className="p-[10px] size-[50px] md:size-[54px] flex justify-center items-center bg-blue-600 shadow-lg fixed  z-[49] sm-max:right-5 right-[5%] border-none rounded-full hover:bg-hover-blue focus-visible:bg-hover-blue active:bg-hover-blue"
+      className="fixed right-[5%] z-[49] flex size-[50px] items-center justify-center rounded-full border-none bg-blue-600 p-[10px] shadow-lg hover:bg-hover-blue focus-visible:bg-hover-blue active:bg-hover-blue sm-max:right-5 md:size-[54px]"
       style={{
-        bottom: isVisible ? '54px' : '-54px',
-        transition: 'all 0.350s',
+        bottom: isVisible ? "54px" : "-54px",
+        transition: "all 0.350s",
       }}
       type="button"
       onClick={handleClickBtn}

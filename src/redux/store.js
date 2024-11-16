@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,21 +8,16 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import {
-  newsReducer,
-  booksReducer,
-  authReducer,
-  messagesReducer,
-} from '../redux';
+import { newsReducer, booksReducer, authReducer, messagesReducer } from "../redux";
 
 const persistConfig = {
-  key: 'auth',
+  key: "auth",
   version: 1,
   storage,
-  whitelist: ['token'],
+  whitelist: ["token"],
 };
 
 export const store = configureStore({
@@ -33,7 +28,7 @@ export const store = configureStore({
     messages: messagesReducer,
   },
   // devTools: process.env.NODE_ENV !== 'production',
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

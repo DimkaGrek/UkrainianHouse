@@ -1,31 +1,25 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
-import {
-  ContentList,
-  InfoMessage,
-  Loader,
-  Pagination,
-  StatusField,
-} from '../../components';
+import { ContentList, InfoMessage, Loader, Pagination, StatusField } from "../../components";
 
-import { useNews } from '../../hooks';
-import { fetchAllNews, setPageNews } from '../../redux';
-import { newsStatuses, PAGE_LIMIT } from '../../constants';
+import { useNews } from "../../hooks";
+import { fetchAllNews, setPageNews } from "../../redux";
+import { newsStatuses, PAGE_LIMIT } from "../../constants";
 
 const AdminNewsPage = () => {
   const { news, page, totalNews, totalPages, isLoading } = useNews();
-  const [status, setStatus] = useState('Show All');
+  const [status, setStatus] = useState("Show All");
   const [statuses, setStatuses] = useState([]);
 
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
-  const keyword = searchParams.get('keyword');
+  const keyword = searchParams.get("keyword");
 
   useEffect(() => {
-    setStatuses(['Show All', ...newsStatuses]);
+    setStatuses(["Show All", ...newsStatuses]);
   }, []);
 
   useEffect(() => {
@@ -34,7 +28,7 @@ const AdminNewsPage = () => {
         page,
         size: PAGE_LIMIT,
         ...(keyword && { keyword }),
-        ...(status !== 'Show All' && { status }),
+        ...(status !== "Show All" && { status }),
       },
       isAdmin: true,
     };
@@ -42,19 +36,19 @@ const AdminNewsPage = () => {
     dispatch(fetchAllNews(config));
   }, [dispatch, keyword, page, status]);
 
-  const handleChangeStatus = status => {
+  const handleChangeStatus = (status) => {
     dispatch(setPageNews(0));
     setStatus(status);
   };
 
-  const handleSetPage = page => {
+  const handleSetPage = (page) => {
     dispatch(setPageNews(page));
   };
 
   return (
     <>
       <section className="py-5">
-        <div className="flex justify-between mb-3">
+        <div className="mb-3 flex justify-between">
           <h2 className="text-[24px] font-medium">Total news: {totalNews}</h2>
           <StatusField
             status={status}
@@ -65,20 +59,12 @@ const AdminNewsPage = () => {
         </div>
 
         {!news.length ? (
-          <InfoMessage
-            messageText="Please add an article."
-            keyword={keyword}
-            status={status}
-          />
+          <InfoMessage messageText="Please add an article." keyword={keyword} status={status} />
         ) : (
           <ContentList items={news} />
         )}
 
-        <Pagination
-          setPage={handleSetPage}
-          page={page}
-          totalPages={totalPages}
-        />
+        <Pagination setPage={handleSetPage} page={page} totalPages={totalPages} />
       </section>
       {isLoading && <Loader />}
     </>

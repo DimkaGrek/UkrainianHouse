@@ -1,17 +1,11 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { images } from '../../assets';
-import {
-  Hero,
-  GetInvolved,
-  AboutUs,
-  NewsDigest,
-  Loader,
-} from '../../components';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { images } from "../../assets";
+import { Hero, GetInvolved, AboutUs, NewsDigest, Loader } from "../../components";
 
-import { fetchAllNews, clearNews } from '../../redux';
-import { useNews } from '../../hooks';
+import { fetchAllNews, clearNews } from "../../redux";
+import { useNews } from "../../hooks";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -24,12 +18,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchNews = async () => {
       const config = {
-        params: { page: 0, size: 3, status: 'PUBLISHED' },
+        params: { page: 0, size: 3, status: "PUBLISHED" },
       };
       try {
         await dispatch(fetchAllNews(config)).unwrap();
       } catch {
-        toast.error('Something went wrong. Please, reload the page.');
+        toast.error("Something went wrong. Please, reload the page.");
       }
     };
     fetchNews();
@@ -39,7 +33,7 @@ const HomePage = () => {
     <>
       {isLoading && <Loader />}
       <div className="relative">
-        <picture className="z-[-1] absolute top-0 left-[10px] md:left-[20px] lg:left-[100px]">
+        <picture className="absolute left-[10px] top-0 z-[-1] md:left-[20px] lg:left-[100px]">
           <source
             media="(min-width: 1440px)"
             srcSet={homeImages.BgImg_desktop}

@@ -1,31 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { LuCalendar } from 'react-icons/lu';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import DatePicker from 'react-datepicker';
+import { useEffect, useRef, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { LuCalendar } from "react-icons/lu";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import DatePicker from "react-datepicker";
 
-import { Icon } from '../Icon/Icon';
-import { InputField } from '../InputField/InputField';
-import { StatusField } from '../StatusField/StatusField';
+import { Icon } from "../Icon/Icon";
+import { InputField } from "../InputField/InputField";
+import { StatusField } from "../StatusField/StatusField";
 
-import defaultImg1 from '../../assets/images/default-img@1x.webp';
-import defaultImg2 from '../../assets/images/default-img@2x.webp';
-import { newsStatuses } from '../../constants';
-import { newsFormSchema } from '../../schemas';
-import {
-  createNewsPhoto,
-  createOneNews,
-  deleteNewsPhoto,
-  updateOneNews,
-} from '../../redux';
-import {
-  checkObjectEquality,
-  getFileResizer,
-  getFormattedData,
-} from '../../helpers';
-import 'react-datepicker/dist/react-datepicker.css';
+import defaultImg1 from "../../assets/images/default-img@1x.webp";
+import defaultImg2 from "../../assets/images/default-img@2x.webp";
+import { newsStatuses } from "../../constants";
+import { newsFormSchema } from "../../schemas";
+import { createNewsPhoto, createOneNews, deleteNewsPhoto, updateOneNews } from "../../redux";
+import { checkObjectEquality, getFileResizer, getFormattedData } from "../../helpers";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const NewsForm = ({ item, toggle }) => {
   const filePicker = useRef(null);
@@ -34,7 +25,7 @@ export const NewsForm = ({ item, toggle }) => {
   const [imageError, setImageError] = useState(false);
   const dispatch = useDispatch();
 
-  const hasNonZeroElement = selectedImages.some(element => element !== 0);
+  const hasNonZeroElement = selectedImages.some((element) => element !== 0);
 
   const {
     register,
@@ -44,19 +35,19 @@ export const NewsForm = ({ item, toggle }) => {
     control,
     formState: { errors },
   } = useForm({
-    mode: 'onSubmit',
+    mode: "onSubmit",
     resolver: yupResolver(newsFormSchema),
   });
 
   useEffect(() => {
     if (item) {
-      setValue('title', item.title);
-      setValue('content', item.content);
+      setValue("title", item.title);
+      setValue("content", item.content);
       setStatus(item.status);
-      setValue('btnLink', item.btnLink);
+      setValue("btnLink", item.btnLink);
     }
-    setValue('publishDate', item ? item.publishDate : new Date());
-    setValue('status', item ? item.status : newsStatuses[0]);
+    setValue("publishDate", item ? item.publishDate : new Date());
+    setValue("status", item ? item.status : newsStatuses[0]);
   }, [item, setValue]);
 
   useEffect(() => {
@@ -74,34 +65,30 @@ export const NewsForm = ({ item, toggle }) => {
     }
   }, [imageError, hasNonZeroElement]);
 
-  const selectFiles = async e => {
+  const selectFiles = async (e) => {
     let selectedFiles = Array.from(e.target.files);
 
     // Check for duplicates in selectedImages and remove them from selectedFiles
-    selectedFiles = selectedFiles.filter(file => {
-      const isDuplicate = selectedImages.some(
-        image => image.name === file.name
-      );
+    selectedFiles = selectedFiles.filter((file) => {
+      const isDuplicate = selectedImages.some((image) => image.name === file.name);
       if (isDuplicate) {
-        toast.warn(
-          `The image "${file.name}" cannot be added as it is already present`
-        );
+        toast.warn(`The image "${file.name}" cannot be added as it is already present`);
       }
       return !isDuplicate;
     });
 
     // Check the remaining slots after removing duplicates
-    const maxImagesToAdd = selectedImages.filter(image => image === 0).length;
+    const maxImagesToAdd = selectedImages.filter((image) => image === 0).length;
     if (selectedFiles.length > maxImagesToAdd) {
       toast.warn(`You cannot upload more than three images`);
     }
 
-    setSelectedImages(prevImages => {
+    setSelectedImages((prevImages) => {
       const newImages = [...prevImages];
 
       const processFiles = async () => {
         try {
-          selectedFiles.forEach(file => {
+          selectedFiles.forEach((file) => {
             const newIndex = newImages.indexOf(0);
             if (newIndex !== -1) {
               newImages[newIndex] = file;
@@ -111,12 +98,12 @@ export const NewsForm = ({ item, toggle }) => {
           if (item) {
             const resizedFiles = await handleResizeImages(selectedFiles);
             if (!resizedFiles) {
-              toast.error('Error resizing images.');
+              toast.error("Error resizing images.");
               return;
             }
 
-            const uploadPromises = resizedFiles.map(file => {
-              const fd = getFormattedData(file, 'photo');
+            const uploadPromises = resizedFiles.map((file) => {
+              const fd = getFormattedData(file, "photo");
               return dispatch(createNewsPhoto({ newsId: item.id, fd }));
             });
 
@@ -124,8 +111,8 @@ export const NewsForm = ({ item, toggle }) => {
             toast.success(
               `${
                 uploadPromises.length > 1
-                  ? 'All images were uploaded successfully.'
-                  : 'Image was uploaded successfully.'
+                  ? "All images were uploaded successfully."
+                  : "Image was uploaded successfully."
               }`
             );
           }
@@ -141,11 +128,9 @@ export const NewsForm = ({ item, toggle }) => {
     e.target.value = null;
   };
 
-  const handleResizeImages = async images => {
+  const handleResizeImages = async (images) => {
     try {
-      const resizedImagesPromises = images.map(file =>
-        getFileResizer(file, 600, 400)
-      );
+      const resizedImagesPromises = images.map((file) => getFileResizer(file, 600, 400));
 
       const resizedImages = await Promise.all(resizedImagesPromises);
 
@@ -155,20 +140,18 @@ export const NewsForm = ({ item, toggle }) => {
     }
   };
 
-  const handleDeleteImage = image => {
+  const handleDeleteImage = (image) => {
     if (item && !(image instanceof File)) {
       const ids = { newsId: item.id, photoId: image.id };
       dispatch(deleteNewsPhoto(ids))
         .unwrap()
         .then(() => {
-          toast.success('Image was deleted successfully.');
+          toast.success("Image was deleted successfully.");
         })
-        .catch(e =>
-          toast.error(`Error while deleting the image. ${e.message}`)
-        );
+        .catch((e) => toast.error(`Error while deleting the image. ${e.message}`));
     }
-    setSelectedImages(prevImages => {
-      const newImages = prevImages.filter(item => item !== image);
+    setSelectedImages((prevImages) => {
+      const newImages = prevImages.filter((item) => item !== image);
       newImages.push(0);
 
       return newImages;
@@ -179,16 +162,16 @@ export const NewsForm = ({ item, toggle }) => {
     filePicker.current.click();
   };
 
-  const handleChangeStatus = status => {
+  const handleChangeStatus = (status) => {
     setStatus(status);
-    setValue('status', status);
+    setValue("status", status);
   };
 
-  const handleChangeDate = date => {
-    setValue('publishDate', date, { shouldValidate: true });
+  const handleChangeDate = (date) => {
+    setValue("publishDate", date, { shouldValidate: true });
   };
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     if (!hasNonZeroElement) {
       setImageError(true);
       return;
@@ -197,14 +180,14 @@ export const NewsForm = ({ item, toggle }) => {
     let action;
     if (!item) {
       const resizedImages = await handleResizeImages(
-        selectedImages.filter(image => image !== 0 && typeof image !== 'string')
+        selectedImages.filter((image) => image !== 0 && typeof image !== "string")
       );
 
       if (!resizedImages) {
-        return toast.error('Error while resizing images');
+        return toast.error("Error while resizing images");
       }
 
-      const fd = getFormattedData(resizedImages, 'photos', data, 'news');
+      const fd = getFormattedData(resizedImages, "photos", data, "news");
       action = createOneNews(fd);
     } else {
       data = {
@@ -229,27 +212,23 @@ export const NewsForm = ({ item, toggle }) => {
     dispatch(action)
       .unwrap()
       .then(() => {
-        toast.success(
-          item
-            ? 'The news updated successfully'
-            : 'The news created successfully'
-        );
+        toast.success(item ? "The news updated successfully" : "The news created successfully");
 
         setSelectedImages(new Array(3).fill(0));
         reset();
         toggle();
       })
-      .catch(e => {
+      .catch((e) => {
         toast.error(e);
       });
   };
 
   return (
     <form
-      className="flex flex-col gap-6 lg:gap-6 h-auto w-full lg:w-[1150px]"
+      className="flex h-auto w-full flex-col gap-6 lg:w-[1150px] lg:gap-6"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid-cols-2 grid gap-4">
         <InputField
           label="Article Title"
           name="title"
@@ -259,11 +238,7 @@ export const NewsForm = ({ item, toggle }) => {
         />
         <div className="flex gap-4">
           <div className="flex-1">
-            <StatusField
-              statuses={newsStatuses}
-              status={status}
-              setStatus={handleChangeStatus}
-            />
+            <StatusField statuses={newsStatuses} status={status} setStatus={handleChangeStatus} />
           </div>
           <div>
             <p className="label mb-[6px]">Date</p>
@@ -274,20 +249,18 @@ export const NewsForm = ({ item, toggle }) => {
               render={({ field }) => (
                 <div className="relative">
                   <DatePicker
-                    className="field cursor-pointer w-[263px]"
+                    className="field w-[263px] cursor-pointer"
                     showPopperArrow={false}
                     selected={field.value}
                     placeholderText="mm/dd/yyyy"
-                    onChange={date => {
+                    onChange={(date) => {
                       field.onChange(date);
                       handleChangeDate(date);
                     }}
                     calendarClassName="fixed-height-calendar"
                   />
-                  <LuCalendar className="size-5 absolute top-[18px] right-[18px] cursor-pointer" />
-                  <p className="field-error">
-                    {errors['publishDate']?.message}
-                  </p>
+                  <LuCalendar className="absolute right-[18px] top-[18px] size-5 cursor-pointer" />
+                  <p className="field-error">{errors["publishDate"]?.message}</p>
                 </div>
               )}
             />
@@ -298,13 +271,13 @@ export const NewsForm = ({ item, toggle }) => {
         <label className="label">
           Article Text
           <textarea
-            className="field resize-none overflow-auto h-[130px] lg:h-[200px] scrollbar"
+            className="field scrollbar h-[130px] resize-none overflow-auto lg:h-[200px]"
             type="text"
             placeholder="Enter the article text"
-            {...register('content')}
+            {...register("content")}
           />
         </label>
-        <p className="field-error">{errors['content']?.message}</p>
+        <p className="field-error">{errors["content"]?.message}</p>
       </div>
       <div className="flex gap-4">
         <InputField
@@ -313,7 +286,7 @@ export const NewsForm = ({ item, toggle }) => {
           name="btnText"
           placeholder="Enter the button text"
           register={register}
-          defaultValue={`${item?.btnText ? item.btnText : ''}`}
+          defaultValue={`${item?.btnText ? item.btnText : ""}`}
           errors={errors}
         />
         <InputField
@@ -325,7 +298,7 @@ export const NewsForm = ({ item, toggle }) => {
           errors={errors}
         />
       </div>
-      <div className="flex flex-col gap-6 items-start relative">
+      <div className="relative flex flex-col items-start gap-6">
         <input
           className="hidden"
           type="file"
@@ -339,20 +312,17 @@ export const NewsForm = ({ item, toggle }) => {
           {selectedImages.map((image, index) => (
             <div
               key={index}
-              className="flex flex-col flex-shrink-0 relative rounded-[10px] shadow-md"
+              className="relative flex flex-shrink-0 flex-col rounded-[10px] shadow-md"
             >
               {image === 0 ? (
                 <picture className="h-auto w-fit rounded-[10px]">
-                  <source
-                    srcSet={`${defaultImg1} 1x, ${defaultImg2} 2x`}
-                    type="image/webp"
-                  />
+                  <source srcSet={`${defaultImg1} 1x, ${defaultImg2} 2x`} type="image/webp" />
                   <img
                     width={185}
                     height={119}
                     src={defaultImg1}
                     alt="upload img"
-                    className="rounded-[10px] cursor-pointer"
+                    className="cursor-pointer rounded-[10px]"
                     onClick={handlePick}
                   />
                 </picture>
@@ -363,16 +333,16 @@ export const NewsForm = ({ item, toggle }) => {
                       Array.isArray(item?.photoUrls) && item.photoUrls[index]
                         ? item.photoUrls[index].photoUrls
                         : image instanceof File
-                        ? URL.createObjectURL(image)
-                        : ''
+                          ? URL.createObjectURL(image)
+                          : ""
                     }
                     alt="upload"
-                    className="rounded-[10px] shadow-md max-h-[100px] max-w-[180px] lg:max-h-[119px] lg:max-w-full"
+                    className="max-h-[100px] max-w-[180px] rounded-[10px] shadow-md lg:max-h-[119px] lg:max-w-full"
                   />
 
                   <button
                     type="button"
-                    className="flex justify-center items-center absolute w-[25px] h-[25px] rounded-full top-0 right-0 transform translate-x-1/4 -translate-y-1/4 shadow-md bg-red-500 hover:bg-red-700"
+                    className="absolute right-0 top-0 flex h-[25px] w-[25px] -translate-y-1/4 translate-x-1/4 transform items-center justify-center rounded-full bg-red-500 shadow-md hover:bg-red-700"
                     onClick={() => handleDeleteImage(image)}
                   >
                     <Icon name="close" className="h-[12px] w-[12px]" />
@@ -382,24 +352,17 @@ export const NewsForm = ({ item, toggle }) => {
             </div>
           ))}
         </div>
-        {imageError && (
-          <p className="field-error mt-[120px] top-[120px]">
-            Add at least one image
-          </p>
-        )}
-        <div className="flex gap-6 mx-auto">
+        {imageError && <p className="field-error top-[120px] mt-[120px]">Add at least one image</p>}
+        <div className="mx-auto flex gap-6">
           <button
-            className="primaryBtn w-[185px] h-[40px] lg:h-[56px]"
+            className="primaryBtn h-[40px] w-[185px] lg:h-[56px]"
             type="button"
             onClick={toggle}
           >
             Cancel
           </button>
-          <button
-            className="primaryBtn w-[185px] h-[40px] lg:h-[56px]"
-            type="submit"
-          >
-            {item ? 'Save' : 'Add'}
+          <button className="primaryBtn h-[40px] w-[185px] lg:h-[56px]" type="submit">
+            {item ? "Save" : "Add"}
           </button>
         </div>
       </div>

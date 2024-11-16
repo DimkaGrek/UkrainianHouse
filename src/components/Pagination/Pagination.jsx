@@ -1,11 +1,11 @@
-import ReactPaginate from 'react-paginate';
-import { BiChevronsRight } from 'react-icons/bi';
-import { BiChevronRight } from 'react-icons/bi';
-import { BiChevronLeft } from 'react-icons/bi';
-import { BiChevronsLeft } from 'react-icons/bi';
+import ReactPaginate from "react-paginate";
+import { BiChevronsRight } from "react-icons/bi";
+import { BiChevronRight } from "react-icons/bi";
+import { BiChevronLeft } from "react-icons/bi";
+import { BiChevronsLeft } from "react-icons/bi";
 
 export const Pagination = ({ setPage, page, totalPages }) => {
-  const handlePageClick = event => {
+  const handlePageClick = (event) => {
     setPage(event.selected);
   };
 
@@ -21,11 +21,7 @@ export const Pagination = ({ setPage, page, totalPages }) => {
 
   return (
     <div className="flex items-center justify-center gap-[17px]">
-      <button
-        className="page-link"
-        onClick={handleFirstPage}
-        disabled={page === 0}
-      >
+      <button className="page-link" onClick={handleFirstPage} disabled={page === 0}>
         <BiChevronsLeft />
       </button>
 
@@ -35,16 +31,16 @@ export const Pagination = ({ setPage, page, totalPages }) => {
         marginPagesDisplayed={1}
         onPageChange={handlePageClick}
         forcePage={page}
-        containerClassName={'pagination flex gap-[4px]'}
-        pageClassName={'page-item'}
-        pageLinkClassName={'page-link'}
-        previousClassName={'page-item'}
-        previousLinkClassName={'page-link'}
-        nextClassName={'page-item'}
-        nextLinkClassName={'page-link'}
-        breakClassName={'page-item'}
-        breakLinkClassName={'page-link'}
-        activeLinkClassName={'active-pg'}
+        containerClassName={"pagination flex gap-[4px]"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+        activeLinkClassName={"active-pg"}
         previousLabel={
           <button className="page-link" disabled={page === 0}>
             <BiChevronLeft />
@@ -55,14 +51,10 @@ export const Pagination = ({ setPage, page, totalPages }) => {
             <BiChevronRight />
           </button>
         }
-        breakLabel={'...'}
+        breakLabel={"..."}
       />
 
-      <button
-        className="page-link"
-        onClick={handleLastPage}
-        disabled={page === totalPages - 1}
-      >
+      <button className="page-link" onClick={handleLastPage} disabled={page === totalPages - 1}>
         <BiChevronsRight />
       </button>
     </div>

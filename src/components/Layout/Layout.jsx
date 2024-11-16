@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Outlet, useLocation } from "react-router-dom";
+import { Suspense } from "react";
 
 import {
   Header,
@@ -9,14 +9,14 @@ import {
   ScrollUpBtn,
   AdminHeader,
   Sidebar,
-} from '../../components';
+} from "../../components";
 
 export const Layout = () => {
   const location = useLocation();
 
-  if (location.pathname.includes('/auth/')) {
+  if (location.pathname.includes("/auth/")) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
@@ -24,14 +24,14 @@ export const Layout = () => {
     );
   }
 
-  if (location.pathname.includes('/admin/')) {
+  if (location.pathname.includes("/admin/")) {
     return (
-      <div className="grid w-screen h-screen grid-cols-[200px_1fr] grid-rows-[84px_1fr] grid-areas-layout">
+      <div className="grid h-screen w-screen grid-cols-[200px_1fr] grid-rows-[84px_1fr] grid-areas-layout">
         <AdminHeader className="grid-in-head" />
-        <aside className="grid-in-aside bg-[#FFD43766] p-6">
+        <aside className="bg-[#FFD43766] p-6 grid-in-aside">
           <Sidebar />
         </aside>
-        <main className="grid-in-main overflow-y-auto px-4">
+        <main className="overflow-y-auto px-4 grid-in-main">
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
@@ -40,7 +40,7 @@ export const Layout = () => {
     );
   }
 
-  if (location.pathname == '/404') {
+  if (location.pathname == "/404") {
     return (
       <main>
         <Suspense fallback={<Loader />}>

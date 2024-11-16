@@ -1,12 +1,12 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { api } from '../../services/api';
+import { api } from "../../services/api";
 
 export const fetchAllNews = createAsyncThunk(
-  'news/getAllNews',
+  "news/getAllNews",
   async ({ params, isAdmin = false }, thunkAPI) => {
     try {
-      const { data } = await api.get(`${isAdmin ? '/admin' : ''}/news`, {
+      const { data } = await api.get(`${isAdmin ? "/admin" : ""}/news`, {
         params,
       });
 
@@ -17,45 +17,39 @@ export const fetchAllNews = createAsyncThunk(
   }
 );
 
-export const fetchAnnounceNews = createAsyncThunk(
-  'news/getAnnounceNews',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await api.get('/news', {
-        params: { status: 'ANNOUNCE' },
-      });
+export const fetchAnnounceNews = createAsyncThunk("news/getAnnounceNews", async (_, thunkAPI) => {
+  try {
+    const { data } = await api.get("/news", {
+      params: { status: "ANNOUNCE" },
+    });
 
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
-export const createOneNews = createAsyncThunk(
-  'news/createNews',
-  async (news, thunkAPI) => {
-    try {
-      const { data } = await api.post('/admin/news', news, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+export const createOneNews = createAsyncThunk("news/createNews", async (news, thunkAPI) => {
+  try {
+    const { data } = await api.post("/admin/news", news, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const createNewsPhoto = createAsyncThunk(
-  'news/createNewsPhoto',
+  "news/createNewsPhoto",
   async ({ newsId, fd }, thunkAPI) => {
     try {
       const { data } = await api.post(`/admin/news/${newsId}/addphoto`, fd, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -67,7 +61,7 @@ export const createNewsPhoto = createAsyncThunk(
 );
 
 export const updateOneNews = createAsyncThunk(
-  'news/updateNews',
+  "news/updateNews",
   async ({ id, ...newsChanges }, thunkAPI) => {
     try {
       const { data } = await api.put(`/admin/news/${id}`, newsChanges);
@@ -80,18 +74,14 @@ export const updateOneNews = createAsyncThunk(
 );
 
 export const updateNewsPhoto = createAsyncThunk(
-  'news/updateNewsPhoto',
+  "news/updateNewsPhoto",
   async ({ newsId, ...photoChanges }, thunkAPI) => {
     try {
-      const { data } = await api.put(
-        `/admin/news/${newsId}/update`,
-        photoChanges,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+      const { data } = await api.put(`/admin/news/${newsId}/update`, photoChanges, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       return data;
     } catch (error) {
@@ -100,28 +90,22 @@ export const updateNewsPhoto = createAsyncThunk(
   }
 );
 
-export const deleteOneNews = createAsyncThunk(
-  'news/deleteNews',
-  async (id, thunkAPI) => {
-    try {
-      await api.delete(`/admin/news/${id}`);
+export const deleteOneNews = createAsyncThunk("news/deleteNews", async (id, thunkAPI) => {
+  try {
+    await api.delete(`/admin/news/${id}`);
 
-      return id;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    return id;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
-export const deleteNewsPhoto = createAsyncThunk(
-  'news/deleteNewsPhoto',
-  async (ids, thunkAPI) => {
-    try {
-      await api.delete(`/admin/news/photo/${ids.photoId}`);
+export const deleteNewsPhoto = createAsyncThunk("news/deleteNewsPhoto", async (ids, thunkAPI) => {
+  try {
+    await api.delete(`/admin/news/photo/${ids.photoId}`);
 
-      return ids;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    return ids;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});

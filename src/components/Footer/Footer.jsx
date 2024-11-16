@@ -1,8 +1,8 @@
-import { NavLink, Link } from 'react-router-dom';
-import { useModal } from '../../hooks';
-import { Icon, Modal, Developers, Address, FlagsList } from '../../components';
+import { NavLink, Link } from "react-router-dom";
+import { useModal } from "../../hooks";
+import { Icon, Modal, Developers, Address, FlagsList } from "../../components";
 
-import { images } from '../../assets';
+import { images } from "../../assets";
 
 export const Footer = () => {
   const [isOpenDevelopersModal, toggleDevelopersModal] = useModal();
@@ -10,10 +10,10 @@ export const Footer = () => {
   const { footerImages } = images;
   return (
     <>
-      <footer className="container pt-[25vw] md:pt-[15vw] lg:pt-[9vw] pb-[32px] lg:pb-[84px]">
+      <footer className="container pb-[32px] pt-[25vw] md:pt-[15vw] lg:pb-[84px] lg:pt-[9vw]">
         <div className="link-wrapper relative flex flex-col items-center">
-          <div className="flex flex-col items-center text-center mb-[50px] md:mb-[36px] lg:mb-[76px] lg:flex-row lg:gap-0">
-            <div className="flex items-center gap-[100px] mb-[50px] md:mb-[44px] lg:mb-0">
+          <div className="mb-[50px] flex flex-col items-center text-center md:mb-[36px] lg:mb-[76px] lg:flex-row lg:gap-0">
+            <div className="mb-[50px] flex items-center gap-[100px] md:mb-[44px] lg:mb-0">
               <Link to="/" className="hidden md:inline-block lg:hidden">
                 <img
                   srcSet={`${footerImages.footer_logo_mobile1x} 1x, ${footerImages.footer_logo_mobile2x} 2x`}
@@ -26,34 +26,34 @@ export const Footer = () => {
                 />
               </Link>
 
-              <ul className="flex flex-col gap-[20px] whitespace-nowrap justify-center font-normal leading-[1.5] text-[24px] md:text-[16px] lg:text-[24px] text-center md:text-start text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] lg:gap-y-[40px] lg:w-[543px] lg:gap-x-[24px]">
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+              <ul className="flex flex-col justify-center gap-[20px] whitespace-nowrap text-center text-[24px] font-normal leading-[1.5] text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] md:text-start md:text-[16px] lg:w-[543px] lg:gap-x-[24px] lg:gap-y-[40px] lg:text-[24px]">
+                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
                   <NavLink to="/">Home</NavLink>
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
                   <NavLink to="/news">News</NavLink>
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
                   <NavLink to="/library">Library</NavLink>
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
                   <NavLink aria-disabled to="/contacts">
                     Contacts
                   </NavLink>
                 </li>
                 <li
                   onClick={toggleDevelopersModal}
-                  className="md:w-[110px] lg:w-[165px] cursor-pointer hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300"
+                  className="cursor-pointer transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]"
                 >
                   Site developers
                 </li>
-                <li className="md:w-[110px] lg:w-[165px] cursor-not-allowed hover:text-gray-600 transition duration-300">
+                <li className="cursor-not-allowed transition duration-300 hover:text-gray-600 md:w-[110px] lg:w-[165px]">
                   Activities
                 </li>
               </ul>
             </div>
 
-            <div className="flex justify-between mb-[50px] w-full md:hidden">
+            <div className="mb-[50px] flex w-full justify-between md:hidden">
               <Link to="/">
                 <img
                   srcSet={`${footerImages.footer_logo_mobile1x} 1x, ${footerImages.footer_logo_mobile2x} 2x`}
@@ -69,7 +69,7 @@ export const Footer = () => {
               <FlagsList className="flex gap-4" />
             </div>
 
-            <div className="hidden md:flex justify-between items-center md:mb-[44px] md:w-full lg:hidden">
+            <div className="hidden items-center justify-between md:mb-[44px] md:flex md:w-full lg:hidden">
               <Address
                 listClass="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[14px] leading-[1.3] not-italic"
                 iconClass="fill-[#1e1e1e]"
@@ -78,10 +78,10 @@ export const Footer = () => {
               <FlagsList className="flex gap-4" />
             </div>
 
-            <ul className="flex flex-col justify-center items-center md:flex-wrap md:flex-row gap-[16px] lg:gap-[20px] lg:w-[697px]">
-              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
+            <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[697px] lg:gap-[20px]">
+              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[347px] lg:text-[20px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] pl-[16px] pr-[14px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
+                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] py-[10px] pl-[16px] pr-[14px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
                   href="https://www.facebook.com/ua.maastricht"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -89,15 +89,15 @@ export const Footer = () => {
                 >
                   <Icon
                     name="fb"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
+                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
                     size="24"
                   />
                   Let&#39;s be friends on facebook
                 </a>
               </li>
-              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[330px] lg:h-[54px]">
+              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[330px] lg:text-[20px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
+                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
                   href="https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -105,15 +105,15 @@ export const Footer = () => {
                 >
                   <Icon
                     name="insta"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
+                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
                     size="24"
                   />
                   Follow us on instagram
                 </a>
               </li>
-              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[347px] lg:h-[54px]">
+              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[347px] lg:text-[20px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
+                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
                   href="https://t.me/+cGjweuHlhU00N2E8"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -121,15 +121,15 @@ export const Footer = () => {
                 >
                   <Icon
                     name="telegram"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
+                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
                     size="24"
                   />
                   Connect us on telegram
                 </a>
               </li>
-              <li className="font-bold text-[16px] lg:text-[20px] leading-[1.5] text-center text-gray-900 w-full h-[44px] md:w-[344px] lg:w-[330px] lg:h-[54px]">
+              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[330px] lg:text-[20px]">
                 <a
-                  className="flex items-center gap-[8px] lg:gap-[6px] border border-[#1e1e1e] rounded-[10px] lg:px-[18px] px-[16px] py-[10px] w-full h-full hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 group"
+                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
                   href="https://www.linkedin.com/company/ukrainian-house-in-maastricht/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -137,7 +137,7 @@ export const Footer = () => {
                 >
                   <Icon
                     name="linkedin"
-                    className="fill-[#1e1e1e] lg:w-[28px] h-[28px] group-hover:fill-[#fff] group-focus-visible:fill-[#fff] transition duration-300"
+                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
                     size="24"
                   />
                   Find us in LinkedIn
@@ -146,7 +146,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="w-full mb-[50px] md:flex md:justify-end md:mb-[36px] lg:justify-between lg:mb-0">
+          <div className="mb-[50px] w-full md:mb-[36px] md:flex md:justify-end lg:mb-0 lg:justify-between">
             <Link to="/" className="hidden lg:inline-block">
               <img
                 srcSet={`${footerImages.footer_logo_desktop1x} 1x, ${footerImages.footer_logo_desktop2x} 2x`}
@@ -160,25 +160,24 @@ export const Footer = () => {
             </Link>
 
             <div className="flex flex-col md:items-end lg:mr-[145px]">
-              <p className="text-[14px] leading-[1.3] lg:text-[20px] lg:leading-[1.4] text-[#1e1e1e] mb-3 w-[325px] sm-max:w-full lg:w-[465px]">
-                &quot;In unity, our strength; in community, our essence. United
-                by Ukrainian culture, we create a world where everyone finds
-                their place and feels at home.&quot;
+              <p className="mb-3 w-[325px] text-[14px] leading-[1.3] text-[#1e1e1e] sm-max:w-full lg:w-[465px] lg:text-[20px] lg:leading-[1.4]">
+                &quot;In unity, our strength; in community, our essence. United by Ukrainian
+                culture, we create a world where everyone finds their place and feels at home.&quot;
               </p>
-              <p className="text-end md:italic leading-[2.14] text-[12px] md:text-[14px] lg:text-[20px] text-[#1e1e1e]">
+              <p className="text-end text-[12px] leading-[2.14] text-[#1e1e1e] md:text-[14px] md:italic lg:text-[20px]">
                 Lesya Ukrainka
               </p>
             </div>
           </div>
           <Address
-            className="hidden lg:flex lg:w-full lg:mb-[50px]"
+            className="hidden lg:mb-[50px] lg:flex lg:w-full"
             listClass="flex flex-col gap-4 text-[#1e1e1e] font-normal text-[20px] leading-[1.4] not-italic"
             iconClass="fill-[#1e1e1e]"
           />
 
           <FlagsList className="hidden w-full gap-4" />
 
-          <p className="flex justify-center text-center text-[#1e1e1e] md:italic text-[12px] lg:text-[16px] font-normal leading-[1.5] lg:leading-[1.25] w-[220px] md:w-full">
+          <p className="flex w-[220px] justify-center text-center text-[12px] font-normal leading-[1.5] text-[#1e1e1e] md:w-full md:italic lg:text-[16px] lg:leading-[1.25]">
             &copy; 2024 Ukrainian House in Maastricht. All rights reserved.
           </p>
           <picture>
@@ -197,7 +196,7 @@ export const Footer = () => {
               loading="lazy"
             />
             <img
-              className="absolute top-[100px] right-0 md:left-0 md:top-auto md:bottom-0 lg:left-auto lg:bottom-[60px] lg:right-0 max-w-none"
+              className="absolute right-0 top-[100px] max-w-none md:bottom-0 md:left-0 md:top-auto lg:bottom-[60px] lg:left-auto lg:right-0"
               srcSet={`${footerImages.iPhone1x_mob} 1x, ${footerImages.iPhone2x_mob} 2x`}
               src={footerImages.iPhone1x_mob}
               alt="Phone in hand"

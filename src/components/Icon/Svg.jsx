@@ -1,4 +1,4 @@
-export const Svg = ({ children, className, size = '32', viewbox = '32' }) => {
+export const Svg = ({ children, className, size = "32", viewbox = "32" }) => {
   return (
     <svg
       fill="white"

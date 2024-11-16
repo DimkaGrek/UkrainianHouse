@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { getQuotes } from '../../helpers';
+import { getQuotes } from "../../helpers";
 
 export const Quotes = ({ index }) => {
   const quotes = getQuotes();
@@ -36,9 +36,7 @@ export const Quotes = ({ index }) => {
             type="image/webp"
           />
           <img
-            className="absolute w-[324px] top-[395px] right-1/2 translate-x-1/2
-              md:translate-x-0 md:top-0 md:right-0 md:w-[300px]
-              lg:w-[430px] lg:top-[-20px] lg:right-[-60px]"
+            className="absolute right-1/2 top-[395px] w-[324px] translate-x-1/2 md:right-0 md:top-0 md:w-[300px] md:translate-x-0 lg:right-[-60px] lg:top-[-20px] lg:w-[430px]"
             src={imageSources1[0]}
             alt={`Image with a quote ${randomIdx1}`}
             loading="lazy"
@@ -57,9 +55,7 @@ export const Quotes = ({ index }) => {
             type="image/webp"
           />
           <img
-            className="absolute w-[324px] top-[395px] right-1/2 translate-x-1/2
-              md:translate-x-0 md:left-0 md:w-[300px] md:top-0
-              lg:w-[430px] lg:top-[-20px] lg:right-auto lg:left-[-60px]"
+            className="absolute right-1/2 top-[395px] w-[324px] translate-x-1/2 md:left-0 md:top-0 md:w-[300px] md:translate-x-0 lg:left-[-60px] lg:right-auto lg:top-[-20px] lg:w-[430px]"
             src={imageSources2[0]}
             alt={`Image with a quote ${randomIdx2}`}
             loading="lazy"

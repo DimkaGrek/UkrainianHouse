@@ -1,33 +1,26 @@
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import {
-  ContentList,
-  InfoMessage,
-  Loader,
-  Pagination,
-  StatusField,
-} from '../../components';
+import { ContentList, InfoMessage, Loader, Pagination, StatusField } from "../../components";
 
-import { clearMessages, fetchAllMessages, setPageMessages } from '../../redux';
-import { useMessages } from '../../hooks';
-import { PAGE_LIMIT, messagesStatuses } from '../../constants';
+import { clearMessages, fetchAllMessages, setPageMessages } from "../../redux";
+import { useMessages } from "../../hooks";
+import { PAGE_LIMIT, messagesStatuses } from "../../constants";
 
 const AdminInboxPage = () => {
-  const { messages, page, totalMessages, totalPages, isLoading } =
-    useMessages();
+  const { messages, page, totalMessages, totalPages, isLoading } = useMessages();
 
-  const [status, setStatus] = useState('Show All');
+  const [status, setStatus] = useState("Show All");
   const [statuses, setStatuses] = useState([]);
 
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
-  const keyword = searchParams.get('keyword');
+  const keyword = searchParams.get("keyword");
 
   useEffect(() => {
-    setStatuses(['Show All', ...messagesStatuses]);
+    setStatuses(["Show All", ...messagesStatuses]);
   }, []);
 
   useEffect(() => {
@@ -40,9 +33,8 @@ const AdminInboxPage = () => {
         page,
         size: PAGE_LIMIT,
         ...(keyword && { keyword }),
-        ...(status !== 'Show All' && {
-          read:
-            status === 'UNREAD' ? false : status === 'READ' ? true : undefined,
+        ...(status !== "Show All" && {
+          read: status === "UNREAD" ? false : status === "READ" ? true : undefined,
         }),
       },
     };
@@ -50,22 +42,20 @@ const AdminInboxPage = () => {
     dispatch(fetchAllMessages(config));
   }, [dispatch, page, status, keyword]);
 
-  const handleChangeStatus = status => {
+  const handleChangeStatus = (status) => {
     dispatch(setPageMessages(0));
     setStatus(status);
   };
 
-  const handleSetPage = page => {
+  const handleSetPage = (page) => {
     dispatch(setPageMessages(page));
   };
 
   return (
     <>
       <section className="py-5">
-        <div className="flex justify-between mb-3">
-          <h2 className="text-[24px] font-medium">
-            Total messages: {totalMessages}
-          </h2>
+        <div className="mb-3 flex justify-between">
+          <h2 className="text-[24px] font-medium">Total messages: {totalMessages}</h2>
           <StatusField
             status={status}
             setStatus={handleChangeStatus}
@@ -74,19 +64,11 @@ const AdminInboxPage = () => {
           />
         </div>
         {!messages.length ? (
-          <InfoMessage
-            messageText="No messages received."
-            keyword={keyword}
-            status={status}
-          />
+          <InfoMessage messageText="No messages received." keyword={keyword} status={status} />
         ) : (
           <ContentList items={messages} />
         )}
-        <Pagination
-          setPage={handleSetPage}
-          page={page}
-          totalPages={totalPages}
-        />
+        <Pagination setPage={handleSetPage} page={page} totalPages={totalPages} />
       </section>
       {isLoading && <Loader />}
     </>

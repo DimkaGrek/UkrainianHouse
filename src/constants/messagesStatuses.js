@@ -1,1 +1,1 @@
-export const messagesStatuses = ['READ', 'UNREAD'];
+export const messagesStatuses = ["READ", "UNREAD"];
