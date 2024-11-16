@@ -1,17 +1,11 @@
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { MdOutlineLogout } from 'react-icons/md';
+import { useLocation, useSearchParams } from "react-router-dom";
+import { MdOutlineLogout } from "react-icons/md";
 
-import {
-  Modal,
-  LogoutModal,
-  SearchBar,
-  NewsForm,
-  BookForm,
-} from '../../components';
+import { Modal, LogoutModal, SearchBar, NewsForm, BookForm } from "../../components";
 
-import { useModal } from '../../hooks';
-import { useDispatch } from 'react-redux';
-import { setPageBooks, setPageNews } from '../../redux';
+import { useModal } from "../../hooks";
+import { useDispatch } from "react-redux";
+import { setPageBooks, setPageNews } from "../../redux";
 
 export const AdminHeader = () => {
   const [, setSearchParams] = useSearchParams();
@@ -19,15 +13,15 @@ export const AdminHeader = () => {
   const dispatch = useDispatch();
 
   const location = useLocation();
-  const isNewsPage = location.pathname.includes('news');
-  const isBooksPage = location.pathname.includes('books');
-  const isInboxPage = location.pathname.includes('inbox');
+  const isNewsPage = location.pathname.includes("news");
+  const isBooksPage = location.pathname.includes("books");
+  const isInboxPage = location.pathname.includes("inbox");
 
   const [addNewsModal, toggleAddNewsModal] = useModal();
   const [addBookModal, toggleAddBookModal] = useModal();
   const [logoutModal, toggleLogoutModal] = useModal();
 
-  const handleSetQuery = keyword => {
+  const handleSetQuery = (keyword) => {
     if (isNewsPage) {
       dispatch(setPageNews(0));
     } else if (isBooksPage) {
@@ -62,10 +56,10 @@ export const AdminHeader = () => {
       <SearchBar setQuery={handleSetQuery} />
       <button
         type="button"
-        className="flex justify-center items-center flex-shrink-0 h-[52px] w-[52px] rounded-[10px] hover:bg-my-yellow hover:transition-all cursor-pointer"
+        className="flex h-[52px] w-[52px] flex-shrink-0 cursor-pointer items-center justify-center rounded-[10px] hover:bg-my-yellow hover:transition-all"
         onClick={toggleLogoutModal}
       >
-        <MdOutlineLogout className="fill-[#1E1E1E] size-7" />
+        <MdOutlineLogout className="size-7 fill-[#1E1E1E]" />
       </button>
       {logoutModal && (
         <Modal toggleModal={toggleLogoutModal}>

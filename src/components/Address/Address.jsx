@@ -1,9 +1,9 @@
-import { Icon } from '../../components';
+import { Icon } from "../../components";
 
 export const Address = ({
-  className = '',
+  className = "",
   listClass,
-  itemClass = 'flex items-center gap-[6px]',
+  itemClass = "flex items-center gap-[6px]",
   iconClass,
 }) => {
   return (

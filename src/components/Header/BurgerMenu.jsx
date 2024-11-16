@@ -1,19 +1,14 @@
-import { useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 
-import { Icon, Address, FlagsList } from '../../components';
+import { Icon, Address, FlagsList } from "../../components";
 
-import { images } from '../../assets';
+import { images } from "../../assets";
 
-export const BurgerMenu = ({
-  isOpen,
-  toggleMenu,
-  classBackdrop,
-  classMenu,
-}) => {
+export const BurgerMenu = ({ isOpen, toggleMenu, classBackdrop, classMenu }) => {
   const { headerImages } = images;
 
-  const handleBackdropClick = event => {
+  const handleBackdropClick = (event) => {
     if (event.currentTarget === event.target) {
       toggleMenu();
     }
@@ -22,37 +17,37 @@ export const BurgerMenu = ({
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleEscape = event => {
-      if (event.code === 'Escape') {
+    const handleEscape = (event) => {
+      if (event.code === "Escape") {
         toggleMenu();
       }
     };
-    window.addEventListener('keydown', handleEscape);
-    document.body.style.overflow = 'hidden';
+    window.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
 
     return () => {
-      window.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'auto';
+      window.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "auto";
     };
   }, [isOpen, toggleMenu]);
 
   return (
     <div
       onClick={handleBackdropClick}
-      className={`${classBackdrop} fixed bg-black backdrop-blur-sm bg-opacity-40 w-full h-full left-0 top-0 z-50 lg:hidden`}
+      className={`${classBackdrop} fixed left-0 top-0 z-50 h-full w-full bg-black bg-opacity-40 backdrop-blur-sm lg:hidden`}
     >
       <div
-        className={`${classMenu} relative flex flex-col justify-start items-center gap-[35px] bg-[#fff] px-[24px] py-[44px] w-[390px] sm-max:w-[300px] md:w-[653px] ml-auto h-full transition duration-500`}
+        className={`${classMenu} relative ml-auto flex h-full w-[390px] flex-col items-center justify-start gap-[35px] bg-[#fff] px-[24px] py-[44px] transition duration-500 sm-max:w-[300px] md:w-[653px]`}
       >
         <button
           type="button"
-          className="flex justify-center items-center absolute top-[24px] right-[24px] outline-none group"
+          className="group absolute right-[24px] top-[24px] flex items-center justify-center outline-none"
           onClick={toggleMenu}
         >
           <Icon
             name="close"
             size="38"
-            className="fill-[#1e1e1e] group-focus-visible:fill-[#2355cc] transition duration-300"
+            className="fill-[#1e1e1e] transition duration-300 group-focus-visible:fill-[#2355cc]"
           />
         </button>
 
@@ -68,42 +63,33 @@ export const BurgerMenu = ({
           />
         </Link>
 
-        <ul className="flex flex-col gap-[30px] font-normal text-center text-[24px] leading-[1.5] text-[#222]">
+        <ul className="flex flex-col gap-[30px] text-center text-[24px] font-normal leading-[1.5] text-[#222]">
           <li onClick={toggleMenu}>
-            <NavLink
-              to="/"
-              className="focus-visible:text-[#3e38c8] transition duration-300"
-            >
+            <NavLink to="/" className="transition duration-300 focus-visible:text-[#3e38c8]">
               Home
             </NavLink>
           </li>
           <li onClick={toggleMenu}>
-            <NavLink
-              to="/news"
-              className="focus-visible:text-[#3e38c8] transition duration-300"
-            >
+            <NavLink to="/news" className="transition duration-300 focus-visible:text-[#3e38c8]">
               News
             </NavLink>
           </li>
           <li onClick={toggleMenu}>
-            <NavLink
-              to="/library"
-              className="focus-visible:text-[#3e38c8] transition duration-300"
-            >
+            <NavLink to="/library" className="transition duration-300 focus-visible:text-[#3e38c8]">
               Library
             </NavLink>
           </li>
           <li onClick={toggleMenu}>
             <NavLink
               to="/contacts"
-              className="focus-visible:text-[#3e38c8] transition duration-300"
+              className="transition duration-300 focus-visible:text-[#3e38c8]"
             >
               Contacts
             </NavLink>
           </li>
         </ul>
 
-        <FlagsList className="flex justify-center items-center gap-4" />
+        <FlagsList className="flex items-center justify-center gap-4" />
 
         <Address
           className="w-[270px] sm-max:w-[240px]"
@@ -113,7 +99,7 @@ export const BurgerMenu = ({
 
         <a
           href="mailto:ukrainianhouse.maastricht@gmail.com"
-          className="inline-block font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-full h-[54px] md:w-[605px] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300 outline-none"
+          className="inline-block h-[54px] w-full rounded-[10px] border border-gray-900 px-5 py-2.5 text-center text-[20px] font-bold text-gray-900 outline-none transition duration-300 focus-visible:bg-[#2355cc] focus-visible:text-[#fff] md:w-[605px]"
         >
           Get in touch
         </a>

@@ -1,16 +1,16 @@
-import { getTeamMembers } from '../../helpers';
+import { getTeamMembers } from "../../helpers";
 
-import { images } from '../../assets';
+import { images } from "../../assets";
 
 export const CarouselTeam = () => {
   const teamMembers = getTeamMembers();
   const { contactsImages } = images;
   return (
-    <div className="carousel carousel-center max-w-full space-x-[24px] mb-[16px] md:mb-[94px] lg:flex-wrap lg:gap-x-[23px] lg:gap-y-[60px] lg:mb-[56px] lg:space-x-0">
+    <div className="carousel carousel-center mb-[16px] max-w-full space-x-[24px] md:mb-[94px] lg:mb-[56px] lg:flex-wrap lg:gap-x-[23px] lg:gap-y-[60px] lg:space-x-0">
       {teamMembers.map(({ name, position, photos }, index) => (
         <div
           key={index}
-          className="carousel-item flex flex-col w-[294px] rounded-[18px] sm-max:w-[239px] lg:w-[398px] pb-[18px] lg:pb-[24px]"
+          className="carousel-item flex w-[294px] flex-col rounded-[18px] pb-[18px] sm-max:w-[239px] lg:w-[398px] lg:pb-[24px]"
         >
           <picture>
             <source
@@ -26,14 +26,14 @@ export const CarouselTeam = () => {
               height="299"
               width="294"
               alt={`Photo of ${name}`}
-              className="rounded-[18px] mb-[12px] sm-max:h-[244px] sm-max:w-full lg:mb-[16px]"
+              className="mb-[12px] rounded-[18px] sm-max:h-[244px] sm-max:w-full lg:mb-[16px]"
               loading="lazy"
             />
           </picture>
-          <p className="font-semibold text-[20px] leading-[1.2] text-center text-[#1e1e1e] mb-[12px] lg:text-[32px] lg:mb-[16px]">
+          <p className="mb-[12px] text-center text-[20px] font-semibold leading-[1.2] text-[#1e1e1e] lg:mb-[16px] lg:text-[32px]">
             {name}
           </p>
-          <p className="font-normal text-[16px] leading-[1.3] text-center text-black lg:text-[18px]">
+          <p className="text-center text-[16px] font-normal leading-[1.3] text-black lg:text-[18px]">
             {position}
           </p>
         </div>

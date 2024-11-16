@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
 import {
   createBook,
@@ -6,9 +6,9 @@ import {
   fetchAllBooks,
   updateBook,
   updateCoverBook,
-} from './booksOperations';
-import { PAGE_LIMIT } from '../../constants';
-import { logoutThunk } from '../auth/authOperations';
+} from "./booksOperations";
+import { PAGE_LIMIT } from "../../constants";
+import { logoutThunk } from "../auth/authOperations";
 
 const initialState = {
   books: [],
@@ -20,18 +20,18 @@ const initialState = {
 };
 
 const booksSlice = createSlice({
-  name: 'books',
+  name: "books",
   initialState,
   reducers: {
     setPageBooks: (state, { payload }) => {
       state.page = payload;
     },
-    clearBooks: state => {
+    clearBooks: (state) => {
       state.books = [];
       state.page = 0;
     },
   },
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
       .addCase(
         fetchAllBooks.fulfilled,
@@ -54,7 +54,7 @@ const booksSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateBook.fulfilled, (state, { payload }) => {
-        state.books = state.books.map(item => {
+        state.books = state.books.map((item) => {
           if (item.id === payload.id) {
             return { ...item, ...payload.data };
           }
@@ -64,7 +64,7 @@ const booksSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateCoverBook.fulfilled, (state, { payload }) => {
-        const bookItem = state.books.find(item => item.id === payload.id);
+        const bookItem = state.books.find((item) => item.id === payload.id);
         if (bookItem) {
           bookItem.coverImageUrl = payload.coverImageUrl;
         }
@@ -72,13 +72,11 @@ const booksSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(deleteBook.fulfilled, (state, { payload }) => {
-        state.books = state.books.filter(item => item.id !== payload);
+        state.books = state.books.filter((item) => item.id !== payload);
         state.totalBooks -= 1;
         state.totalPages = Math.ceil(state.totalBooks / PAGE_LIMIT);
         state.page =
-          state.page > 0 &&
-          state.totalBooks % PAGE_LIMIT === 0 &&
-          state.page === state.totalPages
+          state.page > 0 && state.totalBooks % PAGE_LIMIT === 0 && state.page === state.totalPages
             ? state.page - 1
             : state.page;
 
@@ -108,18 +106,18 @@ const booksSlice = createSlice({
           updateCoverBook.pending,
           deleteBook.pending
         ),
-        state => {
+        (state) => {
           state.isLoading = true;
           state.error = null;
         }
       ),
   selectors: {
-    selectBooks: state => state.books,
-    selectPageBooks: state => state.page,
-    selectTotalPagesBooks: state => state.totalPages,
-    selectTotalBooks: state => state.totalBooks,
-    selectIsLoadingBooks: state => state.isLoading,
-    selectBooksError: state => state.error,
+    selectBooks: (state) => state.books,
+    selectPageBooks: (state) => state.page,
+    selectTotalPagesBooks: (state) => state.totalPages,
+    selectTotalBooks: (state) => state.totalBooks,
+    selectIsLoadingBooks: (state) => state.isLoading,
+    selectBooksError: (state) => state.error,
   },
 });
 

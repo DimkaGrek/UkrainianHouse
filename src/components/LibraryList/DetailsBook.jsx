@@ -1,4 +1,4 @@
-import { Icon } from '../../components';
+import { Icon } from "../../components";
 
 export const DetailsBook = ({
   coverImageUrl,
@@ -10,70 +10,41 @@ export const DetailsBook = ({
   description,
 }) => {
   return (
-    <div className="items-start md:pr-[205px] lg:pr-[415px] relative">
-      <div className="flex gap-[10px] ">
+    <div className="relative items-start md:pr-[205px] lg:pr-[415px]">
+      <div className="flex gap-[10px]">
         <img
-          className=" mb-[16px] w-[163px] h-[260px]   sm-max:w-[100px] sm-max:h-[159px]   rounded-[18px]   
-            md:absolute md:top-[90px] md:right-0 
-            md:w-[200px] md:h-[324px]
-            lg:w-[390px]    lg:top-0   lg:right-4
-       lg:h-auto
-        "
+          className="mb-[16px] h-[260px] w-[163px] rounded-[18px] sm-max:h-[159px] sm-max:w-[100px] md:absolute md:right-0 md:top-[90px] md:h-[324px] md:w-[200px] lg:right-4 lg:top-0 lg:h-auto lg:w-[390px]"
           src={coverImageUrl}
           alt={`книга бібліотеки, автор: ${author}, назва твору: ${title} `}
           loading="lazy"
         />
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <h3
             id="book-title"
-            className="font-proza font-semibold text-[20px] leading-[1.2] text-[#1e1e1e] mb-[4px] 
-                md:leading-[1.1] md:text-[30px] md:mb-[15px]
-            
-              lg:font-medium lg:text-[60px]  lg:leading-[1.1] "
+            className="mb-[4px] font-proza text-[20px] font-semibold leading-[1.2] text-[#1e1e1e] md:mb-[15px] md:text-[30px] md:leading-[1.1] lg:text-[60px] lg:font-medium lg:leading-[1.1]"
           >
             {title}
           </h3>
-          <h3
-            className=" font-normal text-[18px] leading-[1] text-[#1e1e1e] pb-[4px] 
-            font-istok md:font-bold md:text-[16px] md:leading-[1.375] 
-             lg:font-bold lg:text-[24px] lg:leading-[1.41667] "
-          >
+          <h3 className="pb-[4px] font-istok text-[18px] font-normal leading-[1] text-[#1e1e1e] md:text-[16px] md:font-bold md:leading-[1.375] lg:text-[24px] lg:font-bold lg:leading-[1.41667]">
             {author}
           </h3>
-          <p
-            className=" font-normal text-[12px] leading-[1.5] text-[#666] pb-[4px]
-            font-istok  md:text-[16px] md:leading-[1.375] md:italic
-           "
-          >
+          <p className="pb-[4px] font-istok text-[12px] font-normal leading-[1.5] text-[#666] md:text-[16px] md:italic md:leading-[1.375]">
             {genre}
-          </p>{' '}
-          <p
-            className="font-istok  text-[12px] leading-[1.5] text-[#666666] pb-[4px] flex justify-between items-center pr-[20px] 
-           md:text-[16px] md:leading-[1.375] md:hidden
-           "
-          >
+          </p>{" "}
+          <p className="flex items-center justify-between pb-[4px] pr-[20px] font-istok text-[12px] leading-[1.5] text-[#666666] md:hidden md:text-[16px] md:leading-[1.375]">
             {pageCount} pages
             <span className=" ">{publicationYear}</span>
           </p>
-          <p className="font-istok font-normal  text-[12px] leading-[1.5] text-[#f9a407] pb-[4px] md:text-[16px] lg:text-[18px] lg:mb-[6px]  ">
+          <p className="pb-[4px] font-istok text-[12px] font-normal leading-[1.5] text-[#f9a407] md:text-[16px] lg:mb-[6px] lg:text-[18px]">
             *книгу можна знайти в бібліотеці «Оселя».
           </p>
         </div>
       </div>
       <article>
-        <p
-          className=" font-normal text-[14px] leading-[1.28571] text-[#1e1e1e] h-[285px] lg:h-[385px] scrollbar pr-2
-font-istok  md:text-[16px] md:leading-[1.375] md:mb-[8px]
-            lg:text-[20px] lg:leading-[1.4] lg:mb-[16px]
-            "
-        >
+        <p className="scrollbar h-[285px] pr-2 font-istok text-[14px] font-normal leading-[1.28571] text-[#1e1e1e] md:mb-[8px] md:text-[16px] md:leading-[1.375] lg:mb-[16px] lg:h-[385px] lg:text-[20px] lg:leading-[1.4]">
           {description}
         </p>
-        <p
-          className=" hidden md:font-normal md:italic  md:text-[#666666]  md:flex justify-between items-center pr-[20px] 
-           font-istok  md:text-[16px] md:leading-[1.375] 
-           "
-        >
+        <p className="hidden items-center justify-between pr-[20px] font-istok md:flex md:text-[16px] md:font-normal md:italic md:leading-[1.375] md:text-[#666666]">
           {pageCount} pages
           <span className=" ">{publicationYear}</span>
         </p>
@@ -89,7 +60,7 @@ font-istok  md:text-[16px] md:leading-[1.375] md:mb-[8px]
       <Icon
         name="heart"
         size={65}
-        className="absolute size-[35px] right-[20px] bottom-[-40px] md:size-[65px] md:bottom-auto md:top-[-20px] md:right-[50px]  lg:top-[90px] lg:right-[43%]  fill-[#daefff]"
+        className="absolute bottom-[-40px] right-[20px] size-[35px] fill-[#daefff] md:bottom-auto md:right-[50px] md:top-[-20px] md:size-[65px] lg:right-[43%] lg:top-[90px]"
         viewbox="36"
       />
     </div>

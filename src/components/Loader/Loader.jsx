@@ -1,13 +1,13 @@
-import { SpinnerCircularFixed } from 'spinners-react';
+import { SpinnerCircularFixed } from "spinners-react";
 
-export const Loader = ({ placement = 'backdrop', size = 60 }) => {
+export const Loader = ({ placement = "backdrop", size = 60 }) => {
   const loaderOptions = {
     className:
-      placement === 'backdrop'
-        ? 'fixed w-full h-full flex justify-center items-center top-0 left-0 bg-black bg-opacity-50 z-50'
-        : placement === 'bottom'
-        ? 'flex justify-center'
-        : 'absolute top-1/2 right-3 transform -translate-y-1/2',
+      placement === "backdrop"
+        ? "fixed w-full h-full flex justify-center items-center top-0 left-0 bg-black bg-opacity-50 z-50"
+        : placement === "bottom"
+          ? "flex justify-center"
+          : "absolute top-1/2 right-3 transform -translate-y-1/2",
   };
 
   return (

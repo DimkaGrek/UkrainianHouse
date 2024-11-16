@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import {
   selectBooks,
@@ -7,7 +7,7 @@ import {
   selectPageBooks,
   selectTotalBooks,
   selectTotalPagesBooks,
-} from '../redux';
+} from "../redux";
 
 export const useBooks = () => {
   const books = useSelector(selectBooks);

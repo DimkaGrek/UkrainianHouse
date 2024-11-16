@@ -1,13 +1,13 @@
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
 
-import { InputField } from '../InputField/InputField';
+import { InputField } from "../InputField/InputField";
 
-import { loginFormShema } from '../../schemas';
-import { loginThunk } from '../../redux';
-import { toast } from 'react-toastify';
+import { loginFormShema } from "../../schemas";
+import { loginThunk } from "../../redux";
+import { toast } from "react-toastify";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -17,18 +17,18 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: 'onSubmit',
+    mode: "onSubmit",
     resolver: yupResolver(loginFormShema),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     dispatch(loginThunk(data))
       .unwrap()
-      .catch(e => {
-        if (e.slice(-3) === '401') {
-          toast.error('Wrong email or password.');
+      .catch((e) => {
+        if (e.slice(-3) === "401") {
+          toast.error("Wrong email or password.");
         } else {
-          toast.error('Something went wrong. Please, reload the page.');
+          toast.error("Something went wrong. Please, reload the page.");
         }
       });
   };
@@ -53,10 +53,7 @@ export const LoginForm = () => {
         errors={errors}
         password="true"
       />
-      <Link
-        to="/auth/forgot"
-        className="text-sm leading-[18px] text-my-blue hover:underline"
-      >
+      <Link to="/auth/forgot" className="text-sm leading-[18px] text-my-blue hover:underline">
         Forgot password?
       </Link>
       {/* <label className="flex items-center gap-3 text-sm leading-[18px] text-[#666666] cursor-pointer">
@@ -67,7 +64,7 @@ export const LoginForm = () => {
         />
         Remember me
       </label> */}
-      <button className="primaryBtn w-full h-[56px]" type="submit">
+      <button className="primaryBtn h-[56px] w-full" type="submit">
         Login
       </button>
     </form>

@@ -6,7 +6,7 @@ export const checkObjectEquality = (obj1, obj2) => {
     return false;
   }
 
-  return keys1.every(key => {
+  return keys1.every((key) => {
     const val1 = obj1[key];
     const val2 = obj2[key];
 

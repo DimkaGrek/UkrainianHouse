@@ -1,24 +1,24 @@
-import { Icon } from '../Icon/Icon';
+import { Icon } from "../Icon/Icon";
 
 export const NeedHelpModal = ({ toggleModal }) => {
   return (
-    <div className="relative help-modal">
+    <div className="help-modal relative">
       <Icon
         name="heart"
         size={65}
-        className="absolute top-[5px] left-[8px] lg:-top-[130px] lg:-left-[65px] fill-[#f4faff] -rotate-45"
+        className="absolute left-[8px] top-[5px] -rotate-45 fill-[#f4faff] lg:-left-[65px] lg:-top-[130px]"
         viewbox="36"
       />
-      <h3 className="pt-[340px] lg:pt-0 text-[20px] text-[#1e1e1e] leading-[1.2] lg:leading-[1.6] font-semibold mb-[8px] lg:mb-[18px]">
+      <h3 className="mb-[8px] pt-[340px] text-[20px] font-semibold leading-[1.2] text-[#1e1e1e] lg:mb-[18px] lg:pt-0 lg:leading-[1.6]">
         Thank you sincerely!
       </h3>
-      <p className="w-[260px] lg:w-[515px] text-[14px] md:text-[16px] lg:text-[28px] text-[#1e1e1e] leading-[1.4] lg:leading-[1.3] font-normal mb-[18px] md:mb-[28px]">
-        Your words are like a nightingale&apos;s song They will fly to us faster
-        than the wind! Wait for the answer as soon as possible.
+      <p className="mb-[18px] w-[260px] text-[14px] font-normal leading-[1.4] text-[#1e1e1e] md:mb-[28px] md:text-[16px] lg:w-[515px] lg:text-[28px] lg:leading-[1.3]">
+        Your words are like a nightingale&apos;s song They will fly to us faster than the wind! Wait
+        for the answer as soon as possible.
       </p>
       <button
         type="button"
-        className="w-full lg:w-[160px] rounded-[10px] h-[44px] lg:h-[52px] border border-[#1e1e1e] py-[10px] lg:py-[9px] text-[16px] lg:text-[20px] text-[#1e1e1e] text-center leading-[1] font-bold hover:bg-[#ffd437] focus-visible:bg-[#ffd437] transition duration-300"
+        className="h-[44px] w-full rounded-[10px] border border-[#1e1e1e] py-[10px] text-center text-[16px] font-bold leading-[1] text-[#1e1e1e] transition duration-300 hover:bg-[#ffd437] focus-visible:bg-[#ffd437] lg:h-[52px] lg:w-[160px] lg:py-[9px] lg:text-[20px]"
         onClick={toggleModal}
       >
         Sounds good

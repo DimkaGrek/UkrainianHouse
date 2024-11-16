@@ -1,20 +1,15 @@
-import {
-  NeedHelpForm,
-  GoogleMap,
-  CarouselTeam,
-  Address,
-} from '../../components';
+import { NeedHelpForm, GoogleMap, CarouselTeam, Address } from "../../components";
 
-import { images } from '../../assets';
+import { images } from "../../assets";
 
 const ContactsPage = () => {
   const { contactsImages } = images;
   return (
     <>
-      <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[1.6] mb-[50px] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[1.3] lg:text-[#1e1e1e] lg:mb-[44px]">
+      <h3 className="font-proza-semibold lg:font-proza-medium mb-[50px] hidden text-[20px] font-semibold leading-[1.6] text-[#222] md:block lg:mb-[44px] lg:text-[60px] lg:font-medium lg:leading-[1.3] lg:text-[#1e1e1e]">
         Contacts
       </h3>
-      <div className="contacts-form-wrapper relative rounded-[18px] py-[34px] px-[24px] w-full bg-[#daefff] mt-[35vw] md:mt-0 mb-[35vw] md:mb-[20vw] lg:mb-[14vw] lg:flex lg:gap-[90px]">
+      <div className="contacts-form-wrapper relative mb-[35vw] mt-[35vw] w-full rounded-[18px] bg-[#daefff] px-[24px] py-[34px] md:mb-[20vw] md:mt-0 lg:mb-[14vw] lg:flex lg:gap-[90px]">
         <NeedHelpForm />
         <GoogleMap />
       </div>
@@ -25,7 +20,7 @@ const ContactsPage = () => {
         iconClass="fill-[#1e1e1e] sm-max:size-[18px] lg:size-[28px]"
       />
 
-      <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[1.6] mb-[16px] lg:hidden">
+      <h3 className="font-proza-semibold mb-[16px] hidden text-[20px] font-semibold leading-[1.6] text-[#222] md:block lg:hidden">
         Our team
       </h3>
 
@@ -37,7 +32,7 @@ const ContactsPage = () => {
         alt="Image of the writer Ivan Franko"
         width="294"
         height="356"
-        className="mb-[40px] sm-max:w-[246px] sm-max:h-[308px] md:hidden"
+        className="mb-[40px] sm-max:h-[308px] sm-max:w-[246px] md:hidden"
         loading="lazy"
       />
     </>

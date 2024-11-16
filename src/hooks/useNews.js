@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import {
   selectError,
@@ -8,7 +8,7 @@ import {
   selectPageNews,
   selectNews,
   selectTotalNews,
-} from '../redux';
+} from "../redux";
 
 export const useNews = () => {
   const news = useSelector(selectNews);

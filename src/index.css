@@ -9,11 +9,10 @@
 </div>
 */
 @font-face {
-  font-family: 'IstokWeb-Regular';
-  src: url('./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff')
-      format('woff');
+  font-family: "IstokWeb-Regular";
+  src:
+    url("./assets/fonts/Istok_Web/woff2/istokweb-regular-webfont.woff2") format("woff2"),
+    url("./assets/fonts/Istok_Web/woff/istokweb-regular-webfont.woff") format("woff");
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
@@ -26,11 +25,10 @@
 </div>
 */
 @font-face {
-  font-family: 'ProzaLibre-Regular';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff')
-      format('woff');
+  font-family: "ProzaLibre-Regular";
+  src:
+    url("./assets/fonts/Proza_Libre/woff2/prozalibre-regular-webfont.woff2") format("woff2"),
+    url("./assets/fonts/Proza_Libre/woff/prozalibre-regular-webfont.woff") format("woff");
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
@@ -43,11 +41,10 @@
 </div>
 */
 @font-face {
-  font-family: 'ProzaLibre-Medium';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff')
-      format('woff');
+  font-family: "ProzaLibre-Medium";
+  src:
+    url("./assets/fonts/Proza_Libre/woff2/prozalibre-medium-webfont.woff2") format("woff2"),
+    url("./assets/fonts/Proza_Libre/woff/prozalibre-medium-webfont.woff") format("woff");
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
@@ -60,11 +57,10 @@
 </div>
 */
 @font-face {
-  font-family: 'ProzaLibre-SemiBold';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2')
-      format('woff2'),
-    url('./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff')
-      format('woff');
+  font-family: "ProzaLibre-SemiBold";
+  src:
+    url("./assets/fonts/Proza_Libre/woff2/prozalibre-semibold-webfont.woff2") format("woff2"),
+    url("./assets/fonts/Proza_Libre/woff/prozalibre-semibold-webfont.woff") format("woff");
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
@@ -77,9 +73,8 @@
 </div>
 */
 @font-face {
-  font-family: 'ProzaLibre-Bold';
-  src: url('./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2')
-    format('woff2');
+  font-family: "ProzaLibre-Bold";
+  src: url("./assets/fonts/Proza_Libre/woff2/prozalibre-bold-webfont.woff2") format("woff2");
   font-weight: 700;
   font-stretch: normal;
   font-display: swap;
@@ -88,30 +83,30 @@ html {
   scroll-behavior: smooth;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 .primaryBtn {
-  @apply font-istok font-bold text-[20px] leading-[32px] flex justify-center items-center gap-[6px] py-[9px] px-[18px] border border-solid border-my-black5 rounded-[10px] hover:bg-my-yellow hover:transition-all;
+  @apply flex items-center justify-center gap-[6px] rounded-[10px] border border-solid border-my-black5 px-[18px] py-[9px] font-istok text-[20px] font-bold leading-[32px] hover:bg-my-yellow hover:transition-all;
 }
 
 .label {
-  @apply w-full font-istok font-normal text-[16px] leading-[22px] flex flex-col items-start gap-[6px] p-0;
+  @apply flex w-full flex-col items-start gap-[6px] p-0 font-istok text-[16px] font-normal leading-[22px];
 }
 
 .field {
-  @apply text-[20px] leading-[24px] min-h-[50px] w-full py-[14px] px-[18px] placeholder:text-my-gray border border-solid border-my-black5 rounded-[10px] focus:outline-none focus:border-my-yellow;
+  @apply min-h-[50px] w-full rounded-[10px] border border-solid border-my-black5 px-[18px] py-[14px] text-[20px] leading-[24px] placeholder:text-my-gray focus:border-my-yellow focus:outline-none;
 }
 
 .field-error {
-  @apply absolute text-[13px] text-red-600 mt-[2px];
+  @apply absolute mt-[2px] text-[13px] text-red-600;
 }
 
 .auth-form {
-  @apply flex flex-col gap-6 w-[520px] p-10 bg-my-lightblue rounded-[24px] shadow-md;
+  @apply flex w-[520px] flex-col gap-6 rounded-[24px] bg-my-lightblue p-10 shadow-md;
 }
 
 .active {
@@ -168,7 +163,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 /* ========================================== */
 .contacts-form-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -25vw;
   left: 50%;
@@ -176,17 +171,16 @@ input[type='number']::-webkit-outer-spin-button {
   width: 100vw;
   height: 18vw;
 
-  background-image: url('./assets/images/contacts/contacts_mobile1x.webp');
+  background-image: url("./assets/images/contacts/contacts_mobile1x.webp");
 
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 }
 
-@media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::before {
-    background-image: url('./assets/images/contacts/contacts_mobile2x.webp');
+    background-image: url("./assets/images/contacts/contacts_mobile2x.webp");
   }
 }
 
@@ -198,7 +192,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* ---------------------------------- */
 .contacts-form-wrapper::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -25vw;
   left: 50%;
@@ -206,17 +200,16 @@ input[type='number']::-webkit-outer-spin-button {
   width: calc(100vw - 18px);
   height: 18vw;
 
-  background-image: url('./assets/images/contacts/contacts_2_mobile1x.webp');
+  background-image: url("./assets/images/contacts/contacts_2_mobile1x.webp");
 
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 }
 
-@media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
   .contacts-form-wrapper::after {
-    background-image: url('./assets/images/contacts/contacts_2_mobile2x.webp');
+    background-image: url("./assets/images/contacts/contacts_2_mobile2x.webp");
   }
 }
 
@@ -224,13 +217,12 @@ input[type='number']::-webkit-outer-spin-button {
   .contacts-form-wrapper::after {
     height: 10vw;
     bottom: -15vw;
-    background-image: url('./assets/images/contacts/contacts_2_tablet1x.webp');
+    background-image: url("./assets/images/contacts/contacts_2_tablet1x.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
-      background-image: url('./assets/images/contacts/contacts_2_tablet2x.webp');
+      background-image: url("./assets/images/contacts/contacts_2_tablet2x.webp");
     }
   }
 }
@@ -239,20 +231,19 @@ input[type='number']::-webkit-outer-spin-button {
   .contacts-form-wrapper::after {
     height: 8vw;
     bottom: -11vw;
-    background-image: url('./assets/images/contacts/contacts_2_desktop1x.webp');
+    background-image: url("./assets/images/contacts/contacts_2_desktop1x.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .contacts-form-wrapper::after {
-      background-image: url('./assets/images/contacts/contacts_2_desktop2x.webp');
+      background-image: url("./assets/images/contacts/contacts_2_desktop2x.webp");
     }
   }
 }
 
 /* ------------------------------------- */
 .link-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -25vw;
   left: 50%;
@@ -260,17 +251,16 @@ input[type='number']::-webkit-outer-spin-button {
   width: calc(100vw - 18px);
   height: 11vw;
 
-  background-image: url('./assets/images/footer/tape_1x_mob.webp');
+  background-image: url("./assets/images/footer/tape_1x_mob.webp");
 
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 }
 
-@media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
   .link-wrapper::before {
-    background-image: url('./assets/images/footer/tape_2x_mob.webp');
+    background-image: url("./assets/images/footer/tape_2x_mob.webp");
   }
 }
 
@@ -278,13 +268,12 @@ input[type='number']::-webkit-outer-spin-button {
   .link-wrapper::before {
     top: -11vw;
     height: 4vw;
-    background-image: url('./assets/images/footer/tape_1x_tablet.webp');
+    background-image: url("./assets/images/footer/tape_1x_tablet.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
-      background-image: url('./assets/images/footer/tape_2x_tablet.webp');
+      background-image: url("./assets/images/footer/tape_2x_tablet.webp");
     }
   }
 }
@@ -292,19 +281,18 @@ input[type='number']::-webkit-outer-spin-button {
 @media screen and (min-width: 1440px) {
   .link-wrapper::before {
     top: -8vw;
-    background-image: url('./assets/images/footer/tape_1x_desktop.webp');
+    background-image: url("./assets/images/footer/tape_1x_desktop.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .link-wrapper::before {
-      background-image: url('./assets/images/footer/tape_2x_desktop.webp');
+      background-image: url("./assets/images/footer/tape_2x_desktop.webp");
     }
   }
 }
 
 .custom-list li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: -18px;
   top: -3px;
@@ -334,7 +322,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* Pagination */
 .page-link {
-  @apply size-[44px] flex items-center justify-center rounded-full border border-[#2626265f] bg-transparent text-[18px] font-bold leading-[1.29] text-[#262626] transition duration-300;
+  @apply flex size-[44px] items-center justify-center rounded-full border border-[#2626265f] bg-transparent text-[18px] font-bold leading-[1.29] text-[#262626] transition duration-300;
 }
 
 .page-item.disabled .page-link,
@@ -352,12 +340,12 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .help-modal::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 5px;
   left: 0;
 
-  background-image: url('./assets/images/libraryBooksQuotes/mobile/mob_1_1x.webp');
+  background-image: url("./assets/images/libraryBooksQuotes/mobile/mob_1_1x.webp");
 
   background-repeat: no-repeat;
   background-position: center;
@@ -366,10 +354,9 @@ input[type='number']::-webkit-outer-spin-button {
   height: 312px;
 }
 
-@media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
   .help-modal::before {
-    background-image: url('./assets/images/libraryBooksQuotes/mobile/mob_1_2x.webp');
+    background-image: url("./assets/images/libraryBooksQuotes/mobile/mob_1_2x.webp");
   }
 }
 
@@ -378,16 +365,15 @@ input[type='number']::-webkit-outer-spin-button {
     top: -109px;
     transform: translateX(500px);
 
-    background-image: url('./assets/images/libraryBooksQuotes/desktop/desk_1_1x.webp');
+    background-image: url("./assets/images/libraryBooksQuotes/desktop/desk_1_1x.webp");
     width: 415px;
     height: 475px;
   }
 }
 
-@media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
   .help-modal::before {
-    background-image: url('assets/images/libraryBooksQuotes/desktop/desk_1_2x.webp');
+    background-image: url("assets/images/libraryBooksQuotes/desktop/desk_1_2x.webp");
   }
 }
 
@@ -395,50 +381,46 @@ input[type='number']::-webkit-outer-spin-button {
 
 @media screen and (min-width: 768px) {
   .not-found-section {
-    background-image: url(' assets/images/not-found/notFound@1x_tablet.webp');
+    background-image: url(" assets/images/not-found/notFound@1x_tablet.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .not-found-section {
-      background-image: url('assets/images/not-found/notFound@2x_tablet.webp');
+      background-image: url("assets/images/not-found/notFound@2x_tablet.webp");
     }
   }
 }
 
 @media screen and (min-width: 1440px) {
   .not-found-section {
-    background-image: url('./assets/images/not-found/notFound@1x_desktop.webp');
+    background-image: url("./assets/images/not-found/notFound@1x_desktop.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .not-found-section {
-      background-image: url('./assets/images/not-found/notFound@2x_desktop.webp');
+      background-image: url("./assets/images/not-found/notFound@2x_desktop.webp");
     }
   }
 }
 
 .decoration-lines {
-  background-image: url('./assets/images/not-found/decorationLines@1x_tablet.webp');
+  background-image: url("./assets/images/not-found/decorationLines@1x_tablet.webp");
 }
 
-@media screen and (min-resolution: 1.5dppx),
-  screen and (min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
   .decoration-lines {
-    background-image: url('./assets/images/not-found/decorationLines@2x_tablet.webp');
+    background-image: url("./assets/images/not-found/decorationLines@2x_tablet.webp");
   }
 }
 
 @media screen and (min-width: 768px) {
   .decoration-lines {
-    background-image: url('./assets/images/not-found/decorationLines@1x_desktop.webp');
+    background-image: url("./assets/images/not-found/decorationLines@1x_desktop.webp");
   }
 
-  @media screen and (min-resolution: 1.5dppx),
-    screen and (min-device-pixel-ratio: 2) {
+  @media screen and (min-resolution: 1.5dppx), screen and (min-device-pixel-ratio: 2) {
     .decoration-lines {
-      background-image: url('./assets/images/not-found/decorationLines@1x_desktop.webp');
+      background-image: url("./assets/images/not-found/decorationLines@1x_desktop.webp");
     }
   }
 }

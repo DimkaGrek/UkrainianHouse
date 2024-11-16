@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
-import { Icon } from '../../components';
-import { BurgerMenu } from './BurgerMenu';
+import { Icon } from "../../components";
+import { BurgerMenu } from "./BurgerMenu";
 
-import { images } from '../../assets';
+import { images } from "../../assets";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,12 +16,12 @@ export const Header = () => {
   };
 
   return (
-    <header className="container py-[34px] pb-[29px] md:pb-[48px] ">
+    <header className="container py-[34px] pb-[29px] md:pb-[48px]">
       <BurgerMenu
         isOpen={isMenuOpen}
         toggleMenu={toggleMenu}
-        classBackdrop={`${isMenuOpen ? 'scale-1' : 'scale-0'}`}
-        classMenu={`${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        classBackdrop={`${isMenuOpen ? "scale-1" : "scale-0"}`}
+        classMenu={`${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       />
 
       <nav className="flex items-center justify-between text-center">
@@ -54,30 +54,30 @@ export const Header = () => {
         >
           <Icon
             name="burger-menu"
-            className="flex justify-between fill-[#1e1e1e] md:w-[46px] md:h-[46px] lg:hidden"
+            className="flex justify-between fill-[#1e1e1e] md:h-[46px] md:w-[46px] lg:hidden"
             size="34"
           />
         </button>
 
-        <div className="hidden lg:flex items-center justify-center text-center">
-          <ul className="flex gap-16 font-normal text-[24px] leading-relaxed text-center text-[#222] mr-[74px]">
-            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+        <div className="hidden items-center justify-center text-center lg:flex">
+          <ul className="mr-[74px] flex gap-16 text-center text-[24px] font-normal leading-relaxed text-[#222]">
+            <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8]">
               <NavLink to="/">Home</NavLink>
             </li>
-            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+            <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8]">
               <NavLink to="/news">News</NavLink>
             </li>
-            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+            <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8]">
               <NavLink to="/library">Library</NavLink>
             </li>
-            <li className="hover:text-[#3e38c8] focus-visible:text-[#3e38c8] transition duration-300">
+            <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8]">
               <NavLink to="/contacts">Contacts</NavLink>
             </li>
           </ul>
 
           <a
             href="mailto:ukrainianhouse.maastricht@gmail.com"
-            className="font-bold text-[20px] text-center text-gray-900 border border-gray-900 rounded-[10px] py-2.5 px-5 w-[159px] h-[54px] mr-[24px] hover:text-[#fff] hover:bg-[#2355cc] focus-visible:text-[#fff] focus-visible:bg-[#2355cc] transition duration-300"
+            className="mr-[24px] h-[54px] w-[159px] rounded-[10px] border border-gray-900 px-5 py-2.5 text-center text-[20px] font-bold text-gray-900 transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff]"
           >
             Get in touch
           </a>

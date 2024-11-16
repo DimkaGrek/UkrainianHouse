@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 
-import { adminNavLinks } from '../../constants';
+import { adminNavLinks } from "../../constants";
 
-import { images } from '../../assets';
-import { useMessages } from '../../hooks';
-import { fetchUnreadMessages } from '../../redux';
+import { images } from "../../assets";
+import { useMessages } from "../../hooks";
+import { fetchUnreadMessages } from "../../redux";
 
 export const Sidebar = () => {
   const { headerImages } = images;
@@ -32,14 +32,14 @@ export const Sidebar = () => {
           />
         </picture>
       </Link>
-      <ul className="flex flex-col items-center gap-6 text-2xl mt-6">
+      <ul className="mt-6 flex flex-col items-center gap-6 text-2xl">
         {adminNavLinks &&
-          adminNavLinks.map(link => (
+          adminNavLinks.map((link) => (
             <li key={link.id} className="relative">
               <NavLink to={link.link} className="relative">
                 {link.text}
-                {link.link === '/admin/inbox' && totalUnreadMessages !== 0 && (
-                  <span className="absolute top-[-8px] right-[-16px] w-5 h-5 bg-red-500 font-bold text-white text-xs rounded-full flex items-center justify-center">
+                {link.link === "/admin/inbox" && totalUnreadMessages !== 0 && (
+                  <span className="absolute right-[-16px] top-[-8px] flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
                     {totalUnreadMessages}
                   </span>
                 )}

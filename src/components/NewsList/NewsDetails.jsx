@@ -1,55 +1,44 @@
-import { ReadMoreButton } from '../../components';
+import { ReadMoreButton } from "../../components";
 
-import { getFormattedDate } from '../../helpers';
+import { getFormattedDate } from "../../helpers";
 
-export const NewsDetails = ({
-  title,
-  content,
-  publishDate,
-  photoUrls,
-  btnLink,
-  btnText,
-}) => {
+export const NewsDetails = ({ title, content, publishDate, photoUrls, btnLink, btnText }) => {
   const isReadMoreAvailable = btnText && btnLink;
   return (
-    <div className="max-h-[70vh] pb-2 md:pb-0 pr-[10px] md:pr-[15px] lg:pr-0 flex flex-col gap-[24px] lg:gap-5 lg:flex-row scrollbar">
-      <div className="md:order-1 lg:min-h-full lg:flex lg:flex-col">
+    <div className="scrollbar flex max-h-[70vh] flex-col gap-[24px] pb-2 pr-[10px] md:pb-0 md:pr-[15px] lg:flex-row lg:gap-5 lg:pr-0">
+      <div className="md:order-1 lg:flex lg:min-h-full lg:flex-col">
         <div
           className={`max-w-[736px] ${
-            isReadMoreAvailable ? 'lg:max-h-[520px]' : 'lg:max-h-[574px]'
-          } lg:pr-2 mb-[24px] scrollbar-desktop`}
+            isReadMoreAvailable ? "lg:max-h-[520px]" : "lg:max-h-[574px]"
+          } scrollbar-desktop mb-[24px] lg:pr-2`}
         >
-          <h3 className="font-proza-medium font-semibold text-[20px] text-[#1a1a1a] leading-[120%] md:leading-[160%] mb-[10px] md:mb-[24px] lg:text-[60px] lg:leading-[131%] break-words">
+          <h3 className="font-proza-medium mb-[10px] break-words text-[20px] font-semibold leading-[120%] text-[#1a1a1a] md:mb-[24px] md:leading-[160%] lg:text-[60px] lg:leading-[131%]">
             {title}
           </h3>
-          <p className="font-istok text-[16px] text-[#393939] leading-[137%] lg:text-[20px] lg:leading-[140%] break-words">
+          <p className="break-words font-istok text-[16px] leading-[137%] text-[#393939] lg:text-[20px] lg:leading-[140%]">
             {content}
           </p>
         </div>
         <p
-          className={`font-istok text-[12px] md:text-[14px] lg:text-[20px] text-[#a6a6a6] text-left leading-[150%] md:leading-[129%] lg:leading-[150%] ${
-            isReadMoreAvailable ? 'lg:mb-[24px]' : 'lg:mb-0'
+          className={`text-left font-istok text-[12px] leading-[150%] text-[#a6a6a6] md:text-[14px] md:leading-[129%] lg:text-[20px] lg:leading-[150%] ${
+            isReadMoreAvailable ? "lg:mb-[24px]" : "lg:mb-0"
           }`}
         >
           {getFormattedDate(publishDate)}
         </p>
-        <ReadMoreButton
-          className="hidden lg:block mt-auto"
-          caption={btnText}
-          link={btnLink}
-        />
+        <ReadMoreButton className="mt-auto hidden lg:block" caption={btnText} link={btnLink} />
       </div>
 
       {photoUrls?.length ? (
-        <ul className="flex flex-col items-center md:flex-row lg:flex-col gap-3 md:order-2 lg:gap-6 lg:max-h-[628px] lg:pr-2 scrollbar-desktop">
+        <ul className="scrollbar-desktop flex flex-col items-center gap-3 md:order-2 md:flex-row lg:max-h-[628px] lg:flex-col lg:gap-6 lg:pr-2">
           {photoUrls.map((item, index) => (
             <li key={index} className="w-auto">
               <img
                 src={item.photoUrls}
                 width={316}
                 height={108}
-                className="w-auto tablet:w-[198px] tablet:h-[150px] lg:w-[400px] rounded-[18px] object-cover"
-                alt={item.caption || 'News photo'}
+                className="w-auto rounded-[18px] object-cover tablet:h-[150px] tablet:w-[198px] lg:w-[400px]"
+                alt={item.caption || "News photo"}
               />
             </li>
           ))}

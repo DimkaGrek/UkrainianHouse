@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
 import {
   createNewsPhoto,
@@ -8,9 +8,9 @@ import {
   fetchAllNews,
   fetchAnnounceNews,
   updateOneNews,
-} from './newsOperations';
-import { logoutThunk } from '../auth/authOperations';
-import { PAGE_LIMIT } from '../../constants';
+} from "./newsOperations";
+import { logoutThunk } from "../auth/authOperations";
+import { PAGE_LIMIT } from "../../constants";
 
 const initialState = {
   news: [],
@@ -23,18 +23,18 @@ const initialState = {
 };
 
 const newsSlice = createSlice({
-  name: 'news',
+  name: "news",
   initialState,
   reducers: {
     setPageNews: (state, { payload }) => {
       state.page = payload;
     },
-    clearNews: state => {
+    clearNews: (state) => {
       state.news = [];
       state.page = 0;
     },
   },
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
       .addCase(
         fetchAllNews.fulfilled,
@@ -62,7 +62,7 @@ const newsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(createNewsPhoto.fulfilled, (state, { payload }) => {
-        const newsItem = state.news.find(item => item.id === payload.newsId);
+        const newsItem = state.news.find((item) => item.id === payload.newsId);
         if (newsItem) {
           newsItem.photoUrls.push(payload.data);
         }
@@ -70,7 +70,7 @@ const newsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateOneNews.fulfilled, (state, { payload }) => {
-        state.news = state.news.map(item => {
+        state.news = state.news.map((item) => {
           if (item.id === payload.id) {
             return { ...item, ...payload };
           }
@@ -80,13 +80,11 @@ const newsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(deleteOneNews.fulfilled, (state, { payload }) => {
-        state.news = state.news.filter(item => item.id !== payload);
+        state.news = state.news.filter((item) => item.id !== payload);
         state.totalNews -= 1;
         state.totalPages = Math.ceil(state.totalNews / PAGE_LIMIT);
         state.page =
-          state.page > 0 &&
-          state.totalNews % PAGE_LIMIT === 0 &&
-          state.page === state.totalPages
+          state.page > 0 && state.totalNews % PAGE_LIMIT === 0 && state.page === state.totalPages
             ? state.page - 1
             : state.page;
 
@@ -94,11 +92,9 @@ const newsSlice = createSlice({
       })
       .addCase(deleteNewsPhoto.fulfilled, (state, { payload }) => {
         const { newsId, photoId } = payload;
-        const newsItem = state.news.find(item => item.id === newsId);
+        const newsItem = state.news.find((item) => item.id === newsId);
         if (newsItem) {
-          newsItem.photoUrls = newsItem.photoUrls.filter(
-            photo => photo.id !== photoId
-          );
+          newsItem.photoUrls = newsItem.photoUrls.filter((photo) => photo.id !== photoId);
         }
 
         state.isLoading = false;
@@ -132,19 +128,19 @@ const newsSlice = createSlice({
           deleteOneNews.pending,
           deleteNewsPhoto.pending
         ),
-        state => {
+        (state) => {
           state.isLoading = true;
           state.error = null;
         }
       ),
   selectors: {
-    selectNews: state => state.news,
-    selectAnnounceNews: state => state.announceNews,
-    selectPageNews: state => state.page,
-    selectTotalPagesNews: state => state.totalPages,
-    selectTotalNews: state => state.totalNews,
-    selectIsLoadingNews: state => state.isLoading,
-    selectError: state => state.error,
+    selectNews: (state) => state.news,
+    selectAnnounceNews: (state) => state.announceNews,
+    selectPageNews: (state) => state.page,
+    selectTotalPagesNews: (state) => state.totalPages,
+    selectTotalNews: (state) => state.totalNews,
+    selectIsLoadingNews: (state) => state.isLoading,
+    selectError: (state) => state.error,
   },
 });
 export const { setPageNews, clearNews } = newsSlice.actions;

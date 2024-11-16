@@ -1,4 +1,4 @@
-import { images } from '../assets';
+import { images } from "../assets";
 
 export const getQuotes = () => {
   const { libraryImages } = images;

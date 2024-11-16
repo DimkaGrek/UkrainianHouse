@@ -1,28 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
-import {
-  Advertisement,
-  InfoMessage,
-  Loader,
-  NewsList,
-  SearchBar,
-} from '../../components';
+import { Advertisement, InfoMessage, Loader, NewsList, SearchBar } from "../../components";
 
-import {
-  clearNews,
-  fetchAllNews,
-  fetchAnnounceNews,
-  setPageNews,
-} from '../../redux';
-import { useNews } from '../../hooks';
+import { clearNews, fetchAllNews, fetchAnnounceNews, setPageNews } from "../../redux";
+import { useNews } from "../../hooks";
 
 const NewsPage = () => {
   const { news, page, isLoading, error } = useNews();
 
   const [isMoreNews, setIsMoreNews] = useState(true);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
   const [isSearchTriggered, setIsSearchTriggered] = useState(false);
 
   const dispatch = useDispatch();
@@ -33,22 +22,22 @@ const NewsPage = () => {
     const config = {
       params: {
         page,
-        status: 'PUBLISHED',
+        status: "PUBLISHED",
         ...(keyword && { keyword }),
       },
     };
     dispatch(fetchAllNews(config))
       .unwrap()
-      .then(res => {
+      .then((res) => {
         dispatch(setPageNews(res.currentPage + 1));
 
         const hasMoreNews = res.currentPage + 1 < res.totalPages;
         setIsMoreNews(hasMoreNews);
         if (!hasMoreNews && news.length) {
-          toast.info('You have reached the end of the news list.');
+          toast.info("You have reached the end of the news list.");
         }
       })
-      .catch(e => toast.error(e.message));
+      .catch((e) => toast.error(e.message));
   }, [page, keyword, dispatch, news.length]);
 
   useEffect(() => {
@@ -56,7 +45,7 @@ const NewsPage = () => {
     dispatch(fetchAnnounceNews())
       .unwrap()
       .then()
-      .catch(e => toast.error(e.message));
+      .catch((e) => toast.error(e.message));
   }, [dispatch]);
 
   useEffect(() => {
@@ -70,7 +59,7 @@ const NewsPage = () => {
     const currentTarget = observerTarget.current;
 
     const observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         if (entries[0].isIntersecting && isMoreNews && !isLoading && !error) {
           fetchNewsData();
         }
@@ -89,7 +78,7 @@ const NewsPage = () => {
     };
   }, [dispatch, fetchNewsData, error, isMoreNews, keyword, page, isLoading]);
 
-  const onSearchSubmit = filterValue => {
+  const onSearchSubmit = (filterValue) => {
     dispatch(clearNews());
     setKeyword(filterValue);
     setIsSearchTriggered(true);
@@ -98,8 +87,8 @@ const NewsPage = () => {
   return (
     <>
       <section className="pb-[74px] md:pb-[50px] lg:pb-[110px]">
-        <div className="flex md:justify-between md:items-center mb-5 md:mb-[40px] lg:mb-[44px]">
-          <h3 className="hidden md:block font-proza-semibold font-semibold text-[20px] text-[#222] leading-[160%] lg:font-proza-medium lg:font-medium lg:text-[60px] lg:leading-[130%]">
+        <div className="mb-5 flex md:mb-[40px] md:items-center md:justify-between lg:mb-[44px]">
+          <h3 className="font-proza-semibold lg:font-proza-medium hidden text-[20px] font-semibold leading-[160%] text-[#222] md:block lg:text-[60px] lg:font-medium lg:leading-[130%]">
             News
           </h3>
           <div className="md:w-[500px] lg:w-[654px]">
@@ -107,11 +96,7 @@ const NewsPage = () => {
           </div>
         </div>
         <Advertisement />
-        {!news.length && keyword && !isLoading ? (
-          <InfoMessage keyword={keyword} />
-        ) : (
-          <NewsList />
-        )}
+        {!news.length && keyword && !isLoading ? <InfoMessage keyword={keyword} /> : <NewsList />}
         <div ref={observerTarget}></div>
         {isLoading && <Loader placement="bottom" />}
       </section>

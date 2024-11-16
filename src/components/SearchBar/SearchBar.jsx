@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { MdClear } from 'react-icons/md';
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { MdClear } from "react-icons/md";
 
 export const SearchBar = ({ setQuery }) => {
   const { watch, register, setValue, reset, handleSubmit } = useForm();
@@ -14,10 +14,10 @@ export const SearchBar = ({ setQuery }) => {
   }, [location.pathname, reset]);
 
   useEffect(() => {
-    const keyword = searchParams.get('keyword');
+    const keyword = searchParams.get("keyword");
 
     if (keyword) {
-      setValue('query', keyword);
+      setValue("query", keyword);
     }
   }, [searchParams, setValue]);
 
@@ -28,28 +28,25 @@ export const SearchBar = ({ setQuery }) => {
 
   const handleClearClick = () => {
     reset();
-    setQuery('');
+    setQuery("");
     setSearchParams({});
   };
 
-  const query = watch('query');
+  const query = watch("query");
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="relative w-full flex gap-2"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="relative flex w-full gap-2">
       <input
         type="text"
         placeholder="Search..."
         name="query"
         autoComplete="off"
-        {...register('query')}
-        className="w-full text-[20px] leading-6 text-[#1E1E1E] placeholder:text-[#666] h-[52px] py-[14px] pl-[18px] pr-[26px] border border-[#b3b3b3] rounded-[10px] bg-white focus:outline-none hover:border-[#ffd437] focus:border-[#ffd437] transition duration-300"
+        {...register("query")}
+        className="h-[52px] w-full rounded-[10px] border border-[#b3b3b3] bg-white py-[14px] pl-[18px] pr-[26px] text-[20px] leading-6 text-[#1E1E1E] transition duration-300 placeholder:text-[#666] hover:border-[#ffd437] focus:border-[#ffd437] focus:outline-none"
       />
       {query && (
         <button
           type="button"
-          className="absolute top-1/2 -translate-y-1/2 right-[120px]"
+          className="absolute right-[120px] top-1/2 -translate-y-1/2"
           onClick={handleClearClick}
         >
           <MdClear size={24} />
@@ -57,7 +54,7 @@ export const SearchBar = ({ setQuery }) => {
       )}
       <button
         type="submit"
-        className="shrink-0 font-istok font-bold w-[104px] h-[52px] text-[20px] text-[#1e1e1e] border border-[#1e1e1e] rounded-[10px] bg-white py-[10px] px-[18px] hover:bg-[#ffd437] focus:bg-[#ffd437] transition duration-300"
+        className="h-[52px] w-[104px] shrink-0 rounded-[10px] border border-[#1e1e1e] bg-white px-[18px] py-[10px] font-istok text-[20px] font-bold text-[#1e1e1e] transition duration-300 hover:bg-[#ffd437] focus:bg-[#ffd437]"
       >
         Search
       </button>

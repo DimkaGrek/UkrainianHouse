@@ -10,7 +10,7 @@ export const getFormattedData = (files, filesKey, jsonData, jsonDateKey) => {
   }
 
   const jsonBlob = new Blob([JSON.stringify(jsonData)], {
-    type: 'application/json',
+    type: "application/json",
   });
 
   formData.append(jsonDateKey, jsonBlob);

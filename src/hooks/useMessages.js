@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import {
   selectErrorMessages,
@@ -8,7 +8,7 @@ import {
   selectTotalMessages,
   selectTotalPagesMessages,
   selectTotalUnreadMessages,
-} from '../redux';
+} from "../redux";
 
 export const useMessages = () => {
   const messages = useSelector(selectMessages);

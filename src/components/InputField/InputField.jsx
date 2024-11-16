@@ -1,23 +1,23 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from "../Icon/Icon";
 
 export const InputField = ({
-  wrapperClass = '',
+  wrapperClass = "",
   label,
   name,
-  type = 'text',
+  type = "text",
   placeholder,
   defaultValue,
   register,
   errors,
-  autoComplete = 'off',
-  password = 'false',
+  autoComplete = "off",
+  password = "false",
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const inputProps = {
-    className: 'field',
+    className: "field",
     type,
     placeholder,
     defaultValue,
@@ -37,20 +37,16 @@ export const InputField = ({
         {label}
         <input
           {...inputProps}
-          {...(type === 'password' && {
-            type: showPassword ? 'text' : 'password',
+          {...(type === "password" && {
+            type: showPassword ? "text" : "password",
           })}
         />
-        {password === 'true' && (
+        {password === "true" && (
           <span
             onClick={handleChangePasswordView}
             className="absolute right-5 top-[46px] cursor-pointer"
           >
-            <Icon
-              name={showPassword ? 'eye' : 'eye-off'}
-              size={20}
-              className="stroke-black"
-            />
+            <Icon name={showPassword ? "eye" : "eye-off"} size={20} className="stroke-black" />
           </span>
         )}
       </label>

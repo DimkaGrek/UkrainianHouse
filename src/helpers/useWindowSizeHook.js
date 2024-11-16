@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const useWindowSizeHook = () => {
   const [windowSize, setWindowSize] = useState({
@@ -14,10 +14,10 @@ export const useWindowSizeHook = () => {
       });
     }
 
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener("resize", handleWindowResize);
 
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
