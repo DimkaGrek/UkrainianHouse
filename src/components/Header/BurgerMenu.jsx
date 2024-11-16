@@ -37,7 +37,7 @@ export const BurgerMenu = ({ isOpen, toggleMenu, classBackdrop, classMenu }) => 
       className={`${classBackdrop} fixed left-0 top-0 z-50 h-full w-full bg-black bg-opacity-40 backdrop-blur-sm lg:hidden`}
     >
       <div
-        className={`${classMenu} relative ml-auto flex h-full w-[390px] flex-col items-center justify-start gap-[35px] bg-[#fff] px-[24px] py-[44px] transition duration-500 sm-max:w-[300px] md:w-[653px]`}
+        className={`${classMenu} relative ml-auto flex h-full w-[342px] flex-col items-center justify-start gap-[35px] bg-[#fff] px-[24px] py-[44px] transition duration-500 sm-max:w-[300px] md:w-[450px]`}
       >
         <button
           type="button"
@@ -89,7 +89,7 @@ export const BurgerMenu = ({ isOpen, toggleMenu, classBackdrop, classMenu }) => 
           </li>
         </ul>
 
-        <FlagsList className="flex items-center justify-center gap-4" />
+        {/* <FlagsList className="flex items-center justify-center gap-4" /> */}
 
         <Address
           className="w-[270px] sm-max:w-[240px]"
@@ -99,7 +99,7 @@ export const BurgerMenu = ({ isOpen, toggleMenu, classBackdrop, classMenu }) => 
 
         <a
           href="mailto:ukrainianhouse.maastricht@gmail.com"
-          className="inline-block h-[54px] w-full rounded-[10px] border border-gray-900 px-5 py-2.5 text-center text-[20px] font-bold text-gray-900 outline-none transition duration-300 focus-visible:bg-[#2355cc] focus-visible:text-[#fff] md:w-[605px]"
+          className="inline-block h-[54px] w-full max-w-[400px] rounded-[10px] border border-gray-900 px-5 py-2.5 text-center text-[20px] font-bold text-gray-900 outline-none transition duration-300 focus-visible:bg-[#2355cc] focus-visible:text-[#fff]"
         >
           Get in touch
         </a>

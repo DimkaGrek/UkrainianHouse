@@ -3,7 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 import { Icon, Modal, Developers, Address, FlagsList } from "../../components";
 
 import { useModal } from "../../hooks";
-
 import { images } from "../../assets";
 
 export const Footer = () => {
@@ -56,7 +55,7 @@ export const Footer = () => {
               </ul>
             </div>
 
-            <div className="mb-[50px] flex w-full justify-between md:hidden">
+            <div className="mb-[50px] flex w-full justify-center md:hidden">
               <Link to="/">
                 <img
                   srcSet={`${footerImages.footer_logo_mobile1x} 1x, ${footerImages.footer_logo_mobile2x} 2x`}
@@ -69,7 +68,7 @@ export const Footer = () => {
                 />
               </Link>
 
-              <FlagsList className="flex gap-4" />
+              {/* <FlagsList className="flex gap-4" /> */}
             </div>
 
             <div className="hidden items-center justify-between md:mb-[44px] md:flex md:w-full lg:hidden">
@@ -78,7 +77,7 @@ export const Footer = () => {
                 iconClass="fill-[#1e1e1e]"
               />
 
-              <FlagsList className="flex gap-4" />
+              {/* <FlagsList className="flex gap-4" /> */}
             </div>
 
             <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[697px] lg:gap-[20px]">
@@ -178,7 +177,7 @@ export const Footer = () => {
             iconClass="fill-[#1e1e1e]"
           />
 
-          <FlagsList className="hidden w-full gap-4" />
+          {/* <FlagsList className="hidden w-full gap-4" /> */}
 
           <p className="flex w-[220px] justify-center text-center text-[12px] font-normal leading-[1.5] text-[#1e1e1e] md:w-full md:italic lg:text-[16px] lg:leading-[1.25]">
             &copy; 2024 Ukrainian House in Maastricht. All rights reserved.
