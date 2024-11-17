@@ -7,3 +7,4 @@ export * from "./useResizeAndState";
 export * from "./useBookForm";
 export * from "./useModalLogic";
 export * from "./useSearch";
+export * from "./useScrollVisibility";
