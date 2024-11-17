@@ -6,10 +6,11 @@ import { Modal } from "../../components";
 import { deleteBook, deleteMessage, deleteOneNews } from "../../redux";
 
 export const ConfirmDelete = ({ item, toggleModal }) => {
+  const dispatch = useDispatch();
+  
   const isNews = Object.hasOwn(item, "btnLink");
   const isBook = Object.hasOwn(item, "coverImageUrl");
   const isMessage = Object.hasOwn(item, "message");
-  const dispatch = useDispatch();
 
   const truncatedItemName = item?.title
     ? item.title.length > 10
