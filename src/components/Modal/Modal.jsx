@@ -1,36 +1,16 @@
 import ReactDOM from "react-dom";
-import { useEffect } from "react";
 
 import { Icon } from "../../components";
+import { useModalLogic } from "../../hooks";
 
 const modalRoot = document.querySelector("#modalRoot");
 export const Modal = ({ children, toggleModal, className = "" }) => {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.code === "Escape") {
-        toggleModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "auto";
-    };
-  }, [toggleModal]);
-
-  const handleClickOnBackdrop = (e) => {
-    if (e.currentTarget === e.target) {
-      toggleModal();
-    }
-  };
+   const { handleBackdropClick } = useModalLogic(toggleModal);
 
   return ReactDOM.createPortal(
     <div
       className="fixed left-0 top-0 z-[49] flex h-full w-full items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm"
-      onClick={handleClickOnBackdrop}
+      onClick={handleBackdropClick}
     >
       <div
         className={`relative max-h-[95%] max-w-[350px] overflow-hidden rounded-[24px] bg-my-lightblue p-[44px] sm-max:max-w-[300px] md:max-w-[704px] lg:max-w-[1240px] ${className}`}
