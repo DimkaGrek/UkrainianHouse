@@ -1,35 +1,14 @@
-import { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 
 import { getCapitalizedWord } from "../../helpers";
+import { useDropdown } from "../../hooks";
 
 export const StatusField = ({ statuses, setStatus, status, showLabel = true }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(getCapitalizedWord(status));
-  const dropdownRef = useRef(null);
+  const { isOpen, value, dropdownRef, handleChangeStatus, handleIconClick } = useDropdown(status);
 
-  useEffect(() => {
-    const handleCloseList = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleCloseList);
-    return () => {
-      document.removeEventListener("click", handleCloseList);
-    };
-  }, []);
-
-  const handleChangeStatus = (status) => {
-    setValue(getCapitalizedWord(status));
+  const handleStatusChange = (status) => {
+    handleChangeStatus(status);
     setStatus(status);
-    setIsOpen(false);
-  };
-
-  const handleIconClick = (e) => {
-    e.stopPropagation();
-    setIsOpen(!isOpen);
   };
 
   return (
@@ -40,7 +19,7 @@ export const StatusField = ({ statuses, setStatus, status, showLabel = true }) =
           isOpen ? "border-my-yellow" : ""
         }`}
         ref={dropdownRef}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleIconClick}
       >
         {value}
         <span className={`absolute top-[${showLabel ? "46px" : "18px"}] right-5 cursor-pointer`}>
@@ -61,7 +40,7 @@ export const StatusField = ({ statuses, setStatus, status, showLabel = true }) =
               statuses.map((option, index) => (
                 <li
                   key={index}
-                  onClick={() => handleChangeStatus(option)}
+                  onClick={() => handleStatusChange(option)}
                   className={`w-full cursor-pointer rounded-[10px] p-[10px] hover:bg-my-yellow hover:transition-all ${
                     option.toLowerCase() === value.toLowerCase() ? "bg-yellow-200" : ""
                   }`}
