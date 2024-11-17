@@ -1,6 +1,6 @@
 import { useLocation, useSearchParams } from "react-router-dom";
-import { MdOutlineLogout } from "react-icons/md";
 import { useDispatch } from "react-redux";
+import { MdOutlineLogout } from "react-icons/md";
 
 import { Modal, LogoutModal, SearchBar, NewsForm, BookForm } from "../../components";
 
@@ -9,48 +9,34 @@ import { setPageBooks, setPageMessages, setPageNews } from "../../redux";
 
 export const AdminHeader = () => {
   const [, setSearchParams] = useSearchParams();
-
   const dispatch = useDispatch();
-
   const location = useLocation();
-  const isNewsPage = location.pathname.includes("news");
-  const isBooksPage = location.pathname.includes("books");
-  const isInboxPage = location.pathname.includes("inbox");
 
-  const [addNewsModal, toggleAddNewsModal] = useModal();
-  const [addBookModal, toggleAddBookModal] = useModal();
+  const currentPage = [
+    { key: "news", action: setPageNews, buttonText: "Add Article", modal: NewsForm },
+    { key: "books", action: setPageBooks, buttonText: "Add Book", modal: BookForm },
+    { key: "inbox", action: setPageMessages },
+  ].find((page) => location.pathname.includes(page.key));
+
+    const [addModal, toggleAddModal] = useModal();
   const [logoutModal, toggleLogoutModal] = useModal();
 
   const handleSetQuery = (keyword) => {
-    if (isNewsPage) {
-      dispatch(setPageNews(0));
-    } else if (isBooksPage) {
-      dispatch(setPageBooks(0));
-    } else if (isInboxPage) {
-      dispatch(setPageMessages(0));
+    if (currentPage) {
+      dispatch(currentPage.action(0));
     }
-
     setSearchParams({ keyword });
   };
 
   return (
     <header className="flex flex-row items-center gap-4 p-4">
-      {isNewsPage && (
+      {currentPage?.buttonText && (
         <button
           className="primaryBtn flex-shrink-0"
           type="button"
-          onClick={() => toggleAddNewsModal()}
+          onClick={toggleAddModal}
         >
-          Add Article
-        </button>
-      )}
-      {isBooksPage && (
-        <button
-          className="primaryBtn flex-shrink-0"
-          type="button"
-          onClick={() => toggleAddBookModal()}
-        >
-          Add Book
+          {currentPage.buttonText}
         </button>
       )}
       <SearchBar setQuery={handleSetQuery} />
@@ -66,14 +52,9 @@ export const AdminHeader = () => {
           <LogoutModal toggleModal={toggleLogoutModal} />
         </Modal>
       )}
-      {addNewsModal && (
-        <Modal toggleModal={toggleAddNewsModal}>
-          <NewsForm toggle={toggleAddNewsModal} />
-        </Modal>
-      )}
-      {addBookModal && (
-        <Modal toggleModal={toggleAddBookModal}>
-          <BookForm toggle={toggleAddBookModal} />
+     {addModal && currentPage?.modal && (
+        <Modal toggleModal={toggleAddModal}>
+          <currentPage.modal toggle={toggleAddModal} />
         </Modal>
       )}
     </header>
