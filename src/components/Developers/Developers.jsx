@@ -1,17 +1,15 @@
 import { Icon } from "../../components";
 
-import { getDevelopers } from "../../helpers";
+import { developersData } from "../../constants";
 
 export const Developers = () => {
-  const developers = getDevelopers();
-
   return (
     <>
       <h4 className="mb-[16px] w-[280px] font-proza text-[20px] font-medium leading-[1.2] text-[#1e1e1e] sm-max:w-[212px] md:mb-[21px] md:w-[450px] md:text-[24px] md:font-semibold md:leading-[1.6] lg:mb-[32px] lg:w-full lg:text-[36px]">
         Web-developers {`\u201c`}Ukrainian House in Maastricht{`\u201d`}
       </h4>
       <div className="carousel carousel-vertical h-[315px] md:carousel-center sm-max:h-[260px] md:h-[380px] md:w-full md:flex-row md:space-x-[44px] lg:h-full lg:flex-wrap lg:gap-x-[44px] lg:gap-y-0 lg:space-x-0">
-        {developers.map(({ name, url, position, photos }, index) => (
+        {developersData.map(({ name, url, position, photos }, index) => (
           <div
             key={index}
             className="carousel-item flex w-full flex-col pb-[25px] md:w-[304px] md:pb-[24px] lg:w-[255px] lg:pb-[23px]"
@@ -53,7 +51,7 @@ export const Developers = () => {
               />
             </picture>
 
-            {developers.length - 1 > index && (
+            {developersData.length - 1 > index && (
               <div className="flex w-full justify-center md:hidden">
                 <Icon name="down" className="fill-[#1e1e1e]" size="24" />
               </div>

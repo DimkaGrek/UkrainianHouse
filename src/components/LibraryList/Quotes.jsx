@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { getQuotes } from "../../helpers";
+import { quotesData } from "../../constants";
 
 export const Quotes = ({ index }) => {
-  const quotes = getQuotes();
-
   const [randomIdx1, setRandomIdx1] = useState(null);
   const [randomIdx2, setRandomIdx2] = useState(null);
 
@@ -18,8 +16,8 @@ export const Quotes = ({ index }) => {
     return null;
   }
 
-  const imageSources1 = quotes[randomIdx1] || [];
-  const imageSources2 = quotes[randomIdx2] || [];
+  const imageSources1 = quotesData[randomIdx1] || [];
+  const imageSources2 = quotesData[randomIdx2] || [];
 
   return (
     <div>

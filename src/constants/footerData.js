@@ -7,29 +7,29 @@ export const navItems = [
   { to: null, label: "Activities", disabled: true },
 ];
 
-  export const socialLinks = [
-    {
-      href: "https://www.facebook.com/ua.maastricht",
-      label: "Let&#39;s be friends on facebook",
-      icon: "fb",
-      ariaLabel: "Facebook",
-    },
-    {
-      href: "https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk",
-      label: "Follow us on instagram",
-      icon: "insta",
-      ariaLabel: "Instagram",
-    },
-    {
-      href: "https://t.me/+cGjweuHlhU00N2E8",
-      label: "Connect us on telegram",
-      icon: "telegram",
-      ariaLabel: "Telegram",
-    },
-    {
-      href: "https://www.linkedin.com/company/ukrainian-house-in-maastricht/",
-      label: "Find us in LinkedIn",
-      icon: "linkedin",
-      ariaLabel: "Linkedin",
-    },
-  ];
+export const socialLinks = [
+  {
+    href: "https://www.facebook.com/ua.maastricht",
+    label: "Let's be friends on Facebook",
+    icon: "fb",
+    ariaLabel: "Facebook",
+  },
+  {
+    href: "https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk",
+    label: "Follow us on Instagram",
+    icon: "insta",
+    ariaLabel: "Instagram",
+  },
+  {
+    href: "https://t.me/+cGjweuHlhU00N2E8",
+    label: "Connect us on Telegram",
+    icon: "telegram",
+    ariaLabel: "Telegram",
+  },
+  {
+    href: "https://www.linkedin.com/company/ukrainian-house-in-maastricht/",
+    label: "Find us in LinkedIn",
+    icon: "linkedin",
+    ariaLabel: "Linkedin",
+  },
+];

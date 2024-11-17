@@ -1,10 +1,8 @@
 import Marquee from "react-fast-marquee";
 
-import { getPartnersLogos } from "../../helpers";
+import { partnersLogos } from "../../constants";
 
 export const PartnersSlider = () => {
-  const partnersLogos = getPartnersLogos();
-
   return (
     <div className="hidden md:block">
       <Marquee direction="right">
