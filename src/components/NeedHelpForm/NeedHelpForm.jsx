@@ -140,6 +140,7 @@ export const NeedHelpForm = () => {
       {isOpenModal && (
         <Modal
           toggleModal={toggleModal}
+          isOpen={isOpenModal}
           className="bg-white px-[24px] pb-[47px] pt-[36px] lg:py-[181px] lg:pl-[124px] lg:pr-[479px]"
         >
           <NeedHelpModal toggleModal={toggleModal} />

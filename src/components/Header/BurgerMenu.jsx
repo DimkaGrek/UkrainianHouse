@@ -5,10 +5,9 @@ import { Icon, Address, FlagsList } from "../../components";
 import { images } from "../../assets";
 import { useModalLogic } from "../../hooks";
 
-
-export const BurgerMenu = ({ toggleMenu, classBackdrop, classMenu }) => {
+export const BurgerMenu = ({ isOpen, toggleMenu, classBackdrop, classMenu }) => {
   const { headerImages } = images;
-  const { handleBackdropClick } = useModalLogic(toggleMenu);
+  const { handleBackdropClick } = useModalLogic(toggleMenu, isOpen);
 
   return (
     <div

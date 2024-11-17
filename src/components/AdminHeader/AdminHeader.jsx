@@ -44,12 +44,12 @@ export const AdminHeader = () => {
         <MdOutlineLogout className="size-7 fill-[#1E1E1E]" />
       </button>
       {logoutModal && (
-        <Modal toggleModal={toggleLogoutModal}>
+        <Modal toggleModal={toggleLogoutModal} isOpen={logoutModal}>
           <LogoutModal toggleModal={toggleLogoutModal} />
         </Modal>
       )}
       {addModal && currentPage?.modal && (
-        <Modal toggleModal={toggleAddModal}>
+        <Modal toggleModal={toggleAddModal} isOpen={addModal}>
           <currentPage.modal toggle={toggleAddModal} />
         </Modal>
       )}

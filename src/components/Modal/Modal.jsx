@@ -4,8 +4,9 @@ import { Icon } from "../../components";
 import { useModalLogic } from "../../hooks";
 
 const modalRoot = document.querySelector("#modalRoot");
-export const Modal = ({ children, toggleModal, className = "" }) => {
-   const { handleBackdropClick } = useModalLogic(toggleModal);
+
+export const Modal = ({ children, toggleModal, className = "", isOpen }) => {
+  const { handleBackdropClick } = useModalLogic(toggleModal, isOpen);
 
   return ReactDOM.createPortal(
     <div

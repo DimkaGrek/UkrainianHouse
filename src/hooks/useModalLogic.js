@@ -1,27 +1,29 @@
 import { useEffect } from "react";
 
-export const useModalLogic = (toggleModal) => {
+export const useModalLogic = (toggleFn, isOpen) => {
   const handleBackdropClick = (event) => {
     if (event.currentTarget === event.target) {
-      toggleModal();
+      toggleFn();
     }
   };
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleEscape = (event) => {
       if (event.code === "Escape") {
-        toggleModal();
+        toggleFn();
       }
     };
 
     window.addEventListener("keydown", handleEscape);
-    document.body.classList.add("no-scroll");
+    document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleEscape);
-      document.body.classList.remove("no-scroll");
+      document.body.style.overflow = "auto";
     };
-  }, [toggleModal]);
+  }, [isOpen, toggleFn]);
 
   return { handleBackdropClick };
 };
