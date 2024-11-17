@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export const useResizeAndState = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -11,7 +11,7 @@ export const useResizeAndState = () => {
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      
+
       setIsOpen({
         mission: true,
         vision: true,
@@ -19,9 +19,9 @@ export const useResizeAndState = () => {
       });
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

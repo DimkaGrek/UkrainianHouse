@@ -1,6 +1,6 @@
-import { Quotes,LibraryBookItem } from "../../components";
+import { Quotes, LibraryBookItem } from "../../components";
 
-import { useBooks,useWindowSizeHook } from "../../hooks";
+import { useBooks, useWindowSizeHook } from "../../hooks";
 
 export const LibraryList = () => {
   const { books } = useBooks();
@@ -30,12 +30,9 @@ export const LibraryList = () => {
       {rows.map((row, index) => {
         const justifyClass = getJustifyClass(index, row.length);
         return (
-          <div
-            key={index}
-            className="relative mb-[436px] h-auto md:mb-[75px] lg:mb-[220px]" 
-          >
+          <div key={index} className="relative mb-[436px] h-auto md:mb-[75px] lg:mb-[220px]">
             <Quotes index={index} />
-          
+
             <ul
               className={`flex justify-between gap-x-[5px] ${justifyClass} md:gap-x-[16px] lg:gap-x-[50px]`}
             >

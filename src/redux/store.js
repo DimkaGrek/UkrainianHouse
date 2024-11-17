@@ -27,7 +27,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfig, authReducer),
     messages: messagesReducer,
   },
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

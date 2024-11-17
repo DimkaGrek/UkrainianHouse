@@ -15,7 +15,7 @@ export * from "./ForgotPasswordForm/ForgotPasswordForm.jsx";
 export * from "./GetInvolved/GetInvolved.jsx";
 export * from "./GoogleMap/GoogleMap.jsx";
 export * from "./Header/Header.jsx";
-export * from './Header/BurgerMenu.jsx'
+export * from "./Header/BurgerMenu.jsx";
 export * from "./Hero/Hero.jsx";
 export * from "./Icon/Icon.jsx";
 export * from "./InfoMessage/InfoMessage.jsx";

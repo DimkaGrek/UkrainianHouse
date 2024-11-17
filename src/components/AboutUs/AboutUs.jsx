@@ -3,7 +3,7 @@ import { Icon } from "../../components";
 import { useResizeAndState } from "../../hooks";
 
 export const AboutUs = () => {
-  const {isOpen, setIsOpen} = useResizeAndState()
+  const { isOpen, setIsOpen } = useResizeAndState();
 
   const toggleFullText = (section) => {
     setIsOpen((prevState) => ({

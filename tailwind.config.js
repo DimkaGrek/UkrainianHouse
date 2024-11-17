@@ -14,15 +14,9 @@ export default {
       extralg: "1920px",
     },
     fontFamily: {
-      istok: [
-        "IstokWeb-Regular",
-        "sans-serif",
-      ],
+      istok: ["IstokWeb-Regular", "sans-serif"],
       proza: {
-        DEFAULT: [
-          "ProzaLibre-Regular",
-          "sans-serif",
-        ],
+        DEFAULT: ["ProzaLibre-Regular", "sans-serif"],
         medium: ["ProzaLibre-Medium", "sans-serif"],
         semibold: ["ProzaLibre-SemiBold", "sans-serif"],
         bold: ["ProzaLibre-Bold", "sans-serif"],

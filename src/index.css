@@ -124,7 +124,6 @@ input[type="number"]::-webkit-outer-spin-button {
   scrollbar-color: auto !important;
 }
 
-
 /* ----------Desktop-------- */
 @media (min-width: 1440px) {
   .scrollbar-desktop {
@@ -140,14 +139,14 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 7px;
   }
   @media (min-width: 1440px) {
-  .scrollbar::-webkit-scrollbar,
-  .scrollbar-desktop::-webkit-scrollbar {
-    width: 8px;
+    .scrollbar::-webkit-scrollbar,
+    .scrollbar-desktop::-webkit-scrollbar {
+      width: 8px;
+    }
   }
-}
 
   .scrollbar::-webkit-scrollbar-track,
-  .scrollbar-desktop::-webkit-scrollbar-track  {
+  .scrollbar-desktop::-webkit-scrollbar-track {
     background: var(--track-color);
     border-radius: 12px;
     margin-block: 8px;
@@ -155,14 +154,15 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .scrollbar::-webkit-scrollbar-thumb,
   .scrollbar-desktop::-webkit-scrollbar-thumb {
-  background: var(--thumb-color);
-  border-radius: 12px;
-}
+    background: var(--thumb-color);
+    border-radius: 12px;
+  }
 }
 
 /* Firefox */
 @-moz-document url-prefix() {
-  .scrollbar,.scrollbar-desktop {
+  .scrollbar,
+  .scrollbar-desktop {
     scrollbar-width: thin;
     scrollbar-color: var(--thumb-color) var(--track-color) !important;
   }

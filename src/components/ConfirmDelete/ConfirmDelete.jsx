@@ -7,7 +7,7 @@ import { deleteBook, deleteMessage, deleteOneNews } from "../../redux";
 
 export const ConfirmDelete = ({ item, toggleModal }) => {
   const dispatch = useDispatch();
-  
+
   const isNews = Object.hasOwn(item, "btnLink");
   const isBook = Object.hasOwn(item, "coverImageUrl");
   const isMessage = Object.hasOwn(item, "message");

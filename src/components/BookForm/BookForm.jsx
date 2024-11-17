@@ -1,4 +1,4 @@
-import { Icon,InputField,StatusField } from "../../components";
+import { Icon, InputField, StatusField } from "../../components";
 
 import { useBookForm } from "../../hooks";
 import { bookStatuses } from "../../constants";
@@ -6,7 +6,7 @@ import defaultImg1 from "../../assets/images/default-img@1x.webp";
 import defaultImg2 from "../../assets/images/default-img@2x.webp";
 
 export const BookForm = ({ item, toggle }) => {
-   const {
+  const {
     register,
     handleSubmit,
     onSubmit,
