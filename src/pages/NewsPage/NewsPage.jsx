@@ -1,88 +1,20 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-
 import { Advertisement, InfoMessage, Loader, NewsList, SearchBar } from "../../components";
 
 import { clearNews, fetchAllNews, fetchAnnounceNews, setPageNews } from "../../redux";
-import { useNews } from "../../hooks";
+import { useNews, useInfiniteScroll } from "../../hooks";
 
 const NewsPage = () => {
   const { news, page, isLoading, error } = useNews();
-
-  const [isMoreNews, setIsMoreNews] = useState(true);
-  const [keyword, setKeyword] = useState("");
-  const [isSearchTriggered, setIsSearchTriggered] = useState(false);
-
-  const dispatch = useDispatch();
-
-  const observerTarget = useRef(null);
-
-  const fetchNewsData = useCallback(() => {
-    const config = {
-      params: {
-        page,
-        status: "PUBLISHED",
-        ...(keyword && { keyword }),
-      },
-    };
-    dispatch(fetchAllNews(config))
-      .unwrap()
-      .then((res) => {
-        dispatch(setPageNews(res.currentPage + 1));
-
-        const hasMoreNews = res.currentPage + 1 < res.totalPages;
-        setIsMoreNews(hasMoreNews);
-        if (!hasMoreNews && news.length) {
-          toast.info("You have reached the end of the news list.");
-        }
-      })
-      .catch((e) => toast.error(e.message));
-  }, [page, keyword, dispatch, news.length]);
-
-  useEffect(() => {
-    dispatch(clearNews());
-    dispatch(fetchAnnounceNews())
-      .unwrap()
-      .then()
-      .catch((e) => toast.error(e.message));
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (isSearchTriggered && !isLoading) {
-      fetchNewsData();
-      setIsSearchTriggered(false);
-    }
-  }, [isSearchTriggered, fetchNewsData, dispatch, isLoading]);
-
-  useEffect(() => {
-    const currentTarget = observerTarget.current;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && isMoreNews && !isLoading && !error) {
-          fetchNewsData();
-        }
-      },
-      { threshold: 1 }
-    );
-
-    if (currentTarget) {
-      observer.observe(currentTarget);
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget);
-      }
-    };
-  }, [dispatch, fetchNewsData, error, isMoreNews, keyword, page, isLoading]);
-
-  const onSearchSubmit = (filterValue) => {
-    dispatch(clearNews());
-    setKeyword(filterValue);
-    setIsSearchTriggered(true);
-  };
+  const { keyword, observerTarget, onSearchSubmit } = useInfiniteScroll(
+    news,
+    page,
+    setPageNews,
+    isLoading,
+    error,
+    fetchAllNews,
+    clearNews,
+    fetchAnnounceNews
+  );
 
   return (
     <>
