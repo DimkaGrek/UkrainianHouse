@@ -1,28 +1,9 @@
-import { useEffect, useState } from "react";
-
 import { Icon } from "../../components";
 
+import { useResizeAndState } from "../../hooks";
+
 export const AboutUs = () => {
-  const [isOpen, setIsOpen] = useState({
-    mission: true,
-    vision: true,
-    areas: true,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsOpen({
-        mission: true,
-        vision: true,
-        areas: true,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const {isOpen, setIsOpen} = useResizeAndState()
 
   const toggleFullText = (section) => {
     setIsOpen((prevState) => ({
