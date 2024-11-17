@@ -174,7 +174,7 @@ input[type="number"]::-webkit-outer-spin-button {
   top: -25vw;
   left: 50%;
   transform: translateX(-50%);
-  width: 100vw;
+  width: calc(100vw - 18px);
   height: 18vw;
 
   background-image: url("./assets/images/contacts/contacts_mobile1x.webp");
