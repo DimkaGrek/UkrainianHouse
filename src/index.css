@@ -446,3 +446,7 @@ textarea:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px #fff inset;
   -webkit-text-fill-color: #1e1e1e !important;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

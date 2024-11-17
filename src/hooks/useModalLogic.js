@@ -15,11 +15,11 @@ export const useModalLogic = (toggleModal) => {
     };
 
     window.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("no-scroll");
 
     return () => {
       window.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "auto";
+      document.body.classList.remove("no-scroll");
     };
   }, [toggleModal]);
 
