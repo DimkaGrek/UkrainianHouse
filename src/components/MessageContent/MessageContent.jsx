@@ -13,18 +13,20 @@ export const MessageContent = ({ item }) => {
     }
   }, [dispatch, item]);
 
+  const messageDetails = [
+    { label: "Name", value: item.name },
+    { label: "Phone", value: item.phone },
+    { label: "Email", value: item.email },
+  ];
+
   return (
     <div className="flex w-[500px] flex-col gap-8">
       <div className="flex flex-col justify-start text-sm">
-        <p>
-          <span className="font-medium">Name:</span> {item.name}
-        </p>
-        <p>
-          <span className="font-medium">Phone:</span> {item.phone}
-        </p>
-        <p>
-          <span className="font-medium">Email:</span> {item.email}
-        </p>
+        {messageDetails.map((detail, index) => (
+          <p key={index}>
+            <span className="font-medium">{detail.label}:</span> {detail.value}
+          </p>
+        ))}
       </div>
       <div className="color-my-black2 h-auto text-justify text-lg">{item.message}</div>
       <p className="flex justify-end text-sm">{format(item.createdAt, "HH:mm / dd MMM yyyy")}</p>
