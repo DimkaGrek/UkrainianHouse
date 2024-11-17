@@ -9,7 +9,6 @@ export const DetailsBook = ({
   genre,
   description,
 }) => {
-  
   return (
     <div className="relative items-start md:pr-[205px] lg:pr-[415px]">
       <div className="flex gap-[10px]">

@@ -7,7 +7,7 @@ import { getIconSize } from "../../helpers";
 
 export const Activities = () => {
   const { windowWidth } = useResizeAndState();
-  
+
   const isonSize = getIconSize(windowWidth);
 
   return (

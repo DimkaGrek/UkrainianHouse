@@ -18,7 +18,7 @@ export const AdminHeader = () => {
     { key: "inbox", action: setPageMessages },
   ].find((page) => location.pathname.includes(page.key));
 
-    const [addModal, toggleAddModal] = useModal();
+  const [addModal, toggleAddModal] = useModal();
   const [logoutModal, toggleLogoutModal] = useModal();
 
   const handleSetQuery = (keyword) => {
@@ -31,11 +31,7 @@ export const AdminHeader = () => {
   return (
     <header className="flex flex-row items-center gap-4 p-4">
       {currentPage?.buttonText && (
-        <button
-          className="primaryBtn flex-shrink-0"
-          type="button"
-          onClick={toggleAddModal}
-        >
+        <button className="primaryBtn flex-shrink-0" type="button" onClick={toggleAddModal}>
           {currentPage.buttonText}
         </button>
       )}
@@ -52,7 +48,7 @@ export const AdminHeader = () => {
           <LogoutModal toggleModal={toggleLogoutModal} />
         </Modal>
       )}
-     {addModal && currentPage?.modal && (
+      {addModal && currentPage?.modal && (
         <Modal toggleModal={toggleAddModal}>
           <currentPage.modal toggle={toggleAddModal} />
         </Modal>

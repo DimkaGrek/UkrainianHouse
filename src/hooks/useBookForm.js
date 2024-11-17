@@ -160,8 +160,8 @@ export const useBookForm = (item, toggle) => {
       })
       .catch((error) => toast.error(error));
   };
-    
-    return {
+
+  return {
     register,
     handleSubmit,
     onSubmit,

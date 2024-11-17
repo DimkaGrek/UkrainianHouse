@@ -3,12 +3,12 @@ import { images } from "../../assets";
 export const FlagsList = ({ className }) => {
   const { headerImages } = images;
 
-   const flagData = [
-    { key: 'eng', alt: 'Flag of England' },
-    { key: 'nl', alt: 'Flag of Netherlands' },
-    { key: 'ua', alt: 'Flag of Ukraine' }
+  const flagData = [
+    { key: "eng", alt: "Flag of England" },
+    { key: "nl", alt: "Flag of Netherlands" },
+    { key: "ua", alt: "Flag of Ukraine" },
   ];
-  
+
   return (
     <ul className={className}>
       {flagData.map(({ key, alt }) => (

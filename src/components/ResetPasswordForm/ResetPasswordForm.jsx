@@ -16,9 +16,7 @@ export const ResetPasswordForm = () => {
     resolver: yupResolver(resetPaswordShema),
   });
 
-  const onSubmit = () => {
-
-  };
+  const onSubmit = () => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="auth-form">

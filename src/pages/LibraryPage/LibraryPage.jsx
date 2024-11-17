@@ -6,7 +6,7 @@ import { LibraryList, NotFoundBook, Loader } from "../../components/";
 import { SearchBarLibary } from "../../components/SearchBar/SearchBarLibary";
 
 import { getTextForLibrary } from "../../helpers";
-import { useBooks,useWindowSizeHook } from "../../hooks";
+import { useBooks, useWindowSizeHook } from "../../hooks";
 import { clearBooks, fetchAllBooks, setPageBooks } from "../../redux";
 
 const LibraryPage = () => {
@@ -45,7 +45,6 @@ const LibraryPage = () => {
         toast.error(e.message);
       });
   }, [dispatch, page, books.length, keyword]);
-
 
   useEffect(() => {
     if (isSearchTriggered && !isLoading) {
