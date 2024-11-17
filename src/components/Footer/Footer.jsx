@@ -4,11 +4,24 @@ import { Icon, Modal, Developers, Address, FlagsList } from "../../components";
 
 import { useModal } from "../../hooks";
 import { images } from "../../assets";
+import { navItems, socialLinks } from "../../constants";
 
 export const Footer = () => {
   const [isOpenDevelopersModal, toggleDevelopersModal] = useModal();
 
   const { footerImages } = images;
+
+  const navItemClass =
+    "transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px] cursor-pointer";
+  const disabledItemClass =
+    "cursor-not-allowed transition duration-300 hover:text-gray-600 md:w-[110px] lg:w-[165px]";
+
+  const socialLinkItemClass =
+    "h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[347px] lg:text-[20px]";
+  const linkClass =
+    "group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]";
+  const iconClass =
+    "h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]";
 
   return (
     <>
@@ -29,29 +42,21 @@ export const Footer = () => {
               </Link>
 
               <ul className="flex flex-col justify-center gap-[20px] whitespace-nowrap text-center text-[24px] font-normal leading-[1.5] text-[#1e1e1e] md:flex-row md:flex-wrap md:justify-start md:gap-x-[104px] md:gap-y-[36px] md:text-start md:text-[16px] lg:w-[543px] lg:gap-x-[24px] lg:gap-y-[40px] lg:text-[24px]">
-                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
-                  <NavLink to="/news">News</NavLink>
-                </li>
-                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
-                  <NavLink to="/library">Library</NavLink>
-                </li>
-                <li className="transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]">
-                  <NavLink aria-disabled to="/contacts">
-                    Contacts
-                  </NavLink>
-                </li>
-                <li
-                  onClick={toggleDevelopersModal}
-                  className="cursor-pointer transition duration-300 hover:text-[#3e38c8] focus-visible:text-[#3e38c8] md:w-[110px] lg:w-[165px]"
-                >
-                  Site developers
-                </li>
-                <li className="cursor-not-allowed transition duration-300 hover:text-gray-600 md:w-[110px] lg:w-[165px]">
-                  Activities
-                </li>
+                {navItems.map((item, index) => (
+                  <li
+                    key={index}
+                    className={item.disabled ? disabledItemClass : navItemClass}
+                    onClick={item.label === "Site developers" && !item.disabled ? toggleDevelopersModal : null}
+                  >
+                    {item.to ? (
+                      <NavLink to={item.to} aria-disabled={item.disabled}>
+                        {item.label}
+                      </NavLink>
+                    ) : (
+                      item.label
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -81,70 +86,22 @@ export const Footer = () => {
             </div>
 
             <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[697px] lg:gap-[20px]">
-              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[347px] lg:text-[20px]">
-                <a
-                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] py-[10px] pl-[16px] pr-[14px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
-                  href="https://www.facebook.com/ua.maastricht"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <Icon
-                    name="fb"
-                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
-                    size="24"
-                  />
-                  Let&#39;s be friends on facebook
-                </a>
-              </li>
-              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[330px] lg:text-[20px]">
-                <a
-                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
-                  href="https://www.instagram.com/ukrainianhousemaastricht/?igsh=c2I5N2I0Z2dvN2Fk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <Icon
-                    name="insta"
-                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
-                    size="24"
-                  />
-                  Follow us on instagram
-                </a>
-              </li>
-              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[347px] lg:text-[20px]">
-                <a
-                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
-                  href="https://t.me/+cGjweuHlhU00N2E8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Telegram"
-                >
-                  <Icon
-                    name="telegram"
-                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
-                    size="24"
-                  />
-                  Connect us on telegram
-                </a>
-              </li>
-              <li className="h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[330px] lg:text-[20px]">
-                <a
-                  className="group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]"
-                  href="https://www.linkedin.com/company/ukrainian-house-in-maastricht/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Linkedin"
-                >
-                  <Icon
-                    name="linkedin"
-                    className="h-[28px] fill-[#1e1e1e] transition duration-300 group-hover:fill-[#fff] group-focus-visible:fill-[#fff] lg:w-[28px]"
-                    size="24"
-                  />
-                  Find us in LinkedIn
-                </a>
-              </li>
+              <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[697px] lg:gap-[20px]">
+                {socialLinks.map((link, index) => (
+                  <li key={index} className={socialLinkItemClass}>
+                    <a
+                      className={linkClass}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.ariaLabel}
+                    >
+                      <Icon name={link.icon} className={iconClass} size="24" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </ul>
           </div>
 
