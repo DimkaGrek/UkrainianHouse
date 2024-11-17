@@ -1,9 +1,7 @@
-import { getTeamMembers } from "../../helpers";
-
+import { teamMembers } from "../../constants";
 import { images } from "../../assets";
 
 export const CarouselTeam = () => {
-  const teamMembers = getTeamMembers();
   const { contactsImages } = images;
 
   return (
