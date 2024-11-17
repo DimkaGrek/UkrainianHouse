@@ -1,38 +1,10 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useLocation, useSearchParams } from "react-router-dom";
 import { MdClear } from "react-icons/md";
 
+import { useSearch } from "../../hooks";
+
 export const SearchBar = ({ setQuery }) => {
-  const { watch, register, setValue, reset, handleSubmit } = useForm();
-  const location = useLocation();
+  const { query, register, handleSubmit, onSubmit, handleClearClick } = useSearch(setQuery);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    reset();
-  }, [location.pathname, reset]);
-
-  useEffect(() => {
-    const keyword = searchParams.get("keyword");
-
-    if (keyword) {
-      setValue("query", keyword);
-    }
-  }, [searchParams, setValue]);
-
-  const onSubmit = ({ query }) => {
-    if (!query) return;
-    setQuery(query.trim());
-  };
-
-  const handleClearClick = () => {
-    reset();
-    setQuery("");
-    setSearchParams({});
-  };
-
-  const query = watch("query");
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="relative flex w-full gap-2">
       <input
