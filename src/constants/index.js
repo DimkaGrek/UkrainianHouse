@@ -5,3 +5,4 @@ export * from "./validationPatterns.js";
 export * from "./adminNavLinks.js";
 export * from "./pageLimit.js";
 export * from "./messagesStatuses.js";
+export * from "./footerData.js";
