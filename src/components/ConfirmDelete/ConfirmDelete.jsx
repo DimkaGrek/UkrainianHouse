@@ -5,7 +5,7 @@ import { Modal } from "../../components";
 
 import { deleteBook, deleteMessage, deleteOneNews } from "../../redux";
 
-export const ConfirmDelete = ({ item, toggleModal }) => {
+export const ConfirmDelete = ({ item, toggleModal, isOpen }) => {
   const dispatch = useDispatch();
 
   const isNews = Object.hasOwn(item, "btnLink");
@@ -46,7 +46,7 @@ export const ConfirmDelete = ({ item, toggleModal }) => {
   };
 
   return (
-    <Modal toggleModal={toggleModal}>
+    <Modal toggleModal={toggleModal} isOpen={isOpen}>
       <p className="mb-3 flex h-[100px] items-center text-[24px] font-medium">
         {`Are you sure you want to delete «${isMessage ? "This message" : truncatedItemName}»?`}
       </p>

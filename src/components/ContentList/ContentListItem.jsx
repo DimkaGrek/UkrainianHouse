@@ -120,8 +120,14 @@ export const ContentListItem = ({ item }) => {
           </button>
         </div>
       </li>
-      {isOpen && <Modal toggleModal={toggleModal}>{renderModalContent()}</Modal>}
-      {isOpenConfirmDelete && <ConfirmDelete toggleModal={toggleConfirmDelete} item={item} />}
+      {isOpen && (
+        <Modal toggleModal={toggleModal} isOpen={isOpen}>
+          {renderModalContent()}
+        </Modal>
+      )}
+      {isOpenConfirmDelete && (
+        <ConfirmDelete toggleModal={toggleConfirmDelete} item={item} isOpen={isOpenConfirmDelete} />
+      )}
     </>
   );
 };

@@ -46,7 +46,11 @@ export const Footer = () => {
                   <li
                     key={index}
                     className={item.disabled ? disabledItemClass : navItemClass}
-                    onClick={item.label === "Site developers" && !item.disabled ? toggleDevelopersModal : null}
+                    onClick={
+                      item.label === "Site developers" && !item.disabled
+                        ? toggleDevelopersModal
+                        : null
+                    }
                   >
                     {item.to ? (
                       <NavLink to={item.to} aria-disabled={item.disabled}>
@@ -167,7 +171,11 @@ export const Footer = () => {
         </div>
       </footer>
       {isOpenDevelopersModal && (
-        <Modal className="bg-white" toggleModal={toggleDevelopersModal}>
+        <Modal
+          className="bg-white"
+          toggleModal={toggleDevelopersModal}
+          isOpen={isOpenDevelopersModal}
+        >
           <Developers />
         </Modal>
       )}
