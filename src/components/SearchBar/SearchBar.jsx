@@ -3,13 +3,14 @@ import { MdClear } from "react-icons/md";
 import { useSearch } from "../../hooks";
 
 export const SearchBar = ({ setQuery }) => {
-  const { query, register, handleSubmit, onSubmit, handleClearClick } = useSearch(setQuery);
+  const { query, placeholder, register, handleSubmit, onSubmit, handleClearClick } =
+    useSearch(setQuery);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="relative flex w-full gap-2">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder={placeholder}
         name="query"
         autoComplete="off"
         {...register("query")}
