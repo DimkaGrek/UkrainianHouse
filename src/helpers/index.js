@@ -8,3 +8,4 @@ export * from "./getQuotes";
 export * from "./getFormattedDate";
 export * from "./checkObjectEquality";
 export * from "./getTextForLibrary";
+export * from "./getIconSize";
