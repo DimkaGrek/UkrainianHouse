@@ -115,8 +115,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .scrollbar,
 .scrollbar-desktop {
-  --thumb-color: #a6cae5;
   --track-color: #daefff;
+  --thumb-color: #a6cae5;
+  --thumb-hover-color: #79aed6;
 }
 .scrollbar {
   overflow-y: auto;
@@ -149,13 +150,17 @@ input[type="number"]::-webkit-outer-spin-button {
   .scrollbar-desktop::-webkit-scrollbar-track {
     background: var(--track-color);
     border-radius: 12px;
-    margin-block: 8px;
+    margin-block: 6px;
   }
 
   .scrollbar::-webkit-scrollbar-thumb,
   .scrollbar-desktop::-webkit-scrollbar-thumb {
     background: var(--thumb-color);
     border-radius: 12px;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover,
+  .scrollbar-desktop::-webkit-scrollbar-thumb:hover {
+    background-color: var(--thumb-hover-color);
   }
 }
 
