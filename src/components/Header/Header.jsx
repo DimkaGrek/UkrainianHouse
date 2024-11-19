@@ -76,7 +76,7 @@ export const Header = () => {
 
           <a
             href="mailto:ukrainianhouse.maastricht@gmail.com"
-            className="mr-[24px] h-[54px] w-[159px] rounded-[10px] border border-gray-900 px-5 py-2.5 text-center text-[20px] font-bold text-gray-900 transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff]"
+            className="h-[54px] w-[159px] rounded-[10px] border border-gray-900 px-5 py-2.5 text-center text-[20px] font-bold text-gray-900 transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff]"
           >
             Get in touch
           </a>

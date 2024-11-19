@@ -37,7 +37,7 @@ export const NewsDetails = ({ title, content, publishDate, photoUrls, btnLink, b
                 src={item.photoUrls}
                 width={316}
                 height={108}
-                className="w-auto rounded-[18px] object-cover tablet:h-[150px] tablet:w-[198px] lg:w-[400px]"
+                className="w-auto rounded-[18px] object-cover shadow-md tablet:h-[150px] tablet:w-[198px] lg:w-[400px]"
                 alt={item.caption || "News photo"}
               />
             </li>
