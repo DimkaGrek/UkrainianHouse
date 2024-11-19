@@ -49,7 +49,6 @@ export const LibraryBookItem = ({
           isOpen={isOpenModal}
           className="bg-white py-[58px] pl-[20px] pr-[10px] md:py-[58px] md:pl-[40px] md:pr-[25px]"
         >
-          {" "}
           <DetailsBook
             {...{
               coverImageUrl,
