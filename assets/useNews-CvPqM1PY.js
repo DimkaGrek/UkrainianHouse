@@ -1,1 +1,0 @@
-import{m as s,w as r,x as w,y as N,z as g,C as u,D as i,E as m}from"./index-Dp91B82x.js";const P=()=>{const e=s(r),t=s(w),o=s(N),a=s(g),c=s(u),n=s(i),l=s(m);return{news:e,announceNews:t,page:o,totalPages:a,totalNews:c,isLoading:n,error:l}};export{P as u};
