@@ -23,105 +23,97 @@ export const BookForm = ({ item, toggle }) => {
 
   return (
     <form className="flex h-auto flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-row gap-4">
-        <div className="flex flex-row gap-4">
-          <div className="flex flex-col gap-6">
-            <InputField
-              label="Book Title"
-              name="title"
-              placeholder="Enter the book title"
-              register={register}
-              errors={errors}
-            />
-            <div>
-              <label className="label">
-                Book Description
-                <textarea
-                  className="field scrollbar h-[202px] w-[400px] resize-none"
-                  type="text"
-                  placeholder="Enter the book description"
-                  {...register("description")}
-                />
-              </label>
-              <p className="field-error">{errors["description"]?.message}</p>
-            </div>
-            <div className="flex gap-4">
-              <InputField
-                label="Pages"
-                name="pageCount"
-                type="number"
-                placeholder="Amount pages"
-                register={register}
-                errors={errors}
+      <div className="flex flex-row gap-6">
+        <div className="flex w-[400px] flex-col gap-6">
+          <InputField
+            label="Book Title"
+            name="title"
+            placeholder="Enter the book title"
+            register={register}
+            errors={errors}
+          />
+          <div>
+            <label className="label">
+              Book Description
+              <textarea
+                className="field scrollbar h-[160px] resize-none"
+                type="text"
+                placeholder="Enter the book description"
+                {...register("description")}
               />
-
-              <InputField
-                label="Year"
-                name="publicationYear"
-                type="number"
-                placeholder="Year of publishing"
-                register={register}
-                errors={errors}
-              />
-            </div>
+            </label>
+            <p className="field-error">{errors["description"]?.message}</p>
           </div>
-          <div className="flex flex-col gap-6">
-            <InputField
-              label="Author"
-              name="author"
-              placeholder="Enter the author"
-              register={register}
-              errors={errors}
-            />
-            <div>
-              <label className="label">
-                About the author
-                <textarea
-                  className="field scrollbar h-[202px] w-[400px] resize-none"
-                  type="text"
-                  placeholder="Enter information about author"
-                  {...register("aboutAuthor")}
-                />
-              </label>
-              <p className="field-error">{errors["aboutAuthor"]?.message}</p>
-            </div>
-            <div className="flex gap-4">
-              <InputField
-                label="Genre"
-                name="genre"
-                placeholder="Enter the genre"
-                register={register}
-                errors={errors}
+          <StatusField statuses={bookStatuses} status={status} setStatus={handleChangeStatus} />
+          <InputField
+            label="Author"
+            name="author"
+            placeholder="Enter the author"
+            register={register}
+            errors={errors}
+          />
+          <div>
+            <label className="label">
+              About the author
+              <textarea
+                className="field scrollbar h-[160px] w-[400px] resize-none"
+                type="text"
+                placeholder="Enter information about author"
+                {...register("aboutAuthor")}
               />
-              <InputField
-                label="Quantity"
-                name="quantity"
-                type="number"
-                placeholder="Enter the quantity"
-                register={register}
-                errors={errors}
-              />
-            </div>
+            </label>
+            <p className="field-error">{errors["aboutAuthor"]?.message}</p>
           </div>
         </div>
         <div className="flex w-[220px] flex-col gap-6">
-          <StatusField statuses={bookStatuses} status={status} setStatus={handleChangeStatus} />
-          <input
-            className="hidden"
-            type="file"
-            name="images"
-            ref={filePicker}
-            accept="image/*,.png,.jpg,.gif,.web"
-            onChange={selectFiles}
+          <InputField
+            label="Pages"
+            name="pageCount"
+            type="number"
+            placeholder="Amount pages"
+            register={register}
+            errors={errors}
           />
-          <div className="pt-[27px]">
+
+          <InputField
+            label="Year"
+            name="publicationYear"
+            type="number"
+            placeholder="Year of publishing"
+            register={register}
+            errors={errors}
+          />
+          <InputField
+            label="Genre"
+            name="genre"
+            placeholder="Enter the genre"
+            register={register}
+            errors={errors}
+          />
+          <InputField
+            label="Quantity"
+            name="quantity"
+            type="number"
+            placeholder="Enter the quantity"
+            register={register}
+            errors={errors}
+          />
+          <div>
+            <input
+              className="hidden"
+              type="file"
+              name="images"
+              ref={filePicker}
+              accept="image/*,.png,.jpg,.gif,.web"
+              onChange={selectFiles}
+            />
             {!selectedCover ? (
               <picture
                 onClick={handlePick}
-                className="flex h-[306px] w-fit cursor-pointer items-center justify-center rounded-[10px] bg-white shadow-md"
+                className={`flex h-[294px] w-fit cursor-pointer items-center justify-center rounded-[10px] bg-white shadow-md ${coverError ? "border-[1px] border-red-500" : ""}`}
               >
                 <source srcSet={`${defaultImg1} 1x, ${defaultImg2} 2x`} type="image/webp" />
-                <img width={205} height={119} src={defaultImg1} alt="upload img" />
+                <img width={220} height={119} src={defaultImg1} alt="upload img" />
               </picture>
             ) : (
               <div className="relative rounded-[10px] shadow-md">
@@ -129,14 +121,14 @@ export const BookForm = ({ item, toggle }) => {
                   <img
                     src={selectedCover}
                     alt="existing cover"
-                    className="max-h-[306px] rounded-[10px] object-cover shadow-md"
+                    className="max-h-[294px] rounded-[10px] object-cover shadow-md"
                     width={220}
                   />
                 ) : (
                   <img
                     src={URL.createObjectURL(selectedCover)}
                     alt="upload"
-                    className="max-h-[306px] rounded-[10px] object-cover shadow-md"
+                    className="max-h-[294px] rounded-[10px] object-cover shadow-md"
                     width={220}
                   />
                 )}
@@ -149,7 +141,7 @@ export const BookForm = ({ item, toggle }) => {
                 </button>
               </div>
             )}
-            {coverError && <p className="field-error top-[485px]">Add cover for book</p>}
+            {coverError && <p className="field-error top-[760px]">Add cover for book</p>}
           </div>
         </div>
       </div>
