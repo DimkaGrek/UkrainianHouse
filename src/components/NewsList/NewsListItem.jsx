@@ -25,9 +25,9 @@ export const NewsListItem = ({ item, className = "" }) => {
           <h3 className="font-proza-medium mb-[8px] text-[20px] font-medium leading-[120%] text-[#1a1a1a] group-hover:text-[#fbfbfb] group-focus-visible:text-[#fbfbfb] group-active:text-[#fbfbfb] lg:text-[26px] lg:leading-[131%]">
             {item.title}
           </h3>
-          <p className="line-clamp-5 font-istok text-[14px] leading-[129%] text-[#393939] group-hover:text-[#e4e4e4] group-focus-visible:text-[#e4e4e4] group-active:text-[#e4e4e4] lg:line-clamp-3 lg:text-[16px] lg:leading-[137%]">
+          <pre className="line-clamp-5 whitespace-pre-wrap font-istok text-[14px] leading-[129%] text-[#393939] group-hover:text-[#e4e4e4] group-focus-visible:text-[#e4e4e4] group-active:text-[#e4e4e4] lg:line-clamp-3 lg:text-[16px] lg:leading-[137%]">
             {item.content}
-          </p>
+          </pre>
         </div>
         <div className="mt-auto flex justify-between font-istok text-[12px] leading-[150%] text-[#a6a6a6] group-hover:text-[##dbdbdb] group-focus-visible:text-[##dbdbdb] group-active:text-[##dbdbdb]">
           <p>{getFormattedDate(item.publishDate)}</p>
