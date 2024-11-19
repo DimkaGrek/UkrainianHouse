@@ -15,10 +15,7 @@ export const bookFormSchema = yup.object().shape({
     .required("Author is required")
     .min(5, "Author should be at least 5 letters")
     .max(80, "Author must not exceed 80 letters"),
-  aboutAuthor: yup
-    .string()
-    .required("About the author is required")
-    .min(10, "About the author should be at least 10 letters"),
+  aboutAuthor: yup.string().max(250, "This field must not exceed 250 letters"),
   pageCount: yup
     .number()
     .typeError("Amount of pages is required")
