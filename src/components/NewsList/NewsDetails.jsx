@@ -15,9 +15,9 @@ export const NewsDetails = ({ title, content, publishDate, photoUrls, btnLink, b
           <h3 className="font-proza-medium mb-[10px] break-words text-[20px] font-semibold leading-[120%] text-[#1a1a1a] md:mb-[24px] md:leading-[160%] lg:text-[60px] lg:leading-[131%]">
             {title}
           </h3>
-          <p className="break-words font-istok text-[16px] leading-[137%] text-[#393939] lg:text-[20px] lg:leading-[140%]">
+          <pre className="whitespace-pre-wrap break-words font-istok text-[16px] leading-[137%] text-[#393939] lg:text-[20px] lg:leading-[140%]">
             {content}
-          </p>
+          </pre>
         </div>
         <p
           className={`text-left font-istok text-[12px] leading-[150%] text-[#a6a6a6] md:text-[14px] md:leading-[129%] lg:text-[20px] lg:leading-[150%] ${

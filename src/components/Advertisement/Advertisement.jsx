@@ -13,9 +13,9 @@ export const Advertisement = () => {
           <h3 className="font-proza-semibold md:font-proza-medium lg:font-proza-semibold mb-[4px] text-[20px] font-semibold leading-[160%] text-[#1e1e1e] md:mb-[8px] md:text-[26px] md:font-medium md:leading-[131%] lg:mb-[20px] lg:text-[36px] lg:font-semibold lg:leading-[111%]">
             Coming soon...
           </h3>
-          <p className="mb-[16px] line-clamp-3 font-istok text-[16px] leading-[137%] text-[#666] md:line-clamp-4 md:text-[18px] md:leading-[133%] lg:line-clamp-6 lg:text-[22px] lg:leading-[129%]">
+          <pre className="mb-[16px] line-clamp-3 whitespace-pre-wrap font-istok text-[16px] leading-[137%] text-[#666] md:line-clamp-4 md:text-[18px] md:leading-[133%] lg:line-clamp-6 lg:text-[22px] lg:leading-[129%]">
             {announceNews[0].content}
-          </p>
+          </pre>
 
           <div className="mt-auto">
             <ReadMoreButton toggleModal={toggleModal} />

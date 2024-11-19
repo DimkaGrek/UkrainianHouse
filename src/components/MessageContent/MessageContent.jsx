@@ -28,7 +28,9 @@ export const MessageContent = ({ item }) => {
           </p>
         ))}
       </div>
-      <div className="color-my-black2 h-auto text-justify text-lg">{item.message}</div>
+      <pre className="color-my-black2 whitespace-pre-wrap text-justify font-istok text-lg">
+        {item.message}
+      </pre>
       <p className="flex justify-end text-sm">{format(item.createdAt, "HH:mm / dd MMM yyyy")}</p>
     </div>
   );
