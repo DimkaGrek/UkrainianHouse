@@ -49,7 +49,7 @@ export const AdminHeader = () => {
         </Modal>
       )}
       {addModal && currentPage?.modal && (
-        <Modal toggleModal={toggleAddModal} isOpen={addModal}>
+        <Modal toggleModal={toggleAddModal} isOpen={addModal} onBackdropClick={false}>
           <currentPage.modal toggle={toggleAddModal} />
         </Modal>
       )}

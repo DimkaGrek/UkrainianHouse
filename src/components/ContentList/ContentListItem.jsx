@@ -121,7 +121,7 @@ export const ContentListItem = ({ item }) => {
         </div>
       </li>
       {isOpen && (
-        <Modal toggleModal={toggleModal} isOpen={isOpen}>
+        <Modal toggleModal={toggleModal} isOpen={isOpen} onBackdropClick={false}>
           {renderModalContent()}
         </Modal>
       )}
