@@ -33,7 +33,7 @@ export const NewsForm = ({ item, toggle }) => {
       className="flex h-auto w-full flex-col gap-6 lg:w-[1150px] lg:gap-6"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="grid-cols-2 grid gap-4">
+      <div className="grid-cols-2 grid gap-6">
         <InputField
           label="Article Title"
           name="title"
@@ -41,7 +41,7 @@ export const NewsForm = ({ item, toggle }) => {
           register={register}
           errors={errors}
         />
-        <div className="flex gap-4">
+        <div className="flex gap-6">
           <div className="flex-1">
             <StatusField statuses={newsStatuses} status={status} setStatus={handleChangeStatus} />
           </div>
@@ -84,7 +84,7 @@ export const NewsForm = ({ item, toggle }) => {
         </label>
         <p className="field-error">{errors["content"]?.message}</p>
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-6">
         <InputField
           wrapperClass="w-1/2"
           label="Button Text"
