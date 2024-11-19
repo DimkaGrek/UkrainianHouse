@@ -1,6 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 
-import { Icon, Modal, Developers, Address, FlagsList } from "../../components";
+import { Icon, Modal, Developers, Address } from "../../components";
 
 import { useModal } from "../../hooks";
 import { images } from "../../assets";
@@ -17,7 +17,7 @@ export const Footer = () => {
     "cursor-not-allowed transition duration-300 hover:text-gray-600 md:w-[110px] lg:w-[165px]";
 
   const socialLinkItemClass =
-    "h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[347px] lg:text-[20px]";
+    "h-[44px] w-full text-center text-[16px] font-bold leading-[1.5] text-gray-900 md:w-[344px] lg:h-[54px] lg:w-[342px] lg:text-[20px]";
   const linkClass =
     "group flex h-full w-full items-center gap-[8px] rounded-[10px] border border-[#1e1e1e] px-[16px] py-[10px] transition duration-300 hover:bg-[#2355cc] hover:text-[#fff] focus-visible:bg-[#2355cc] focus-visible:text-[#fff] lg:gap-[6px] lg:px-[18px]";
   const iconClass =
@@ -89,23 +89,21 @@ export const Footer = () => {
               {/* <FlagsList className="flex gap-4" /> */}
             </div>
 
-            <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[697px] lg:gap-[20px]">
-              <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[697px] lg:gap-[20px]">
-                {socialLinks.map((link, index) => (
-                  <li key={index} className={socialLinkItemClass}>
-                    <a
-                      className={linkClass}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={link.ariaLabel}
-                    >
-                      <Icon name={link.icon} className={iconClass} size="24" />
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <ul className="flex flex-col items-center justify-center gap-[16px] md:flex-row md:flex-wrap lg:w-[700px]">
+              {socialLinks.map((link, index) => (
+                <li key={index} className={socialLinkItemClass}>
+                  <a
+                    className={linkClass}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.ariaLabel}
+                  >
+                    <Icon name={link.icon} className={iconClass} size="24" />
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
