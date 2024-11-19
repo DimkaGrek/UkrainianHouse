@@ -179,7 +179,7 @@ input[type="number"]::-webkit-outer-spin-button {
   top: -25vw;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100vw - 18px);
+  width: calc(100vw - 20px);
   height: 18vw;
 
   background-image: url("./assets/images/contacts/contacts_mobile1x.webp");
@@ -208,7 +208,7 @@ input[type="number"]::-webkit-outer-spin-button {
   bottom: -25vw;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100vw - 18px);
+  width: calc(100vw - 20px);
   height: 18vw;
 
   background-image: url("./assets/images/contacts/contacts_2_mobile1x.webp");
@@ -259,7 +259,7 @@ input[type="number"]::-webkit-outer-spin-button {
   top: -25vw;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100vw - 18px);
+  width: calc(100vw - 20px);
   height: 11vw;
 
   background-image: url("./assets/images/footer/tape_1x_mob.webp");

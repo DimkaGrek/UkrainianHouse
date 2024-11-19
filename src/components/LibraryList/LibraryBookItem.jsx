@@ -15,7 +15,7 @@ export const LibraryBookItem = ({
       >
         <div className="mb-[16px] overflow-hidden rounded-[18px] transition duration-300 group-hover:text-[#fbfbfb] group-focus-visible:text-[#fbfbfb] group-active:text-[#fbfbfb] lg:mb-[6px]">
           <img
-            className="h-[260px] w-[163px] rounded-[18px] transition duration-300 group-hover:scale-[1.05] group-focus:scale-[1.05] group-active:scale-[1.05] lg:h-[380px] lg:w-[238px]"
+            className="h-[260px] w-[163px] rounded-[18px] object-cover transition duration-300 group-hover:scale-[1.05] group-focus:scale-[1.05] group-active:scale-[1.05] lg:h-[380px] lg:w-[238px]"
             src={coverImageUrl}
             alt={`книга бібліотеки, автор: ${author}, назва твору: ${title} `}
           />
