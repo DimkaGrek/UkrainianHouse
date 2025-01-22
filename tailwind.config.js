@@ -12,6 +12,8 @@ export default {
       tablet: { min: "768px", max: "1439.98px" },
       lg: "1440px",
       extralg: "1920px",
+      "custom-hw-sm": { raw: "(min-width: 1440px) and (max-height: 800px)" },
+      "custom-hw-md": { raw: "(min-width: 1440px) and (max-height: 900px)" },
     },
     fontFamily: {
       istok: ["IstokWeb-Regular", "sans-serif"],
