@@ -5,18 +5,18 @@ import { developersData } from "../../constants";
 export const Developers = () => {
   return (
     <>
-      <h4 className="mb-[16px] w-[280px] font-proza text-[20px] font-medium leading-[1.2] text-[#1e1e1e] sm-max:w-[212px] md:mb-[21px] md:w-[450px] md:text-[24px] md:font-semibold md:leading-[1.6] lg:mb-[32px] lg:w-full lg:text-[36px]">
+      <h4 className="custom-hw-md:mb-[24px] custom-hw-md:text-[28px] mb-[16px] w-[280px] font-proza text-[20px] font-medium leading-[1.2] text-[#1e1e1e] sm-max:w-[212px] md:mb-[21px] md:w-[450px] md:text-[24px] md:font-semibold md:leading-[1.6] lg:mb-[32px] lg:w-full lg:text-[36px]">
         Web-developers {`\u201c`}Ukrainian House in Maastricht{`\u201d`}
       </h4>
-      <div className="carousel carousel-vertical h-[315px] md:carousel-center sm-max:h-[260px] md:h-[380px] md:w-full md:flex-row md:space-x-[44px] lg:h-full lg:flex-wrap lg:gap-x-[44px] lg:gap-y-0 lg:space-x-0">
+      <div className="custom-hw-md:gap-y-[10px] carousel carousel-vertical h-[315px] md:carousel-center sm-max:h-[260px] md:h-[380px] md:w-full md:flex-row md:space-x-[44px] lg:h-full lg:flex-wrap lg:gap-x-[44px] lg:gap-y-0 lg:space-x-0">
         {developersData.map(({ name, url, position, photos }, index) => (
           <div
             key={index}
-            className="carousel-item flex w-full flex-col pb-[25px] md:w-[304px] md:pb-[24px] lg:w-[255px] lg:pb-[23px]"
+            className="custom-hw-md:p-0 carousel-item flex w-full flex-col pb-[25px] md:w-[304px] md:pb-[24px] lg:w-[255px] lg:pb-[23px]"
           >
             <div className="md:order-2">
               <div className="mb-[4px] flex w-full items-center justify-between md:mb-[5px] lg:mb-0">
-                <p className="font-proza text-[20px] font-medium leading-[1.2] text-[#1e1e1e] md:text-[24px] md:leading-[1.3]">
+                <p className="custom-hw-md:text-[20px] font-proza text-[20px] font-medium leading-[1.2] text-[#1e1e1e] md:text-[24px] md:leading-[1.3]">
                   {name}
                 </p>
                 <a href={url} target="_blank" rel="noopener noreferrer" aria-label="Linkedin">
@@ -27,7 +27,7 @@ export const Developers = () => {
                   />
                 </a>
               </div>
-              <p className="mb-[8px] whitespace-pre-line text-[12px] font-normal leading-[1.5] text-[#666] md:mb-0 md:text-[20px] md:italic md:leading-[1.5] lg:text-[18px]">
+              <p className="custom-hw-md:text-[16px] mb-[8px] whitespace-pre-line text-[12px] font-normal leading-[1.5] text-[#666] md:mb-0 md:text-[20px] md:italic md:leading-[1.5] lg:text-[18px]">
                 {position}
               </p>
             </div>
@@ -46,7 +46,7 @@ export const Developers = () => {
                 height="277"
                 width="342"
                 alt={`Photo of ${name}`}
-                className="mb-[20px] rounded-[18px] md:mb-[21px] lg:mb-[16px]"
+                className="custom-hw-md:h-[170px] custom-hw-md:object-top mb-[20px] rounded-[18px] object-cover md:mb-[21px] lg:mb-[16px]"
                 loading="lazy"
               />
             </picture>
