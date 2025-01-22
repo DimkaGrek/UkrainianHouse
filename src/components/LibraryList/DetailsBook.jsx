@@ -12,8 +12,10 @@ export const DetailsBook = ({
   return (
     <div className="relative flex flex-wrap gap-[10px]">
       <img
-        className="w-[150px] rounded-[18px] object-cover sm-max:w-[125px] md:order-2 md:-mt-[60px] md:w-[200px] lg:-mt-[85px] lg:max-h-[570px] lg:w-[400px]"
+        className="custom-hw-sm:h-[65dvh] w-[150px] rounded-[18px] object-cover sm-max:w-[125px] md:order-2 md:-mt-[60px] md:w-[200px] lg:-mt-[85px] lg:max-h-[570px] lg:w-[400px]"
         src={coverImageUrl}
+        width={200}
+        height={400}
         alt={`книга бібліотеки, автор: ${author}, назва твору: ${title}`}
       />
       <div className="flex w-1/2 flex-col md:order-1 md:w-[410px] lg:w-full">
@@ -39,7 +41,7 @@ export const DetailsBook = ({
       </div>
 
       <article className="md:order-1 md:flex md:w-[410px] md:flex-col lg:w-[760px]">
-        <pre className="scrollbar h-[250px] whitespace-pre-wrap pr-2 font-istok text-[14px] font-normal leading-[1.28571] text-[#1e1e1e] md:mb-[4px] md:h-[265px] md:text-[16px] md:leading-[1.375] lg:mb-[16px] lg:h-[450px] lg:text-[20px] lg:leading-[1.4]">
+        <pre className="scrollbar custom-hw-sm:max-h-[50dvh] h-[250px] whitespace-pre-wrap pr-2 font-istok text-[14px] font-normal leading-[1.28571] text-[#1e1e1e] md:mb-[4px] md:h-[265px] md:text-[16px] md:leading-[1.375] lg:mb-[16px] lg:h-[450px] lg:text-[20px] lg:leading-[1.4]">
           {description}
         </pre>
         <p className="hidden pr-[20px] font-istok md:mt-auto md:flex md:items-center md:justify-between md:text-[16px] md:font-normal md:italic md:leading-[1.375] md:text-[#666666]">
