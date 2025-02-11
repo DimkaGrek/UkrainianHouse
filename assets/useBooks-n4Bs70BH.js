@@ -1,1 +1,0 @@
-import{m as o,G as l,H as n,J as k,K as B,N as g,O as i}from"./index-C3_sVye1.js";const m=()=>{const s=o(l),e=o(n),t=o(k),a=o(B),c=o(g),r=o(i);return{books:s,page:e,totalPages:t,totalBooks:a,isLoading:c,error:r}};export{m as u};
