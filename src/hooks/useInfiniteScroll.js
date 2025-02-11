@@ -28,6 +28,7 @@ export const useInfiniteScroll = (
         ...(keyword && { keyword }),
       },
     };
+
     dispatch(fetchItems(config))
       .unwrap()
       .then((res) => {
@@ -39,7 +40,10 @@ export const useInfiniteScroll = (
           toast.info("You have reached the end of the list.");
         }
       })
-      .catch((e) => toast.error(e.message));
+      .catch((e) => {
+        console.log("Error: ", e);
+        toast.error("Something went wrong. Please, reload the page.");
+      });
   }, [page, keyword, dispatch, fetchItems, setPage, items.length]);
 
   useEffect(() => {
@@ -48,7 +52,10 @@ export const useInfiniteScroll = (
       dispatch(fetchAnnounce())
         .unwrap()
         .then()
-        .catch((e) => toast.error(e.message));
+        .catch((e) => {
+          console.log("Error: ", e);
+          toast.error("Something went wrong. Please, reload the page.");
+        });
     }
   }, [clearItems, dispatch, fetchAnnounce]);
 
